@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.app.dao.CfgBlackWhiteBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.app.bean.CfgBlackWhiteBean" >
+    <id column="BILL_ID" property="billId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="BW_TYPE" property="bwType" jdbcType="INTEGER" />
+    <result column="REASON_TYPE" property="reasonType" jdbcType="VARCHAR" />
+    <result column="FOR_TYPE" property="forType" jdbcType="INTEGER" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="EFFECTIVE_DATE" property="effectiveDate" jdbcType="TIMESTAMP" />
+    <result column="EXPIRE_DATE" property="expireDate" jdbcType="TIMESTAMP" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="DONE_CODE" property="doneCode" jdbcType="VARCHAR" />
+    <result column="DONE_DATE" property="doneDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="SP_ID" property="spId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BILL_ID, USER_ID, BW_TYPE, REASON_TYPE, FOR_TYPE, CREATE_DATE, EFFECTIVE_DATE, EXPIRE_DATE, 
+    OP_ID, ORG_ID, DONE_CODE, DONE_DATE, REMARK, STATE,SP_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cfg_black_white_list
+    where BILL_ID = #{billId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    BILL_ID,BW_TYPE,FOR_TYPE,SP_ID
+    from cfg_black_white_list
+    where state=1
+  </select>
+  <select id="selectList" parameterType="com.pl.airboss.app.bean.CfgBlackWhiteBean" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List"/>
+    from cfg_black_white_list
+    <where>
+    <if test="billId !=null and billId != ''">
+      and bill_id like concat('%',#{billId},'%')
+    </if>
+    <if test="bwType !=null">
+      and bw_type= #{bwType}
+    </if>
+    <if test=" forType !=null">
+      and for_type= #{forType}
+    </if>
+    <if test="state!=null">
+      and state= #{state}
+    </if>
+      <if test="spId!=null">
+        and SP_ID= #{spId}
+      </if>
+    <if test="reasonType !=null and reasonType !=''">
+      and reason_type= #{reasonType}
+    </if>
+    </where>
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cfg_black_white_list
+    where BILL_ID = #{billId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.app.bean.CfgBlackWhiteBean" >
+    insert into cfg_black_white_list (BILL_ID, USER_ID, BW_TYPE, 
+      REASON_TYPE, FOR_TYPE, CREATE_DATE, 
+      EFFECTIVE_DATE, EXPIRE_DATE, OP_ID, 
+      ORG_ID, DONE_CODE, DONE_DATE, 
+      REMARK, STATE,SP_ID)
+    values (#{billId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{bwType,jdbcType=INTEGER}, 
+      #{reasonType,jdbcType=VARCHAR}, #{forType,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{effectiveDate,jdbcType=TIMESTAMP}, #{expireDate,jdbcType=TIMESTAMP}, #{opId,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{doneCode,jdbcType=VARCHAR}, #{doneDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER},#{spId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.app.bean.CfgBlackWhiteBean" >
+    insert into cfg_black_white_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        BILL_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="bwType != null" >
+        BW_TYPE,
+      </if>
+      <if test="reasonType != null" >
+        REASON_TYPE,
+      </if>
+      <if test="forType != null" >
+        FOR_TYPE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="effectiveDate != null" >
+        EFFECTIVE_DATE,
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE,
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="spId != null" >
+        SP_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bwType != null" >
+        #{bwType,jdbcType=INTEGER},
+      </if>
+      <if test="reasonType != null" >
+        #{reasonType,jdbcType=VARCHAR},
+      </if>
+      <if test="forType != null" >
+        #{forType,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDate != null" >
+        #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="doneCode != null" >
+        #{doneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doneDate != null" >
+        #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="spId != null" >
+        #{spId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.app.bean.CfgBlackWhiteBean" >
+    update cfg_black_white_list
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bwType != null" >
+        BW_TYPE = #{bwType,jdbcType=INTEGER},
+      </if>
+      <if test="reasonType != null" >
+        REASON_TYPE = #{reasonType,jdbcType=VARCHAR},
+      </if>
+      <if test="forType != null" >
+        FOR_TYPE = #{forType,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDate != null" >
+        EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE = #{doneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="spId != null" >
+        SP_ID = #{spId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BILL_ID = #{billId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.app.bean.CfgBlackWhiteBean" >
+    update cfg_black_white_list
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      BW_TYPE = #{bwType,jdbcType=INTEGER},
+      REASON_TYPE = #{reasonType,jdbcType=VARCHAR},
+      FOR_TYPE = #{forType,jdbcType=INTEGER},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+      EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      DONE_CODE = #{doneCode,jdbcType=VARCHAR},
+      DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      SP_ID = #{spId,jdbcType=INTEGER},
+    where BILL_ID = #{billId,jdbcType=VARCHAR}
+  </update>
+</mapper>

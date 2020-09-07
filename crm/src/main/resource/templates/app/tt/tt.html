@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('工单')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="dept-form">
+
+					<div class="select-list">
+						<ul>
+							<li>
+								来源渠道：<select name="srcChannel" th:with="type=${@SysService.getType('cfg_channel')}" required>
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								工单编号：<input type="text" name="ttCode" required/>
+							</li>
+							<li>
+								处理工号：<input type="text" name="operatorCode" required/>
+							</li>
+
+							<li class="select-time">
+								<label>提醒到达时间： </label>
+								<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]"/>
+								<span>-</span>
+								<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.treeTable.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+                
+            <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="app:tt:add">
+                    <i class="fa fa-plus"></i> 新增
+                </a>
+                <a class="btn btn-primary" onclick="$.operate.edit()" shiro:hasPermission="app:tt:update">
+		            <i class="fa fa-edit"></i> 修改
+		        </a>
+	        </div>
+       		 <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-tree-table"></table>
+	        </div>
+	    </div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var addFlag = [[${@permission.hasPermi('app:tt:add')}]];
+		var viewFlag = [[${@permission.hasPermi('app:tt:view')}]];
+		var editFlag = [[${@permission.hasPermi('app:tt:update')}]];
+		var removeFlag = [[${@permission.hasPermi('app:tt:delete')}]];
+		var datas = [[${@SysService.getType('cfg_tt_state')}]];
+		var channels = [[${@SysService.getType('cfg_channel')}]];
+		var alerttypes = [[${@SysService.getType('cfg_alert_channel')}]];
+		var cycletype = [[${@SysService.getType('cfg_cycle_type')}]];
+		var prefix = ctx + "app/tt"
+
+		$(function() {
+		    var options = {
+		        code: "recId",
+		        uniqueId: "recId",
+		        url: prefix + "/list",
+		        createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        viewUrl: prefix + "/view/{id}",
+		        removeUrl: prefix + "/remove/{id}",
+		        modalName: "工单",
+		        columns: [{
+		            field: 'selectItem',
+                    radio: true
+                 },
+
+                 {
+		            field: 'srcChannel',
+		            title: '来源',
+		            align: "left",
+                     formatter: function(value, item, index) {
+                         return $.table.selectDictLabel(channels, item.srcChannel);
+                     }
+		        },
+                    {
+                        field: 'ttCode',
+                        title: '工单编号',
+                        align: "left"
+                    },
+                    {
+                        field: 'ttName',
+                        title: '工单名称',
+                        align: "left"
+                    },
+                    {
+                        field: 'operatorCode',
+                        title: '处理工号',
+                        align: "left"
+                    },
+                    {
+                        field: 'createDate',
+                        title: '创建时间',
+                        align: "left"
+                    },
+                    {
+                        field: 'limitUnit',
+                        title: '时间单位',
+                        align: "center",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(cycletype, item.limitUnit);
+                        }
+                    },
+                    {
+                        field: 'limitNum',
+                        title: '时长',
+                        align: "left"
+                    },
+                    {
+                        field: 'alertChannel',
+                        title: '提醒方式',
+                        align: "left",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(alerttypes, item.alertChannel);
+                        }
+                    },
+
+		        {
+		            field: 'state',
+		            title: '状态',
+		            align: "left",
+		            formatter: function(value, item, index) {
+		            	return $.table.selectDictLabel(datas, item.state);
+		            }
+		        },
+
+		        {
+		            title: '操作',
+		            align: 'left',
+		            formatter: function(value, row, index) {
+		                if (row.parentId != 0) {
+		                    var actions = [];
+		                    var editf=editFlag
+		                    var rmf=removeFlag
+                            if(row.state!=1){
+                                editf='hidden';
+                                rmf='hidden';
+                            }
+		                    actions.push('<a class="btn btn-success btn-xs ' + viewFlag + '" href="javascript:void(0)" onclick="$.operate.view(\'' + row.recId + '\')"><i class="fa fa-edit"></i>查看</a> ');
+		                    actions.push('<a class="btn btn-success btn-xs ' + editf + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.recId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+		                    actions.push('<a class="btn btn-info  btn-xs ' + addFlag + '" href="javascript:void(0)" onclick="$.operate.add(\'' + row.recId + '\')"><i class="fa fa-plus"></i>新增</a> ');
+		                    actions.push('<a class="btn btn-danger btn-xs ' + rmf + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.recId + '\')"><i class="fa fa-trash"></i>删除</a>');
+		                    return actions.join('');
+		                } else {
+		                    return "";
+		                }
+		            }
+		        }]
+		    };
+		    $.treeTable.init(options);
+		});
+	</script>
+</body>
+</html>

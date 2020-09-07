@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.web.dao.SecLoginLogBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.web.bean.SecLoginLogBean" >
+    <id column="REC_ID" property="recId" jdbcType="INTEGER" />
+    <result column="LOGIN_CODE" property="loginCode" jdbcType="VARCHAR" />
+    <result column="IP_ADDRESS" property="ipAddress" jdbcType="VARCHAR" />
+    <result column="LOGIN_LOCATION" property="loginLocation" jdbcType="VARCHAR" />
+    <result column="BROWSER" property="browser" jdbcType="VARCHAR" />
+    <result column="OS" property="os" jdbcType="VARCHAR" />
+    <result column="LOGIN_DATE" property="loginDate" jdbcType="TIMESTAMP" />
+    <result column="LOGOUT_DATE" property="logoutDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    REC_ID, LOGIN_CODE, IP_ADDRESS, LOGIN_LOCATION, BROWSER, OS, LOGIN_DATE, LOGOUT_DATE, 
+    REMARK, STATUS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pl.airboss.web.bean.SecLoginLogBeanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from [sec_login_log(loginDate)]
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from [sec_login_log(loginDate)]
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from [sec_login_log(loginDate)]
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.web.bean.SecLoginLogBean" >
+    insert into [sec_login_log(loginDate)] (REC_ID, LOGIN_CODE, IP_ADDRESS,
+      LOGIN_LOCATION, BROWSER, OS, 
+      LOGIN_DATE, LOGOUT_DATE, REMARK, 
+      STATUS)
+    values (#{recId,jdbcType=INTEGER}, #{loginCode,jdbcType=VARCHAR}, #{ipAddress,jdbcType=VARCHAR}, 
+      #{loginLocation,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}, #{os,jdbcType=VARCHAR}, 
+      #{loginDate,jdbcType=VARCHAR}, #{logoutDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.web.bean.SecLoginLogBean" >
+    insert into [sec_login_log(loginDate)]
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        REC_ID,
+      </if>
+      <if test="loginCode != null" >
+        LOGIN_CODE,
+      </if>
+      <if test="ipAddress != null" >
+        IP_ADDRESS,
+      </if>
+      <if test="loginLocation != null" >
+        LOGIN_LOCATION,
+      </if>
+      <if test="browser != null" >
+        BROWSER,
+      </if>
+      <if test="os != null" >
+        OS,
+      </if>
+      <if test="loginDate != null" >
+        LOGIN_DATE,
+      </if>
+      <if test="logoutDate != null" >
+        LOGOUT_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=INTEGER},
+      </if>
+      <if test="loginCode != null" >
+        #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null" >
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="loginLocation != null" >
+        #{loginLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null" >
+        #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDate != null" >
+        #{loginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutDate != null" >
+        #{logoutDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.web.bean.SecLoginLogBean" >
+    update [sec_login_log(loginDate)]
+    <set >
+      <if test="loginCode != null" >
+        LOGIN_CODE = #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null" >
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="loginLocation != null" >
+        LOGIN_LOCATION = #{loginLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null" >
+        BROWSER = #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        OS = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDate != null" >
+        LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutDate != null" >
+        LOGOUT_DATE = #{logoutDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.web.bean.SecLoginLogBean" >
+    update [sec_login_log(loginDate)]
+    set LOGIN_CODE = #{loginCode,jdbcType=VARCHAR},
+      IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      LOGIN_LOCATION = #{loginLocation,jdbcType=VARCHAR},
+      BROWSER = #{browser,jdbcType=VARCHAR},
+      OS = #{os,jdbcType=VARCHAR},
+      LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP},
+      LOGOUT_DATE = #{logoutDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR}
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectLoginLogList" parameterType="com.pl.airboss.web.bean.SecLoginLogBean" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from [sec_login_log(loginDate)]
+    <where>
+      <if test="ipAddress != null and ipAddress != ''">
+        AND ip_Address like concat('%', #{ipAddress}, '%')
+      </if>
+      <if test="status != null and status != ''">
+        AND status = #{status}
+      </if>
+      <if test="loginCode != null and loginCode != ''">
+        AND login_code like concat('%', #{loginCode}, '%')
+      </if>
+      <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+        and date_format(login_date,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+      </if>
+      <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+        and date_format(login_date,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteLoginLogByIds" parameterType="String">
+    delete from [sec_login_log(loginDate)] where rec_id in
+    <foreach collection="array" item="infoId" open="(" separator="," close=")">
+      #{infoId}
+    </foreach>
+  </delete>
+</mapper>

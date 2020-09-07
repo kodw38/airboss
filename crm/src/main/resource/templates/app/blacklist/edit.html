@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改黑白名单')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-dept-edit" th:object="${bean}">
+			<div class="form-group">
+				<label class="col-sm-3 control-label is-required">运营商：</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%">
+						<select name="spId" class="form-control m-b" th:with="type=${@SysService.getType('cfg_sp')}">
+							<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:selected="${dict.dictValue}==*{spId}"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label is-required">手机号码：</label>
+				<div class="col-sm-8">
+					<input class="form-control" readonly type="text" name="billId" id="billId" th:value="*{billId}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">黑白名单类型：</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%">
+						<select name="bwType" class="form-control m-b" th:with="type=${@SysService.getType('cfg_bw_type')}">
+							<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:selected="${dict.dictValue}==*{bwType}"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">来源原因：</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%">
+						<select name="reasonType" class="form-control m-b" th:with="type=${@SysService.getType('cfg_bw_source')}">
+							<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:selected="${dict.dictValue}==*{reasonType}" ></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">状态：</label>
+				<div class="col-sm-8">
+					<div class="radio-box" th:each="dict : ${@SysService.getType('sys_normal_disable')}">
+						<input type="radio" th:id="${dict.dictCode}" name="state" th:value="${dict.dictValue}" th:field="*{state}">
+						<label th:for="${dict.dictCode}" th:text="${dict.dictLabel}"></label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		var prefix = ctx + "app/blacklist";
+		
+		$("#form-dept-edit").validate({
+			onkeyup: false,
+			rules:{
+
+			},
+			messages: {
+
+		    },
+		    focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	$.operate.save(prefix + "/edit", $('#form-dept-edit').serialize());
+	        }
+	    }
+	
+	</script>
+</body>
+</html>

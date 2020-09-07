@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('用户注册')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="dept-form">
+
+					<div class="select-list">
+						<ul>
+							<li>
+								归属运营商：<select name="spCode" th:with="type=${@SysService.getType('cfg_sp')}">
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								用户类型：<select name="userType" th:with="type=${@SysService.getType('cfg_user_type')}">
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								证件类型：<select name="idType" th:with="type=${@SysService.getType('cfg_id_type')}">
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+
+							<li>
+								手机号码：<input type="text" name="billId"/>
+								</select>
+							</li>
+
+							<li>
+								用户状态：<select name="state" th:with="type=${@SysService.getType('sys_normal_disable')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+								</select>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.treeTable.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+                
+            <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="app:billid:add">
+                    <i class="fa fa-plus"></i> 新增
+                </a>
+                <a class="btn btn-primary" onclick="$.operate.edit()" shiro:hasPermission="app:billid:update">
+		            <i class="fa fa-edit"></i> 修改
+		        </a>
+	        </div>
+       		 <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-tree-table"></table>
+	        </div>
+	    </div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var addFlag = [[${@permission.hasPermi('app:billid:add')}]];
+		var editFlag = [[${@permission.hasPermi('app:billid:update')}]];
+		var removeFlag = [[${@permission.hasPermi('app:billid:delete')}]];
+		var datas = [[${@SysService.getType('sys_normal_disable')}]];
+		var sps = [[${@SysService.getType('cfg_sp')}]];
+		var usertypes = [[${@SysService.getType('cfg_user_type')}]];
+		var idTypes = [[${@SysService.getType('cfg_id_type')}]];
+		var prefix = ctx + "app/user"
+
+		$(function() {
+		    var options = {
+		        code: "userId",
+		        uniqueId: "userId",
+		        url: prefix + "/list",
+		        createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        removeUrl: prefix + "/remove/{id}",
+		        modalName: "用户",
+		        columns: [{
+		            field: 'selectItem',
+                    radio: true
+                 },
+                 {
+		            field: 'spCode',
+		            title: '归属运营商',
+		            align: "center",
+                     formatter: function(value, item, index) {
+                         return $.table.selectDictLabel(sps, item.spCode);
+                     }
+		        },{
+                        field: 'userName',
+                        title: '用户名称',
+                        align: "center"
+                    },
+                    {
+                        field: 'userType',
+                        title: '用户类型',
+                        align: "center",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(usertypes, item.userType);
+                        }
+                    },
+                    {
+                        field: 'idType',
+                        title: '证件类型',
+                        align: "center",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(idTypes, item.idType);
+                        }
+                    },
+                    {
+                        field: 'idNumber',
+                        title: '证件号码',
+                        align: "center",
+						width: "150"
+                    },
+                    {
+                        field: 'billId',
+                        title: '手机号码',
+                        align: "center"
+                    },
+                    {
+                        field: 'createDate',
+                        title: '创建时间',
+                        align: "center"
+                    },
+
+		        {
+		            field: 'state',
+		            title: '状态',
+		            align: "center",
+		            formatter: function(value, item, index) {
+		            	return $.table.selectDictLabel(datas, item.state);
+		            }
+		        },
+
+		        {
+		            title: '操作',
+		            align: 'left',
+		            formatter: function(value, row, index) {
+		                if (row.parentId != 0) {
+		                    var actions = [];
+                            var more = [];
+                            more.push("<a class='btn btn-default btn-xs " + editFlag + "' href='javascript:void(0)' onclick='$.operate.edit(" +  row.userId + ")'><i class='fa fa-edit'></i>编辑</a> ");
+                            more.push("<a class='btn btn-default btn-xs " + addFlag + "' href='javascript:void(0)' onclick='$.operate.add(" +  row.userId + ")'><i class='fa fa-plus'></i>新增</a> ");
+                            more.push("<a class='btn btn-default btn-xs " + removeFlag + "' href='javascript:void(0)' onclick='$.operate.remove(" +  row.userId + ")'><i class='fa fa-trash'></i>删除</a> ");
+                            //actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.userId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                            //actions.push('<a class="btn btn-info  btn-xs ' + addFlag + '" href="javascript:void(0)" onclick="$.operate.add(\'' + row.userId + '\')"><i class="fa fa-plus"></i>新增</a> ');
+                            //actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.userId + '\')"><i class="fa fa-trash"></i>删除</a>');
+                            actions.push('<a class="btn btn-info btn-xs" role="button" data-container="body" data-placement="left" data-toggle="popover" data-html="true" data-trigger="hover" data-content="' + more.join('') + '"><i class="fa fa-chevron-circle-right"></i>操作</a>');
+
+                            return actions.join('');
+		                } else {
+		                    return "";
+		                }
+		            }
+		        }]
+		    };
+		    $.treeTable.init(options);
+		});
+	</script>
+</body>
+</html>

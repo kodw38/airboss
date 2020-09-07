@@ -1,0 +1,40 @@
+{
+  "groups": [
+    {
+      "name": "spring",
+      "type": "com.pl.airboss.app.config.AppConfiguration",
+      "sourceType": "com.pl.airboss.app.config.AppConfiguration"
+    },
+    {
+      "name": "spring.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.pl.airboss.app.config.AppConfiguration",
+      "sourceMethod": "getDruidDataSource()"
+    },
+    {
+      "name": "spring.datasource.druid.master",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.pl.airboss.framework.config.DruidConfig",
+      "sourceMethod": "masterDataSource(com.pl.airboss.framework.config.DruidProperties)"
+    },
+    {
+      "name": "spring.datasource.druid.slave",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.pl.airboss.framework.config.DruidConfig",
+      "sourceMethod": "slaveDataSource(com.pl.airboss.framework.config.DruidProperties)"
+    },
+    {
+      "name": "system",
+      "type": "com.pl.airboss.framework.config.Global",
+      "sourceType": "com.pl.airboss.framework.config.Global"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.enable-kafka",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.pl.airboss.app.config.AppConfiguration"
+    }
+  ],
+  "hints": []
+}

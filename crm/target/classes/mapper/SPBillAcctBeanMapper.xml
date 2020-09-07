@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.app.dao.SPBillAcctBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.app.bean.SPBillAcctBean" >
+    <id column="rec_id" property="recId" jdbcType="INTEGER" />
+    <result column="SP_CODE" property="spCode" jdbcType="VARCHAR" />
+    <result column="IS_SENDER" property="isSender" jdbcType="INTEGER" />
+    <result column="RESOURCE_TYPE" property="resourceType" jdbcType="INTEGER" />
+    <result column="CYCLE_TYPE" property="cycleType" jdbcType="VARCHAR" />
+    <result column="BILL_CYCLE" property="billCycle" jdbcType="VARCHAR" />
+    <result column="SUM_NUM" property="sumNum" jdbcType="INTEGER" />
+    <result column="COST_FEE" property="costFee" jdbcType="INTEGER" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="ADJUST_NUM" property="adjustNum" jdbcType="INTEGER" />
+    <result column="OP_CODE" property="opCode" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rec_id, SP_CODE, IS_SENDER, RESOURCE_TYPE, CYCLE_TYPE, BILL_CYCLE, SUM_NUM, COST_FEE, 
+    CREATE_DATE, ADJUST_NUM, OP_CODE, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sp_billacct
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="com.pl.airboss.app.bean.SPBillAcctBean">
+    select
+    rec_id, SP_CODE, IS_SENDER, RESOURCE_TYPE, CYCLE_TYPE, BILL_CYCLE, SUM_NUM, COST_FEE,
+    CREATE_DATE, ADJUST_NUM, OP_CODE, STATUS
+    from sp_billacct where status=1
+    <if test="spCode !=null and spCode !=''">
+      and sp_code = #{spCode}
+    </if>
+    <if test="billCycle !=null and billCycle !=''">
+      and bill_cycle = #{billCycle}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sp_billacct
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.app.bean.SPBillAcctBean" >
+    insert into sp_billacct (rec_id, SP_CODE, IS_SENDER, 
+      RESOURCE_TYPE, CYCLE_TYPE, BILL_CYCLE, 
+      SUM_NUM, COST_FEE, CREATE_DATE, 
+      ADJUST_NUM, OP_CODE, STATUS
+      )
+    values (#{recId,jdbcType=INTEGER}, #{spCode,jdbcType=VARCHAR}, #{isSender,jdbcType=INTEGER}, 
+      #{resourceType,jdbcType=INTEGER}, #{cycleType,jdbcType=VARCHAR}, #{billCycle,jdbcType=VARCHAR},
+      #{sumNum,jdbcType=INTEGER}, #{costFee,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{adjustNum,jdbcType=INTEGER}, #{opCode,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.app.bean.SPBillAcctBean" >
+    insert into sp_billacct
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        rec_id,
+      </if>
+      <if test="spCode != null" >
+        SP_CODE,
+      </if>
+      <if test="isSender != null" >
+        IS_SENDER,
+      </if>
+      <if test="resourceType != null" >
+        RESOURCE_TYPE,
+      </if>
+      <if test="cycleType != null" >
+        CYCLE_TYPE,
+      </if>
+      <if test="billCycle != null" >
+        BILL_CYCLE,
+      </if>
+      <if test="sumNum != null" >
+        SUM_NUM,
+      </if>
+      <if test="costFee != null" >
+        COST_FEE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="adjustNum != null" >
+        ADJUST_NUM,
+      </if>
+      <if test="opCode != null" >
+        OP_CODE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=INTEGER},
+      </if>
+      <if test="spCode != null" >
+        #{spCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isSender != null" >
+        #{isSender,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="cycleType != null" >
+        #{cycleType,jdbcType=VARCHAR},
+      </if>
+      <if test="billCycle != null" >
+        #{billCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="sumNum != null" >
+        #{sumNum,jdbcType=INTEGER},
+      </if>
+      <if test="costFee != null" >
+        #{costFee,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adjustNum != null" >
+        #{adjustNum,jdbcType=INTEGER},
+      </if>
+      <if test="opCode != null" >
+        #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.app.bean.SPBillAcctBean" >
+    update sp_billacct
+    <set >
+      <if test="spCode != null" >
+        SP_CODE = #{spCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isSender != null" >
+        IS_SENDER = #{isSender,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        RESOURCE_TYPE = #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="cycleType != null" >
+        CYCLE_TYPE = #{cycleType,jdbcType=VARCHAR},
+      </if>
+      <if test="billCycle != null" >
+        BILL_CYCLE = #{billCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="sumNum != null" >
+        SUM_NUM = #{sumNum,jdbcType=INTEGER},
+      </if>
+      <if test="costFee != null" >
+        COST_FEE = #{costFee,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adjustNum != null" >
+        ADJUST_NUM = #{adjustNum,jdbcType=INTEGER},
+      </if>
+      <if test="opCode != null" >
+        OP_CODE = #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.app.bean.SPBillAcctBean" >
+    update sp_billacct
+    set SP_CODE = #{spCode,jdbcType=VARCHAR},
+      IS_SENDER = #{isSender,jdbcType=INTEGER},
+      RESOURCE_TYPE = #{resourceType,jdbcType=INTEGER},
+      CYCLE_TYPE = #{cycleType,jdbcType=VARCHAR},
+      BILL_CYCLE = #{billCycle,jdbcType=VARCHAR},
+      SUM_NUM = #{sumNum,jdbcType=INTEGER},
+      COST_FEE = #{costFee,jdbcType=INTEGER},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      ADJUST_NUM = #{adjustNum,jdbcType=INTEGER},
+      OP_CODE = #{opCode,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER}
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </update>
+</mapper>

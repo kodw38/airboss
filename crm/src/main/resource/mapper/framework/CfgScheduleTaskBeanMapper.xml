@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.framework.dao.CfgScheduleTaskBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.framework.bean.CfgScheduleTaskBean" >
+    <id column="REC_ID" property="recId" jdbcType="INTEGER" />
+    <result column="TASK_CODE" property="taskCode" jdbcType="VARCHAR" />
+    <result column="TASK_TYPE" property="taskType" jdbcType="VARCHAR" />
+    <result column="CRON" property="cron" jdbcType="VARCHAR" />
+    <result column="TASK_CLASS" property="taskClass" jdbcType="VARCHAR" />
+    <result column="MANAGE_CLASS" property="manageClass" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="IS_APP_INIT_RUN" property="isAppInitRun" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REC_ID, TASK_CODE, TASK_TYPE, CRON, TASK_CLASS, MANAGE_CLASS, CREATE_DATE, REMARK, 
+    STATE, IS_APP_INIT_RUN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cfg_schedule_task
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from cfg_schedule_task
+    where state = 1
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.pl.airboss.framework.bean.CfgScheduleTaskBean">
+    select
+    <include refid="Base_Column_List"/>
+    from cfg_schedule_task
+    <where>
+      <if test="taskType!=null and taskType!=''">
+        and task_type=#{taskType}
+      </if>
+      <if test="taskClass!=null and taskClass!=''">
+        and task_class=#{taskClass}
+      </if>
+      <if test="manageClass!=null and manageClass!=''">
+        and manage_class=#{manageClass}
+      </if>
+      <if test="taskCode !=null and taskCode!=''">
+        and task_code like concat('%',#{taskCode},'%')
+      </if>
+      <if test="state !=null">
+        and state = #{state}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cfg_schedule_task
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.framework.bean.CfgScheduleTaskBean" >
+    insert into cfg_schedule_task (REC_ID, TASK_CODE, TASK_TYPE, 
+      CRON, TASK_CLASS, MANAGE_CLASS, 
+      CREATE_DATE, REMARK, STATE, 
+      IS_APP_INIT_RUN)
+    values (#{recId,jdbcType=INTEGER}, #{taskCode,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, 
+      #{cron,jdbcType=VARCHAR}, #{taskClass,jdbcType=VARCHAR}, #{manageClass,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{isAppInitRun,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.framework.bean.CfgScheduleTaskBean" >
+    insert into cfg_schedule_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        REC_ID,
+      </if>
+      <if test="taskCode != null" >
+        TASK_CODE,
+      </if>
+      <if test="taskType != null" >
+        TASK_TYPE,
+      </if>
+      <if test="cron != null" >
+        CRON,
+      </if>
+      <if test="taskClass != null" >
+        TASK_CLASS,
+      </if>
+      <if test="manageClass != null" >
+        MANAGE_CLASS,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="isAppInitRun != null" >
+        IS_APP_INIT_RUN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=INTEGER},
+      </if>
+      <if test="taskCode != null" >
+        #{taskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="cron != null" >
+        #{cron,jdbcType=VARCHAR},
+      </if>
+      <if test="taskClass != null" >
+        #{taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="manageClass != null" >
+        #{manageClass,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="isAppInitRun != null" >
+        #{isAppInitRun,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.framework.bean.CfgScheduleTaskBean" >
+    update cfg_schedule_task
+    <set >
+      <if test="taskCode != null" >
+        TASK_CODE = #{taskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="cron != null" >
+        CRON = #{cron,jdbcType=VARCHAR},
+      </if>
+      <if test="taskClass != null" >
+        TASK_CLASS = #{taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="manageClass != null" >
+        MANAGE_CLASS = #{manageClass,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="isAppInitRun != null" >
+        IS_APP_INIT_RUN = #{isAppInitRun,jdbcType=INTEGER},
+      </if>
+    </set>
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.framework.bean.CfgScheduleTaskBean" >
+    update cfg_schedule_task
+    set TASK_CODE = #{taskCode,jdbcType=VARCHAR},
+      TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      CRON = #{cron,jdbcType=VARCHAR},
+      TASK_CLASS = #{taskClass,jdbcType=VARCHAR},
+      MANAGE_CLASS = #{manageClass,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      IS_APP_INIT_RUN = #{isAppInitRun,jdbcType=INTEGER}
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.web.dao.SecOperatorBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.web.bean.SecOperatorBean" >
+    <id column="REC_ID" property="recId" jdbcType="INTEGER" />
+    <result column="OP_NAME" property="opName" jdbcType="VARCHAR" />
+    <result column="LOGIN_CODE" property="loginCode" jdbcType="VARCHAR" />
+    <result column="LOGIN_PWD" property="loginPwd" jdbcType="VARCHAR" />
+    <result column="ORGANIZE_ID" property="organizeId" jdbcType="INTEGER" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="EFFECT_DATE" property="effectDate" jdbcType="TIMESTAMP" />
+    <result column="EXPIRE_DATE" property="expireDate" jdbcType="TIMESTAMP" />
+    <result column="PHONE_NUM" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="AVATAR" property="avatar" jdbcType="VARCHAR" />
+    <result column="IS_ADMIN" property="isAdmin" jdbcType="INTEGER" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="EXT_1" property="ext1" jdbcType="VARCHAR" />
+    <result column="EXT_2" property="ext2" jdbcType="VARCHAR" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="SEX" property="sex" jdbcType="INTEGER" />
+    <result column="DONE_CODE" property="doneCode" jdbcType="VARCHAR" />
+    <result column="DONE_DATE" property="doneDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="ORGANIZE_NAME" property="organizeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REC_ID, OP_NAME, LOGIN_CODE, LOGIN_PWD, ORGANIZE_ID,SEX, CREATE_DATE,EFFECT_DATE,EXPIRE_DATE, PHONE_NUM, AVATAR,
+    IS_ADMIN, EMAIL, EXT_1, EXT_2, OP_ID, ORG_ID, DONE_CODE, DONE_DATE, REMARK, STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sec_operator
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </select>
+  <select id="selectUserByLoginCode" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from sec_operator
+    where LOGIN_CODE=#{opCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectUserByPhoneNumber" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from sec_operator
+    where PHONE_NUM=#{phoneNum,jdbcType=VARCHAR}
+  </select>
+  <select id="selectUserByEmail" resultMap="BaseResultMap" parameterType="String">
+    select
+    <include refid="Base_Column_List" />
+    from sec_operator
+    where EMAIL=#{email,jdbcType=VARCHAR}
+  </select>
+  <select id="checkLoginNameUnique" parameterType="String" resultType="int">
+    select count(1) from sec_operator where login_code=#{opCode}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sec_operator
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.web.bean.SecOperatorBean" useGeneratedKeys="true" keyProperty="recId" keyColumn="REC_ID">
+    insert into sec_operator (REC_ID, OP_NAME, LOGIN_CODE,
+      LOGIN_PWD, ORGANIZE_ID, CREATE_DATE, 
+      PHONE_NUM, AVATAR, IS_ADMIN, 
+      EMAIL, EXT_1, EXT_2, 
+      OP_ID, ORG_ID, DONE_CODE, 
+      DONE_DATE, REMARK, STATE,SEX,EFFECT_DATE,EXPIRE_DATE
+      )
+    values (#{recId,jdbcType=INTEGER}, #{opName,jdbcType=VARCHAR}, #{loginCode,jdbcType=VARCHAR}, 
+      #{loginPwd,jdbcType=VARCHAR}, #{organizeId,jdbcType=INTEGER}, sysDate(),
+      #{phoneNum,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{isAdmin,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, 
+      #{opId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{doneCode,jdbcType=VARCHAR}, 
+      #{doneDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER},#{sex,jdbcType=INTEGER},
+      #{effectDate,jdbcType=TIMESTAMP},#{expireDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.web.bean.SecOperatorBean" >
+    insert into sec_operator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        REC_ID,
+      </if>
+      <if test="opName != null" >
+        OP_NAME,
+      </if>
+      <if test="loginCode != null" >
+        LOGIN_CODE,
+      </if>
+      <if test="loginPwd != null" >
+        LOGIN_PWD,
+      </if>
+      <if test="organizeId != null" >
+        ORGANIZE_ID,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="phoneNum != null" >
+        PHONE_NUM,
+      </if>
+      <if test="avatar != null" >
+        AVATAR,
+      </if>
+      <if test="isAdmin != null" >
+        IS_ADMIN,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="ext1 != null" >
+        EXT_1,
+      </if>
+      <if test="ext2 != null" >
+        EXT_2,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE,
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="effectDate != null" >
+        EFFECT_DATE,
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=INTEGER},
+      </if>
+      <if test="opName != null" >
+        #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCode != null" >
+        #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="organizeId != null" >
+        #{organizeId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null" >
+        #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ext1 != null" >
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null" >
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="doneCode != null" >
+        #{doneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doneDate != null" >
+        #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="effectDate != null" >
+        #{effectDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.web.bean.SecOperatorBean" >
+    update sec_operator
+    <set >
+      <if test="opName != null and opName !=''" >
+        OP_NAME = #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCode != null and loginCode !=''" >
+        LOGIN_CODE = #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null and loginPwd !=''" >
+        LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="organizeId != null and organizeId !=0" >
+        ORGANIZE_ID = #{organizeId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectDate != null" >
+        EFFECT_DATE = #{effectDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNum != null and phoneNum !=0" >
+        PHONE_NUM = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null and avatar !=''" >
+        AVATAR = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null" >
+        IS_ADMIN = #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="email != null and email !=''" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null" >
+        IS_ADMIN = #{isAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="ext1 != null and ext1 !=''" >
+        EXT_1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE = #{doneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+    </set>
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.web.bean.SecOperatorBean" >
+    update sec_operator
+    set OP_NAME = #{opName,jdbcType=VARCHAR},
+      LOGIN_CODE = #{loginCode,jdbcType=VARCHAR},
+      LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
+      ORGANIZE_ID = #{organizeId,jdbcType=INTEGER},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      PHONE_NUM = #{phoneNum,jdbcType=VARCHAR},
+      AVATAR = #{avatar,jdbcType=VARCHAR},
+      IS_ADMIN = #{isAdmin,jdbcType=INTEGER},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      EXT_1 = #{ext1,jdbcType=VARCHAR},
+      EXT_2 = #{ext2,jdbcType=VARCHAR},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      DONE_CODE = #{doneCode,jdbcType=VARCHAR},
+      DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      SEX = #{sex,jdbcType=INTEGER}
+    where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+  <update id="changeStatus" parameterType="com.pl.airboss.web.bean.SecOperatorBean">
+    update sec_operator set STATE = #{state,jdbcType=INTEGER} where REC_ID = #{recId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllocatedList" parameterType="com.pl.airboss.web.bean.SecOperatorBean" resultMap="BaseResultMap">
+    select distinct u.rec_id,u.organize_id, u.op_name,u.is_admin, u.login_code, u.phone_num, u.email, u.avatar,  u.state, u.create_date
+    from sec_operator u
+    left join sec_organize d on u.organize_id = d.rec_id
+    left join sec_role_op ur on u.rec_id = ur.operator_id
+    left join sec_role r on r.role_code = ur.role_code
+    where u.state = 1 and r.role_code = #{roleCode}
+    <if test="loginCode != null and loginCode != ''">
+      AND u.login_code like concat('%', #{loginCode}, '%')
+    </if>
+    <if test="phoneNum != null and phoneNum != ''">
+      AND u.phone_num like concat('%', #{phoneNum}, '%')
+    </if>
+  </select>
+  <select id="selectUnallocatedList" parameterType="com.pl.airboss.web.bean.SecOperatorBean" resultMap="BaseResultMap">
+    select distinct u.rec_id, u.organize_id,u.is_admin, u.login_code, u.op_name, u.email, u.avatar, u.phone_num, u.state, u.create_date
+    from sec_operator u
+    left join sec_organize d on u.organize_id = d.rec_id
+    left join sec_role_op ur on u.rec_id = ur.operator_id
+    left join sec_role r on r.role_code = ur.role_code
+    where u.state = 1 and (r.role_code != #{roleCode} or r.role_code IS NULL)
+    and u.rec_id not in (select u.rec_id from sec_operator u inner join sec_role_op ur on u.rec_id = ur.operator_id and ur.role_code = #{roleCode})
+    <if test="loginCode != null and loginCode != ''">
+      AND u.login_code like concat('%', #{loginCode}, '%')
+    </if>
+    <if test="phoneNum != null and phoneNum != ''">
+      AND u.phone_num like concat('%', #{phoneNum}, '%')
+    </if>
+  </select>
+  <select id="selectList" parameterType="com.pl.airboss.web.bean.SecOperatorBean" resultMap="BaseResultMap">
+    select
+    u.rec_id, u.organize_id,u.is_admin,u.effect_date,u.expire_date, u.login_code, u.op_name, u.email, u.avatar, u.phone_num, u.state, u.create_date
+    from sec_operator u
+    where 1=1
+    <if test="loginCode != null and loginCode != ''">
+      AND u.login_code like concat('%', #{loginCode}, '%')
+    </if>
+    <if test="isAdmin != null ">
+      AND u.is_admin = #{isAdmin}
+    </if>
+    <if test="opName != null and opName != ''">
+      AND u.op_name like concat('%', #{opName}, '%')
+    </if>
+    <if test="email != null and email != ''">
+      AND u.email = #{email}
+    </if>
+    <if test="phoneNum != null and phoneNum != ''">
+      AND u.phone_num like concat('%', #{phoneNum}, '%')
+    </if>
+    <if test="state != null">
+      AND u.state = #{state}
+    </if>
+    <if test="organizeId != null and organizeId != 0">
+      AND (u.organize_id = #{organizeId} OR u.organize_id IN ( SELECT t.rec_id FROM sec_organize t WHERE FIND_IN_SET (#{organizeId},ancestors) ))
+    </if>
+    <if test="params!=null and params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+      and date_format(u.create_date,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+    </if>
+    <if test="params!=null and params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+      and date_format(u.create_date,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+    </if>
+  </select>
+  <select id="selectAvailableList" parameterType="com.pl.airboss.web.bean.SecOperatorBean" resultMap="BaseResultMap">
+    select
+    u.rec_id, u.organize_id,u.is_admin,u.effect_date,u.expire_date, u.login_code, u.op_name, u.email, u.avatar, u.phone_num, u.state, u.create_date
+    from sec_operator u
+    where state=1
+    <if test="loginCode != null and loginCode != ''">
+      AND u.login_code like concat('%', #{loginCode}, '%')
+    </if>
+    <if test="isAdmin != null ">
+      AND u.is_admin = #{isAdmin}
+    </if>
+    <if test="opName != null and opName != ''">
+      AND u.op_name like concat('%', #{opName}, '%')
+    </if>
+    <if test="email != null and email != ''">
+      AND u.email = #{email}
+    </if>
+    <if test="phoneNum != null and phoneNum != ''">
+      AND u.phone_num like concat('%', #{phoneNum}, '%')
+    </if>
+    <if test="state != null">
+      AND u.state = #{state}
+    </if>
+    <if test="organizeId != null and organizeId != 0">
+      AND (u.organize_id = #{organizeId} OR u.organize_id IN ( SELECT t.rec_id FROM sec_organize t WHERE FIND_IN_SET (#{organizeId},ancestors) ))
+    </if>
+    <if test="params!=null and params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+      and date_format(u.create_date,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+    </if>
+    <if test="params!=null and params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+      and date_format(u.create_date,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+    </if>
+  </select>
+  <select id="checkLoginCodeExist" parameterType="String" resultType="Boolean">
+    select count(0) from sec_operator where login_code=#{loginCode}
+  </select>
+  <select id="checkEmailExist"  resultType="Boolean">
+    select count(0) from sec_operator where email=#{email}
+    <if test="recId != null and recId !=0">
+      and rec_id !=#{recId}
+    </if>
+  </select>
+  <select id="checkPhoneNumExist" resultType="Boolean">
+    select count(0) from sec_operator where phone_num=#{phoneNum}
+    <if test="recId != null and recId !=0">
+      and rec_id !=#{recId}
+    </if>
+  </select>
+  <delete id="deleteUserByIds">
+    delete from sec_operator where rec_id in
+    <foreach collection="array" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+  <select id="selectWithOrgNameByOpId" parameterType="Integer" resultMap="BaseResultMap">
+    select distinct u.rec_id, u.organize_id,u.is_admin, u.login_code, u.op_name, u.email, u.avatar,u.effect_date,u.expire_date, u.phone_num, u.state,u.sex, u.create_date,u.remark,o.organize_name
+    from sec_operator u left join sec_organize o on u.organize_id=o.rec_id where u.rec_id=#{opId}
+  </select>
+</mapper>

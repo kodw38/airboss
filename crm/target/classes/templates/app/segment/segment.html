@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('号段列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="dept-form">
+
+					<div class="select-list">
+						<ul>
+							<li>
+								运营商：<select name="spCode" th:with="type=${@SysService.getType('cfg_sp')}">
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								省份：<select name="regionCode" th:with="type=${@SysService.getType('cfg_province')}">
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								号段匹配类型：<select name="segType" th:with="type=${@SysService.getType('seg_type')}">
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								状态：<select name="state" th:with="type=${@SysService.getType('sys_normal_disable')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+								</select>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.treeTable.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+                
+            <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="app:segment:add">
+                    <i class="fa fa-plus"></i> 新增
+                </a>
+                <a class="btn btn-primary" onclick="$.operate.edit()" shiro:hasPermission="app:segment:update">
+		            <i class="fa fa-edit"></i> 修改
+		        </a>
+	        </div>
+       		 <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-tree-table"></table>
+	        </div>
+	    </div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var addFlag = [[${@permission.hasPermi('app:segment:add')}]];
+		var editFlag = [[${@permission.hasPermi('app:segment:update')}]];
+		var removeFlag = [[${@permission.hasPermi('app:segment:delete')}]];
+		var datas = [[${@SysService.getType('sys_normal_disable')}]];
+		var segTypes = [[${@SysService.getType('seg_type')}]];
+		var provinces = [[${@SysService.getType('cfg_province')}]];
+		var sps = [[${@SysService.getType('cfg_sp')}]];
+		var prefix = ctx + "app/segment"
+
+		$(function() {
+		    var options = {
+		        code: "recId",
+		        uniqueId: "recId",
+		        url: prefix + "/list",
+		        createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        removeUrl: prefix + "/remove/{id}",
+		        modalName: "号段",
+		        columns: [{
+		            field: 'selectItem',
+                    radio: true
+                 },
+                 {
+		            field: 'spCode',
+		            title: '运营商',
+		            align: "left",
+                     formatter: function(value, item, index) {
+                         return $.table.selectDictLabel(sps, item.spCode);
+                     }
+		        },
+                    {
+                        field: 'regionCode',
+                        title: '省份',
+                        align: "left",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(provinces, item.regionCode);
+                        }
+                    },
+					{
+					    field:'segTypes',
+						title:'号段匹配类型',
+						algin:'left',
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(segTypes, item.state);
+                        }
+					},
+                    {
+                        field: 'begNum',
+                        title: '起始段',
+                        align: "left"
+                    },
+                    {
+                        field: 'endNum',
+                        title: '结束段',
+                        align: "left"
+                    },
+
+		        {
+		            field: 'state',
+		            title: '状态',
+		            align: "left",
+		            formatter: function(value, item, index) {
+		            	return $.table.selectDictLabel(datas, item.state);
+		            }
+		        },
+
+		        {
+		            title: '操作',
+		            align: 'left',
+		            formatter: function(value, row, index) {
+		                if (row.parentId != 0) {
+		                    var actions = [];
+		                    actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.recId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+		                    actions.push('<a class="btn btn-info  btn-xs ' + addFlag + '" href="javascript:void(0)" onclick="$.operate.add(\'' + row.recId + '\')"><i class="fa fa-plus"></i>新增</a> ');
+		                    actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.recId + '\')"><i class="fa fa-trash"></i>删除</a>');
+		                    return actions.join('');
+		                } else {
+		                    return "";
+		                }
+		            }
+		        }]
+		    };
+		    $.treeTable.init(options);
+		});
+	</script>
+</body>
+</html>

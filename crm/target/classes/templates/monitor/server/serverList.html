@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('服务主机列表')" />
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="server-form">
+
+                <div class="select-list">
+                    <ul>
+
+                        <li>
+                            应用地址：<input type="text" name="address"/>
+                            </select>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.treeTable.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="monitor:server:add">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var addFlag = [[${@permission.hasPermi('app:server:add')}]];
+    var editFlag = [[${@permission.hasPermi('app:server:update')}]];
+    var removeFlag = [[${@permission.hasPermi('app:server:delete')}]];
+    var detailFlag = [[${@permission.hasPermi('app:server:delete')}]];
+    var datas = [[${@SysService.getType('sys_normal_disable')}]];
+    var prefix = ctx + "monitor/server";
+
+    $(function() {
+        var options = {
+            uniqueId: "address",
+            code: "address",
+            url: prefix + "/list",
+            sortName: "createDate",
+            createUrl: prefix + "/add",
+            detailUrl: prefix + "/detail/{id}",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove/{id}",
+            modalName: "主机列表",
+            escape: true,
+            columns: [{
+                field: 'selectItem',
+                radio: true
+            },
+                {
+                    field: 'address',
+                    title: '应用地址',
+                    sortable: true
+                },
+                {
+                    field: 'createDate',
+                    title: '创建时间'
+                },
+
+                {
+                    field: 'status',
+                    title: '状态',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(datas, value);
+                    }
+                },
+                {
+                    field: 'remark',
+                    title: '备注'
+
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push("<a class='btn btn-default btn-xs " + detailFlag + "' href='javascript:void(0)' onclick='$.operate.detail(\"" + row.address + "\")'><i class='fa fa-search'></i>查看状态</a> ");
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.address + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.address + '\')"><i class="fa fa-remove"></i>删除</a> ');
+
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+
+</script>
+</body>
+</html>

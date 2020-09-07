@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.app.dao.UserInfoBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.app.bean.UserInfoBean" >
+    <id column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="SP_CODE" property="spCode" jdbcType="VARCHAR" />
+    <result column="SP_NAME" property="spName" jdbcType="VARCHAR" />
+    <result column="BILL_ID" property="billId" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="INTEGER" />
+    <result column="ID_TYPE" property="idType" jdbcType="INTEGER" />
+    <result column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="EFFECTIVE_DATE" property="effectiveDate" jdbcType="TIMESTAMP" />
+    <result column="EXPIRE_DATE" property="expireDate" jdbcType="TIMESTAMP" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="DONE_CODE" property="doneCode" jdbcType="VARCHAR" />
+    <result column="DONE_DATE" property="doneDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, SP_CODE, SP_NAME, BILL_ID, USER_NAME, USER_TYPE, ID_TYPE, ID_NUMBER, CREATE_DATE, 
+    EFFECTIVE_DATE, EXPIRE_DATE, OP_ID, ORG_ID, DONE_CODE, DONE_DATE, REMARK, STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectList" parameterType="com.pl.airboss.app.bean.UserInfoBean" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_info
+    <where>
+      <if test="spCode !=null and spCode!=''">
+        and sp_code =#{spCode}
+      </if>
+      <if test="billId !=null and billId!=''">
+        and bill_id =#{billId}
+      </if>
+      <if test="userType !=null">
+        and user_type =#{userType}
+      </if>
+      <if test="idType !=null">
+        and id_type =#{idType}
+      </if>
+      <if test="state !=null">
+        and state =#{state}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_info
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.app.bean.UserInfoBean" >
+    insert into user_info (USER_ID, SP_CODE, SP_NAME, 
+      BILL_ID, USER_NAME, USER_TYPE, 
+      ID_TYPE, ID_NUMBER, CREATE_DATE, 
+      EFFECTIVE_DATE, EXPIRE_DATE, OP_ID, 
+      ORG_ID, DONE_CODE, DONE_DATE, 
+      REMARK, STATE)
+    values (#{userId,jdbcType=INTEGER}, #{spCode,jdbcType=VARCHAR}, #{spName,jdbcType=VARCHAR}, 
+      #{billId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
+      #{idType,jdbcType=INTEGER}, #{idNumber,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{effectiveDate,jdbcType=TIMESTAMP}, #{expireDate,jdbcType=TIMESTAMP}, #{opId,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{doneCode,jdbcType=VARCHAR}, #{doneDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.app.bean.UserInfoBean" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="spCode != null" >
+        SP_CODE,
+      </if>
+      <if test="spName != null" >
+        SP_NAME,
+      </if>
+      <if test="billId != null" >
+        BILL_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="idType != null" >
+        ID_TYPE,
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="effectiveDate != null" >
+        EFFECTIVE_DATE,
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE,
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="spCode != null" >
+        #{spCode,jdbcType=VARCHAR},
+      </if>
+      <if test="spName != null" >
+        #{spName,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null" >
+        #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null" >
+        #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDate != null" >
+        #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="doneCode != null" >
+        #{doneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doneDate != null" >
+        #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.app.bean.UserInfoBean" >
+    update user_info
+    <set >
+      <if test="spCode != null" >
+        SP_CODE = #{spCode,jdbcType=VARCHAR},
+      </if>
+      <if test="spName != null" >
+        SP_NAME = #{spName,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null" >
+        BILL_ID = #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null" >
+        ID_TYPE = #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDate != null" >
+        EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE = #{doneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.app.bean.UserInfoBean" >
+    update user_info
+    set SP_CODE = #{spCode,jdbcType=VARCHAR},
+      SP_NAME = #{spName,jdbcType=VARCHAR},
+      BILL_ID = #{billId,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=INTEGER},
+      ID_TYPE = #{idType,jdbcType=INTEGER},
+      ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+      EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      DONE_CODE = #{doneCode,jdbcType=VARCHAR},
+      DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER}
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

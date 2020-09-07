@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('工单类型')" />
+</head>
+
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="role-form">
+					<div class="select-list">
+						<ul>
+							<li>
+								工单类型：<select name="ttType" th:with="type=${@SysService.getType('cfg_tt_type')}" required>
+								<option value="">所有</option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>
+								工单编号：<input type="text" name="ttCode" required/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.treeTable.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-tree-table"></table>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+        var datas = [[${@SysService.getType('sys_normal_disable')}]];
+        var tttypes = [[${@SysService.getType('cfg_tt_type')}]];
+        var cycletype = [[${@SysService.getType('cfg_cycle_type')}]];
+        var channels = [[${@SysService.getType('cfg_alert_channel')}]];
+        var prefix = ctx + "app/cfgtt"
+
+        $(function() {
+            var options = {
+                code: "recId",
+                uniqueId: "recId",
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove/{id}",
+                modalName: "工单配置",
+                columns: [{
+                    field: 'selectItem',
+                    radio: true
+                },
+                    {
+                        field: 'ttType',
+                        title: '工单类型',
+                        align: "left",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(tttypes, item.ttType);
+                        }
+                    },
+                    {
+                        field: 'ttCode',
+                        title: '工单编码',
+                        align: "left"
+                    },
+                    {
+                        field: 'loginCode',
+                        title: '处理人员',
+                        align: "left"
+                    },
+
+                    {
+                        field: 'state',
+                        title: '状态',
+                        align: "left",
+                        formatter: function(value, item, index) {
+                            return $.table.selectDictLabel(datas, item.state);
+                        }
+                    }
+
+                    ]
+            };
+            $.treeTable.init(options);
+        });
+		
+		function queryParams(params) {
+			var search = $.table.queryParams(params);
+			return search;
+		}
+		
+		/* 添加用户-选择用户-提交 */
+		function submitHandler() {
+            var rows = $.treeTable.selectColumns('recId');
+            if (rows.length == 0) {
+                $.modal.alertWarning("请至少选择一条记录");
+                return;
+            }
+		    var code = $.treeTable.selectColumns('loginCode');
+		    var operatorCode = $.treeTable.selectColumns('loginCode');
+		    var ttCode = $.treeTable.selectColumns('ttCode');
+		    var limitUnit = $.treeTable.selectColumns('limitUnit');
+		    var limitNum = $.treeTable.selectColumns('limitNum');
+		    var isAlert = $.treeTable.selectColumns('isAlert');
+		    var alertChannel = $.treeTable.selectColumns('alertChannel');
+
+       		return {'recId':rows,'loginCode':code,'operatorCode':operatorCode,'ttCode':ttCode,'limitUnit':limitUnit,'limitNum':limitNum,'isAlert':isAlert,'alertChannel':alertChannel};
+		}
+	</script>
+</body>
+</html>
