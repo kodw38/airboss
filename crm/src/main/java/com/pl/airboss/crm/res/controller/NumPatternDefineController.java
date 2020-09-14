@@ -20,7 +20,7 @@ import static com.pl.airboss.web.utils.AjaxResult.error;
 import static com.pl.airboss.web.utils.AjaxResult.success;
 
 @Controller
-@RequestMapping("/crm/res/pattern")
+@RequestMapping("/crm/res")
 public class NumPatternDefineController {
     private String prefix = "crm/res";
 
