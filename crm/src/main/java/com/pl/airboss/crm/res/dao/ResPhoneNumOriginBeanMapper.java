@@ -21,6 +21,8 @@ public interface ResPhoneNumOriginBeanMapper {
 
     int updateByPrimaryKey(ResPhoneNumOriginBean record);
 
+    int update(@Param("bean") ResPhoneNumOriginBean bean,@Param("cond") ResPhoneNumOriginBean cond);
+
     int matchRegexp(String exp);
 
     int matchRegexpWithoutStateGEND(@Param("segmentId") long segmentId);

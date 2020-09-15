@@ -178,6 +178,7 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
                     b.setStockInDate(now); //
                     b.setPatternSegId(segmentId);//PATTERN_SEG_ID模式号段编号
                     b.setPatternDefId(matchPatternDef(n));//PATTERN_DEF_ID号码模式编号
+                    b.setRsrvStr2(n);
                     b.setOpId(Long.valueOf(op.getOpId()));//当前操作员
                     b.setResStatus(ResConst.PHONE_NUM_STATUS_G);//生成
                     b.setPassword(pwd);//密码
@@ -246,8 +247,28 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
      * @param phoneNum
      * @return
      */
-    public int occupyPhoneNum(String phoneNum){
-        return 0;
+    public int occupyPhoneNum(String phoneNum)throws Exception{
+        ResPhoneNumOriginBean b= resPhoneNumOriginBeanMapper.selectByPrimaryKey(phoneNum);
+        if(null != b){
+            if(!b.getResStatus().equalsIgnoreCase(ResConst.PHONE_NUM_STATUS_G)){
+                throw new Exception(phoneNum+" 该号码已经被使用，请选择其他号码");
+            }
+            long done = b.getDoneCode();
+            long nextdone = done+1;
+            b.setDoneCode(nextdone);  //增加操作批号
+            b.setResStatus(ResConst.PHONE_NUM_STATUS_O); //设置号码为预占
+            ResPhoneNumOriginBean cond = new ResPhoneNumOriginBean();
+            cond.setResId(b.getResId());
+            cond.setResStatus(ResConst.PHONE_NUM_STATUS_G);
+            cond.setDoneCode(done);
+            int n = resPhoneNumOriginBeanMapper.update(b,cond);
+            if(n==0){
+                throw new Exception(phoneNum+" 该号码已经被使用，请选择其他号码");
+            }
+            return n;
+        }else{
+            throw new Exception(phoneNum+" 没有该号码，请核查");
+        }
     }
 
     /**
@@ -255,7 +276,31 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
      * @param phoneNum
      * @return
      */
-    public int releasePhoneNum(String phoneNum){
-        return 0;
+    public int releasePhoneNum(String phoneNum)throws Exception{
+        ResPhoneNumOriginBean b= resPhoneNumOriginBeanMapper.selectByPrimaryKey(phoneNum);
+        if(null != b){
+            if(!b.getResStatus().equalsIgnoreCase(ResConst.PHONE_NUM_STATUS_O)){
+                if(b.getResStatus().equalsIgnoreCase(ResConst.PHONE_NUM_STATUS_G)) {
+                    throw new Exception(phoneNum + " 该号码已经释放");
+                }else{
+                    throw new Exception(phoneNum + " 该号码已经被使用，不能释放");
+                }
+            }
+            long done = b.getDoneCode();
+            long nextdone = done+1;
+            b.setDoneCode(nextdone);  //增加操作批号
+            b.setResStatus(ResConst.PHONE_NUM_STATUS_G); //设置号码为预占
+            ResPhoneNumOriginBean cond = new ResPhoneNumOriginBean();
+            cond.setResId(b.getResId());
+            cond.setResStatus(ResConst.PHONE_NUM_STATUS_O);
+            cond.setDoneCode(done);
+            int n = resPhoneNumOriginBeanMapper.update(b,cond);
+            if(n==0){
+                throw new Exception(phoneNum+" 该号码释放失败");
+            }
+            return n;
+        }else{
+            throw new Exception(phoneNum+" 没有该号码，请核查");
+        }
     }
 }
