@@ -85,7 +85,12 @@ public class NumPhoneController extends BaseController {
     @ResponseBody
     public AjaxResult numPhoneOccupy(String phoneNum)
     {
-        return toAjax(resPhoneNumSV.occupyPhoneNum(phoneNum));
+
+        try {
+            return toAjax(resPhoneNumSV.occupyPhoneNum(phoneNum));
+        }catch (Exception e){
+            return new AjaxResult(AjaxResult.Type.ERROR,e.getMessage());
+        }
     }
 
     /**
@@ -97,7 +102,11 @@ public class NumPhoneController extends BaseController {
     @ResponseBody
     public AjaxResult numPhoneRelease(String phoneNum)
     {
-        return toAjax(resPhoneNumSV.releasePhoneNum(phoneNum));
+        try {
+            return toAjax(resPhoneNumSV.releasePhoneNum(phoneNum));
+        }catch (Exception e){
+            return new AjaxResult(AjaxResult.Type.ERROR,e.getMessage());
+        }
     }
 
 }

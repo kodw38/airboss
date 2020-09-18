@@ -204,12 +204,12 @@ public interface IResPhoneNumSV {
      * @param phoneNum
      * @return
      */
-    public int occupyPhoneNum(String phoneNum);
+    public int occupyPhoneNum(String phoneNum)throws Exception;
 
     /**
      * 号码释放
      * @param phoneNum
      * @return
      */
-    public int releasePhoneNum(String phoneNum);
+    public int releasePhoneNum(String phoneNum)throws Exception;
 }

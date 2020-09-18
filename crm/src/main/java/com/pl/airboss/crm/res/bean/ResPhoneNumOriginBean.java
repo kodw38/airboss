@@ -33,6 +33,16 @@ public class ResPhoneNumOriginBean {
 
     private Long doneCode;
 
+    private Long secOrgId;
+
+    public Long getSecOrgId() {
+        return secOrgId;
+    }
+
+    public void setSecOrgId(Long secOrgId) {
+        this.secOrgId = secOrgId;
+    }
+
     private Date doneDate;
 
     private Long useType;
