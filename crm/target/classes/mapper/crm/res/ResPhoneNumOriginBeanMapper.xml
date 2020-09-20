@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.res.dao.ResPhoneNumOriginBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" >
+    <id column="RES_ID" property="resId" jdbcType="VARCHAR" />
+    <id column="SEC_ORG_ID" property="secOrgId" jdbcType="BIGINT" />
+    <result column="BATCH_ID" property="batchId" jdbcType="VARCHAR" />
+    <result column="RES_INST_ID" property="resInstId" jdbcType="VARCHAR" />
+    <result column="PATTERN_SEG_ID" property="patternSegId" jdbcType="BIGINT" />
+    <result column="PATTERN_DEF_ID" property="patternDefId" jdbcType="BIGINT" />
+    <result column="RES_STORE_ID" property="resStoreId" jdbcType="BIGINT" />
+    <result column="RES_USED_ID" property="resUsedId" jdbcType="BIGINT" />
+    <result column="ORG_ID" property="orgId" jdbcType="BIGINT" />
+    <result column="OP_ID" property="opId" jdbcType="BIGINT" />
+    <result column="DONE_CODE" property="doneCode" jdbcType="BIGINT" />
+    <result column="DONE_DATE" property="doneDate" jdbcType="TIMESTAMP" />
+    <result column="USE_TYPE" property="useType" jdbcType="BIGINT" />
+    <result column="MANAGE_STATUS" property="manageStatus" jdbcType="VARCHAR" />
+    <result column="RES_STATUS" property="resStatus" jdbcType="VARCHAR" />
+    <result column="GENERATION_TYPE" property="generationType" jdbcType="VARCHAR" />
+    <result column="RES_NUMBER_HLR" property="resNumberHlr" jdbcType="VARCHAR" />
+    <result column="TRADE_ID" property="tradeId" jdbcType="BIGINT" />
+    <result column="OFFER_ID" property="offerId" jdbcType="BIGINT" />
+    <result column="SUB_OFFER_ID" property="subOfferId" jdbcType="BIGINT" />
+    <result column="RECEIVER" property="receiver" jdbcType="VARCHAR" />
+    <result column="COUNTY_ID" property="countyId" jdbcType="VARCHAR" />
+    <result column="REGION_ID" property="regionId" jdbcType="VARCHAR" />
+    <result column="SELECT_PRICE_MODE" property="selectPriceMode" jdbcType="BIGINT" />
+    <result column="RESERVE_FEE" property="reserveFee" jdbcType="BIGINT" />
+    <result column="RES_LEVEL" property="resLevel" jdbcType="BIGINT" />
+    <result column="CHOOSE_LEVEL" property="chooseLevel" jdbcType="BIGINT" />
+    <result column="RES_CLASS" property="resClass" jdbcType="BIGINT" />
+    <result column="PRESENT_MONTH" property="presentMonth" jdbcType="BIGINT" />
+    <result column="DEPOSIT_MONTH" property="depositMonth" jdbcType="BIGINT" />
+    <result column="DEPOSIT_AMOUNT" property="depositAmount" jdbcType="BIGINT" />
+    <result column="IS_CONFIRM" property="isConfirm" jdbcType="BIGINT" />
+    <result column="ICC_ID" property="iccId" jdbcType="VARCHAR" />
+    <result column="IMSI" property="imsi" jdbcType="VARCHAR" />
+    <result column="PRE_DATE" property="preDate" jdbcType="TIMESTAMP" />
+    <result column="USE_DATE" property="useDate" jdbcType="TIMESTAMP" />
+    <result column="USE_DONE_CODE" property="useDoneCode" jdbcType="BIGINT" />
+    <result column="USE_ORG_ID" property="useOrgId" jdbcType="BIGINT" />
+    <result column="BUSI_CODE" property="busiCode" jdbcType="BIGINT" />
+    <result column="ROUTING_INFO" property="routingInfo" jdbcType="VARCHAR" />
+    <result column="BEAUTIFUAL_TAG" property="beautifualTag" jdbcType="VARCHAR" />
+    <result column="HOT_POINT_TAG" property="hotPointTag" jdbcType="VARCHAR" />
+    <result column="DIGITAL_TAG" property="digitalTag" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY_TAG" property="birthdayTag" jdbcType="VARCHAR" />
+    <result column="CHARGING_INFO" property="chargingInfo" jdbcType="VARCHAR" />
+    <result column="REUSE_FLAG" property="reuseFlag" jdbcType="VARCHAR" />
+    <result column="OUT_LEVEL" property="outLevel" jdbcType="VARCHAR" />
+    <result column="RES_EVENT_ID" property="resEventId" jdbcType="BIGINT" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="IFEETYPE" property="ifeetype" jdbcType="VARCHAR" />
+    <result column="AGENT_PHONE" property="agentPhone" jdbcType="VARCHAR" />
+    <result column="NOTES" property="notes" jdbcType="VARCHAR" />
+    <result column="PORT_STATUS" property="portStatus" jdbcType="VARCHAR" />
+    <result column="RSRV_STR2" property="rsrvStr2" jdbcType="VARCHAR" />
+    <result column="RSRV_STR3" property="rsrvStr3" jdbcType="VARCHAR" />
+    <result column="RSRV_NUM1" property="rsrvNum1" jdbcType="BIGINT" />
+    <result column="RSRV_NUM2" property="rsrvNum2" jdbcType="BIGINT" />
+    <result column="STOCK_IN_DATE" property="stockInDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RES_ID, SEC_ORG_ID, BATCH_ID, RES_INST_ID, PATTERN_SEG_ID, PATTERN_DEF_ID, RES_STORE_ID, 
+    RES_USED_ID, ORG_ID, OP_ID, DONE_CODE, DONE_DATE, USE_TYPE, MANAGE_STATUS, RES_STATUS, 
+    GENERATION_TYPE, RES_NUMBER_HLR, TRADE_ID, OFFER_ID, SUB_OFFER_ID, RECEIVER, COUNTY_ID, 
+    REGION_ID, SELECT_PRICE_MODE, RESERVE_FEE, RES_LEVEL, CHOOSE_LEVEL, RES_CLASS, PRESENT_MONTH, 
+    DEPOSIT_MONTH, DEPOSIT_AMOUNT, IS_CONFIRM, ICC_ID, IMSI, PRE_DATE, USE_DATE, USE_DONE_CODE, 
+    USE_ORG_ID, BUSI_CODE, ROUTING_INFO, BEAUTIFUAL_TAG, HOT_POINT_TAG, DIGITAL_TAG, 
+    BIRTHDAY_TAG, CHARGING_INFO, REUSE_FLAG, OUT_LEVEL, RES_EVENT_ID, PASSWORD, IFEETYPE, 
+    AGENT_PHONE, NOTES, PORT_STATUS, RSRV_STR2, RSRV_STR3, RSRV_NUM1, RSRV_NUM2, STOCK_IN_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="string" >
+    select 
+    <include refid="Base_Column_List" />
+    from res_phone_num_origin
+    where RES_ID = #{resId,jdbcType=VARCHAR}
+
+  </select>
+  <select id="matchRegexp" parameterType="string" resultType="int">
+    select count(0) from res_phone_num_origin where res_id REGEXP #{exp}
+  </select>
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from res_phone_num_origin
+    where 1=1
+    <if test="bean.resId != null" >
+      and RES_ID=#{bean.resId,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.secOrgId != null" >
+      and SEC_ORG_ID=#{bean.secOrgId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.batchId != null" >
+      and BATCH_ID=#{bean.batchId,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.resInstId != null" >
+      and RES_INST_ID=#{bean.resInstId,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.patternSegId != null" >
+      and PATTERN_SEG_ID=#{bean.patternSegId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.patternDefId != null" >
+      and PATTERN_DEF_ID=#{bean.patternDefId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.resStoreId != null" >
+      and RES_STORE_ID=#{bean.resStoreId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.resUsedId != null" >
+      and RES_USED_ID=#{bean.resUsedId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.orgId != null" >
+      and ORG_ID=#{bean.orgId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.opId != null" >
+      and OP_ID=#{bean.opId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.doneCode != null" >
+      and DONE_CODE=#{bean.doneCode,jdbcType=BIGINT}
+    </if>
+    <if test="bean.doneDate != null" >
+      and DONE_DATE=#{bean.doneDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bean.useType != null" >
+      and USE_TYPE=#{bean.useType,jdbcType=BIGINT}
+    </if>
+    <if test="bean.manageStatus != null" >
+      and MANAGE_STATUS=#{bean.manageStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.resStatus != null" >
+      and res_STATUS=#{bean.resStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.generationType != null" >
+      and GENERATION_TYPE=#{bean.generationType,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.resNumberHlr != null" >
+      and RES_NUMBER_HLR=#{bean.resNumberHlr,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.tradeId != null" >
+      and TRADE_ID=#{bean.tradeId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.offerId != null" >
+      and OFFER_ID=#{bean.offerId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.subOfferId != null" >
+      and SUB_OFFER_ID=#{bean.subOfferId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.receiver != null" >
+      and RECEIVER=#{bean.receiver,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.countyId != null" >
+      and COUNTY_ID=#{bean.countyId,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.regionId != null" >
+      and REGION_ID=#{bean.regionId,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.selectPriceMode != null" >
+      and SELECT_PRICE_MODE=#{bean.selectPriceMode,jdbcType=BIGINT}
+    </if>
+    <if test="bean.reserveFee != null" >
+      and RESERVE_FEE=#{bean.reserveFee,jdbcType=BIGINT}
+    </if>
+    <if test="bean.resLevel != null" >
+      and RES_LEVEL=#{bean.resLevel,jdbcType=BIGINT}
+    </if>
+    <if test="bean.chooseLevel != null" >
+      and CHOOSE_LEVEL=#{bean.chooseLevel,jdbcType=BIGINT}
+    </if>
+    <if test="bean.resClass != null" >
+      and RES_CLASS=#{bean.resClass,jdbcType=BIGINT}
+    </if>
+    <if test="bean.presentMonth != null" >
+      and PRESENT_MONTH=#{bean.presentMonth,jdbcType=BIGINT}
+    </if>
+    <if test="bean.depositMonth != null" >
+      and DEPOSIT_MONTH=#{bean.depositMonth,jdbcType=BIGINT}
+    </if>
+    <if test="bean.depositAmount != null" >
+      and DEPOSIT_AMOUNT=#{bean.depositAmount,jdbcType=BIGINT}
+    </if>
+    <if test="bean.isConfirm != null" >
+      and IS_CONFIRM=#{bean.isConfirm,jdbcType=BIGINT}
+    </if>
+    <if test="bean.iccId != null" >
+      and ICCID=#{bean.iccId,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.imsi != null" >
+      and IMSI=#{bean.imsi,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.preDate != null" >
+      and PRE_DATE=#{bean.preDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bean.useDate != null" >
+      and USE_DATE=#{bean.useDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bean.useDoneCode != null" >
+      and USE_DONE_CODE=#{bean.useDoneCode,jdbcType=BIGINT}
+    </if>
+    <if test="bean.useOrgId != null" >
+      and USER_ORG_ID=#{bean.useOrgId,jdbcType=BIGINT}
+    </if>
+    <if test="bean.busiCode != null" >
+      and BUSI_CODE=#{bean.busiCode,jdbcType=BIGINT}
+    </if>
+    <if test="bean.routingInfo != null" >
+      and ROUTING_INFO=#{bean.routingInfo,jdbcType=VARCHAR}
+    </if>
+
+    <if test="bean.password != null" >
+      and PASSWORD=#{bean.password,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.ifeetype != null" >
+      and IFEETYPE=#{bean.ifeetype,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.agentPhone != null" >
+      and AGENT_PHONE=#{bean.agentPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="bean.portStatus != null" >
+      and PORT_STATUS=#{bean.portStatus,jdbcType=VARCHAR}
+    </if>
+
+    <if test="bean.stockInDate != null" >
+      and STOCK_IN_DATE=#{bean.stockInDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="limit != null and limit>0">
+    LIMIT #{offSet},#{limit}
+    </if>
+  </select>
+  <select id="matchRegexpWithoutStateGEND" parameterType="long" resultType="int">
+    select count(0) from res_phone_num_origin where RES_STATUS != 'GEND' and PATTERN_SEG_ID = #{segmentId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="string" >
+    delete from res_phone_num_origin
+    where RES_ID = #{resId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteBySegId" parameterType="long">
+    delete from res_phone_num_origin
+    where PATTERN_SEG_ID = #{segId,jdbcType=BIGINT}
+
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" >
+    insert into res_phone_num_origin (RES_ID, SEC_ORG_ID, BATCH_ID, 
+      RES_INST_ID, PATTERN_SEG_ID, PATTERN_DEF_ID, 
+      RES_STORE_ID, RES_USED_ID, ORG_ID, 
+      OP_ID, DONE_CODE, DONE_DATE, 
+      USE_TYPE, MANAGE_STATUS, RES_STATUS, 
+      GENERATION_TYPE, RES_NUMBER_HLR, TRADE_ID, 
+      OFFER_ID, SUB_OFFER_ID, RECEIVER, 
+      COUNTY_ID, REGION_ID, SELECT_PRICE_MODE, 
+      RESERVE_FEE, RES_LEVEL, CHOOSE_LEVEL, 
+      RES_CLASS, PRESENT_MONTH, DEPOSIT_MONTH, 
+      DEPOSIT_AMOUNT, IS_CONFIRM, ICC_ID, 
+      IMSI, PRE_DATE, USE_DATE, 
+      USE_DONE_CODE, USE_ORG_ID, BUSI_CODE, 
+      ROUTING_INFO, BEAUTIFUAL_TAG, HOT_POINT_TAG, 
+      DIGITAL_TAG, BIRTHDAY_TAG, CHARGING_INFO, 
+      REUSE_FLAG, OUT_LEVEL, RES_EVENT_ID, 
+      PASSWORD, IFEETYPE, AGENT_PHONE, 
+      NOTES, PORT_STATUS, RSRV_STR2, 
+      RSRV_STR3, RSRV_NUM1, RSRV_NUM2, 
+      STOCK_IN_DATE)
+    values (#{resId,jdbcType=VARCHAR}, #{secOrgId,jdbcType=BIGINT}, #{batchId,jdbcType=VARCHAR}, 
+      #{resInstId,jdbcType=VARCHAR}, #{patternSegId,jdbcType=BIGINT}, #{patternDefId,jdbcType=BIGINT}, 
+      #{resStoreId,jdbcType=BIGINT}, #{resUsedId,jdbcType=BIGINT}, #{orgId,jdbcType=BIGINT}, 
+      #{opId,jdbcType=BIGINT}, #{doneCode,jdbcType=BIGINT}, #{doneDate,jdbcType=TIMESTAMP}, 
+      #{useType,jdbcType=BIGINT}, #{manageStatus,jdbcType=VARCHAR}, #{resStatus,jdbcType=VARCHAR}, 
+      #{generationType,jdbcType=VARCHAR}, #{resNumberHlr,jdbcType=VARCHAR}, #{tradeId,jdbcType=BIGINT}, 
+      #{offerId,jdbcType=BIGINT}, #{subOfferId,jdbcType=BIGINT}, #{receiver,jdbcType=VARCHAR}, 
+      #{countyId,jdbcType=VARCHAR}, #{regionId,jdbcType=VARCHAR}, #{selectPriceMode,jdbcType=BIGINT}, 
+      #{reserveFee,jdbcType=BIGINT}, #{resLevel,jdbcType=BIGINT}, #{chooseLevel,jdbcType=BIGINT}, 
+      #{resClass,jdbcType=BIGINT}, #{presentMonth,jdbcType=BIGINT}, #{depositMonth,jdbcType=BIGINT}, 
+      #{depositAmount,jdbcType=BIGINT}, #{isConfirm,jdbcType=BIGINT}, #{iccId,jdbcType=VARCHAR}, 
+      #{imsi,jdbcType=VARCHAR}, #{preDate,jdbcType=TIMESTAMP}, #{useDate,jdbcType=TIMESTAMP}, 
+      #{useDoneCode,jdbcType=BIGINT}, #{useOrgId,jdbcType=BIGINT}, #{busiCode,jdbcType=BIGINT}, 
+      #{routingInfo,jdbcType=VARCHAR}, #{beautifualTag,jdbcType=VARCHAR}, #{hotPointTag,jdbcType=VARCHAR}, 
+      #{digitalTag,jdbcType=VARCHAR}, #{birthdayTag,jdbcType=VARCHAR}, #{chargingInfo,jdbcType=VARCHAR}, 
+      #{reuseFlag,jdbcType=VARCHAR}, #{outLevel,jdbcType=VARCHAR}, #{resEventId,jdbcType=BIGINT}, 
+      #{password,jdbcType=VARCHAR}, #{ifeetype,jdbcType=VARCHAR}, #{agentPhone,jdbcType=VARCHAR}, 
+      #{notes,jdbcType=VARCHAR}, #{portStatus,jdbcType=VARCHAR}, #{rsrvStr2,jdbcType=VARCHAR}, 
+      #{rsrvStr3,jdbcType=VARCHAR}, #{rsrvNum1,jdbcType=BIGINT}, #{rsrvNum2,jdbcType=BIGINT}, 
+      #{stockInDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" >
+    insert into res_phone_num_origin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resId != null" >
+        RES_ID,
+      </if>
+      <if test="secOrgId != null" >
+        SEC_ORG_ID,
+      </if>
+      <if test="batchId != null" >
+        BATCH_ID,
+      </if>
+      <if test="resInstId != null" >
+        RES_INST_ID,
+      </if>
+      <if test="patternSegId != null" >
+        PATTERN_SEG_ID,
+      </if>
+      <if test="patternDefId != null" >
+        PATTERN_DEF_ID,
+      </if>
+      <if test="resStoreId != null" >
+        RES_STORE_ID,
+      </if>
+      <if test="resUsedId != null" >
+        RES_USED_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE,
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE,
+      </if>
+      <if test="useType != null" >
+        USE_TYPE,
+      </if>
+      <if test="manageStatus != null" >
+        MANAGE_STATUS,
+      </if>
+      <if test="resStatus != null" >
+        RES_STATUS,
+      </if>
+      <if test="generationType != null" >
+        GENERATION_TYPE,
+      </if>
+      <if test="resNumberHlr != null" >
+        RES_NUMBER_HLR,
+      </if>
+      <if test="tradeId != null" >
+        TRADE_ID,
+      </if>
+      <if test="offerId != null" >
+        OFFER_ID,
+      </if>
+      <if test="subOfferId != null" >
+        SUB_OFFER_ID,
+      </if>
+      <if test="receiver != null" >
+        RECEIVER,
+      </if>
+      <if test="countyId != null" >
+        COUNTY_ID,
+      </if>
+      <if test="regionId != null" >
+        REGION_ID,
+      </if>
+      <if test="selectPriceMode != null" >
+        SELECT_PRICE_MODE,
+      </if>
+      <if test="reserveFee != null" >
+        RESERVE_FEE,
+      </if>
+      <if test="resLevel != null" >
+        RES_LEVEL,
+      </if>
+      <if test="chooseLevel != null" >
+        CHOOSE_LEVEL,
+      </if>
+      <if test="resClass != null" >
+        RES_CLASS,
+      </if>
+      <if test="presentMonth != null" >
+        PRESENT_MONTH,
+      </if>
+      <if test="depositMonth != null" >
+        DEPOSIT_MONTH,
+      </if>
+      <if test="depositAmount != null" >
+        DEPOSIT_AMOUNT,
+      </if>
+      <if test="isConfirm != null" >
+        IS_CONFIRM,
+      </if>
+      <if test="iccId != null" >
+        ICC_ID,
+      </if>
+      <if test="imsi != null" >
+        IMSI,
+      </if>
+      <if test="preDate != null" >
+        PRE_DATE,
+      </if>
+      <if test="useDate != null" >
+        USE_DATE,
+      </if>
+      <if test="useDoneCode != null" >
+        USE_DONE_CODE,
+      </if>
+      <if test="useOrgId != null" >
+        USE_ORG_ID,
+      </if>
+      <if test="busiCode != null" >
+        BUSI_CODE,
+      </if>
+      <if test="routingInfo != null" >
+        ROUTING_INFO,
+      </if>
+      <if test="beautifualTag != null" >
+        BEAUTIFUAL_TAG,
+      </if>
+      <if test="hotPointTag != null" >
+        HOT_POINT_TAG,
+      </if>
+      <if test="digitalTag != null" >
+        DIGITAL_TAG,
+      </if>
+      <if test="birthdayTag != null" >
+        BIRTHDAY_TAG,
+      </if>
+      <if test="chargingInfo != null" >
+        CHARGING_INFO,
+      </if>
+      <if test="reuseFlag != null" >
+        REUSE_FLAG,
+      </if>
+      <if test="outLevel != null" >
+        OUT_LEVEL,
+      </if>
+      <if test="resEventId != null" >
+        RES_EVENT_ID,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="ifeetype != null" >
+        IFEETYPE,
+      </if>
+      <if test="agentPhone != null" >
+        AGENT_PHONE,
+      </if>
+      <if test="notes != null" >
+        NOTES,
+      </if>
+      <if test="portStatus != null" >
+        PORT_STATUS,
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2,
+      </if>
+      <if test="rsrvStr3 != null" >
+        RSRV_STR3,
+      </if>
+      <if test="rsrvNum1 != null" >
+        RSRV_NUM1,
+      </if>
+      <if test="rsrvNum2 != null" >
+        RSRV_NUM2,
+      </if>
+      <if test="stockInDate != null" >
+        STOCK_IN_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resId != null" >
+        #{resId,jdbcType=VARCHAR},
+      </if>
+      <if test="secOrgId != null" >
+        #{secOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="resInstId != null" >
+        #{resInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="patternSegId != null" >
+        #{patternSegId,jdbcType=BIGINT},
+      </if>
+      <if test="patternDefId != null" >
+        #{patternDefId,jdbcType=BIGINT},
+      </if>
+      <if test="resStoreId != null" >
+        #{resStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="resUsedId != null" >
+        #{resUsedId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=BIGINT},
+      </if>
+      <if test="doneCode != null" >
+        #{doneCode,jdbcType=BIGINT},
+      </if>
+      <if test="doneDate != null" >
+        #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useType != null" >
+        #{useType,jdbcType=BIGINT},
+      </if>
+      <if test="manageStatus != null" >
+        #{manageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="resStatus != null" >
+        #{resStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="generationType != null" >
+        #{generationType,jdbcType=VARCHAR},
+      </if>
+      <if test="resNumberHlr != null" >
+        #{resNumberHlr,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeId != null" >
+        #{tradeId,jdbcType=BIGINT},
+      </if>
+      <if test="offerId != null" >
+        #{offerId,jdbcType=BIGINT},
+      </if>
+      <if test="subOfferId != null" >
+        #{subOfferId,jdbcType=BIGINT},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null" >
+        #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="selectPriceMode != null" >
+        #{selectPriceMode,jdbcType=BIGINT},
+      </if>
+      <if test="reserveFee != null" >
+        #{reserveFee,jdbcType=BIGINT},
+      </if>
+      <if test="resLevel != null" >
+        #{resLevel,jdbcType=BIGINT},
+      </if>
+      <if test="chooseLevel != null" >
+        #{chooseLevel,jdbcType=BIGINT},
+      </if>
+      <if test="resClass != null" >
+        #{resClass,jdbcType=BIGINT},
+      </if>
+      <if test="presentMonth != null" >
+        #{presentMonth,jdbcType=BIGINT},
+      </if>
+      <if test="depositMonth != null" >
+        #{depositMonth,jdbcType=BIGINT},
+      </if>
+      <if test="depositAmount != null" >
+        #{depositAmount,jdbcType=BIGINT},
+      </if>
+      <if test="isConfirm != null" >
+        #{isConfirm,jdbcType=BIGINT},
+      </if>
+      <if test="iccId != null" >
+        #{iccId,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="preDate != null" >
+        #{preDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useDate != null" >
+        #{useDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useDoneCode != null" >
+        #{useDoneCode,jdbcType=BIGINT},
+      </if>
+      <if test="useOrgId != null" >
+        #{useOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="busiCode != null" >
+        #{busiCode,jdbcType=BIGINT},
+      </if>
+      <if test="routingInfo != null" >
+        #{routingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="beautifualTag != null" >
+        #{beautifualTag,jdbcType=VARCHAR},
+      </if>
+      <if test="hotPointTag != null" >
+        #{hotPointTag,jdbcType=VARCHAR},
+      </if>
+      <if test="digitalTag != null" >
+        #{digitalTag,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdayTag != null" >
+        #{birthdayTag,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingInfo != null" >
+        #{chargingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="reuseFlag != null" >
+        #{reuseFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="outLevel != null" >
+        #{outLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="resEventId != null" >
+        #{resEventId,jdbcType=BIGINT},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ifeetype != null" >
+        #{ifeetype,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhone != null" >
+        #{agentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="portStatus != null" >
+        #{portStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr3 != null" >
+        #{rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvNum1 != null" >
+        #{rsrvNum1,jdbcType=BIGINT},
+      </if>
+      <if test="rsrvNum2 != null" >
+        #{rsrvNum2,jdbcType=BIGINT},
+      </if>
+      <if test="stockInDate != null" >
+        #{stockInDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" >
+    update res_phone_num_origin
+    <set >
+      <if test="batchId != null" >
+        BATCH_ID = #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="resInstId != null" >
+        RES_INST_ID = #{resInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="patternSegId != null" >
+        PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT},
+      </if>
+      <if test="patternDefId != null" >
+        PATTERN_DEF_ID = #{patternDefId,jdbcType=BIGINT},
+      </if>
+      <if test="resStoreId != null" >
+        RES_STORE_ID = #{resStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="resUsedId != null" >
+        RES_USED_ID = #{resUsedId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=BIGINT},
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE = #{doneCode,jdbcType=BIGINT},
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useType != null" >
+        USE_TYPE = #{useType,jdbcType=BIGINT},
+      </if>
+      <if test="manageStatus != null" >
+        MANAGE_STATUS = #{manageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="resStatus != null" >
+        RES_STATUS = #{resStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="generationType != null" >
+        GENERATION_TYPE = #{generationType,jdbcType=VARCHAR},
+      </if>
+      <if test="resNumberHlr != null" >
+        RES_NUMBER_HLR = #{resNumberHlr,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeId != null" >
+        TRADE_ID = #{tradeId,jdbcType=BIGINT},
+      </if>
+      <if test="offerId != null" >
+        OFFER_ID = #{offerId,jdbcType=BIGINT},
+      </if>
+      <if test="subOfferId != null" >
+        SUB_OFFER_ID = #{subOfferId,jdbcType=BIGINT},
+      </if>
+      <if test="receiver != null" >
+        RECEIVER = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null" >
+        COUNTY_ID = #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="selectPriceMode != null" >
+        SELECT_PRICE_MODE = #{selectPriceMode,jdbcType=BIGINT},
+      </if>
+      <if test="reserveFee != null" >
+        RESERVE_FEE = #{reserveFee,jdbcType=BIGINT},
+      </if>
+      <if test="resLevel != null" >
+        RES_LEVEL = #{resLevel,jdbcType=BIGINT},
+      </if>
+      <if test="chooseLevel != null" >
+        CHOOSE_LEVEL = #{chooseLevel,jdbcType=BIGINT},
+      </if>
+      <if test="resClass != null" >
+        RES_CLASS = #{resClass,jdbcType=BIGINT},
+      </if>
+      <if test="presentMonth != null" >
+        PRESENT_MONTH = #{presentMonth,jdbcType=BIGINT},
+      </if>
+      <if test="depositMonth != null" >
+        DEPOSIT_MONTH = #{depositMonth,jdbcType=BIGINT},
+      </if>
+      <if test="depositAmount != null" >
+        DEPOSIT_AMOUNT = #{depositAmount,jdbcType=BIGINT},
+      </if>
+      <if test="isConfirm != null" >
+        IS_CONFIRM = #{isConfirm,jdbcType=BIGINT},
+      </if>
+      <if test="iccId != null" >
+        ICC_ID = #{iccId,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        IMSI = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="preDate != null" >
+        PRE_DATE = #{preDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useDate != null" >
+        USE_DATE = #{useDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useDoneCode != null" >
+        USE_DONE_CODE = #{useDoneCode,jdbcType=BIGINT},
+      </if>
+      <if test="useOrgId != null" >
+        USE_ORG_ID = #{useOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="busiCode != null" >
+        BUSI_CODE = #{busiCode,jdbcType=BIGINT},
+      </if>
+      <if test="routingInfo != null" >
+        ROUTING_INFO = #{routingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="beautifualTag != null" >
+        BEAUTIFUAL_TAG = #{beautifualTag,jdbcType=VARCHAR},
+      </if>
+      <if test="hotPointTag != null" >
+        HOT_POINT_TAG = #{hotPointTag,jdbcType=VARCHAR},
+      </if>
+      <if test="digitalTag != null" >
+        DIGITAL_TAG = #{digitalTag,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdayTag != null" >
+        BIRTHDAY_TAG = #{birthdayTag,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingInfo != null" >
+        CHARGING_INFO = #{chargingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="reuseFlag != null" >
+        REUSE_FLAG = #{reuseFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="outLevel != null" >
+        OUT_LEVEL = #{outLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="resEventId != null" >
+        RES_EVENT_ID = #{resEventId,jdbcType=BIGINT},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ifeetype != null" >
+        IFEETYPE = #{ifeetype,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhone != null" >
+        AGENT_PHONE = #{agentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null" >
+        NOTES = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="portStatus != null" >
+        PORT_STATUS = #{portStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr3 != null" >
+        RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvNum1 != null" >
+        RSRV_NUM1 = #{rsrvNum1,jdbcType=BIGINT},
+      </if>
+      <if test="rsrvNum2 != null" >
+        RSRV_NUM2 = #{rsrvNum2,jdbcType=BIGINT},
+      </if>
+      <if test="stockInDate != null" >
+        STOCK_IN_DATE = #{stockInDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where RES_ID = #{resId,jdbcType=VARCHAR}
+      and SEC_ORG_ID = #{secOrgId,jdbcType=BIGINT}
+  </update>
+  <update id="update"  >
+    update res_phone_num_origin
+    <set >
+      <if test="bean.batchId != null" >
+        BATCH_ID = #{bean.batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.resInstId != null" >
+        RES_INST_ID = #{bean.resInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.patternSegId != null" >
+        PATTERN_SEG_ID = #{bean.patternSegId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.patternDefId != null" >
+        PATTERN_DEF_ID = #{bean.patternDefId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.resStoreId != null" >
+        RES_STORE_ID = #{bean.resStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.resUsedId != null" >
+        RES_USED_ID = #{bean.resUsedId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.orgId != null" >
+        ORG_ID = #{bean.orgId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.opId != null" >
+        OP_ID = #{bean.opId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.doneCode != null" >
+        DONE_CODE = #{bean.doneCode,jdbcType=BIGINT},
+      </if>
+      <if test="bean.doneDate != null" >
+        DONE_DATE = #{bean.doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bean.useType != null" >
+        USE_TYPE = #{bean.useType,jdbcType=BIGINT},
+      </if>
+      <if test="bean.manageStatus != null" >
+        MANAGE_STATUS = #{bean.manageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.resStatus != null" >
+        RES_STATUS = #{bean.resStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.generationType != null" >
+        GENERATION_TYPE = #{bean.generationType,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.resNumberHlr != null" >
+        RES_NUMBER_HLR = #{bean.resNumberHlr,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.tradeId != null" >
+        TRADE_ID = #{bean.tradeId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.offerId != null" >
+        OFFER_ID = #{bean.offerId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.subOfferId != null" >
+        SUB_OFFER_ID = #{bean.subOfferId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.receiver != null" >
+        RECEIVER = #{bean.receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.countyId != null" >
+        COUNTY_ID = #{bean.countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.regionId != null" >
+        REGION_ID = #{bean.regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.selectPriceMode != null" >
+        SELECT_PRICE_MODE = #{bean.selectPriceMode,jdbcType=BIGINT},
+      </if>
+      <if test="bean.reserveFee != null" >
+        RESERVE_FEE = #{bean.reserveFee,jdbcType=BIGINT},
+      </if>
+      <if test="bean.resLevel != null" >
+        RES_LEVEL = #{bean.resLevel,jdbcType=BIGINT},
+      </if>
+      <if test="bean.chooseLevel != null" >
+        CHOOSE_LEVEL = #{bean.chooseLevel,jdbcType=BIGINT},
+      </if>
+      <if test="bean.resClass != null" >
+        RES_CLASS = #{bean.resClass,jdbcType=BIGINT},
+      </if>
+      <if test="bean.presentMonth != null" >
+        PRESENT_MONTH = #{bean.presentMonth,jdbcType=BIGINT},
+      </if>
+      <if test="bean.depositMonth != null" >
+        DEPOSIT_MONTH = #{bean.depositMonth,jdbcType=BIGINT},
+      </if>
+      <if test="bean.depositAmount != null" >
+        DEPOSIT_AMOUNT = #{bean.depositAmount,jdbcType=BIGINT},
+      </if>
+      <if test="bean.isConfirm != null" >
+        IS_CONFIRM = #{bean.isConfirm,jdbcType=BIGINT},
+      </if>
+      <if test="bean.iccId != null" >
+        ICC_ID = #{bean.iccId,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.imsi != null" >
+        IMSI = #{bean.imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.preDate != null" >
+        PRE_DATE = #{bean.preDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bean.useDate != null" >
+        USE_DATE = #{bean.useDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bean.useDoneCode != null" >
+        USE_DONE_CODE = #{bean.useDoneCode,jdbcType=BIGINT},
+      </if>
+      <if test="bean.useOrgId != null" >
+        USE_ORG_ID = #{bean.useOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.busiCode != null" >
+        BUSI_CODE = #{bean.busiCode,jdbcType=BIGINT},
+      </if>
+      <if test="bean.routingInfo != null" >
+        ROUTING_INFO = #{bean.routingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.beautifualTag != null" >
+        BEAUTIFUAL_TAG = #{bean.beautifualTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.hotPointTag != null" >
+        HOT_POINT_TAG = #{bean.hotPointTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.digitalTag != null" >
+        DIGITAL_TAG = #{bean.digitalTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.birthdayTag != null" >
+        BIRTHDAY_TAG = #{bean.birthdayTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.chargingInfo != null" >
+        CHARGING_INFO = #{bean.chargingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.reuseFlag != null" >
+        REUSE_FLAG = #{bean.reuseFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.outLevel != null" >
+        OUT_LEVEL = #{bean.outLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.resEventId != null" >
+        RES_EVENT_ID = #{bean.resEventId,jdbcType=BIGINT},
+      </if>
+      <if test="bean.password != null" >
+        PASSWORD = #{bean.password,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.ifeetype != null" >
+        IFEETYPE = #{bean.ifeetype,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.agentPhone != null" >
+        AGENT_PHONE = #{bean.agentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.notes != null" >
+        NOTES = #{bean.notes,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.portStatus != null" >
+        PORT_STATUS = #{bean.portStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.rsrvStr2 != null" >
+        RSRV_STR2 = #{bean.rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.rsrvStr3 != null" >
+        RSRV_STR3 = #{bean.rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="bean.rsrvNum1 != null" >
+        RSRV_NUM1 = #{bean.rsrvNum1,jdbcType=BIGINT},
+      </if>
+      <if test="bean.rsrvNum2 != null" >
+        RSRV_NUM2 = #{bean.rsrvNum2,jdbcType=BIGINT},
+      </if>
+      <if test="bean.stockInDate != null" >
+        STOCK_IN_DATE = #{bean.stockInDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where 1=1
+    <if test="cond.resId != null" >
+    and RES_ID=#{cond.resId,jdbcType=VARCHAR}
+  </if>
+    <if test="cond.secOrgId != null" >
+      and SEC_ORG_ID=#{cond.secOrgId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.batchId != null" >
+      and BATCH_ID=#{cond.batchId,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.resInstId != null" >
+      and RES_INST_ID=#{cond.resInstId,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.patternSegId != null" >
+      and PATTERN_SEG_ID=#{cond.patternSegId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.patternDefId != null" >
+      and PATTERN_DEF_ID=#{cond.patternDefId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.resStoreId != null" >
+      and RES_STORE_ID=#{cond.resStoreId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.resUsedId != null" >
+      and RES_USED_ID=#{cond.resUsedId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.orgId != null" >
+      and ORG_ID=#{cond.orgId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.opId != null" >
+      and OP_ID=#{cond.opId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.doneCode != null" >
+      and DONE_CODE=#{cond.doneCode,jdbcType=BIGINT}
+    </if>
+    <if test="cond.doneDate != null" >
+      and DONE_DATE=#{cond.doneDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="cond.useType != null" >
+      and USE_TYPE=#{cond.useType,jdbcType=BIGINT}
+    </if>
+    <if test="cond.manageStatus != null" >
+      and MANAGE_STATUS=#{cond.manageStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.resStatus != null" >
+      and res_STATUS=#{cond.resStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.generationType != null" >
+      and GENERATION_TYPE=#{cond.generationType,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.resNumberHlr != null" >
+      and RES_NUMBER_HLR=#{cond.resNumberHlr,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.tradeId != null" >
+      and TRADE_ID=#{cond.tradeId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.offerId != null" >
+      and OFFER_ID=#{cond.offerId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.subOfferId != null" >
+      and SUB_OFFER_ID=#{cond.subOfferId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.receiver != null" >
+      and RECEIVER=#{cond.receiver,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.countyId != null" >
+      and COUNTY_ID=#{cond.countyId,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.regionId != null" >
+      and REGION_ID=#{cond.regionId,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.selectPriceMode != null" >
+      and SELECT_PRICE_MODE=#{cond.selectPriceMode,jdbcType=BIGINT}
+    </if>
+    <if test="cond.reserveFee != null" >
+      and RESERVE_FEE=#{cond.reserveFee,jdbcType=BIGINT}
+    </if>
+    <if test="cond.resLevel != null" >
+      and RES_LEVEL=#{cond.resLevel,jdbcType=BIGINT}
+    </if>
+    <if test="cond.chooseLevel != null" >
+      and CHOOSE_LEVEL=#{cond.chooseLevel,jdbcType=BIGINT}
+    </if>
+    <if test="cond.resClass != null" >
+      and RES_CLASS=#{cond.resClass,jdbcType=BIGINT}
+    </if>
+    <if test="cond.presentMonth != null" >
+      and PRESENT_MONTH=#{cond.presentMonth,jdbcType=BIGINT}
+    </if>
+    <if test="cond.depositMonth != null" >
+      and DEPOSIT_MONTH=#{cond.depositMonth,jdbcType=BIGINT}
+    </if>
+    <if test="cond.depositAmount != null" >
+      and DEPOSIT_AMOUNT=#{cond.depositAmount,jdbcType=BIGINT}
+    </if>
+    <if test="cond.isConfirm != null" >
+      and IS_CONFIRM=#{cond.isConfirm,jdbcType=BIGINT}
+    </if>
+    <if test="cond.iccId != null" >
+      and ICCID=#{cond.iccId,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.imsi != null" >
+      and IMSI=#{cond.imsi,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.preDate != null" >
+      and PRE_DATE=#{cond.preDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="cond.useDate != null" >
+      and USE_DATE=#{cond.useDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="cond.useDoneCode != null" >
+      and USE_DONE_CODE=#{cond.useDoneCode,jdbcType=BIGINT}
+    </if>
+    <if test="cond.useOrgId != null" >
+      and USER_ORG_ID=#{cond.useOrgId,jdbcType=BIGINT}
+    </if>
+    <if test="cond.busiCode != null" >
+      and BUSI_CODE=#{cond.busiCode,jdbcType=BIGINT}
+    </if>
+    <if test="cond.routingInfo != null" >
+      and ROUTING_INFO=#{cond.routingInfo,jdbcType=VARCHAR}
+    </if>
+
+    <if test="cond.password != null" >
+      and PASSWORD=#{cond.password,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.ifeetype != null" >
+      and IFEETYPE=#{cond.ifeetype,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.agentPhone != null" >
+      and AGENT_PHONE=#{cond.agentPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="cond.portStatus != null" >
+      and PORT_STATUS=#{cond.portStatus,jdbcType=VARCHAR}
+    </if>
+
+    <if test="cond.stockInDate != null" >
+      and STOCK_IN_DATE=#{cond.stockInDate,jdbcType=TIMESTAMP}
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" >
+    update res_phone_num_origin
+    set BATCH_ID = #{batchId,jdbcType=VARCHAR},
+      RES_INST_ID = #{resInstId,jdbcType=VARCHAR},
+      PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT},
+      PATTERN_DEF_ID = #{patternDefId,jdbcType=BIGINT},
+      RES_STORE_ID = #{resStoreId,jdbcType=BIGINT},
+      RES_USED_ID = #{resUsedId,jdbcType=BIGINT},
+      ORG_ID = #{orgId,jdbcType=BIGINT},
+      OP_ID = #{opId,jdbcType=BIGINT},
+      DONE_CODE = #{doneCode,jdbcType=BIGINT},
+      DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      USE_TYPE = #{useType,jdbcType=BIGINT},
+      MANAGE_STATUS = #{manageStatus,jdbcType=VARCHAR},
+      RES_STATUS = #{resStatus,jdbcType=VARCHAR},
+      GENERATION_TYPE = #{generationType,jdbcType=VARCHAR},
+      RES_NUMBER_HLR = #{resNumberHlr,jdbcType=VARCHAR},
+      TRADE_ID = #{tradeId,jdbcType=BIGINT},
+      OFFER_ID = #{offerId,jdbcType=BIGINT},
+      SUB_OFFER_ID = #{subOfferId,jdbcType=BIGINT},
+      RECEIVER = #{receiver,jdbcType=VARCHAR},
+      COUNTY_ID = #{countyId,jdbcType=VARCHAR},
+      REGION_ID = #{regionId,jdbcType=VARCHAR},
+      SELECT_PRICE_MODE = #{selectPriceMode,jdbcType=BIGINT},
+      RESERVE_FEE = #{reserveFee,jdbcType=BIGINT},
+      RES_LEVEL = #{resLevel,jdbcType=BIGINT},
+      CHOOSE_LEVEL = #{chooseLevel,jdbcType=BIGINT},
+      RES_CLASS = #{resClass,jdbcType=BIGINT},
+      PRESENT_MONTH = #{presentMonth,jdbcType=BIGINT},
+      DEPOSIT_MONTH = #{depositMonth,jdbcType=BIGINT},
+      DEPOSIT_AMOUNT = #{depositAmount,jdbcType=BIGINT},
+      IS_CONFIRM = #{isConfirm,jdbcType=BIGINT},
+      ICC_ID = #{iccId,jdbcType=VARCHAR},
+      IMSI = #{imsi,jdbcType=VARCHAR},
+      PRE_DATE = #{preDate,jdbcType=TIMESTAMP},
+      USE_DATE = #{useDate,jdbcType=TIMESTAMP},
+      USE_DONE_CODE = #{useDoneCode,jdbcType=BIGINT},
+      USE_ORG_ID = #{useOrgId,jdbcType=BIGINT},
+      BUSI_CODE = #{busiCode,jdbcType=BIGINT},
+      ROUTING_INFO = #{routingInfo,jdbcType=VARCHAR},
+      BEAUTIFUAL_TAG = #{beautifualTag,jdbcType=VARCHAR},
+      HOT_POINT_TAG = #{hotPointTag,jdbcType=VARCHAR},
+      DIGITAL_TAG = #{digitalTag,jdbcType=VARCHAR},
+      BIRTHDAY_TAG = #{birthdayTag,jdbcType=VARCHAR},
+      CHARGING_INFO = #{chargingInfo,jdbcType=VARCHAR},
+      REUSE_FLAG = #{reuseFlag,jdbcType=VARCHAR},
+      OUT_LEVEL = #{outLevel,jdbcType=VARCHAR},
+      RES_EVENT_ID = #{resEventId,jdbcType=BIGINT},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      IFEETYPE = #{ifeetype,jdbcType=VARCHAR},
+      AGENT_PHONE = #{agentPhone,jdbcType=VARCHAR},
+      NOTES = #{notes,jdbcType=VARCHAR},
+      PORT_STATUS = #{portStatus,jdbcType=VARCHAR},
+      RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      RSRV_NUM1 = #{rsrvNum1,jdbcType=BIGINT},
+      RSRV_NUM2 = #{rsrvNum2,jdbcType=BIGINT},
+      STOCK_IN_DATE = #{stockInDate,jdbcType=TIMESTAMP}
+    where RES_ID = #{resId,jdbcType=VARCHAR}
+      and SEC_ORG_ID = #{secOrgId,jdbcType=BIGINT}
+  </update>
+</mapper>

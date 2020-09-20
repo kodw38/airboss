@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.product.dao.ServiceBundleBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.product.bean.ServiceBundleBean" >
+    <id column="SERV_BUND_ID" property="servBundId" jdbcType="DECIMAL" />
+    <result column="SERV_BUND_NAME" property="servBundName" jdbcType="VARCHAR" />
+    <result column="MAIN_TAG" property="mainTag" jdbcType="CHAR" />
+    <result column="FEEPOLICY_BUND_ID" property="feepolicyBundId" jdbcType="DECIMAL" />
+    <result column="MIN_SERVICE_NUM" property="minServiceNum" jdbcType="DECIMAL" />
+    <result column="MAX_SERVICE_NUM" property="maxServiceNum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SERV_BUND_ID, SERV_BUND_NAME, MAIN_TAG, FEEPOLICY_BUND_ID, MIN_SERVICE_NUM, MAX_SERVICE_NUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_b_service_bundle
+    where SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from td_b_service_bundle
+    where SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleBean" >
+    insert into td_b_service_bundle (SERV_BUND_ID, SERV_BUND_NAME, MAIN_TAG, 
+      FEEPOLICY_BUND_ID, MIN_SERVICE_NUM, MAX_SERVICE_NUM
+      )
+    values (#{servBundId,jdbcType=DECIMAL}, #{servBundName,jdbcType=VARCHAR}, #{mainTag,jdbcType=CHAR}, 
+      #{feepolicyBundId,jdbcType=DECIMAL}, #{minServiceNum,jdbcType=DECIMAL}, #{maxServiceNum,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleBean" >
+    insert into td_b_service_bundle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="servBundId != null" >
+        SERV_BUND_ID,
+      </if>
+      <if test="servBundName != null" >
+        SERV_BUND_NAME,
+      </if>
+      <if test="mainTag != null" >
+        MAIN_TAG,
+      </if>
+      <if test="feepolicyBundId != null" >
+        FEEPOLICY_BUND_ID,
+      </if>
+      <if test="minServiceNum != null" >
+        MIN_SERVICE_NUM,
+      </if>
+      <if test="maxServiceNum != null" >
+        MAX_SERVICE_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="servBundId != null" >
+        #{servBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="servBundName != null" >
+        #{servBundName,jdbcType=VARCHAR},
+      </if>
+      <if test="mainTag != null" >
+        #{mainTag,jdbcType=CHAR},
+      </if>
+      <if test="feepolicyBundId != null" >
+        #{feepolicyBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="minServiceNum != null" >
+        #{minServiceNum,jdbcType=DECIMAL},
+      </if>
+      <if test="maxServiceNum != null" >
+        #{maxServiceNum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleBean" >
+    update td_b_service_bundle
+    <set >
+      <if test="servBundName != null" >
+        SERV_BUND_NAME = #{servBundName,jdbcType=VARCHAR},
+      </if>
+      <if test="mainTag != null" >
+        MAIN_TAG = #{mainTag,jdbcType=CHAR},
+      </if>
+      <if test="feepolicyBundId != null" >
+        FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="minServiceNum != null" >
+        MIN_SERVICE_NUM = #{minServiceNum,jdbcType=DECIMAL},
+      </if>
+      <if test="maxServiceNum != null" >
+        MAX_SERVICE_NUM = #{maxServiceNum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleBean" >
+    update td_b_service_bundle
+    set SERV_BUND_NAME = #{servBundName,jdbcType=VARCHAR},
+      MAIN_TAG = #{mainTag,jdbcType=CHAR},
+      FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL},
+      MIN_SERVICE_NUM = #{minServiceNum,jdbcType=DECIMAL},
+      MAX_SERVICE_NUM = #{maxServiceNum,jdbcType=DECIMAL}
+    where SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </update>
+</mapper>

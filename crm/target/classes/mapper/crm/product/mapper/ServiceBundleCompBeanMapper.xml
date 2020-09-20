@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.product.dao.ServiceBundleCompBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.product.bean.ServiceBundleCompBean" >
+    <id column="SERV_SPEC_ID" property="servSpecId" jdbcType="DECIMAL" />
+    <id column="SERV_BUND_ID" property="servBundId" jdbcType="DECIMAL" />
+    <result column="FORCE_TAG" property="forceTag" jdbcType="CHAR" />
+    <result column="MAIN_TAG" property="mainTag" jdbcType="CHAR" />
+    <result column="FEEPOLICY_BUND_ID" property="feepolicyBundId" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SERV_SPEC_ID, SERV_BUND_ID, FORCE_TAG, MAIN_TAG, FEEPOLICY_BUND_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleCompBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_b_service_bundlecomp
+    where SERV_SPEC_ID = #{servSpecId,jdbcType=DECIMAL}
+      and SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleCompBeanKey" >
+    delete from td_b_service_bundlecomp
+    where SERV_SPEC_ID = #{servSpecId,jdbcType=DECIMAL}
+      and SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleCompBean" >
+    insert into td_b_service_bundlecomp (SERV_SPEC_ID, SERV_BUND_ID, FORCE_TAG, 
+      MAIN_TAG, FEEPOLICY_BUND_ID)
+    values (#{servSpecId,jdbcType=DECIMAL}, #{servBundId,jdbcType=DECIMAL}, #{forceTag,jdbcType=CHAR}, 
+      #{mainTag,jdbcType=CHAR}, #{feepolicyBundId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleCompBean" >
+    insert into td_b_service_bundlecomp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="servSpecId != null" >
+        SERV_SPEC_ID,
+      </if>
+      <if test="servBundId != null" >
+        SERV_BUND_ID,
+      </if>
+      <if test="forceTag != null" >
+        FORCE_TAG,
+      </if>
+      <if test="mainTag != null" >
+        MAIN_TAG,
+      </if>
+      <if test="feepolicyBundId != null" >
+        FEEPOLICY_BUND_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="servSpecId != null" >
+        #{servSpecId,jdbcType=DECIMAL},
+      </if>
+      <if test="servBundId != null" >
+        #{servBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="forceTag != null" >
+        #{forceTag,jdbcType=CHAR},
+      </if>
+      <if test="mainTag != null" >
+        #{mainTag,jdbcType=CHAR},
+      </if>
+      <if test="feepolicyBundId != null" >
+        #{feepolicyBundId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleCompBean" >
+    update td_b_service_bundlecomp
+    <set >
+      <if test="forceTag != null" >
+        FORCE_TAG = #{forceTag,jdbcType=CHAR},
+      </if>
+      <if test="mainTag != null" >
+        MAIN_TAG = #{mainTag,jdbcType=CHAR},
+      </if>
+      <if test="feepolicyBundId != null" >
+        FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SERV_SPEC_ID = #{servSpecId,jdbcType=DECIMAL}
+      and SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ServiceBundleCompBean" >
+    update td_b_service_bundlecomp
+    set FORCE_TAG = #{forceTag,jdbcType=CHAR},
+      MAIN_TAG = #{mainTag,jdbcType=CHAR},
+      FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL}
+    where SERV_SPEC_ID = #{servSpecId,jdbcType=DECIMAL}
+      and SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL}
+  </update>
+</mapper>

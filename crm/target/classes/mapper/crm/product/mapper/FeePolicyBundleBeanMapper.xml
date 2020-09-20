@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.product.dao.FeePolicyBundleBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.product.bean.FeePolicyBundleBean" >
+    <id column="FEEPOLICY_BUND_ID" property="feepolicyBundId" jdbcType="DECIMAL" />
+    <result column="FEEPOLICY_BUND_NAME" property="feepolicyBundName" jdbcType="VARCHAR" />
+    <result column="MIN_FEEPOLICY_NUM" property="minFeepolicyNum" jdbcType="DECIMAL" />
+    <result column="MAX_FEEPOLICY_NUM" property="maxFeepolicyNum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FEEPOLICY_BUND_ID, FEEPOLICY_BUND_NAME, MIN_FEEPOLICY_NUM, MAX_FEEPOLICY_NUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_b_feepolicy_bundle
+    where FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from td_b_feepolicy_bundle
+    where FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.product.bean.FeePolicyBundleBean" >
+    insert into td_b_feepolicy_bundle (FEEPOLICY_BUND_ID, FEEPOLICY_BUND_NAME, 
+      MIN_FEEPOLICY_NUM, MAX_FEEPOLICY_NUM)
+    values (#{feepolicyBundId,jdbcType=DECIMAL}, #{feepolicyBundName,jdbcType=VARCHAR}, 
+      #{minFeepolicyNum,jdbcType=DECIMAL}, #{maxFeepolicyNum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.product.bean.FeePolicyBundleBean" >
+    insert into td_b_feepolicy_bundle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feepolicyBundId != null" >
+        FEEPOLICY_BUND_ID,
+      </if>
+      <if test="feepolicyBundName != null" >
+        FEEPOLICY_BUND_NAME,
+      </if>
+      <if test="minFeepolicyNum != null" >
+        MIN_FEEPOLICY_NUM,
+      </if>
+      <if test="maxFeepolicyNum != null" >
+        MAX_FEEPOLICY_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feepolicyBundId != null" >
+        #{feepolicyBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyBundName != null" >
+        #{feepolicyBundName,jdbcType=VARCHAR},
+      </if>
+      <if test="minFeepolicyNum != null" >
+        #{minFeepolicyNum,jdbcType=DECIMAL},
+      </if>
+      <if test="maxFeepolicyNum != null" >
+        #{maxFeepolicyNum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.product.bean.FeePolicyBundleBean" >
+    update td_b_feepolicy_bundle
+    <set >
+      <if test="feepolicyBundName != null" >
+        FEEPOLICY_BUND_NAME = #{feepolicyBundName,jdbcType=VARCHAR},
+      </if>
+      <if test="minFeepolicyNum != null" >
+        MIN_FEEPOLICY_NUM = #{minFeepolicyNum,jdbcType=DECIMAL},
+      </if>
+      <if test="maxFeepolicyNum != null" >
+        MAX_FEEPOLICY_NUM = #{maxFeepolicyNum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.FeePolicyBundleBean" >
+    update td_b_feepolicy_bundle
+    set FEEPOLICY_BUND_NAME = #{feepolicyBundName,jdbcType=VARCHAR},
+      MIN_FEEPOLICY_NUM = #{minFeepolicyNum,jdbcType=DECIMAL},
+      MAX_FEEPOLICY_NUM = #{maxFeepolicyNum,jdbcType=DECIMAL}
+    where FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL}
+  </update>
+</mapper>

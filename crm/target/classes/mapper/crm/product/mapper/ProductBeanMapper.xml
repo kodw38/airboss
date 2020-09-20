@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.product.dao.ProductBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.product.bean.ProductBean" >
+    <id column="PRODUCT_ID" property="productId" jdbcType="DECIMAL" />
+    <id column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_MODE" property="productMode" jdbcType="CHAR" />
+    <result column="NET_TYPE_CODE" property="netTypeCode" jdbcType="VARCHAR" />
+    <result column="BRAND_CODE" property="brandCode" jdbcType="CHAR" />
+    <result column="GROUP_BRAND_CODE" property="groupBrandCode" jdbcType="CHAR" />
+    <result column="PRODUCT_OBJ_TYPE" property="productObjType" jdbcType="CHAR" />
+    <result column="RES_TYPE_CODE" property="resTypeCode" jdbcType="CHAR" />
+    <result column="COMP_TAG" property="compTag" jdbcType="CHAR" />
+    <result column="ENABLE_TAG" property="enableTag" jdbcType="CHAR" />
+    <result column="START_ABSOLUTE_DATE" property="startAbsoluteDate" jdbcType="TIMESTAMP" />
+    <result column="START_OFFSET" property="startOffset" jdbcType="DECIMAL" />
+    <result column="START_UNIT" property="startUnit" jdbcType="CHAR" />
+    <result column="END_ENABLE_TAG" property="endEnableTag" jdbcType="CHAR" />
+    <result column="END_ABSOLUTE_DATE" property="endAbsoluteDate" jdbcType="TIMESTAMP" />
+    <result column="END_OFFSET" property="endOffset" jdbcType="DECIMAL" />
+    <result column="END_UNIT" property="endUnit" jdbcType="CHAR" />
+    <result column="CANCEL_TAG" property="cancelTag" jdbcType="CHAR" />
+    <result column="CANCEL_ABSOLUTE_DATE" property="cancelAbsoluteDate" jdbcType="TIMESTAMP" />
+    <result column="CANCEL_OFFSET" property="cancelOffset" jdbcType="DECIMAL" />
+    <result column="CANCEL_UNIT" property="cancelUnit" jdbcType="CHAR" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="MIN_NUMBER" property="minNumber" jdbcType="DECIMAL" />
+    <result column="MAX_NUMBER" property="maxNumber" jdbcType="DECIMAL" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="VERSION" property="version" jdbcType="VARCHAR" />
+    <result column="PRODUCT_STATE" property="productState" jdbcType="CHAR" />
+    <result column="RELEASE_TAG" property="releaseTag" jdbcType="CHAR" />
+    <result column="PRIORITY" property="priority" jdbcType="DECIMAL" />
+    <result column="PREPAY_TAG" property="prepayTag" jdbcType="CHAR" />
+    <result column="TAG_SET" property="tagSet" jdbcType="CHAR" />
+    <result column="CAMPN_ID" property="campnId" jdbcType="VARCHAR" />
+    <result column="EXPERIENCE_MONTHS" property="experienceMonths" jdbcType="DECIMAL" />
+    <result column="EXPERIENCE_LIMIT" property="experienceLimit" jdbcType="DECIMAL" />
+    <result column="EXPERIENCE_LIMIT_DAYS" property="experienceLimitDays" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="VARCHAR" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="RSRV_STR1" property="rsrvStr1" jdbcType="VARCHAR" />
+    <result column="RSRV_STR2" property="rsrvStr2" jdbcType="VARCHAR" />
+    <result column="RSRV_STR3" property="rsrvStr3" jdbcType="VARCHAR" />
+    <result column="RSRV_STR4" property="rsrvStr4" jdbcType="VARCHAR" />
+    <result column="RSRV_STR5" property="rsrvStr5" jdbcType="VARCHAR" />
+    <result column="RSRV_DATE1" property="rsrvDate1" jdbcType="TIMESTAMP" />
+    <result column="RSRV_DATE2" property="rsrvDate2" jdbcType="TIMESTAMP" />
+    <result column="RSRV_DATE3" property="rsrvDate3" jdbcType="TIMESTAMP" />
+    <result column="RSRV_TAG1" property="rsrvTag1" jdbcType="CHAR" />
+    <result column="RSRV_TAG2" property="rsrvTag2" jdbcType="CHAR" />
+    <result column="RSRV_TAG3" property="rsrvTag3" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.pl.airboss.crm.product.bean.ProductBean" extends="BaseResultMap" >
+    <result column="PRODUCT_EXPLAIN" property="productExplain" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PRODUCT_ID, START_DATE, PRODUCT_NAME, PRODUCT_MODE, NET_TYPE_CODE, BRAND_CODE, GROUP_BRAND_CODE, 
+    PRODUCT_OBJ_TYPE, RES_TYPE_CODE, COMP_TAG, ENABLE_TAG, START_ABSOLUTE_DATE, START_OFFSET, 
+    START_UNIT, END_ENABLE_TAG, END_ABSOLUTE_DATE, END_OFFSET, END_UNIT, CANCEL_TAG, 
+    CANCEL_ABSOLUTE_DATE, CANCEL_OFFSET, CANCEL_UNIT, END_DATE, MIN_NUMBER, MAX_NUMBER, 
+    CREATE_DATE, VERSION, PRODUCT_STATE, RELEASE_TAG, PRIORITY, PREPAY_TAG, TAG_SET, 
+    CAMPN_ID, EXPERIENCE_MONTHS, EXPERIENCE_LIMIT, EXPERIENCE_LIMIT_DAYS, UPDATE_TIME, 
+    UPDATE_STAFF_ID, UPDATE_DEPART_ID, REMARK, RSRV_STR1, RSRV_STR2, RSRV_STR3, RSRV_STR4, 
+    RSRV_STR5, RSRV_DATE1, RSRV_DATE2, RSRV_DATE3, RSRV_TAG1, RSRV_TAG2, RSRV_TAG3
+  </sql>
+  <sql id="Blob_Column_List" >
+    PRODUCT_EXPLAIN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="com.pl.airboss.crm.product.bean.ProductBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from td_b_product
+    where PRODUCT_ID = #{productId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ProductBeanKey" >
+    delete from td_b_product
+    where PRODUCT_ID = #{productId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.product.bean.ProductBean" >
+    insert into td_b_product (PRODUCT_ID, START_DATE, PRODUCT_NAME, 
+      PRODUCT_MODE, NET_TYPE_CODE, BRAND_CODE, 
+      GROUP_BRAND_CODE, PRODUCT_OBJ_TYPE, RES_TYPE_CODE, 
+      COMP_TAG, ENABLE_TAG, START_ABSOLUTE_DATE, 
+      START_OFFSET, START_UNIT, END_ENABLE_TAG, 
+      END_ABSOLUTE_DATE, END_OFFSET, END_UNIT, 
+      CANCEL_TAG, CANCEL_ABSOLUTE_DATE, CANCEL_OFFSET, 
+      CANCEL_UNIT, END_DATE, MIN_NUMBER, 
+      MAX_NUMBER, CREATE_DATE, VERSION, 
+      PRODUCT_STATE, RELEASE_TAG, PRIORITY, 
+      PREPAY_TAG, TAG_SET, CAMPN_ID, 
+      EXPERIENCE_MONTHS, EXPERIENCE_LIMIT, EXPERIENCE_LIMIT_DAYS, 
+      UPDATE_TIME, UPDATE_STAFF_ID, UPDATE_DEPART_ID, 
+      REMARK, RSRV_STR1, RSRV_STR2, 
+      RSRV_STR3, RSRV_STR4, RSRV_STR5, 
+      RSRV_DATE1, RSRV_DATE2, RSRV_DATE3, 
+      RSRV_TAG1, RSRV_TAG2, RSRV_TAG3, 
+      PRODUCT_EXPLAIN)
+    values (#{productId,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, #{productName,jdbcType=VARCHAR}, 
+      #{productMode,jdbcType=CHAR}, #{netTypeCode,jdbcType=VARCHAR}, #{brandCode,jdbcType=CHAR}, 
+      #{groupBrandCode,jdbcType=CHAR}, #{productObjType,jdbcType=CHAR}, #{resTypeCode,jdbcType=CHAR}, 
+      #{compTag,jdbcType=CHAR}, #{enableTag,jdbcType=CHAR}, #{startAbsoluteDate,jdbcType=TIMESTAMP}, 
+      #{startOffset,jdbcType=DECIMAL}, #{startUnit,jdbcType=CHAR}, #{endEnableTag,jdbcType=CHAR}, 
+      #{endAbsoluteDate,jdbcType=TIMESTAMP}, #{endOffset,jdbcType=DECIMAL}, #{endUnit,jdbcType=CHAR}, 
+      #{cancelTag,jdbcType=CHAR}, #{cancelAbsoluteDate,jdbcType=TIMESTAMP}, #{cancelOffset,jdbcType=DECIMAL}, 
+      #{cancelUnit,jdbcType=CHAR}, #{endDate,jdbcType=TIMESTAMP}, #{minNumber,jdbcType=DECIMAL}, 
+      #{maxNumber,jdbcType=DECIMAL}, #{createDate,jdbcType=TIMESTAMP}, #{version,jdbcType=VARCHAR}, 
+      #{productState,jdbcType=CHAR}, #{releaseTag,jdbcType=CHAR}, #{priority,jdbcType=DECIMAL}, 
+      #{prepayTag,jdbcType=CHAR}, #{tagSet,jdbcType=CHAR}, #{campnId,jdbcType=VARCHAR}, 
+      #{experienceMonths,jdbcType=DECIMAL}, #{experienceLimit,jdbcType=DECIMAL}, #{experienceLimitDays,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateStaffId,jdbcType=VARCHAR}, #{updateDepartId,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{rsrvStr1,jdbcType=VARCHAR}, #{rsrvStr2,jdbcType=VARCHAR}, 
+      #{rsrvStr3,jdbcType=VARCHAR}, #{rsrvStr4,jdbcType=VARCHAR}, #{rsrvStr5,jdbcType=VARCHAR}, 
+      #{rsrvDate1,jdbcType=TIMESTAMP}, #{rsrvDate2,jdbcType=TIMESTAMP}, #{rsrvDate3,jdbcType=TIMESTAMP}, 
+      #{rsrvTag1,jdbcType=CHAR}, #{rsrvTag2,jdbcType=CHAR}, #{rsrvTag3,jdbcType=CHAR}, 
+      #{productExplain,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.product.bean.ProductBean" >
+    insert into td_b_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME,
+      </if>
+      <if test="productMode != null" >
+        PRODUCT_MODE,
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE,
+      </if>
+      <if test="brandCode != null" >
+        BRAND_CODE,
+      </if>
+      <if test="groupBrandCode != null" >
+        GROUP_BRAND_CODE,
+      </if>
+      <if test="productObjType != null" >
+        PRODUCT_OBJ_TYPE,
+      </if>
+      <if test="resTypeCode != null" >
+        RES_TYPE_CODE,
+      </if>
+      <if test="compTag != null" >
+        COMP_TAG,
+      </if>
+      <if test="enableTag != null" >
+        ENABLE_TAG,
+      </if>
+      <if test="startAbsoluteDate != null" >
+        START_ABSOLUTE_DATE,
+      </if>
+      <if test="startOffset != null" >
+        START_OFFSET,
+      </if>
+      <if test="startUnit != null" >
+        START_UNIT,
+      </if>
+      <if test="endEnableTag != null" >
+        END_ENABLE_TAG,
+      </if>
+      <if test="endAbsoluteDate != null" >
+        END_ABSOLUTE_DATE,
+      </if>
+      <if test="endOffset != null" >
+        END_OFFSET,
+      </if>
+      <if test="endUnit != null" >
+        END_UNIT,
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG,
+      </if>
+      <if test="cancelAbsoluteDate != null" >
+        CANCEL_ABSOLUTE_DATE,
+      </if>
+      <if test="cancelOffset != null" >
+        CANCEL_OFFSET,
+      </if>
+      <if test="cancelUnit != null" >
+        CANCEL_UNIT,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="minNumber != null" >
+        MIN_NUMBER,
+      </if>
+      <if test="maxNumber != null" >
+        MAX_NUMBER,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="productState != null" >
+        PRODUCT_STATE,
+      </if>
+      <if test="releaseTag != null" >
+        RELEASE_TAG,
+      </if>
+      <if test="priority != null" >
+        PRIORITY,
+      </if>
+      <if test="prepayTag != null" >
+        PREPAY_TAG,
+      </if>
+      <if test="tagSet != null" >
+        TAG_SET,
+      </if>
+      <if test="campnId != null" >
+        CAMPN_ID,
+      </if>
+      <if test="experienceMonths != null" >
+        EXPERIENCE_MONTHS,
+      </if>
+      <if test="experienceLimit != null" >
+        EXPERIENCE_LIMIT,
+      </if>
+      <if test="experienceLimitDays != null" >
+        EXPERIENCE_LIMIT_DAYS,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="rsrvStr1 != null" >
+        RSRV_STR1,
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2,
+      </if>
+      <if test="rsrvStr3 != null" >
+        RSRV_STR3,
+      </if>
+      <if test="rsrvStr4 != null" >
+        RSRV_STR4,
+      </if>
+      <if test="rsrvStr5 != null" >
+        RSRV_STR5,
+      </if>
+      <if test="rsrvDate1 != null" >
+        RSRV_DATE1,
+      </if>
+      <if test="rsrvDate2 != null" >
+        RSRV_DATE2,
+      </if>
+      <if test="rsrvDate3 != null" >
+        RSRV_DATE3,
+      </if>
+      <if test="rsrvTag1 != null" >
+        RSRV_TAG1,
+      </if>
+      <if test="rsrvTag2 != null" >
+        RSRV_TAG2,
+      </if>
+      <if test="rsrvTag3 != null" >
+        RSRV_TAG3,
+      </if>
+      <if test="productExplain != null" >
+        PRODUCT_EXPLAIN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productMode != null" >
+        #{productMode,jdbcType=CHAR},
+      </if>
+      <if test="netTypeCode != null" >
+        #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCode != null" >
+        #{brandCode,jdbcType=CHAR},
+      </if>
+      <if test="groupBrandCode != null" >
+        #{groupBrandCode,jdbcType=CHAR},
+      </if>
+      <if test="productObjType != null" >
+        #{productObjType,jdbcType=CHAR},
+      </if>
+      <if test="resTypeCode != null" >
+        #{resTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="compTag != null" >
+        #{compTag,jdbcType=CHAR},
+      </if>
+      <if test="enableTag != null" >
+        #{enableTag,jdbcType=CHAR},
+      </if>
+      <if test="startAbsoluteDate != null" >
+        #{startAbsoluteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startOffset != null" >
+        #{startOffset,jdbcType=DECIMAL},
+      </if>
+      <if test="startUnit != null" >
+        #{startUnit,jdbcType=CHAR},
+      </if>
+      <if test="endEnableTag != null" >
+        #{endEnableTag,jdbcType=CHAR},
+      </if>
+      <if test="endAbsoluteDate != null" >
+        #{endAbsoluteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endOffset != null" >
+        #{endOffset,jdbcType=DECIMAL},
+      </if>
+      <if test="endUnit != null" >
+        #{endUnit,jdbcType=CHAR},
+      </if>
+      <if test="cancelTag != null" >
+        #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="cancelAbsoluteDate != null" >
+        #{cancelAbsoluteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelOffset != null" >
+        #{cancelOffset,jdbcType=DECIMAL},
+      </if>
+      <if test="cancelUnit != null" >
+        #{cancelUnit,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minNumber != null" >
+        #{minNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="maxNumber != null" >
+        #{maxNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="productState != null" >
+        #{productState,jdbcType=CHAR},
+      </if>
+      <if test="releaseTag != null" >
+        #{releaseTag,jdbcType=CHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=DECIMAL},
+      </if>
+      <if test="prepayTag != null" >
+        #{prepayTag,jdbcType=CHAR},
+      </if>
+      <if test="tagSet != null" >
+        #{tagSet,jdbcType=CHAR},
+      </if>
+      <if test="campnId != null" >
+        #{campnId,jdbcType=VARCHAR},
+      </if>
+      <if test="experienceMonths != null" >
+        #{experienceMonths,jdbcType=DECIMAL},
+      </if>
+      <if test="experienceLimit != null" >
+        #{experienceLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="experienceLimitDays != null" >
+        #{experienceLimitDays,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr1 != null" >
+        #{rsrvStr1,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr3 != null" >
+        #{rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr4 != null" >
+        #{rsrvStr4,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr5 != null" >
+        #{rsrvStr5,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvDate1 != null" >
+        #{rsrvDate1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate2 != null" >
+        #{rsrvDate2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate3 != null" >
+        #{rsrvDate3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvTag1 != null" >
+        #{rsrvTag1,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag2 != null" >
+        #{rsrvTag2,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag3 != null" >
+        #{rsrvTag3,jdbcType=CHAR},
+      </if>
+      <if test="productExplain != null" >
+        #{productExplain,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.product.bean.ProductBean" >
+    update td_b_product
+    <set >
+      <if test="productName != null" >
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productMode != null" >
+        PRODUCT_MODE = #{productMode,jdbcType=CHAR},
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCode != null" >
+        BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      </if>
+      <if test="groupBrandCode != null" >
+        GROUP_BRAND_CODE = #{groupBrandCode,jdbcType=CHAR},
+      </if>
+      <if test="productObjType != null" >
+        PRODUCT_OBJ_TYPE = #{productObjType,jdbcType=CHAR},
+      </if>
+      <if test="resTypeCode != null" >
+        RES_TYPE_CODE = #{resTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="compTag != null" >
+        COMP_TAG = #{compTag,jdbcType=CHAR},
+      </if>
+      <if test="enableTag != null" >
+        ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      </if>
+      <if test="startAbsoluteDate != null" >
+        START_ABSOLUTE_DATE = #{startAbsoluteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startOffset != null" >
+        START_OFFSET = #{startOffset,jdbcType=DECIMAL},
+      </if>
+      <if test="startUnit != null" >
+        START_UNIT = #{startUnit,jdbcType=CHAR},
+      </if>
+      <if test="endEnableTag != null" >
+        END_ENABLE_TAG = #{endEnableTag,jdbcType=CHAR},
+      </if>
+      <if test="endAbsoluteDate != null" >
+        END_ABSOLUTE_DATE = #{endAbsoluteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endOffset != null" >
+        END_OFFSET = #{endOffset,jdbcType=DECIMAL},
+      </if>
+      <if test="endUnit != null" >
+        END_UNIT = #{endUnit,jdbcType=CHAR},
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="cancelAbsoluteDate != null" >
+        CANCEL_ABSOLUTE_DATE = #{cancelAbsoluteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelOffset != null" >
+        CANCEL_OFFSET = #{cancelOffset,jdbcType=DECIMAL},
+      </if>
+      <if test="cancelUnit != null" >
+        CANCEL_UNIT = #{cancelUnit,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minNumber != null" >
+        MIN_NUMBER = #{minNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="maxNumber != null" >
+        MAX_NUMBER = #{maxNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="productState != null" >
+        PRODUCT_STATE = #{productState,jdbcType=CHAR},
+      </if>
+      <if test="releaseTag != null" >
+        RELEASE_TAG = #{releaseTag,jdbcType=CHAR},
+      </if>
+      <if test="priority != null" >
+        PRIORITY = #{priority,jdbcType=DECIMAL},
+      </if>
+      <if test="prepayTag != null" >
+        PREPAY_TAG = #{prepayTag,jdbcType=CHAR},
+      </if>
+      <if test="tagSet != null" >
+        TAG_SET = #{tagSet,jdbcType=CHAR},
+      </if>
+      <if test="campnId != null" >
+        CAMPN_ID = #{campnId,jdbcType=VARCHAR},
+      </if>
+      <if test="experienceMonths != null" >
+        EXPERIENCE_MONTHS = #{experienceMonths,jdbcType=DECIMAL},
+      </if>
+      <if test="experienceLimit != null" >
+        EXPERIENCE_LIMIT = #{experienceLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="experienceLimitDays != null" >
+        EXPERIENCE_LIMIT_DAYS = #{experienceLimitDays,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr1 != null" >
+        RSRV_STR1 = #{rsrvStr1,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr3 != null" >
+        RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr4 != null" >
+        RSRV_STR4 = #{rsrvStr4,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr5 != null" >
+        RSRV_STR5 = #{rsrvStr5,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvDate1 != null" >
+        RSRV_DATE1 = #{rsrvDate1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate2 != null" >
+        RSRV_DATE2 = #{rsrvDate2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate3 != null" >
+        RSRV_DATE3 = #{rsrvDate3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvTag1 != null" >
+        RSRV_TAG1 = #{rsrvTag1,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag2 != null" >
+        RSRV_TAG2 = #{rsrvTag2,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag3 != null" >
+        RSRV_TAG3 = #{rsrvTag3,jdbcType=CHAR},
+      </if>
+      <if test="productExplain != null" >
+        PRODUCT_EXPLAIN = #{productExplain,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where PRODUCT_ID = #{productId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pl.airboss.crm.product.bean.ProductBean" >
+    update td_b_product
+    set PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_MODE = #{productMode,jdbcType=CHAR},
+      NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      GROUP_BRAND_CODE = #{groupBrandCode,jdbcType=CHAR},
+      PRODUCT_OBJ_TYPE = #{productObjType,jdbcType=CHAR},
+      RES_TYPE_CODE = #{resTypeCode,jdbcType=CHAR},
+      COMP_TAG = #{compTag,jdbcType=CHAR},
+      ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      START_ABSOLUTE_DATE = #{startAbsoluteDate,jdbcType=TIMESTAMP},
+      START_OFFSET = #{startOffset,jdbcType=DECIMAL},
+      START_UNIT = #{startUnit,jdbcType=CHAR},
+      END_ENABLE_TAG = #{endEnableTag,jdbcType=CHAR},
+      END_ABSOLUTE_DATE = #{endAbsoluteDate,jdbcType=TIMESTAMP},
+      END_OFFSET = #{endOffset,jdbcType=DECIMAL},
+      END_UNIT = #{endUnit,jdbcType=CHAR},
+      CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      CANCEL_ABSOLUTE_DATE = #{cancelAbsoluteDate,jdbcType=TIMESTAMP},
+      CANCEL_OFFSET = #{cancelOffset,jdbcType=DECIMAL},
+      CANCEL_UNIT = #{cancelUnit,jdbcType=CHAR},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      MIN_NUMBER = #{minNumber,jdbcType=DECIMAL},
+      MAX_NUMBER = #{maxNumber,jdbcType=DECIMAL},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=VARCHAR},
+      PRODUCT_STATE = #{productState,jdbcType=CHAR},
+      RELEASE_TAG = #{releaseTag,jdbcType=CHAR},
+      PRIORITY = #{priority,jdbcType=DECIMAL},
+      PREPAY_TAG = #{prepayTag,jdbcType=CHAR},
+      TAG_SET = #{tagSet,jdbcType=CHAR},
+      CAMPN_ID = #{campnId,jdbcType=VARCHAR},
+      EXPERIENCE_MONTHS = #{experienceMonths,jdbcType=DECIMAL},
+      EXPERIENCE_LIMIT = #{experienceLimit,jdbcType=DECIMAL},
+      EXPERIENCE_LIMIT_DAYS = #{experienceLimitDays,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      RSRV_STR1 = #{rsrvStr1,jdbcType=VARCHAR},
+      RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      RSRV_STR4 = #{rsrvStr4,jdbcType=VARCHAR},
+      RSRV_STR5 = #{rsrvStr5,jdbcType=VARCHAR},
+      RSRV_DATE1 = #{rsrvDate1,jdbcType=TIMESTAMP},
+      RSRV_DATE2 = #{rsrvDate2,jdbcType=TIMESTAMP},
+      RSRV_DATE3 = #{rsrvDate3,jdbcType=TIMESTAMP},
+      RSRV_TAG1 = #{rsrvTag1,jdbcType=CHAR},
+      RSRV_TAG2 = #{rsrvTag2,jdbcType=CHAR},
+      RSRV_TAG3 = #{rsrvTag3,jdbcType=CHAR},
+      PRODUCT_EXPLAIN = #{productExplain,jdbcType=LONGVARCHAR}
+    where PRODUCT_ID = #{productId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ProductBean" >
+    update td_b_product
+    set PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_MODE = #{productMode,jdbcType=CHAR},
+      NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      GROUP_BRAND_CODE = #{groupBrandCode,jdbcType=CHAR},
+      PRODUCT_OBJ_TYPE = #{productObjType,jdbcType=CHAR},
+      RES_TYPE_CODE = #{resTypeCode,jdbcType=CHAR},
+      COMP_TAG = #{compTag,jdbcType=CHAR},
+      ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      START_ABSOLUTE_DATE = #{startAbsoluteDate,jdbcType=TIMESTAMP},
+      START_OFFSET = #{startOffset,jdbcType=DECIMAL},
+      START_UNIT = #{startUnit,jdbcType=CHAR},
+      END_ENABLE_TAG = #{endEnableTag,jdbcType=CHAR},
+      END_ABSOLUTE_DATE = #{endAbsoluteDate,jdbcType=TIMESTAMP},
+      END_OFFSET = #{endOffset,jdbcType=DECIMAL},
+      END_UNIT = #{endUnit,jdbcType=CHAR},
+      CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      CANCEL_ABSOLUTE_DATE = #{cancelAbsoluteDate,jdbcType=TIMESTAMP},
+      CANCEL_OFFSET = #{cancelOffset,jdbcType=DECIMAL},
+      CANCEL_UNIT = #{cancelUnit,jdbcType=CHAR},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      MIN_NUMBER = #{minNumber,jdbcType=DECIMAL},
+      MAX_NUMBER = #{maxNumber,jdbcType=DECIMAL},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=VARCHAR},
+      PRODUCT_STATE = #{productState,jdbcType=CHAR},
+      RELEASE_TAG = #{releaseTag,jdbcType=CHAR},
+      PRIORITY = #{priority,jdbcType=DECIMAL},
+      PREPAY_TAG = #{prepayTag,jdbcType=CHAR},
+      TAG_SET = #{tagSet,jdbcType=CHAR},
+      CAMPN_ID = #{campnId,jdbcType=VARCHAR},
+      EXPERIENCE_MONTHS = #{experienceMonths,jdbcType=DECIMAL},
+      EXPERIENCE_LIMIT = #{experienceLimit,jdbcType=DECIMAL},
+      EXPERIENCE_LIMIT_DAYS = #{experienceLimitDays,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      RSRV_STR1 = #{rsrvStr1,jdbcType=VARCHAR},
+      RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      RSRV_STR4 = #{rsrvStr4,jdbcType=VARCHAR},
+      RSRV_STR5 = #{rsrvStr5,jdbcType=VARCHAR},
+      RSRV_DATE1 = #{rsrvDate1,jdbcType=TIMESTAMP},
+      RSRV_DATE2 = #{rsrvDate2,jdbcType=TIMESTAMP},
+      RSRV_DATE3 = #{rsrvDate3,jdbcType=TIMESTAMP},
+      RSRV_TAG1 = #{rsrvTag1,jdbcType=CHAR},
+      RSRV_TAG2 = #{rsrvTag2,jdbcType=CHAR},
+      RSRV_TAG3 = #{rsrvTag3,jdbcType=CHAR}
+    where PRODUCT_ID = #{productId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

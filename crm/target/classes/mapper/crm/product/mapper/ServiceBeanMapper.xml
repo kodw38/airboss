@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.product.dao.ServiceBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.product.bean.ServiceBean" >
+    <id column="SERVICE_ID" property="serviceId" jdbcType="DECIMAL" />
+    <result column="SERVICE_NAME" property="serviceName" jdbcType="VARCHAR" />
+    <result column="NET_TYPE_CODE" property="netTypeCode" jdbcType="VARCHAR" />
+    <result column="INTF_MODE" property="intfMode" jdbcType="CHAR" />
+    <result column="PARENT_TYPE_CODE" property="parentTypeCode" jdbcType="DECIMAL" />
+    <result column="SERVICE_MODE" property="serviceMode" jdbcType="CHAR" />
+    <result column="SERVICE_BRAND_CODE" property="serviceBrandCode" jdbcType="CHAR" />
+    <result column="SERVICE_LEVEL" property="serviceLevel" jdbcType="DECIMAL" />
+    <result column="SERVICE_STATE" property="serviceState" jdbcType="CHAR" />
+    <result column="SERVICE_TYPE" property="serviceType" jdbcType="CHAR" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="VARCHAR" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="ALIAS_ID" property="aliasId" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="ORDER_MODE" property="orderMode" jdbcType="CHAR" />
+    <result column="RSRV_TAG1" property="rsrvTag1" jdbcType="CHAR" />
+    <result column="RSRV_TAG2" property="rsrvTag2" jdbcType="CHAR" />
+    <result column="RSRV_TAG3" property="rsrvTag3" jdbcType="CHAR" />
+    <result column="RSRV_DATE1" property="rsrvDate1" jdbcType="TIMESTAMP" />
+    <result column="RSRV_DATE2" property="rsrvDate2" jdbcType="TIMESTAMP" />
+    <result column="RSRV_DATE3" property="rsrvDate3" jdbcType="TIMESTAMP" />
+    <result column="RSRV_STR1" property="rsrvStr1" jdbcType="VARCHAR" />
+    <result column="RSRV_STR2" property="rsrvStr2" jdbcType="VARCHAR" />
+    <result column="RSRV_STR3" property="rsrvStr3" jdbcType="VARCHAR" />
+    <result column="RSRV_STR4" property="rsrvStr4" jdbcType="VARCHAR" />
+    <result column="RSRV_STR5" property="rsrvStr5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SERVICE_ID, SERVICE_NAME, NET_TYPE_CODE, INTF_MODE, PARENT_TYPE_CODE, SERVICE_MODE, 
+    SERVICE_BRAND_CODE, SERVICE_LEVEL, SERVICE_STATE, SERVICE_TYPE, START_DATE, END_DATE, 
+    REMARK, UPDATE_STAFF_ID, UPDATE_DEPART_ID, UPDATE_TIME, ALIAS_ID, PRICE, ORDER_MODE, 
+    RSRV_TAG1, RSRV_TAG2, RSRV_TAG3, RSRV_DATE1, RSRV_DATE2, RSRV_DATE3, RSRV_STR1, RSRV_STR2, 
+    RSRV_STR3, RSRV_STR4, RSRV_STR5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_b_service
+    where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from td_b_service
+    where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.product.bean.ServiceBean" >
+    insert into td_b_service (SERVICE_ID, SERVICE_NAME, NET_TYPE_CODE, 
+      INTF_MODE, PARENT_TYPE_CODE, SERVICE_MODE, 
+      SERVICE_BRAND_CODE, SERVICE_LEVEL, SERVICE_STATE, 
+      SERVICE_TYPE, START_DATE, END_DATE, 
+      REMARK, UPDATE_STAFF_ID, UPDATE_DEPART_ID, 
+      UPDATE_TIME, ALIAS_ID, PRICE, 
+      ORDER_MODE, RSRV_TAG1, RSRV_TAG2, 
+      RSRV_TAG3, RSRV_DATE1, RSRV_DATE2, 
+      RSRV_DATE3, RSRV_STR1, RSRV_STR2, 
+      RSRV_STR3, RSRV_STR4, RSRV_STR5
+      )
+    values (#{serviceId,jdbcType=DECIMAL}, #{serviceName,jdbcType=VARCHAR}, #{netTypeCode,jdbcType=VARCHAR}, 
+      #{intfMode,jdbcType=CHAR}, #{parentTypeCode,jdbcType=DECIMAL}, #{serviceMode,jdbcType=CHAR}, 
+      #{serviceBrandCode,jdbcType=CHAR}, #{serviceLevel,jdbcType=DECIMAL}, #{serviceState,jdbcType=CHAR}, 
+      #{serviceType,jdbcType=CHAR}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{updateStaffId,jdbcType=VARCHAR}, #{updateDepartId,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{aliasId,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{orderMode,jdbcType=CHAR}, #{rsrvTag1,jdbcType=CHAR}, #{rsrvTag2,jdbcType=CHAR}, 
+      #{rsrvTag3,jdbcType=CHAR}, #{rsrvDate1,jdbcType=TIMESTAMP}, #{rsrvDate2,jdbcType=TIMESTAMP}, 
+      #{rsrvDate3,jdbcType=TIMESTAMP}, #{rsrvStr1,jdbcType=VARCHAR}, #{rsrvStr2,jdbcType=VARCHAR}, 
+      #{rsrvStr3,jdbcType=VARCHAR}, #{rsrvStr4,jdbcType=VARCHAR}, #{rsrvStr5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.product.bean.ServiceBean" >
+    insert into td_b_service
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
+        SERVICE_ID,
+      </if>
+      <if test="serviceName != null" >
+        SERVICE_NAME,
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE,
+      </if>
+      <if test="intfMode != null" >
+        INTF_MODE,
+      </if>
+      <if test="parentTypeCode != null" >
+        PARENT_TYPE_CODE,
+      </if>
+      <if test="serviceMode != null" >
+        SERVICE_MODE,
+      </if>
+      <if test="serviceBrandCode != null" >
+        SERVICE_BRAND_CODE,
+      </if>
+      <if test="serviceLevel != null" >
+        SERVICE_LEVEL,
+      </if>
+      <if test="serviceState != null" >
+        SERVICE_STATE,
+      </if>
+      <if test="serviceType != null" >
+        SERVICE_TYPE,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="aliasId != null" >
+        ALIAS_ID,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="orderMode != null" >
+        ORDER_MODE,
+      </if>
+      <if test="rsrvTag1 != null" >
+        RSRV_TAG1,
+      </if>
+      <if test="rsrvTag2 != null" >
+        RSRV_TAG2,
+      </if>
+      <if test="rsrvTag3 != null" >
+        RSRV_TAG3,
+      </if>
+      <if test="rsrvDate1 != null" >
+        RSRV_DATE1,
+      </if>
+      <if test="rsrvDate2 != null" >
+        RSRV_DATE2,
+      </if>
+      <if test="rsrvDate3 != null" >
+        RSRV_DATE3,
+      </if>
+      <if test="rsrvStr1 != null" >
+        RSRV_STR1,
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2,
+      </if>
+      <if test="rsrvStr3 != null" >
+        RSRV_STR3,
+      </if>
+      <if test="rsrvStr4 != null" >
+        RSRV_STR4,
+      </if>
+      <if test="rsrvStr5 != null" >
+        RSRV_STR5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceName != null" >
+        #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="netTypeCode != null" >
+        #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intfMode != null" >
+        #{intfMode,jdbcType=CHAR},
+      </if>
+      <if test="parentTypeCode != null" >
+        #{parentTypeCode,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceMode != null" >
+        #{serviceMode,jdbcType=CHAR},
+      </if>
+      <if test="serviceBrandCode != null" >
+        #{serviceBrandCode,jdbcType=CHAR},
+      </if>
+      <if test="serviceLevel != null" >
+        #{serviceLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceState != null" >
+        #{serviceState,jdbcType=CHAR},
+      </if>
+      <if test="serviceType != null" >
+        #{serviceType,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aliasId != null" >
+        #{aliasId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderMode != null" >
+        #{orderMode,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag1 != null" >
+        #{rsrvTag1,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag2 != null" >
+        #{rsrvTag2,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag3 != null" >
+        #{rsrvTag3,jdbcType=CHAR},
+      </if>
+      <if test="rsrvDate1 != null" >
+        #{rsrvDate1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate2 != null" >
+        #{rsrvDate2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate3 != null" >
+        #{rsrvDate3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvStr1 != null" >
+        #{rsrvStr1,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr3 != null" >
+        #{rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr4 != null" >
+        #{rsrvStr4,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr5 != null" >
+        #{rsrvStr5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.product.bean.ServiceBean" >
+    update td_b_service
+    <set >
+      <if test="serviceName != null" >
+        SERVICE_NAME = #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intfMode != null" >
+        INTF_MODE = #{intfMode,jdbcType=CHAR},
+      </if>
+      <if test="parentTypeCode != null" >
+        PARENT_TYPE_CODE = #{parentTypeCode,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceMode != null" >
+        SERVICE_MODE = #{serviceMode,jdbcType=CHAR},
+      </if>
+      <if test="serviceBrandCode != null" >
+        SERVICE_BRAND_CODE = #{serviceBrandCode,jdbcType=CHAR},
+      </if>
+      <if test="serviceLevel != null" >
+        SERVICE_LEVEL = #{serviceLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceState != null" >
+        SERVICE_STATE = #{serviceState,jdbcType=CHAR},
+      </if>
+      <if test="serviceType != null" >
+        SERVICE_TYPE = #{serviceType,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aliasId != null" >
+        ALIAS_ID = #{aliasId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="orderMode != null" >
+        ORDER_MODE = #{orderMode,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag1 != null" >
+        RSRV_TAG1 = #{rsrvTag1,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag2 != null" >
+        RSRV_TAG2 = #{rsrvTag2,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag3 != null" >
+        RSRV_TAG3 = #{rsrvTag3,jdbcType=CHAR},
+      </if>
+      <if test="rsrvDate1 != null" >
+        RSRV_DATE1 = #{rsrvDate1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate2 != null" >
+        RSRV_DATE2 = #{rsrvDate2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvDate3 != null" >
+        RSRV_DATE3 = #{rsrvDate3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsrvStr1 != null" >
+        RSRV_STR1 = #{rsrvStr1,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr3 != null" >
+        RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr4 != null" >
+        RSRV_STR4 = #{rsrvStr4,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvStr5 != null" >
+        RSRV_STR5 = #{rsrvStr5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ServiceBean" >
+    update td_b_service
+    set SERVICE_NAME = #{serviceName,jdbcType=VARCHAR},
+      NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      INTF_MODE = #{intfMode,jdbcType=CHAR},
+      PARENT_TYPE_CODE = #{parentTypeCode,jdbcType=DECIMAL},
+      SERVICE_MODE = #{serviceMode,jdbcType=CHAR},
+      SERVICE_BRAND_CODE = #{serviceBrandCode,jdbcType=CHAR},
+      SERVICE_LEVEL = #{serviceLevel,jdbcType=DECIMAL},
+      SERVICE_STATE = #{serviceState,jdbcType=CHAR},
+      SERVICE_TYPE = #{serviceType,jdbcType=CHAR},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      ALIAS_ID = #{aliasId,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      ORDER_MODE = #{orderMode,jdbcType=CHAR},
+      RSRV_TAG1 = #{rsrvTag1,jdbcType=CHAR},
+      RSRV_TAG2 = #{rsrvTag2,jdbcType=CHAR},
+      RSRV_TAG3 = #{rsrvTag3,jdbcType=CHAR},
+      RSRV_DATE1 = #{rsrvDate1,jdbcType=TIMESTAMP},
+      RSRV_DATE2 = #{rsrvDate2,jdbcType=TIMESTAMP},
+      RSRV_DATE3 = #{rsrvDate3,jdbcType=TIMESTAMP},
+      RSRV_STR1 = #{rsrvStr1,jdbcType=VARCHAR},
+      RSRV_STR2 = #{rsrvStr2,jdbcType=VARCHAR},
+      RSRV_STR3 = #{rsrvStr3,jdbcType=VARCHAR},
+      RSRV_STR4 = #{rsrvStr4,jdbcType=VARCHAR},
+      RSRV_STR5 = #{rsrvStr5,jdbcType=VARCHAR}
+    where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}
+  </update>
+</mapper>

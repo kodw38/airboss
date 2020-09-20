@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.res.dao.ResPatternSegmentBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.res.bean.ResPatternSegmentBean" >
+    <id column="PATTERN_SEG_ID" property="patternSegId" jdbcType="BIGINT" />
+    <result column="PATTERN_SEG_NAME" property="patternSegName" jdbcType="VARCHAR" />
+    <result column="NET_ID" property="netId" jdbcType="VARCHAR" />
+    <result column="SEG_EXP" property="segExp" jdbcType="VARCHAR" />
+    <result column="SEG_RPN_EXP" property="segRpnExp" jdbcType="VARCHAR" />
+    <result column="PRIORTY" property="priorty" jdbcType="BIGINT" />
+    <result column="RES_TYPE" property="resType" jdbcType="BIGINT" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="REGION_ID" property="regionId" jdbcType="VARCHAR" />
+    <result column="DONE_CODE" property="doneCode" jdbcType="BIGINT" />
+    <result column="DONE_DATE" property="doneDate" jdbcType="TIMESTAMP" />
+    <result column="EFFECTIVE_DATE" property="effectiveDate" jdbcType="TIMESTAMP" />
+    <result column="EXPIRE_DATE" property="expireDate" jdbcType="TIMESTAMP" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="OP_ID" property="opId" jdbcType="BIGINT" />
+    <result column="ORG_ID" property="orgId" jdbcType="BIGINT" />
+    <result column="IPRICE_MODE" property="ipriceMode" jdbcType="VARCHAR" />
+    <result column="BIT_REL" property="bitRel" jdbcType="VARCHAR" />
+    <result column="BIT_ORDER" property="bitOrder" jdbcType="BIGINT" />
+    <result column="NOTES" property="notes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PATTERN_SEG_ID, PATTERN_SEG_NAME, NET_ID, SEG_EXP, SEG_RPN_EXP, PRIORTY, RES_TYPE, 
+    STATE, REGION_ID, DONE_CODE, DONE_DATE, EFFECTIVE_DATE, EXPIRE_DATE, CREATE_DATE, 
+    OP_ID, ORG_ID, IPRICE_MODE, BIT_REL, BIT_ORDER, NOTES
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from res_pattern_segment
+    where PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT}
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean">
+    select
+    <include refid="Base_Column_List" />
+    from res_pattern_segment
+    where 1=1
+    <if test="patternSegName != null and patternSegName!=''" >
+      and PATTERN_SEG_ID = #{patternSegName}
+    </if>
+    <if test="netId != null and netId!=''" >
+      and NET_ID = #{netId}
+    </if>
+    <if test="segExp != null and segExp!=''" >
+      and SEG_EXP = #{segExp}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from res_pattern_segment
+    where PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean" >
+    insert into res_pattern_segment (PATTERN_SEG_ID, PATTERN_SEG_NAME, NET_ID, 
+      SEG_EXP, SEG_RPN_EXP, PRIORTY, 
+      RES_TYPE, STATE, REGION_ID, 
+      DONE_CODE, DONE_DATE, EFFECTIVE_DATE, 
+      EXPIRE_DATE, CREATE_DATE, OP_ID, 
+      ORG_ID, IPRICE_MODE, BIT_REL, 
+      BIT_ORDER, NOTES)
+    values (#{patternSegId,jdbcType=BIGINT}, #{patternSegName,jdbcType=VARCHAR}, #{netId,jdbcType=VARCHAR}, 
+      #{segExp,jdbcType=VARCHAR}, #{segRpnExp,jdbcType=VARCHAR}, #{priorty,jdbcType=BIGINT}, 
+      #{resType,jdbcType=BIGINT}, #{state,jdbcType=VARCHAR}, #{regionId,jdbcType=VARCHAR}, 
+      #{doneCode,jdbcType=BIGINT}, #{doneDate,jdbcType=TIMESTAMP}, #{effectiveDate,jdbcType=TIMESTAMP}, 
+      #{expireDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, #{opId,jdbcType=BIGINT}, 
+      #{orgId,jdbcType=BIGINT}, #{ipriceMode,jdbcType=VARCHAR}, #{bitRel,jdbcType=VARCHAR}, 
+      #{bitOrder,jdbcType=BIGINT}, #{notes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertList">
+    insert into res_pattern_segment (PATTERN_SEG_NAME, NET_ID,SEG_EXP,STATE,CREATE_DATE) values
+    <foreach item="item" index="index" collection="list" separator=",">
+      (#{item.patternSegName,jdbcType=VARCHAR},#{item.netId,jdbcType=VARCHAR},#{item.segExp,jdbcType=VARCHAR},#{item.state,jdbcType=VARCHAR},sysDate())
+    </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean" >
+    insert into res_pattern_segment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="patternSegId != null" >
+        PATTERN_SEG_ID,
+      </if>
+      <if test="patternSegName != null" >
+        PATTERN_SEG_NAME,
+      </if>
+      <if test="netId != null" >
+        NET_ID,
+      </if>
+      <if test="segExp != null" >
+        SEG_EXP,
+      </if>
+      <if test="segRpnExp != null" >
+        SEG_RPN_EXP,
+      </if>
+      <if test="priorty != null" >
+        PRIORTY,
+      </if>
+      <if test="resType != null" >
+        RES_TYPE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="regionId != null" >
+        REGION_ID,
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE,
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE,
+      </if>
+      <if test="effectiveDate != null" >
+        EFFECTIVE_DATE,
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="ipriceMode != null" >
+        IPRICE_MODE,
+      </if>
+      <if test="bitRel != null" >
+        BIT_REL,
+      </if>
+      <if test="bitOrder != null" >
+        BIT_ORDER,
+      </if>
+      <if test="notes != null" >
+        NOTES,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="patternSegId != null" >
+        #{patternSegId,jdbcType=BIGINT},
+      </if>
+      <if test="patternSegName != null" >
+        #{patternSegName,jdbcType=VARCHAR},
+      </if>
+      <if test="netId != null" >
+        #{netId,jdbcType=VARCHAR},
+      </if>
+      <if test="segExp != null" >
+        #{segExp,jdbcType=VARCHAR},
+      </if>
+      <if test="segRpnExp != null" >
+        #{segRpnExp,jdbcType=VARCHAR},
+      </if>
+      <if test="priorty != null" >
+        #{priorty,jdbcType=BIGINT},
+      </if>
+      <if test="resType != null" >
+        #{resType,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="doneCode != null" >
+        #{doneCode,jdbcType=BIGINT},
+      </if>
+      <if test="doneDate != null" >
+        #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDate != null" >
+        #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="ipriceMode != null" >
+        #{ipriceMode,jdbcType=VARCHAR},
+      </if>
+      <if test="bitRel != null" >
+        #{bitRel,jdbcType=VARCHAR},
+      </if>
+      <if test="bitOrder != null" >
+        #{bitOrder,jdbcType=BIGINT},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean" >
+    update res_pattern_segment
+    <set >
+      <if test="patternSegName != null" >
+        PATTERN_SEG_NAME = #{patternSegName,jdbcType=VARCHAR},
+      </if>
+      <if test="netId != null" >
+        NET_ID = #{netId,jdbcType=VARCHAR},
+      </if>
+      <if test="segExp != null" >
+        SEG_EXP = #{segExp,jdbcType=VARCHAR},
+      </if>
+      <if test="segRpnExp != null" >
+        SEG_RPN_EXP = #{segRpnExp,jdbcType=VARCHAR},
+      </if>
+      <if test="priorty != null" >
+        PRIORTY = #{priorty,jdbcType=BIGINT},
+      </if>
+      <if test="resType != null" >
+        RES_TYPE = #{resType,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="doneCode != null" >
+        DONE_CODE = #{doneCode,jdbcType=BIGINT},
+      </if>
+      <if test="doneDate != null" >
+        DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDate != null" >
+        EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireDate != null" >
+        EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="ipriceMode != null" >
+        IPRICE_MODE = #{ipriceMode,jdbcType=VARCHAR},
+      </if>
+      <if test="bitRel != null" >
+        BIT_REL = #{bitRel,jdbcType=VARCHAR},
+      </if>
+      <if test="bitOrder != null" >
+        BIT_ORDER = #{bitOrder,jdbcType=BIGINT},
+      </if>
+      <if test="notes != null" >
+        NOTES = #{notes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean" >
+    update res_pattern_segment
+    set
+      <if test="patternSegName!=null and patternSegName!=''">
+        PATTERN_SEG_NAME = #{patternSegName,jdbcType=VARCHAR},
+      </if>
+    <if test="netId!=null and netId!=''">
+      NET_ID = #{netId,jdbcType=VARCHAR},
+    </if>
+    <if test="segExp!=null and segExp!=''">
+      SEG_EXP = #{segExp,jdbcType=VARCHAR},
+    </if>
+    <if test="segRpnExp!=null and segRpnExp!=''">
+      SEG_RPN_EXP = #{segRpnExp,jdbcType=VARCHAR},
+    </if>
+    <if test="priorty!=null ">
+      PRIORTY = #{priorty,jdbcType=BIGINT},
+    </if>
+    <if test="resType!=null">
+      RES_TYPE = #{resType,jdbcType=BIGINT},
+    </if>
+    <if test="state!=null and state!=''">
+      STATE = #{state,jdbcType=VARCHAR},
+    </if>
+    <if test="regionId!=null and regionId!=''">
+      REGION_ID = #{regionId,jdbcType=VARCHAR},
+    </if>
+    <if test="doneCode!=null">
+      DONE_CODE = #{doneCode,jdbcType=BIGINT},
+    </if>
+    <if test="doneDate!=null">
+      DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="effectiveDate!=null">
+      EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="expireDate!=null">
+      EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="createDate!=null">
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="opId!=null">
+      OP_ID = #{opId,jdbcType=BIGINT},
+    </if>
+    <if test="orgId!=null">
+      ORG_ID = #{orgId,jdbcType=BIGINT},
+    </if>
+    <if test="ipriceMode!=null and ipriceMode !=''">
+      IPRICE_MODE = #{ipriceMode,jdbcType=VARCHAR},
+    </if>
+    <if test="bitRel!=null and bitRel !=''">
+      BIT_REL = #{bitRel,jdbcType=VARCHAR},
+    </if>
+    <if test="bitOrder!=null">
+      BIT_ORDER = #{bitOrder,jdbcType=BIGINT},
+    </if>
+    <if test="notes!=null and notes!=''">
+      NOTES = #{notes,jdbcType=VARCHAR},
+    </if>
+    REGION_ID=21
+    where PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT}
+  </update>
+</mapper>
