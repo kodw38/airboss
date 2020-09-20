@@ -2,9 +2,6 @@ package com.pl.airboss.app.task;/**
  * Created by admin on 2020/7/14.
  */
 
-import com.pl.airboss.app.bean.UserInfoBean;
-import com.pl.airboss.app.bean.UserOrderBean;
-import com.pl.airboss.app.dao.UserOrderBeanMapper;
 import com.pl.airboss.framework.bean.CfgScheduleTaskBean;
 import com.pl.airboss.framework.task.ITask;
 import com.pl.airboss.framework.task.ITaskAction;
@@ -24,8 +21,27 @@ import java.util.Map;
  **/
 @Component("RefreshUserToRedis")
 public class RefreshUserToRedis implements ITask {
+    @Override
+    public void setBean(CfgScheduleTaskBean bean) {
 
-    @Autowired
+    }
+
+    @Override
+    public CfgScheduleTaskBean getBean() {
+        return null;
+    }
+
+    @Override
+    public void setTaskAction(ITaskAction action) {
+
+    }
+
+    @Override
+    public void run() {
+
+    }
+
+    /*@Autowired
     RedisTemplate orderRedis;
 
     @Autowired
@@ -91,7 +107,7 @@ public class RefreshUserToRedis implements ITask {
     String getKey(String sp,String busi,String billId){
         //return sp+"_"+busi+"_"+billId;
         return billId;
-    }
+    }*/
 
 
 }

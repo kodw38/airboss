@@ -2,8 +2,6 @@ package com.pl.airboss.app.controller;
 
 import com.pl.airboss.app.config.AppConfiguration;
 import com.pl.airboss.app.services.CommonService;
-import com.pl.airboss.app.bean.CfgBlackWhiteBean;
-import com.pl.airboss.app.dao.CfgBlackWhiteBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -40,9 +38,6 @@ public class TestController {
 
     @Autowired
     DataSource dataSource;
-
-    @Autowired
-    CfgBlackWhiteBeanMapper cfgBlackWhiteBeanMapper;
 
 
     @PostConstruct
@@ -119,7 +114,7 @@ public class TestController {
         return "";
     }
 
-    @GetMapping("/blackwhite/add")
+    /*@GetMapping("/blackwhite/add")
     public String addBlackWhite(CfgBlackWhiteBean bean)throws Exception{
         if(null != bean) {
             cfgBlackWhiteBeanMapper.insert(bean);
@@ -131,18 +126,12 @@ public class TestController {
     @GetMapping("/blackwhite/get")
     public CfgBlackWhiteBean getCfgBlackWhiteBean(@PathParam("billId") String billId)throws Exception{
         return cfgBlackWhiteBeanMapper.selectByPrimaryKey(billId);
-    }
+    }*/
 
     @Autowired
     CommonService cs;
 
-    @GetMapping("/api/isSensitive")
-    public boolean isSensitive(@PathParam("words") String words){
-        Long l = System.currentTimeMillis();
-        boolean b=  cs.containsSensitiveWords(words);
-        System.out.println(System.currentTimeMillis()-l);
-        return b;
-    }
+
 
     @GetMapping("/api/static")
     public List<Map> getStaticList(@PathParam("codeType") String codeType){

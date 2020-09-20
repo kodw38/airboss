@@ -2,7 +2,6 @@ package com.pl.airboss.app.services;/**
  * Created by admin on 2020/4/26.
  */
 
-import com.pl.airboss.app.cache.CacheSensitiveWords;
 import com.pl.airboss.web.cache.CacheStaticData;
 import com.pl.airboss.framework.cache.impl.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +30,9 @@ public class CommonService {
      *@return
      *@Version 1.0
      */
-    public boolean containsSensitiveWords(String txt){
+    /*public boolean containsSensitiveWords(String txt){
         return cacheManager.containsPartOfListCacheValue(CacheSensitiveWords.class.getName(),txt);
-    }
+    }*/
 
     /**
      *@Description 根据codeType获取静态数据列表

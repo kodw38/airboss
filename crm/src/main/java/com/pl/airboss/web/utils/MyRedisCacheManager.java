@@ -2,7 +2,6 @@ package com.pl.airboss.web.utils;/**
  * Created by admin on 2020/6/5.
  */
 
-import com.pl.airboss.app.bean.UserInfoBean;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
@@ -95,14 +94,14 @@ public class MyRedisCacheManager implements CacheManager {
         protected Object hashKey(K key) {
             //此处很重要,如果key是登录凭证,那么这是访问用户的授权缓存;将登录凭证转为user对象,
             //返回user的name属性做为hash key,否则会以user对象做为hash key,这样就不好清除指定用户的缓存了
-            if(key instanceof PrincipalCollection) {
+            /*if(key instanceof PrincipalCollection) {
                 PrincipalCollection pc=(PrincipalCollection) key;
                 UserInfoBean user =(UserInfoBean)pc.getPrimaryPrincipal();
                 return user.getUserName();
             }else if (key instanceof UserInfoBean) {
                 UserInfoBean user =(UserInfoBean) key;
                 return user.getUserName();
-            }
+            }*/
             return key;
         }
     }
