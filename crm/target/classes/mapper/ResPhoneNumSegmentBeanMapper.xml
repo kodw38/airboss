@@ -22,6 +22,7 @@
     from res_phone_num_segment
     where REC_ID = #{recId,jdbcType=INTEGER}
   </select>
+
   <select id="selectList" parameterType="com.pl.airboss.app.bean.ResPhoneNumSegmentBean" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List"/>

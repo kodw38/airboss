@@ -17,24 +17,42 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.pl.airboss.crm.res.bean" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
+        <javaModelGenerator targetPackage="com.pl.airboss.crm.product.bean" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="mapper" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java/com/pl/airboss/crm/res/dao">
+        <sqlMapGenerator targetPackage="mapper" targetProject="C:/work/code/GitHub/airboss/crm/src/main/resource/mapper/crm/product">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.pl.airboss.crm.res.dao" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.pl.airboss.crm.product.dao" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
+<!--
         <table schema="airboss" catalog="" tableName="res_selprice_mode" domainObjectName="ResSelpriceModeBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table schema="airboss" catalog="" tableName="res_pattern_define" domainObjectName="ResPatternDefineBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table schema="airboss" catalog="" tableName="res_pattern_segment" domainObjectName="ResPatternSegmentBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table schema="airboss" catalog="" tableName="res_phone_num_origin" domainObjectName="ResPhoneNumOriginBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+-->
+<!--
+        <table schema="airboss" catalog="" tableName="td_b_product_category" domainObjectName="ProductCategoryBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_product_category_rel" domainObjectName="ProductCategroyRelBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_product" domainObjectName="ProductBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_productcomp" domainObjectName="ProductCompBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_service_bundle" domainObjectName="ServiceBundleBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_service_bundlecomp" domainObjectName="ServiceBundleCompBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_service" domainObjectName="ServiceBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_service_param" domainObjectName="ServiceParamBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_service_param_op_adr" domainObjectName="ServiceParamOpAdrBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_feepolicy_default" domainObjectName="FeePolicyBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_feepolicy_bundle" domainObjectName="FeePolicyBundleBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="td_b_product_param" domainObjectName="ProductParamBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+-->
+
+        <table schema="airboss" catalog="" tableName="td_b_product_param" domainObjectName="ProductParamBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
     </context>
 </generatorConfiguration>
