@@ -1,467 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c4d7b96-7488-4dad-b2c4-6fe206bc3150" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/bean/ProductInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/service/impl/OfferSVImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/service/interfaces/IOfferSV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_101tec_zkclient_0_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_22.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_68.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_csv_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_paranamer_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_scala_2_12_2_10_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_luben_zstd_jni_1_4_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_oshi_oshi_core_3_9_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_penggle_kaptcha_2_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_spotbugs_spotbugs_annotations_3_1_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_theborakompanioni_thymeleaf_extras_shiro_2_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_google_collections_google_collect_snapshot_20080530.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jhlabs_filters_2_0_235_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_thoughtworks_paranamer_paranamer_2_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_typesafe_scala_logging_scala_logging_2_12_3_9_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_yammer_metrics_metrics_core_2_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_api_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__eu_bitwalker_UserAgentUtils_1_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_lettuce_lettuce_core_5_2_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_45_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_45_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_45_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_45_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_45_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_45_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_3_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_test_3_3_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_4_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_platform_4_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_6_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_5_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_connect_api_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_connect_json_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_2_12_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_2_12_test_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_clients_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_clients_test_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_streams_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_streams_test_utils_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_12_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_jul_2_12_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_3_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_compat_3_0_alpha_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_3_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_3_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_3_0_alpha_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_builder_3_0_alpha_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_provider_api_1_0_beta_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_ehcache_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xbean_xbean_reflect_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_yetus_audience_annotations_0_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_4_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_classworlds_2_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_component_annotations_1_5_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_container_default_1_0_beta_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_interpolation_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_1_5_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_wstx_asl_3_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_lz4_lz4_java_1_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_maven_plugin_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_2_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_2_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_2_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_rocksdb_rocksdbjni_5_18_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_12_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_reflect_2_12_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_sisu_sisu_guava_0_9_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_sisu_sisu_guice_no_aop_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_sisu_sisu_inject_bean_2_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_sisu_sisu_inject_plexus_2_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_spice_model_builder_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_configuration_processor_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_log4j2_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_2_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_2_2_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_2_2_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_kafka_spring_kafka_2_3_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_kafka_spring_kafka_test_2_3_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_retry_spring_retry_1_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_bootstrap_4_4_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_jquery_3_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_popper_js_1_14_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_1_7_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/airboss.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/AirBossApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/AirBossApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgBlackWhiteBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgBlackWhiteBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgMSTTBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgMSTTBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgResPriceBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgResPriceBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgSensitiveBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/CfgSensitiveBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/MSTTBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/MSTTBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/ResPhoneNumSegmentBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/ResPhoneNumSegmentBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/SPBillAcctBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/SPBillAcctBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserBillAcct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserBillAcct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserBillAcctBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserBillAcctBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserInfoBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserInfoBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserOrderBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/bean/UserOrderBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheBlackWhiteList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheBlackWhiteList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheMSTT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheMSTT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheResPrice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheResPrice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheSensitiveWords.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/cache/CacheSensitiveWords.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/config/AppConfiguration$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/config/AppConfiguration$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/config/AppConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/config/AppConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/BlackWhiteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/BlackWhiteController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/CfgMsttController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/CfgMsttController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/HtmlController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/HtmlController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/KafkaConsumerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/KafkaConsumerListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/MsttController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/MsttController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/ResPriceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/ResPriceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/SPController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/SPController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/SegmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/SegmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/SensitiveController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/SensitiveController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgBlackWhiteBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgBlackWhiteBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgMSTTBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgMSTTBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgResPriceBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgResPriceBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgSensitiveBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/CfgSensitiveBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/MSTTBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/MSTTBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/ResPhoneNumSegmentBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/ResPhoneNumSegmentBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/SPBillAcctBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/SPBillAcctBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/UserBillAcctBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/UserBillAcctBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/UserInfoBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/UserInfoBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/UserOrderBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/dao/UserOrderBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/services/CommonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/services/CommonService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/task/RefreshUserToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/task/RefreshUserToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/utils/StringUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/app/utils/StringUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/annotation/Excel$ColumnType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/annotation/Excel$ColumnType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/annotation/Excel$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/annotation/Excel$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/DataScopeAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/DataScopeAspect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/DataSourceAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/DataSourceAspect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/LogAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/LogAspect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/ScheduleLogAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/aspectj/ScheduleLogAspect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BaseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BaseException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BusinessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BusinessException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BusinessStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BusinessStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BusinessType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/BusinessType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/CfgScheduleTaskBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/CfgScheduleTaskBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/CfgServerListBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/CfgServerListBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/OperatorType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/OperatorType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/ScheduleTaskLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/bean/ScheduleTaskLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/cache/impl/CacheManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/cache/impl/CacheManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/DruidConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/DruidConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/DruidConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/DruidConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/DruidProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/DruidProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/Global.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/Global.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/MyBatisConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/config/MyBatisConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/dao/CfgScheduleTaskBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/dao/CfgScheduleTaskBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/dao/CfgServerListBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/dao/CfgServerListBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileNameLengthLimitExceededException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileNameLengthLimitExceededException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileSizeLimitExceededException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileSizeLimitExceededException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileUploadUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileUploadUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/FileUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException$InvalidFlashExtensionException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException$InvalidFlashExtensionException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException$InvalidImageExtensionException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException$InvalidImageExtensionException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException$InvalidMediaExtensionException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException$InvalidMediaExtensionException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/InvalidExtensionException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/MimeTypeUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/file/MimeTypeUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/interceptor/RepeatSubmitInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/interceptor/RepeatSubmitInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/interceptor/impl/SameUrlDataInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/interceptor/impl/SameUrlDataInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/mybatisplugin/ITableSplitStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/mybatisplugin/ITableSplitStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/mybatisplugin/SplitTablePlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/mybatisplugin/SplitTablePlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/mybatisplugin/YYYYMMTableSplitStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/mybatisplugin/YYYYMMTableSplitStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/task/DynamicSchedule.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/task/DynamicSchedule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/task/ITask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/task/ITask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/task/ITaskAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/task/ITaskAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/AsyncManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/AsyncManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/DataSourceType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/DataSourceType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/DynamicDataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/DynamicDataSource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/DynamicDataSourceContextHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/framework/utils/DynamicDataSourceContextHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/AddressUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/AddressUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/BeanUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/BeanUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/CharsetKit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/CharsetKit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/Convert.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/Convert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/DateUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/DateUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/HttpUtils$TrustAnyHostnameVerifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/HttpUtils$TrustAnyHostnameVerifier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/HttpUtils$TrustAnyTrustManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/HttpUtils$TrustAnyTrustManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/HttpUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/HttpUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/IpUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/IpUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$EndArrayCallback.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$EndArrayCallback.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$JSONArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject$JSONArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/JSONObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/LogUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/LogUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/Md5Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/Md5Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/MessageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/MessageUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/ReflectUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/ReflectUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/ServletUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/ServletUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/SpringUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/SpringUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/SqlUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/SqlUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/StrFormatter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/StrFormatter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/StringUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/StringUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/ThreadPoolConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/ThreadPoolConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/Threads.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/utils/Threads.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/OnlineSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/OnlineSession.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/OnlineStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/OnlineStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecFunctionBeanExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginLogBeanExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecLoginOnlineBeanExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOpLogBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOpLogBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOperatorBeanExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOrganizeBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecOrganizeBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecRoleBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecRoleBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecRoleFunsBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecRoleFunsBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecRoleOPBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SecRoleOPBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SysConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SysConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SysDictData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SysDictData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SysDictType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/SysDictType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserPasswordRetryLimitCountException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserPasswordRetryLimitCountException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserPasswordRetryLimitExceedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserPasswordRetryLimitExceedException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/bean/UserStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/cache/CacheCfgSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/cache/CacheCfgSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/cache/CacheStaticData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/cache/CacheStaticData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/config/ResourcesConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/config/ResourcesConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/config/ServerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/config/ServerConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/config/ShiroConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/BaseController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/BaseController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/BaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/ScheduleTaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/ScheduleTaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/ScheduleTaskLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/ScheduleTaskLogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/ServerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/ServerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/SysLoginLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/SysLoginLogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/SysOperlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/SysOperlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/SysUserOnlineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/monitor/SysUserOnlineController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/CommonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/CommonController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysCaptchaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysCaptchaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysConfigController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysDeptController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysDeptController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysDictDataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysDictDataController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysDictTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysDictTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysIndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysIndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysLoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysOperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysOperatorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysRoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/controller/system/SysRoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/OnlineSessionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/OnlineSessionDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/ScheduleTaskLogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/ScheduleTaskLogMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecFunctionBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecFunctionBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecLoginLogBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecLoginLogBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecLoginOnlineBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecLoginOnlineBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecOpLogBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecOpLogBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecOperatorBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecOperatorBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecOrganizeBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecOrganizeBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecRoleBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecRoleBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecRoleFunsBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecRoleFunsBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecRoleOPBeanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SecRoleOPBeanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SysConfigMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SysConfigMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SysDictDataMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SysDictDataMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SysDictTypeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/dao/SysDictTypeMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/CaptchaValidateFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/CaptchaValidateFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/KickoutSessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/KickoutSessionFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/LogoutFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/LogoutFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/OnlineSessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/OnlineSessionFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/SyncOnlineSessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/filter/SyncOnlineSessionFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ConfigService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/IScheduleTaskLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/IScheduleTaskLogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysConfigService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysDeptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysDeptService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysDictDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysDictDataService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysDictTypeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysDictTypeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysLoginLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysLoginLogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysOperLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysOperLogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/ISysService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/OnlineWebSessionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/OnlineWebSessionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/PermissionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/PermissionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysLoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysLoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysPasswordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysPasswordService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysRegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysRegisterService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysShiroService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/SysShiroService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/UserRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/UserRealm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Cpu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Cpu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Jvm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Jvm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Mem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Mem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/ScheduleTaskLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/ScheduleTaskLogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Sys.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/Sys.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysConfigServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysDeptServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysDeptServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysDictDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysDictDataServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysDictTypeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysDictTypeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysLoginLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysLoginLogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysOperLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysOperLogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/service/impl/SysServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AjaxResult$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AjaxResult$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AjaxResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AjaxResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/Arith.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/Arith.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/AsyncFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/BaseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/ExcelUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/ExcelUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/FastDFSClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/FastDFSClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/FastDFSFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/FastDFSFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/MyRedisCacheManager$ShiroRedisCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/MyRedisCacheManager$ShiroRedisCache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/MyRedisCacheManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/MyRedisCacheManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/OnlineSessionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/OnlineSessionFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/PageDomain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/PageDomain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/PermissionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/PermissionUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/ShiroUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/ShiroUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/SpringSessionValidationScheduler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/SpringSessionValidationScheduler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/SpringSessionValidationScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/SpringSessionValidationScheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/TableDataInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/TableDataInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/TreeEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/TreeEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/Ztree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pl/airboss/web/utils/Ztree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ResPhoneNumSegmentBeanMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ResPhoneNumSegmentBeanMapper.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8c4d7b96-7488-4dad-b2c4-6fe206bc3150" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -474,10 +14,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/service/impl/OfferSVImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
+            <state relative-caret-position="42">
+              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#4509#4510#0" expanded="true" />
                 <element signature="e#4572#4573#0" expanded="true" />
                 <element signature="e#4633#4634#0" expanded="true" />
@@ -497,24 +36,6 @@
                 <element signature="e#5358#5359#0" expanded="true" />
                 <element signature="e#5385#5386#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/bean/ServiceBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="39" selection-start-column="8" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/dao/ProductBeanMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -636,7 +157,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -732,15 +253,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="airboss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -760,45 +272,6 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="airboss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="airboss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="airboss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="airboss" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="airboss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="airboss" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="airboss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="airboss" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -812,7 +285,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600329614900" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600584140804" />
     <property name="last_opened_file_path" value="D:/work/MyWebServer/doc/glassfish-master/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -969,7 +442,7 @@
       <workItem from="1600313486177" duration="10627000" />
       <workItem from="1600389569333" duration="1199000" />
       <workItem from="1600507989719" duration="667000" />
-      <workItem from="1600583128553" duration="252000" />
+      <workItem from="1600583128553" duration="897000" />
     </task>
     <servers />
   </component>
@@ -1006,12 +479,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82668000" />
+    <option name="totallyTimeSpent" value="83313000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33888048" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30332828" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1440,10 +914,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/resource/mapper/crm/product/mapper/ProductBeanMapper.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/product/service/impl/OfferSVImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
+        <state relative-caret-position="42">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4509#4510#0" expanded="true" />
             <element signature="e#4572#4573#0" expanded="true" />
             <element signature="e#4633#4634#0" expanded="true" />
