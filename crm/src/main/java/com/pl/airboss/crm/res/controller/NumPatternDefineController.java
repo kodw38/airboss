@@ -34,10 +34,10 @@ public class NumPatternDefineController {
 
 
     @RequiresPermissions("res:numPattern:view")
-    @GetMapping("/numPattern")
+    @GetMapping("/resPhonePattern")
     public String numPattern()
     {
-        return prefix + "/numPattern";
+        return prefix + "/resPhonePattern";
     }
 
     @RequiresPermissions("res:numPattern:view")

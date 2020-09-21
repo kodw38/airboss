@@ -20,7 +20,7 @@ import static com.pl.airboss.web.utils.AjaxResult.error;
 import static com.pl.airboss.web.utils.AjaxResult.success;
 
 @Controller
-@RequestMapping("/crm/res/seg")
+@RequestMapping("/crm/res")
 public class SegPatternController {
     private String prefix = "crm/res";
 
@@ -34,10 +34,10 @@ public class SegPatternController {
 
 
     @RequiresPermissions("res:segPattern:view")
-    @GetMapping("/segPattern")
+    @GetMapping("/resPhoneSegment")
     public String segPattern()
     {
-        return prefix + "/segPattern";
+        return prefix + "/resPhoneSegment";
     }
 
     @RequiresPermissions("res:segPattern:view")

@@ -21,7 +21,7 @@ import java.util.List;
 import static com.pl.airboss.web.utils.AjaxResult.error;
 import static com.pl.airboss.web.utils.AjaxResult.success;
 
-@RequestMapping("/crm/res/numphone")
+@RequestMapping("/crm/res")
 @Controller
 public class NumPhoneController extends BaseController {
 
@@ -37,10 +37,10 @@ public class NumPhoneController extends BaseController {
 
 
     @RequiresPermissions("res:numPhone:view")
-    @GetMapping("/numPhone")
+    @GetMapping("/resPhoneNumber")
     public String numPattern()
     {
-        return prefix + "/numPhone";
+        return prefix + "/resPhoneNumber";
     }
 
     @RequiresPermissions("res:numPhone:view")
