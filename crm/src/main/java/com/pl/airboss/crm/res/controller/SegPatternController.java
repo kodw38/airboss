@@ -41,7 +41,7 @@ public class SegPatternController {
     }
 
     @RequiresPermissions("res:segPattern:view")
-    @PostMapping("/list")
+    @PostMapping("/listPhoneSegment")
     @ResponseBody
     public List<ResPatternSegmentBean> list(ResPatternSegmentBean bean){
         return resPhoneNumSV.querySegmentList(bean);

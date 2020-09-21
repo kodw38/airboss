@@ -41,7 +41,7 @@ public class NumPatternDefineController {
     }
 
     @RequiresPermissions("res:numPattern:view")
-    @PostMapping("/list")
+    @PostMapping("/listPhonePattern")
     @ResponseBody
     public List<ResPatternDefineBean> list(ResPatternDefineBean bean){
         return resPhoneNumSV.queryNumPatternDefineList(bean);

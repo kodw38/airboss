@@ -44,7 +44,7 @@ public class NumPhoneController extends BaseController {
     }
 
     @RequiresPermissions("res:numPhone:view")
-    @PostMapping("/list")
+    @PostMapping("/listPhoneNumber")
     @ResponseBody
     public TableDataInfo list(ResPhoneNumOriginBean bean){
         startPage();
