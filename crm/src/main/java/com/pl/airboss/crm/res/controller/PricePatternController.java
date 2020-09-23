@@ -2,7 +2,6 @@ package com.pl.airboss.crm.res.controller;/**
  * Created by admin on 2020/9/9.
  */
 
-import com.pl.airboss.app.bean.MSTTBean;
 import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
 import com.pl.airboss.crm.res.bean.ResSelpriceModeBean;
 import com.pl.airboss.crm.res.bean.ResSelpriceModeBeanKey;
@@ -32,7 +31,7 @@ import static com.pl.airboss.web.utils.AjaxResult.success;
  * @Version 1.0
  **/
 @Controller
-@RequestMapping("/crm/res/price")
+@RequestMapping("/crm/res")
 public class PricePatternController {
     private String prefix = "crm/res";
 
@@ -50,14 +49,6 @@ public class PricePatternController {
     public String pricePattern()
     {
         return prefix + "/pricePattern";
-    }
-
-    @RequiresPermissions("res:pricePattern:update")
-    @GetMapping("/pricePattern/{recId}")
-    public String replyedit(@PathVariable("recId") Integer recId, ModelMap mmap){
-        //MSTTBean bean = msttBeanMapper.selectByPrimaryKey(recId);
-        //mmap.put("bean", bean);
-        return prefix+"/pricePattern";
     }
 
 
