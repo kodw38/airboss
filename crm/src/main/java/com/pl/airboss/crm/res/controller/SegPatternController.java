@@ -6,6 +6,7 @@ import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
 import com.pl.airboss.web.utils.AjaxResult;
 import com.pl.airboss.web.utils.ShiroUtils;
+import com.pl.airboss.web.utils.TableDataInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,8 +44,9 @@ public class SegPatternController {
     @RequiresPermissions("res:segPattern:view")
     @PostMapping("/listPhoneSegment")
     @ResponseBody
-    public List<ResPatternSegmentBean> list(ResPatternSegmentBean bean){
-        return resPhoneNumSV.querySegmentList(bean);
+    public TableDataInfo list(ResPatternSegmentBean bean){
+        List<ResPatternSegmentBean> ls = resPhoneNumSV.querySegmentList(bean);
+        return new TableDataInfo(ls,ls.size());
     }
 
     /**

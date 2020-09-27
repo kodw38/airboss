@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8c4d7b96-7488-4dad-b2c4-6fe206bc3150" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/PricePatternController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/PricePatternController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/SegPatternController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/SegPatternController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,28 +14,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/SegPatternController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="104" column="62" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="62" />
+            <state relative-caret-position="225">
+              <caret line="48" column="45" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
               <folding>
                 <element signature="e#1056#1057#0" expanded="true" />
                 <element signature="e#1109#1110#0" expanded="true" />
-                <element signature="e#1460#1461#0" expanded="true" />
-                <element signature="e#1519#1520#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPhoneController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/web/controller/system/SysDeptController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+            <state relative-caret-position="-1286">
+              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1099#1100#0" expanded="true" />
+                <element signature="e#1138#1139#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPatternDefineController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
+            <state relative-caret-position="1092">
               <caret line="104" column="21" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -53,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/PricePatternController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="107" column="42" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="42" />
+            <state relative-caret-position="169">
+              <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resource/templates/system/dept/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="100" column="44" lean-forward="true" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+            <state relative-caret-position="1400">
+              <caret line="100" column="44" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -119,9 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exp</find>
-      <find>appendList</find>
-      <find>prerag</find>
       <find>matchRegexpWithoutStateGEND</find>
       <find>ex</find>
       <find>prerepeat.charAt(0)</find>
@@ -149,6 +145,9 @@
       <find>batch</find>
       <find>updateService</find>
       <find>serviceBundleCompBeanMapper</find>
+      <find>listphoneseg</find>
+      <find>listphone</find>
+      <find>TableDataInfo</find>
     </findStrings>
     <dirStrings>
       <dir>C:\work\code\GitHub\airboss\crm\src\main\java\com\pl\airboss</dir>
@@ -156,6 +155,8 @@
       <dir>C:\work\code\GitHub\airboss\crm\src\main\java\com\pl\airboss\web\bean</dir>
       <dir>C:\work\code\GitHub\airboss\crm\src\main\java\com\pl\airboss\crm\res</dir>
       <dir>C:\work\code\GitHub\airboss\crm\src\main\resource\mapper</dir>
+      <dir>C:\work\code\GitHub\airboss\crm\src\main\java\com\pl\airboss\web\controller\system</dir>
+      <dir>C:\work\code\GitHub\airboss\crm</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/main/resource/mapper/crm/res/ResPatternSegmentBeanMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/bean/ResPatternDefineBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/bean/ResConst.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/SegPatternController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/web/cache/CacheResPatternDefine.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPatternDefineController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/dao/ResPhoneNumOriginBeanMapper.java" />
@@ -202,6 +202,7 @@
         <option value="$PROJECT_DIR$/src/main/resource/mapper/crm/product/mapper/ProductBeanMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/web/controller/system/SysDeptController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/PricePatternController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/SegPatternController.java" />
       </list>
     </option>
   </component>
@@ -213,7 +214,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -375,7 +376,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600584140804" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601166831900" />
     <property name="last_opened_file_path" value="D:/work/MyWebServer/doc/glassfish-master/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -534,7 +535,8 @@
       <workItem from="1600507989719" duration="667000" />
       <workItem from="1600583128553" duration="897000" />
       <workItem from="1600835224802" duration="1205000" />
-      <workItem from="1600849701509" duration="2063000" />
+      <workItem from="1600849701509" duration="2774000" />
+      <workItem from="1601165523698" duration="772000" />
     </task>
     <servers />
   </component>
@@ -571,13 +573,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86599000" />
+    <option name="totallyTimeSpent" value="88082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23298033" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23676248" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -587,7 +589,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.17184943" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.17184943" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31751227" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -659,13 +661,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/app/AirBossApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/web/bean/SysConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -957,17 +952,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resource/ehcache.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/web/controller/system/SysDeptController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
-          <folding>
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/web/service/ISysDeptService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1134">
@@ -982,6 +966,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPhoneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPatternDefineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="104" column="21" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resource/templates/system/dept/dept.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -991,6 +995,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resource/templates/system/dept/add.html">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resource/templates/system/dept/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="100" column="44" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resource/fdfs_client.conf">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1005,52 +1016,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resource/templates/system/dept/edit.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/PricePatternController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="100" column="44" lean-forward="true" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+        <state relative-caret-position="169">
+          <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPhoneController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/web/controller/system/SysCaptchaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+        <state relative-caret-position="-432">
+          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/web/controller/system/SysDeptController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1286">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
+            <element signature="e#1138#1139#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/SegPatternController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="104" column="62" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="62" />
+        <state relative-caret-position="225">
+          <caret line="48" column="45" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
           <folding>
             <element signature="e#1056#1057#0" expanded="true" />
             <element signature="e#1109#1110#0" expanded="true" />
-            <element signature="e#1460#1461#0" expanded="true" />
-            <element signature="e#1519#1520#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/NumPatternDefineController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="104" column="21" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pl/airboss/crm/res/controller/PricePatternController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="107" column="42" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
