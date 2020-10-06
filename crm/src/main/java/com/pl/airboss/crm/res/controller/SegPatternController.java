@@ -4,7 +4,10 @@ import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
+import com.pl.airboss.utils.StringUtils;
+import com.pl.airboss.web.controller.BaseController;
 import com.pl.airboss.web.utils.AjaxResult;
+import com.pl.airboss.web.utils.ExcelUtil;
 import com.pl.airboss.web.utils.ShiroUtils;
 import com.pl.airboss.web.utils.TableDataInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -13,16 +16,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import static com.pl.airboss.web.utils.AjaxResult.error;
 import static com.pl.airboss.web.utils.AjaxResult.success;
 
 @Controller
 @RequestMapping("/crm/res")
-public class SegPatternController {
+public class SegPatternController extends BaseController {
     private String prefix = "crm/res";
 
     @Autowired
@@ -45,6 +53,7 @@ public class SegPatternController {
     @PostMapping("/listPhoneSegment")
     @ResponseBody
     public TableDataInfo list(ResPatternSegmentBean bean){
+        startPage();
         List<ResPatternSegmentBean> ls = resPhoneNumSV.querySegmentList(bean);
         return new TableDataInfo(ls,ls.size());
     }
@@ -112,6 +121,63 @@ public class SegPatternController {
             return error("模式删除失败,不能被删除");
         }else{
             return success();
+        }
+
+    }
+
+    @RequiresPermissions("res:segment:view")
+    @GetMapping("/getPhoneSegmentTemplate")
+    public String linkSegmentTemplate(){
+        return prefix+"NumSegment.xlsx";
+    }
+
+    static SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+    public AjaxResult importData(@RequestParam("segmentFile") MultipartFile file){
+        try {
+            InputStream inputStream = file.getInputStream();
+            List<Map> numSegment = ExcelUtil.readFromSecondRow("NumSegment", inputStream);
+            if(null != numSegment) {
+                List<ResPatternSegmentBean> list =new ArrayList<>();
+                for(Map m:numSegment) {
+                    ResPatternSegmentBean  b = new ResPatternSegmentBean();
+                    if(StringUtils.isNotEmpty((String)m.get("归属网元")))
+                    b.setNetId((String)m.get("归属网元"));
+                    b.setState("1");
+                    if(StringUtils.isNotEmpty((String)m.get("号段名称")))
+                    b.setPatternSegName((String)m.get("号段名称"));
+                    if(StringUtils.isNotEmpty((String)m.get("号段表达式")))
+                    b.setSegExp((String)m.get("号段表达式"));
+                    b.setCreateDate(new Date());
+                    if(StringUtils.isNotEmpty((String)m.get("生效时间")))
+                    b.setEffectiveDate(sf.parse((String)m.get("生效时间")));
+                    if(StringUtils.isNotEmpty((String)m.get("失效时间")))
+                    b.setExpireDate(sf.parse((String)m.get("失效时间")));
+                    b.setResType(1L);
+                    list.add(b);
+                }
+                resPhoneNumSV.importSegmentList(list);
+                return success();
+            }
+            return error();
+        }catch (Exception e){
+            return error("导入号段失败");
+        }
+    }
+
+    @Log(title = "生成号码", businessType = BusinessType.GRANT)
+    @RequiresPermissions("res:segPattern:num_generate")
+    @GetMapping("/generateNumBySegPattern/{recId}")
+    @ResponseBody
+    public AjaxResult generate(@PathVariable("recId") Long recId)
+    {
+        try{
+            boolean b = resPhoneNumSV.generatorNumBySegment(recId);
+            if(b)
+            return success();
+            else
+                return error();
+        }catch (Exception e){
+            return error(e.getMessage());
         }
 
     }

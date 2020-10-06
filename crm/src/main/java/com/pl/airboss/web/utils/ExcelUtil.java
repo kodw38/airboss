@@ -107,6 +107,48 @@ public class ExcelUtil<T>
         return importExcel(StringUtils.EMPTY, is);
     }
 
+    public static List<Map> readFromSecondRow(String sheetName,InputStream is)throws Exception{
+       Workbook b=  WorkbookFactory.create(is);
+        Sheet sheet=null;
+       if(StringUtils.isNotEmpty(sheetName))
+           sheet  = b.getSheet(sheetName);
+       else
+           sheet = b.getSheetAt(0);
+        int rows = sheet.getPhysicalNumberOfRows();
+        if(rows>0){
+            List<Map> result = new LinkedList<>();
+            //表头
+            Map cellMap = new HashMap();
+            Row heard = sheet.getRow(0);
+            for (int i = 0; i < heard.getPhysicalNumberOfCells(); i++){
+                Cell cell = heard.getCell(i);
+                if (StringUtils.isNotNull(cell != null))
+                {
+                    String value = getCellValue(heard, i).toString();
+                    cellMap.put(i,value);
+                }
+            }
+            for(int i=1;i<rows;i++){
+                Row data = sheet.getRow(i);
+                Map r = new HashMap();
+                for (int j = 0; j < data.getPhysicalNumberOfCells(); j++){
+                    Cell cell = data.getCell(j);
+                    if (StringUtils.isNotNull(cell != null))
+                    {
+                        String value = getCellValue(heard, i).toString();
+                        r.put(cellMap.get(i),value);
+                    }
+                }
+                if(r.size()>0){
+                    result.add(r);
+                }
+            }
+            return result;
+
+        }
+        return null;
+    }
+
     /**
      * 对excel表单指定表格索引名转换成list
      * 
@@ -798,7 +840,7 @@ public class ExcelUtil<T>
      * @param column 获取单元格列号
      * @return 单元格值
      */
-    public Object getCellValue(Row row, int column)
+    public static Object getCellValue(Row row, int column)
     {
         if (row == null)
         {

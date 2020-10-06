@@ -81,9 +81,9 @@ public class NumPhoneController extends BaseController {
      */
     @Log(title = "号码预占", businessType = BusinessType.UPDATE)
     @RequiresPermissions("res:numPhone:occupy")
-    @PostMapping("/occupyNumPhone")
+    @PostMapping("/occupyNumPhone/{phoneNum}")
     @ResponseBody
-    public AjaxResult numPhoneOccupy(String phoneNum)
+    public AjaxResult numPhoneOccupy(@PathVariable("phoneNum") String phoneNum)
     {
 
         try {
@@ -98,9 +98,9 @@ public class NumPhoneController extends BaseController {
      */
     @Log(title = "号码预占释放", businessType = BusinessType.UPDATE)
     @RequiresPermissions("res:numPhone:release")
-    @PostMapping("/releaseNumPhone")
+    @PostMapping("/releaseNumPhone/{phoneNum}")
     @ResponseBody
-    public AjaxResult numPhoneRelease(String phoneNum)
+    public AjaxResult numPhoneRelease(@PathVariable("phoneNum") String phoneNum)
     {
         try {
             return toAjax(resPhoneNumSV.releasePhoneNum(phoneNum));

@@ -1,11 +1,15 @@
 package com.pl.airboss.crm.res.controller;
 
 import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
+import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
+import com.pl.airboss.web.controller.BaseController;
 import com.pl.airboss.web.utils.AjaxResult;
+import com.pl.airboss.web.utils.ExcelUtil;
 import com.pl.airboss.web.utils.ShiroUtils;
+import com.pl.airboss.web.utils.TableDataInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +25,7 @@ import static com.pl.airboss.web.utils.AjaxResult.success;
 
 @Controller
 @RequestMapping("/crm/res")
-public class NumPatternDefineController {
+public class NumPatternDefineController extends BaseController {
     private String prefix = "crm/res";
 
     @Autowired
@@ -43,8 +47,10 @@ public class NumPatternDefineController {
     @RequiresPermissions("res:numPattern:view")
     @PostMapping("/listPhonePattern")
     @ResponseBody
-    public List<ResPatternDefineBean> list(ResPatternDefineBean bean){
-        return resPhoneNumSV.queryNumPatternDefineList(bean);
+    public TableDataInfo list(ResPatternDefineBean bean){
+        startPage();
+        List<ResPatternDefineBean> ls =  resPhoneNumSV.queryNumPatternDefineList(bean);
+        return new TableDataInfo(ls,ls.size());
     }
 
     /**
@@ -112,5 +118,21 @@ public class NumPatternDefineController {
             return success();
         }
 
+    }
+
+    /**
+     * 导出
+     */
+    @Log(title = "导出号码模式", businessType = BusinessType.DELETE)
+    @RequiresPermissions("res:numPattern:export")
+    @GetMapping("/exportNumPattern")
+    @ResponseBody
+    public AjaxResult export(){
+        ResPatternSegmentBean b = new ResPatternSegmentBean();
+        b.setState("1");
+        b.setResType(1L);
+        List<ResPatternSegmentBean> list = resPhoneNumSV.querySegmentList(b);
+        ExcelUtil eu = new ExcelUtil(ResPatternSegmentBean.class);
+        return eu.exportExcel(list,"号码模式");
     }
 }

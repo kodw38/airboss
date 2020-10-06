@@ -8,8 +8,10 @@ import com.pl.airboss.crm.res.bean.ResSelpriceModeBeanKey;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
+import com.pl.airboss.web.controller.BaseController;
 import com.pl.airboss.web.utils.AjaxResult;
 import com.pl.airboss.web.utils.ShiroUtils;
+import com.pl.airboss.web.utils.TableDataInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,7 @@ import static com.pl.airboss.web.utils.AjaxResult.success;
  **/
 @Controller
 @RequestMapping("/crm/res")
-public class PricePatternController {
+public class PricePatternController extends BaseController {
     private String prefix = "crm/res";
 
     @Autowired
@@ -56,8 +58,10 @@ public class PricePatternController {
     @RequiresPermissions("res:pricePattern:view")
     @PostMapping("/listPricePattern")
     @ResponseBody
-    public List<ResSelpriceModeBean> listPricePattern(ResSelpriceModeBean bean){
-        return resPhoneNumSV.queryPriceList();
+    public TableDataInfo listPricePattern(ResSelpriceModeBean bean){
+        startPage();
+        List<ResSelpriceModeBean> ls = resPhoneNumSV.queryPriceList();
+        return new TableDataInfo(ls,ls.size());
     }
 
 
