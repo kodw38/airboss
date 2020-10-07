@@ -2,6 +2,8 @@ package com.pl.airboss.crm.ac.dao;
 
 import com.pl.airboss.crm.ac.bean.FeeCycleBean;
 
+import java.util.List;
+
 public interface FeeCycleBeanMapper {
     int deleteByPrimaryKey(Short cycleRuleId);
 
@@ -14,4 +16,6 @@ public interface FeeCycleBeanMapper {
     int updateByPrimaryKeySelective(FeeCycleBean record);
 
     int updateByPrimaryKey(FeeCycleBean record);
+
+    List<FeeCycleBean> list();
 }
