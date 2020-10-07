@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.ac.dao.AccountBalanceBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.ac.bean.AccountBalanceBean" >
+    <id column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <id column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="ACCT_BALANCE" property="acctBalance" jdbcType="DECIMAL" />
+    <result column="CREDIT_BALANCE" property="creditBalance" jdbcType="DECIMAL" />
+    <result column="REAL_FEE" property="realFee" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ACCT_ID, partition_id, ACCT_BALANCE, CREDIT_BALANCE, REAL_FEE, UPDATE_TIME, expire_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.ac.bean.AccountBalanceBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_b_account_balance
+    where ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.AccountBalanceBeanKey" >
+    delete from tf_b_account_balance
+    where ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.ac.bean.AccountBalanceBean" >
+    insert into tf_b_account_balance (ACCT_ID, partition_id, ACCT_BALANCE, 
+      CREDIT_BALANCE, REAL_FEE, UPDATE_TIME, 
+      expire_time)
+    values (#{acctId,jdbcType=DECIMAL}, #{partitionId,jdbcType=INTEGER}, #{acctBalance,jdbcType=DECIMAL}, 
+      #{creditBalance,jdbcType=DECIMAL}, #{realFee,jdbcType=DECIMAL}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{expireTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.ac.bean.AccountBalanceBean" >
+    insert into tf_b_account_balance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="acctBalance != null" >
+        ACCT_BALANCE,
+      </if>
+      <if test="creditBalance != null" >
+        CREDIT_BALANCE,
+      </if>
+      <if test="realFee != null" >
+        REAL_FEE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="expireTime != null" >
+        expire_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="acctBalance != null" >
+        #{acctBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="creditBalance != null" >
+        #{creditBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="realFee != null" >
+        #{realFee,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null" >
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.ac.bean.AccountBalanceBean" >
+    update tf_b_account_balance
+    <set >
+      <if test="acctBalance != null" >
+        ACCT_BALANCE = #{acctBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="creditBalance != null" >
+        CREDIT_BALANCE = #{creditBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="realFee != null" >
+        REAL_FEE = #{realFee,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null" >
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.AccountBalanceBean" >
+    update tf_b_account_balance
+    set ACCT_BALANCE = #{acctBalance,jdbcType=DECIMAL},
+      CREDIT_BALANCE = #{creditBalance,jdbcType=DECIMAL},
+      REAL_FEE = #{realFee,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP}
+    where ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+</mapper>

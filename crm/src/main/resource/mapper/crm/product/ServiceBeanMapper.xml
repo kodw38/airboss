@@ -46,6 +46,15 @@
     from td_b_service
     where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}
   </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.product.bean.ServiceBean">
+    select
+    <include refid="Base_Column_List" />
+    from td_b_service
+    where SERVICE_STATE='1'
+    <if test="serviceName != null and serviceName!=''" >
+      and Service_Name like concat('%',#{serviceName,jdbcType=DECIMAL},'%')
+    </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from td_b_service
     where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}

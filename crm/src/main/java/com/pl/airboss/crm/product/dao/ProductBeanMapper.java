@@ -1,5 +1,6 @@
 package com.pl.airboss.crm.product.dao;
 
+import com.pl.airboss.crm.ac.bean.FeeInterfaceBean;
 import com.pl.airboss.crm.product.bean.ProductBean;
 import com.pl.airboss.crm.product.bean.ProductBeanKey;
 import com.pl.airboss.crm.product.bean.ProductInfo;
@@ -26,4 +27,6 @@ public interface ProductBeanMapper {
     List<ProductInfo> selectProductInfo();
 
     List<ServiceBean> selectServices(@Param("prodId") Integer prodId);
+
+    List<FeeInterfaceBean> selectFeeListByProductId(Long prodId);
 }

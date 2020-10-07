@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.ac.dao.PayLogBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.ac.bean.PayLogBean" >
+    <id column="CHARGE_ID" property="chargeId" jdbcType="DECIMAL" />
+    <id column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="ROWID" property="rowid" jdbcType="BIGINT" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="SERIAL_NUMBER" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="NET_TYPE_CODE" property="netTypeCode" jdbcType="VARCHAR" />
+    <result column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <result column="CHANNEL_ID" property="channelId" jdbcType="VARCHAR" />
+    <result column="PAYMENT_ID" property="paymentId" jdbcType="DECIMAL" />
+    <result column="PAY_FEE_MODE_CODE" property="payFeeModeCode" jdbcType="DECIMAL" />
+    <result column="PAYMENT_OP" property="paymentOp" jdbcType="DECIMAL" />
+    <result column="RECV_FEE" property="recvFee" jdbcType="DECIMAL" />
+    <result column="LIMIT_MONEY" property="limitMoney" jdbcType="DECIMAL" />
+    <result column="RECV_TIME" property="recvTime" jdbcType="TIMESTAMP" />
+    <result column="RECV_EPARCHY_CODE" property="recvEparchyCode" jdbcType="CHAR" />
+    <result column="RECV_CITY_CODE" property="recvCityCode" jdbcType="CHAR" />
+    <result column="RECV_DEPART_ID" property="recvDepartId" jdbcType="CHAR" />
+    <result column="RECV_STAFF_ID" property="recvStaffId" jdbcType="CHAR" />
+    <result column="PAYMENT_REASON_CODE" property="paymentReasonCode" jdbcType="DECIMAL" />
+    <result column="INPUT_NO" property="inputNo" jdbcType="VARCHAR" />
+    <result column="INPUT_MODE" property="inputMode" jdbcType="DECIMAL" />
+    <result column="OUTER_TRADE_ID" property="outerTradeId" jdbcType="VARCHAR" />
+    <result column="ACT_TAG" property="actTag" jdbcType="CHAR" />
+    <result column="EXTEND_TAG" property="extendTag" jdbcType="CHAR" />
+    <result column="ACTION_CODE" property="actionCode" jdbcType="DECIMAL" />
+    <result column="ACTION_EVENT_ID" property="actionEventId" jdbcType="DECIMAL" />
+    <result column="PAYMENT_RULE_ID" property="paymentRuleId" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CANCEL_TAG" property="cancelTag" jdbcType="CHAR" />
+    <result column="CANCEL_STAFF_ID" property="cancelStaffId" jdbcType="CHAR" />
+    <result column="CANCEL_DEPART_ID" property="cancelDepartId" jdbcType="CHAR" />
+    <result column="CANCEL_CITY_CODE" property="cancelCityCode" jdbcType="CHAR" />
+    <result column="CANCEL_EPARCHY_CODE" property="cancelEparchyCode" jdbcType="CHAR" />
+    <result column="CANCEL_TIME" property="cancelTime" jdbcType="TIMESTAMP" />
+    <result column="CANCEL_CHARGE_ID" property="cancelChargeId" jdbcType="DECIMAL" />
+    <result column="RSRV_FEE1" property="rsrvFee1" jdbcType="DECIMAL" />
+    <result column="RSRV_FEE2" property="rsrvFee2" jdbcType="DECIMAL" />
+    <result column="RSRV_INFO1" property="rsrvInfo1" jdbcType="VARCHAR" />
+    <result column="RSRV_INFO2" property="rsrvInfo2" jdbcType="VARCHAR" />
+    <result column="RSRV_NUM1" property="rsrvNum1" jdbcType="DECIMAL" />
+    <result column="RSRV_NUM2" property="rsrvNum2" jdbcType="DECIMAL" />
+    <result column="RSRV_INFO3" property="rsrvInfo3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CHARGE_ID, partition_id, ROWID, EPARCHY_CODE, CITY_CODE, CUST_ID, USER_ID, SERIAL_NUMBER, 
+    NET_TYPE_CODE, ACCT_ID, CHANNEL_ID, PAYMENT_ID, PAY_FEE_MODE_CODE, PAYMENT_OP, RECV_FEE, 
+    LIMIT_MONEY, RECV_TIME, RECV_EPARCHY_CODE, RECV_CITY_CODE, RECV_DEPART_ID, RECV_STAFF_ID, 
+    PAYMENT_REASON_CODE, INPUT_NO, INPUT_MODE, OUTER_TRADE_ID, ACT_TAG, EXTEND_TAG, ACTION_CODE, 
+    ACTION_EVENT_ID, PAYMENT_RULE_ID, REMARK, CANCEL_TAG, CANCEL_STAFF_ID, CANCEL_DEPART_ID, 
+    CANCEL_CITY_CODE, CANCEL_EPARCHY_CODE, CANCEL_TIME, CANCEL_CHARGE_ID, RSRV_FEE1, 
+    RSRV_FEE2, RSRV_INFO1, RSRV_INFO2, RSRV_NUM1, RSRV_NUM2, RSRV_INFO3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.ac.bean.PayLogBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_b_paylog
+    where CHARGE_ID = #{chargeId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.PayLogBeanKey" >
+    delete from tf_b_paylog
+    where CHARGE_ID = #{chargeId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.ac.bean.PayLogBean" >
+    insert into tf_b_paylog (CHARGE_ID, partition_id, ROWID, 
+      EPARCHY_CODE, CITY_CODE, CUST_ID, 
+      USER_ID, SERIAL_NUMBER, NET_TYPE_CODE, 
+      ACCT_ID, CHANNEL_ID, PAYMENT_ID, 
+      PAY_FEE_MODE_CODE, PAYMENT_OP, RECV_FEE, 
+      LIMIT_MONEY, RECV_TIME, RECV_EPARCHY_CODE, 
+      RECV_CITY_CODE, RECV_DEPART_ID, RECV_STAFF_ID, 
+      PAYMENT_REASON_CODE, INPUT_NO, INPUT_MODE, 
+      OUTER_TRADE_ID, ACT_TAG, EXTEND_TAG, 
+      ACTION_CODE, ACTION_EVENT_ID, PAYMENT_RULE_ID, 
+      REMARK, CANCEL_TAG, CANCEL_STAFF_ID, 
+      CANCEL_DEPART_ID, CANCEL_CITY_CODE, CANCEL_EPARCHY_CODE, 
+      CANCEL_TIME, CANCEL_CHARGE_ID, RSRV_FEE1, 
+      RSRV_FEE2, RSRV_INFO1, RSRV_INFO2, 
+      RSRV_NUM1, RSRV_NUM2, RSRV_INFO3
+      )
+    values (#{chargeId,jdbcType=DECIMAL}, #{partitionId,jdbcType=INTEGER}, #{rowid,jdbcType=BIGINT}, 
+      #{eparchyCode,jdbcType=CHAR}, #{cityCode,jdbcType=CHAR}, #{custId,jdbcType=DECIMAL}, 
+      #{userId,jdbcType=DECIMAL}, #{serialNumber,jdbcType=VARCHAR}, #{netTypeCode,jdbcType=VARCHAR}, 
+      #{acctId,jdbcType=DECIMAL}, #{channelId,jdbcType=VARCHAR}, #{paymentId,jdbcType=DECIMAL}, 
+      #{payFeeModeCode,jdbcType=DECIMAL}, #{paymentOp,jdbcType=DECIMAL}, #{recvFee,jdbcType=DECIMAL}, 
+      #{limitMoney,jdbcType=DECIMAL}, #{recvTime,jdbcType=TIMESTAMP}, #{recvEparchyCode,jdbcType=CHAR}, 
+      #{recvCityCode,jdbcType=CHAR}, #{recvDepartId,jdbcType=CHAR}, #{recvStaffId,jdbcType=CHAR}, 
+      #{paymentReasonCode,jdbcType=DECIMAL}, #{inputNo,jdbcType=VARCHAR}, #{inputMode,jdbcType=DECIMAL}, 
+      #{outerTradeId,jdbcType=VARCHAR}, #{actTag,jdbcType=CHAR}, #{extendTag,jdbcType=CHAR}, 
+      #{actionCode,jdbcType=DECIMAL}, #{actionEventId,jdbcType=DECIMAL}, #{paymentRuleId,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{cancelTag,jdbcType=CHAR}, #{cancelStaffId,jdbcType=CHAR}, 
+      #{cancelDepartId,jdbcType=CHAR}, #{cancelCityCode,jdbcType=CHAR}, #{cancelEparchyCode,jdbcType=CHAR}, 
+      #{cancelTime,jdbcType=TIMESTAMP}, #{cancelChargeId,jdbcType=DECIMAL}, #{rsrvFee1,jdbcType=DECIMAL}, 
+      #{rsrvFee2,jdbcType=DECIMAL}, #{rsrvInfo1,jdbcType=VARCHAR}, #{rsrvInfo2,jdbcType=VARCHAR}, 
+      #{rsrvNum1,jdbcType=DECIMAL}, #{rsrvNum2,jdbcType=DECIMAL}, #{rsrvInfo3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.ac.bean.PayLogBean" >
+    insert into tf_b_paylog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chargeId != null" >
+        CHARGE_ID,
+      </if>
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="rowid != null" >
+        ROWID,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER,
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE,
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="channelId != null" >
+        CHANNEL_ID,
+      </if>
+      <if test="paymentId != null" >
+        PAYMENT_ID,
+      </if>
+      <if test="payFeeModeCode != null" >
+        PAY_FEE_MODE_CODE,
+      </if>
+      <if test="paymentOp != null" >
+        PAYMENT_OP,
+      </if>
+      <if test="recvFee != null" >
+        RECV_FEE,
+      </if>
+      <if test="limitMoney != null" >
+        LIMIT_MONEY,
+      </if>
+      <if test="recvTime != null" >
+        RECV_TIME,
+      </if>
+      <if test="recvEparchyCode != null" >
+        RECV_EPARCHY_CODE,
+      </if>
+      <if test="recvCityCode != null" >
+        RECV_CITY_CODE,
+      </if>
+      <if test="recvDepartId != null" >
+        RECV_DEPART_ID,
+      </if>
+      <if test="recvStaffId != null" >
+        RECV_STAFF_ID,
+      </if>
+      <if test="paymentReasonCode != null" >
+        PAYMENT_REASON_CODE,
+      </if>
+      <if test="inputNo != null" >
+        INPUT_NO,
+      </if>
+      <if test="inputMode != null" >
+        INPUT_MODE,
+      </if>
+      <if test="outerTradeId != null" >
+        OUTER_TRADE_ID,
+      </if>
+      <if test="actTag != null" >
+        ACT_TAG,
+      </if>
+      <if test="extendTag != null" >
+        EXTEND_TAG,
+      </if>
+      <if test="actionCode != null" >
+        ACTION_CODE,
+      </if>
+      <if test="actionEventId != null" >
+        ACTION_EVENT_ID,
+      </if>
+      <if test="paymentRuleId != null" >
+        PAYMENT_RULE_ID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG,
+      </if>
+      <if test="cancelStaffId != null" >
+        CANCEL_STAFF_ID,
+      </if>
+      <if test="cancelDepartId != null" >
+        CANCEL_DEPART_ID,
+      </if>
+      <if test="cancelCityCode != null" >
+        CANCEL_CITY_CODE,
+      </if>
+      <if test="cancelEparchyCode != null" >
+        CANCEL_EPARCHY_CODE,
+      </if>
+      <if test="cancelTime != null" >
+        CANCEL_TIME,
+      </if>
+      <if test="cancelChargeId != null" >
+        CANCEL_CHARGE_ID,
+      </if>
+      <if test="rsrvFee1 != null" >
+        RSRV_FEE1,
+      </if>
+      <if test="rsrvFee2 != null" >
+        RSRV_FEE2,
+      </if>
+      <if test="rsrvInfo1 != null" >
+        RSRV_INFO1,
+      </if>
+      <if test="rsrvInfo2 != null" >
+        RSRV_INFO2,
+      </if>
+      <if test="rsrvNum1 != null" >
+        RSRV_NUM1,
+      </if>
+      <if test="rsrvNum2 != null" >
+        RSRV_NUM2,
+      </if>
+      <if test="rsrvInfo3 != null" >
+        RSRV_INFO3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chargeId != null" >
+        #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="rowid != null" >
+        #{rowid,jdbcType=BIGINT},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="netTypeCode != null" >
+        #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentId != null" >
+        #{paymentId,jdbcType=DECIMAL},
+      </if>
+      <if test="payFeeModeCode != null" >
+        #{payFeeModeCode,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentOp != null" >
+        #{paymentOp,jdbcType=DECIMAL},
+      </if>
+      <if test="recvFee != null" >
+        #{recvFee,jdbcType=DECIMAL},
+      </if>
+      <if test="limitMoney != null" >
+        #{limitMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="recvTime != null" >
+        #{recvTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recvEparchyCode != null" >
+        #{recvEparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="recvCityCode != null" >
+        #{recvCityCode,jdbcType=CHAR},
+      </if>
+      <if test="recvDepartId != null" >
+        #{recvDepartId,jdbcType=CHAR},
+      </if>
+      <if test="recvStaffId != null" >
+        #{recvStaffId,jdbcType=CHAR},
+      </if>
+      <if test="paymentReasonCode != null" >
+        #{paymentReasonCode,jdbcType=DECIMAL},
+      </if>
+      <if test="inputNo != null" >
+        #{inputNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inputMode != null" >
+        #{inputMode,jdbcType=DECIMAL},
+      </if>
+      <if test="outerTradeId != null" >
+        #{outerTradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="actTag != null" >
+        #{actTag,jdbcType=CHAR},
+      </if>
+      <if test="extendTag != null" >
+        #{extendTag,jdbcType=CHAR},
+      </if>
+      <if test="actionCode != null" >
+        #{actionCode,jdbcType=DECIMAL},
+      </if>
+      <if test="actionEventId != null" >
+        #{actionEventId,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentRuleId != null" >
+        #{paymentRuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTag != null" >
+        #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="cancelStaffId != null" >
+        #{cancelStaffId,jdbcType=CHAR},
+      </if>
+      <if test="cancelDepartId != null" >
+        #{cancelDepartId,jdbcType=CHAR},
+      </if>
+      <if test="cancelCityCode != null" >
+        #{cancelCityCode,jdbcType=CHAR},
+      </if>
+      <if test="cancelEparchyCode != null" >
+        #{cancelEparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cancelTime != null" >
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelChargeId != null" >
+        #{cancelChargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvFee1 != null" >
+        #{rsrvFee1,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvFee2 != null" >
+        #{rsrvFee2,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvInfo1 != null" >
+        #{rsrvInfo1,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvInfo2 != null" >
+        #{rsrvInfo2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvNum1 != null" >
+        #{rsrvNum1,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvNum2 != null" >
+        #{rsrvNum2,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvInfo3 != null" >
+        #{rsrvInfo3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.ac.bean.PayLogBean" >
+    update tf_b_paylog
+    <set >
+      <if test="rowid != null" >
+        ROWID = #{rowid,jdbcType=BIGINT},
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custId != null" >
+        CUST_ID = #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="channelId != null" >
+        CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentId != null" >
+        PAYMENT_ID = #{paymentId,jdbcType=DECIMAL},
+      </if>
+      <if test="payFeeModeCode != null" >
+        PAY_FEE_MODE_CODE = #{payFeeModeCode,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentOp != null" >
+        PAYMENT_OP = #{paymentOp,jdbcType=DECIMAL},
+      </if>
+      <if test="recvFee != null" >
+        RECV_FEE = #{recvFee,jdbcType=DECIMAL},
+      </if>
+      <if test="limitMoney != null" >
+        LIMIT_MONEY = #{limitMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="recvTime != null" >
+        RECV_TIME = #{recvTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recvEparchyCode != null" >
+        RECV_EPARCHY_CODE = #{recvEparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="recvCityCode != null" >
+        RECV_CITY_CODE = #{recvCityCode,jdbcType=CHAR},
+      </if>
+      <if test="recvDepartId != null" >
+        RECV_DEPART_ID = #{recvDepartId,jdbcType=CHAR},
+      </if>
+      <if test="recvStaffId != null" >
+        RECV_STAFF_ID = #{recvStaffId,jdbcType=CHAR},
+      </if>
+      <if test="paymentReasonCode != null" >
+        PAYMENT_REASON_CODE = #{paymentReasonCode,jdbcType=DECIMAL},
+      </if>
+      <if test="inputNo != null" >
+        INPUT_NO = #{inputNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inputMode != null" >
+        INPUT_MODE = #{inputMode,jdbcType=DECIMAL},
+      </if>
+      <if test="outerTradeId != null" >
+        OUTER_TRADE_ID = #{outerTradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="actTag != null" >
+        ACT_TAG = #{actTag,jdbcType=CHAR},
+      </if>
+      <if test="extendTag != null" >
+        EXTEND_TAG = #{extendTag,jdbcType=CHAR},
+      </if>
+      <if test="actionCode != null" >
+        ACTION_CODE = #{actionCode,jdbcType=DECIMAL},
+      </if>
+      <if test="actionEventId != null" >
+        ACTION_EVENT_ID = #{actionEventId,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentRuleId != null" >
+        PAYMENT_RULE_ID = #{paymentRuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="cancelStaffId != null" >
+        CANCEL_STAFF_ID = #{cancelStaffId,jdbcType=CHAR},
+      </if>
+      <if test="cancelDepartId != null" >
+        CANCEL_DEPART_ID = #{cancelDepartId,jdbcType=CHAR},
+      </if>
+      <if test="cancelCityCode != null" >
+        CANCEL_CITY_CODE = #{cancelCityCode,jdbcType=CHAR},
+      </if>
+      <if test="cancelEparchyCode != null" >
+        CANCEL_EPARCHY_CODE = #{cancelEparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cancelTime != null" >
+        CANCEL_TIME = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelChargeId != null" >
+        CANCEL_CHARGE_ID = #{cancelChargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvFee1 != null" >
+        RSRV_FEE1 = #{rsrvFee1,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvFee2 != null" >
+        RSRV_FEE2 = #{rsrvFee2,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvInfo1 != null" >
+        RSRV_INFO1 = #{rsrvInfo1,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvInfo2 != null" >
+        RSRV_INFO2 = #{rsrvInfo2,jdbcType=VARCHAR},
+      </if>
+      <if test="rsrvNum1 != null" >
+        RSRV_NUM1 = #{rsrvNum1,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvNum2 != null" >
+        RSRV_NUM2 = #{rsrvNum2,jdbcType=DECIMAL},
+      </if>
+      <if test="rsrvInfo3 != null" >
+        RSRV_INFO3 = #{rsrvInfo3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CHARGE_ID = #{chargeId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.PayLogBean" >
+    update tf_b_paylog
+    set ROWID = #{rowid,jdbcType=BIGINT},
+      EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      CITY_CODE = #{cityCode,jdbcType=CHAR},
+      CUST_ID = #{custId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR},
+      NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      PAYMENT_ID = #{paymentId,jdbcType=DECIMAL},
+      PAY_FEE_MODE_CODE = #{payFeeModeCode,jdbcType=DECIMAL},
+      PAYMENT_OP = #{paymentOp,jdbcType=DECIMAL},
+      RECV_FEE = #{recvFee,jdbcType=DECIMAL},
+      LIMIT_MONEY = #{limitMoney,jdbcType=DECIMAL},
+      RECV_TIME = #{recvTime,jdbcType=TIMESTAMP},
+      RECV_EPARCHY_CODE = #{recvEparchyCode,jdbcType=CHAR},
+      RECV_CITY_CODE = #{recvCityCode,jdbcType=CHAR},
+      RECV_DEPART_ID = #{recvDepartId,jdbcType=CHAR},
+      RECV_STAFF_ID = #{recvStaffId,jdbcType=CHAR},
+      PAYMENT_REASON_CODE = #{paymentReasonCode,jdbcType=DECIMAL},
+      INPUT_NO = #{inputNo,jdbcType=VARCHAR},
+      INPUT_MODE = #{inputMode,jdbcType=DECIMAL},
+      OUTER_TRADE_ID = #{outerTradeId,jdbcType=VARCHAR},
+      ACT_TAG = #{actTag,jdbcType=CHAR},
+      EXTEND_TAG = #{extendTag,jdbcType=CHAR},
+      ACTION_CODE = #{actionCode,jdbcType=DECIMAL},
+      ACTION_EVENT_ID = #{actionEventId,jdbcType=DECIMAL},
+      PAYMENT_RULE_ID = #{paymentRuleId,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      CANCEL_STAFF_ID = #{cancelStaffId,jdbcType=CHAR},
+      CANCEL_DEPART_ID = #{cancelDepartId,jdbcType=CHAR},
+      CANCEL_CITY_CODE = #{cancelCityCode,jdbcType=CHAR},
+      CANCEL_EPARCHY_CODE = #{cancelEparchyCode,jdbcType=CHAR},
+      CANCEL_TIME = #{cancelTime,jdbcType=TIMESTAMP},
+      CANCEL_CHARGE_ID = #{cancelChargeId,jdbcType=DECIMAL},
+      RSRV_FEE1 = #{rsrvFee1,jdbcType=DECIMAL},
+      RSRV_FEE2 = #{rsrvFee2,jdbcType=DECIMAL},
+      RSRV_INFO1 = #{rsrvInfo1,jdbcType=VARCHAR},
+      RSRV_INFO2 = #{rsrvInfo2,jdbcType=VARCHAR},
+      RSRV_NUM1 = #{rsrvNum1,jdbcType=DECIMAL},
+      RSRV_NUM2 = #{rsrvNum2,jdbcType=DECIMAL},
+      RSRV_INFO3 = #{rsrvInfo3,jdbcType=VARCHAR}
+    where CHARGE_ID = #{chargeId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+</mapper>

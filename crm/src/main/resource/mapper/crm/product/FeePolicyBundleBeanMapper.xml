@@ -5,16 +5,30 @@
     <id column="FEEPOLICY_BUND_ID" property="feepolicyBundId" jdbcType="DECIMAL" />
     <result column="FEEPOLICY_BUND_NAME" property="feepolicyBundName" jdbcType="VARCHAR" />
     <result column="MIN_FEEPOLICY_NUM" property="minFeepolicyNum" jdbcType="DECIMAL" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="BIGINT" />
+    <result column="DISCNT_CODE" property="discntCode" jdbcType="BIGINT" />
     <result column="MAX_FEEPOLICY_NUM" property="maxFeepolicyNum" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
-    FEEPOLICY_BUND_ID, FEEPOLICY_BUND_NAME, MIN_FEEPOLICY_NUM, MAX_FEEPOLICY_NUM
+    FEEPOLICY_BUND_ID, FEEPOLICY_BUND_NAME, MIN_FEEPOLICY_NUM, MAX_FEEPOLICY_NUM,PRODUCT_ID,DISCNT_CODE
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from td_b_feepolicy_bundle
     where FEEPOLICY_BUND_ID = #{feepolicyBundId,jdbcType=DECIMAL}
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.product.bean.FeePolicyBundleBean">
+    select
+    <include refid="Base_Column_List" />
+    from td_b_feepolicy_bundle
+    where 1=1
+    <if test="productId!=null">
+      and PRODUCT_ID=#{productId}
+    </if>
+    <if test="discntCode!=null">
+      and DISCNT_CODE=#{discntCode}
+    </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from td_b_feepolicy_bundle

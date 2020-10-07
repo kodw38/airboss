@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.CustomerBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.CustomerBean" >
+    <result column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="CUST_TYPE" property="custType" jdbcType="CHAR" />
+    <result column="CUST_STATE" property="custState" jdbcType="CHAR" />
+    <result column="PSPT_TYPE_CODE" property="psptTypeCode" jdbcType="CHAR" />
+    <result column="PSPT_ID" property="psptId" jdbcType="VARCHAR" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="CUST_PASSWD" property="custPasswd" jdbcType="VARCHAR" />
+    <result column="SCORE_VALUE" property="scoreValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_CLASS" property="creditClass" jdbcType="DECIMAL" />
+    <result column="BASIC_CREDIT_VALUE" property="basicCreditValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_VALUE" property="creditValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_CONTROL_ID" property="creditControlId" jdbcType="DECIMAL" />
+    <result column="DEVELOP_DEPART_ID" property="developDepartId" jdbcType="CHAR" />
+    <result column="DEVELOP_STAFF_ID" property="developStaffId" jdbcType="CHAR" />
+    <result column="IN_DEPART_ID" property="inDepartId" jdbcType="CHAR" />
+    <result column="IN_STAFF_ID" property="inStaffId" jdbcType="CHAR" />
+    <result column="IN_DATE" property="inDate" jdbcType="TIMESTAMP" />
+    <result column="REMOVE_TAG" property="removeTag" jdbcType="CHAR" />
+    <result column="REMOVE_DATE" property="removeDate" jdbcType="TIMESTAMP" />
+    <result column="REMOVE_STAFF_ID" property="removeStaffId" jdbcType="CHAR" />
+    <result column="REMOVE_CHANGE" property="removeChange" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+    <result column="CUST_CLASS_TYPE" property="custClassType" jdbcType="CHAR" />
+    <result column="IS_REAL_NAME" property="isRealName" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.pl.airboss.crm.cm.bean.CustomerBean" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustomerBean" >
+    insert into tf_f_customer (partition_id, CUST_ID, CUST_NAME, 
+      CUST_TYPE, CUST_STATE, PSPT_TYPE_CODE, 
+      PSPT_ID, EPARCHY_CODE, CITY_CODE, 
+      CUST_PASSWD, SCORE_VALUE, CREDIT_CLASS, 
+      BASIC_CREDIT_VALUE, CREDIT_VALUE, CREDIT_CONTROL_ID, 
+      DEVELOP_DEPART_ID, DEVELOP_STAFF_ID, IN_DEPART_ID, 
+      IN_STAFF_ID, IN_DATE, REMOVE_TAG, 
+      REMOVE_DATE, REMOVE_STAFF_ID, REMOVE_CHANGE, 
+      UPDATE_TIME, UPDATE_DEPART_ID, UPDATE_STAFF_ID, 
+      CUST_CLASS_TYPE, IS_REAL_NAME, REMARK
+      )
+    values (#{partitionId,jdbcType=INTEGER}, #{custId,jdbcType=DECIMAL}, #{custName,jdbcType=VARCHAR}, 
+      #{custType,jdbcType=CHAR}, #{custState,jdbcType=CHAR}, #{psptTypeCode,jdbcType=CHAR}, 
+      #{psptId,jdbcType=VARCHAR}, #{eparchyCode,jdbcType=CHAR}, #{cityCode,jdbcType=CHAR}, 
+      #{custPasswd,jdbcType=VARCHAR}, #{scoreValue,jdbcType=DECIMAL}, #{creditClass,jdbcType=DECIMAL}, 
+      #{basicCreditValue,jdbcType=DECIMAL}, #{creditValue,jdbcType=DECIMAL}, #{creditControlId,jdbcType=DECIMAL}, 
+      #{developDepartId,jdbcType=CHAR}, #{developStaffId,jdbcType=CHAR}, #{inDepartId,jdbcType=CHAR}, 
+      #{inStaffId,jdbcType=CHAR}, #{inDate,jdbcType=TIMESTAMP}, #{removeTag,jdbcType=CHAR}, 
+      #{removeDate,jdbcType=TIMESTAMP}, #{removeStaffId,jdbcType=CHAR}, #{removeChange,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateDepartId,jdbcType=CHAR}, #{updateStaffId,jdbcType=CHAR}, 
+      #{custClassType,jdbcType=CHAR}, #{isRealName,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.CustomerBean" >
+    insert into tf_f_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="custType != null" >
+        CUST_TYPE,
+      </if>
+      <if test="custState != null" >
+        CUST_STATE,
+      </if>
+      <if test="psptTypeCode != null" >
+        PSPT_TYPE_CODE,
+      </if>
+      <if test="psptId != null" >
+        PSPT_ID,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="custPasswd != null" >
+        CUST_PASSWD,
+      </if>
+      <if test="scoreValue != null" >
+        SCORE_VALUE,
+      </if>
+      <if test="creditClass != null" >
+        CREDIT_CLASS,
+      </if>
+      <if test="basicCreditValue != null" >
+        BASIC_CREDIT_VALUE,
+      </if>
+      <if test="creditValue != null" >
+        CREDIT_VALUE,
+      </if>
+      <if test="creditControlId != null" >
+        CREDIT_CONTROL_ID,
+      </if>
+      <if test="developDepartId != null" >
+        DEVELOP_DEPART_ID,
+      </if>
+      <if test="developStaffId != null" >
+        DEVELOP_STAFF_ID,
+      </if>
+      <if test="inDepartId != null" >
+        IN_DEPART_ID,
+      </if>
+      <if test="inStaffId != null" >
+        IN_STAFF_ID,
+      </if>
+      <if test="inDate != null" >
+        IN_DATE,
+      </if>
+      <if test="removeTag != null" >
+        REMOVE_TAG,
+      </if>
+      <if test="removeDate != null" >
+        REMOVE_DATE,
+      </if>
+      <if test="removeStaffId != null" >
+        REMOVE_STAFF_ID,
+      </if>
+      <if test="removeChange != null" >
+        REMOVE_CHANGE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="custClassType != null" >
+        CUST_CLASS_TYPE,
+      </if>
+      <if test="isRealName != null" >
+        IS_REAL_NAME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="custType != null" >
+        #{custType,jdbcType=CHAR},
+      </if>
+      <if test="custState != null" >
+        #{custState,jdbcType=CHAR},
+      </if>
+      <if test="psptTypeCode != null" >
+        #{psptTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="psptId != null" >
+        #{psptId,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custPasswd != null" >
+        #{custPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreValue != null" >
+        #{scoreValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditClass != null" >
+        #{creditClass,jdbcType=DECIMAL},
+      </if>
+      <if test="basicCreditValue != null" >
+        #{basicCreditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditValue != null" >
+        #{creditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditControlId != null" >
+        #{creditControlId,jdbcType=DECIMAL},
+      </if>
+      <if test="developDepartId != null" >
+        #{developDepartId,jdbcType=CHAR},
+      </if>
+      <if test="developStaffId != null" >
+        #{developStaffId,jdbcType=CHAR},
+      </if>
+      <if test="inDepartId != null" >
+        #{inDepartId,jdbcType=CHAR},
+      </if>
+      <if test="inStaffId != null" >
+        #{inStaffId,jdbcType=CHAR},
+      </if>
+      <if test="inDate != null" >
+        #{inDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="removeTag != null" >
+        #{removeTag,jdbcType=CHAR},
+      </if>
+      <if test="removeDate != null" >
+        #{removeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="removeStaffId != null" >
+        #{removeStaffId,jdbcType=CHAR},
+      </if>
+      <if test="removeChange != null" >
+        #{removeChange,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+      <if test="custClassType != null" >
+        #{custClassType,jdbcType=CHAR},
+      </if>
+      <if test="isRealName != null" >
+        #{isRealName,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

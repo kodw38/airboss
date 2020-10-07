@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.ac.dao.WriteOffLogBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.ac.bean.WriteOffLogBean" >
+    <id column="WRITEOFF_ID" property="writeoffId" jdbcType="DECIMAL" />
+    <id column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="CHARGE_ID" property="chargeId" jdbcType="DECIMAL" />
+    <result column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="CYCLE_ID" property="cycleId" jdbcType="DECIMAL" />
+    <result column="NET_TYPE_CODE" property="netTypeCode" jdbcType="VARCHAR" />
+    <result column="BILL_ID" property="billId" jdbcType="DECIMAL" />
+    <result column="INTEGRATE_ITEM_CODE" property="integrateItemCode" jdbcType="DECIMAL" />
+    <result column="DEPOSIT_CODE" property="depositCode" jdbcType="DECIMAL" />
+    <result column="ACCT_BALANCE_ID" property="acctBalanceId" jdbcType="DECIMAL" />
+    <result column="WRITEOFF_FEE" property="writeoffFee" jdbcType="DECIMAL" />
+    <result column="IMP_FEE" property="impFee" jdbcType="DECIMAL" />
+    <result column="FEE" property="fee" jdbcType="DECIMAL" />
+    <result column="OLD_BALANCE" property="oldBalance" jdbcType="DECIMAL" />
+    <result column="NEW_BALANCE" property="newBalance" jdbcType="DECIMAL" />
+    <result column="LATE_FEE" property="lateFee" jdbcType="DECIMAL" />
+    <result column="LATE_BALANCE" property="lateBalance" jdbcType="DECIMAL" />
+    <result column="OLD_LATE_BALANCE" property="oldLateBalance" jdbcType="DECIMAL" />
+    <result column="NEW_LATE_BALANCE" property="newLateBalance" jdbcType="DECIMAL" />
+    <result column="DERATE_LATE_FEE" property="derateLateFee" jdbcType="DECIMAL" />
+    <result column="LATECAL_DATE" property="latecalDate" jdbcType="TIMESTAMP" />
+    <result column="OLD_PAYTAG" property="oldPaytag" jdbcType="CHAR" />
+    <result column="NEW_PAYTAG" property="newPaytag" jdbcType="CHAR" />
+    <result column="CAN_PAYTAG" property="canPaytag" jdbcType="CHAR" />
+    <result column="OPERATE_TIME" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="DRECV_TIMES" property="drecvTimes" jdbcType="DECIMAL" />
+    <result column="CANCEL_TAG" property="cancelTag" jdbcType="CHAR" />
+    <result column="DEPOSIT_LIMIT_RULEID" property="depositLimitRuleid" jdbcType="DECIMAL" />
+    <result column="DEPOSIT_PRIOR_RULEID" property="depositPriorRuleid" jdbcType="DECIMAL" />
+    <result column="ITEM_PRIOR_RULEID" property="itemPriorRuleid" jdbcType="DECIMAL" />
+    <result column="USER_BEGIN_DATE" property="userBeginDate" jdbcType="DECIMAL" />
+    <result column="USER_END_DATE" property="userEndDate" jdbcType="DECIMAL" />
+    <result column="ACCT_BEGIN_DATE" property="acctBeginDate" jdbcType="DECIMAL" />
+    <result column="ACCT_DAY" property="acctDay" jdbcType="DECIMAL" />
+    <result column="NO_TAX_FEE" property="noTaxFee" jdbcType="DECIMAL" />
+    <result column="TAX_FEE" property="taxFee" jdbcType="DECIMAL" />
+    <result column="TAX_RATE" property="taxRate" jdbcType="DECIMAL" />
+    <result column="NO_TAX_LATEFEE" property="noTaxLatefee" jdbcType="DECIMAL" />
+    <result column="TAX_LATEFEE" property="taxLatefee" jdbcType="DECIMAL" />
+    <result column="TAX_LATERATE" property="taxLaterate" jdbcType="DECIMAL" />
+    <result column="OLD_ITEM_ID" property="oldItemId" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    WRITEOFF_ID, partition_id, CHARGE_ID, ACCT_ID, USER_ID, CYCLE_ID, NET_TYPE_CODE, 
+    BILL_ID, INTEGRATE_ITEM_CODE, DEPOSIT_CODE, ACCT_BALANCE_ID, WRITEOFF_FEE, IMP_FEE, 
+    FEE, OLD_BALANCE, NEW_BALANCE, LATE_FEE, LATE_BALANCE, OLD_LATE_BALANCE, NEW_LATE_BALANCE, 
+    DERATE_LATE_FEE, LATECAL_DATE, OLD_PAYTAG, NEW_PAYTAG, CAN_PAYTAG, OPERATE_TIME, 
+    EPARCHY_CODE, DRECV_TIMES, CANCEL_TAG, DEPOSIT_LIMIT_RULEID, DEPOSIT_PRIOR_RULEID, 
+    ITEM_PRIOR_RULEID, USER_BEGIN_DATE, USER_END_DATE, ACCT_BEGIN_DATE, ACCT_DAY, NO_TAX_FEE, 
+    TAX_FEE, TAX_RATE, NO_TAX_LATEFEE, TAX_LATEFEE, TAX_LATERATE, OLD_ITEM_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.ac.bean.WriteOffLogBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_b_writeofflog
+    where WRITEOFF_ID = #{writeoffId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.WriteOffLogBeanKey" >
+    delete from tf_b_writeofflog
+    where WRITEOFF_ID = #{writeoffId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.ac.bean.WriteOffLogBean" >
+    insert into tf_b_writeofflog (WRITEOFF_ID, partition_id, CHARGE_ID, 
+      ACCT_ID, USER_ID, CYCLE_ID, 
+      NET_TYPE_CODE, BILL_ID, INTEGRATE_ITEM_CODE, 
+      DEPOSIT_CODE, ACCT_BALANCE_ID, WRITEOFF_FEE, 
+      IMP_FEE, FEE, OLD_BALANCE, 
+      NEW_BALANCE, LATE_FEE, LATE_BALANCE, 
+      OLD_LATE_BALANCE, NEW_LATE_BALANCE, DERATE_LATE_FEE, 
+      LATECAL_DATE, OLD_PAYTAG, NEW_PAYTAG, 
+      CAN_PAYTAG, OPERATE_TIME, EPARCHY_CODE, 
+      DRECV_TIMES, CANCEL_TAG, DEPOSIT_LIMIT_RULEID, 
+      DEPOSIT_PRIOR_RULEID, ITEM_PRIOR_RULEID, USER_BEGIN_DATE, 
+      USER_END_DATE, ACCT_BEGIN_DATE, ACCT_DAY, 
+      NO_TAX_FEE, TAX_FEE, TAX_RATE, 
+      NO_TAX_LATEFEE, TAX_LATEFEE, TAX_LATERATE, 
+      OLD_ITEM_ID)
+    values (#{writeoffId,jdbcType=DECIMAL}, #{partitionId,jdbcType=INTEGER}, #{chargeId,jdbcType=DECIMAL}, 
+      #{acctId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, #{cycleId,jdbcType=DECIMAL}, 
+      #{netTypeCode,jdbcType=VARCHAR}, #{billId,jdbcType=DECIMAL}, #{integrateItemCode,jdbcType=DECIMAL}, 
+      #{depositCode,jdbcType=DECIMAL}, #{acctBalanceId,jdbcType=DECIMAL}, #{writeoffFee,jdbcType=DECIMAL}, 
+      #{impFee,jdbcType=DECIMAL}, #{fee,jdbcType=DECIMAL}, #{oldBalance,jdbcType=DECIMAL}, 
+      #{newBalance,jdbcType=DECIMAL}, #{lateFee,jdbcType=DECIMAL}, #{lateBalance,jdbcType=DECIMAL}, 
+      #{oldLateBalance,jdbcType=DECIMAL}, #{newLateBalance,jdbcType=DECIMAL}, #{derateLateFee,jdbcType=DECIMAL}, 
+      #{latecalDate,jdbcType=TIMESTAMP}, #{oldPaytag,jdbcType=CHAR}, #{newPaytag,jdbcType=CHAR}, 
+      #{canPaytag,jdbcType=CHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{eparchyCode,jdbcType=CHAR}, 
+      #{drecvTimes,jdbcType=DECIMAL}, #{cancelTag,jdbcType=CHAR}, #{depositLimitRuleid,jdbcType=DECIMAL}, 
+      #{depositPriorRuleid,jdbcType=DECIMAL}, #{itemPriorRuleid,jdbcType=DECIMAL}, #{userBeginDate,jdbcType=DECIMAL}, 
+      #{userEndDate,jdbcType=DECIMAL}, #{acctBeginDate,jdbcType=DECIMAL}, #{acctDay,jdbcType=DECIMAL}, 
+      #{noTaxFee,jdbcType=DECIMAL}, #{taxFee,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, 
+      #{noTaxLatefee,jdbcType=DECIMAL}, #{taxLatefee,jdbcType=DECIMAL}, #{taxLaterate,jdbcType=DECIMAL}, 
+      #{oldItemId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.ac.bean.WriteOffLogBean" >
+    insert into tf_b_writeofflog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="writeoffId != null" >
+        WRITEOFF_ID,
+      </if>
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="chargeId != null" >
+        CHARGE_ID,
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="cycleId != null" >
+        CYCLE_ID,
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE,
+      </if>
+      <if test="billId != null" >
+        BILL_ID,
+      </if>
+      <if test="integrateItemCode != null" >
+        INTEGRATE_ITEM_CODE,
+      </if>
+      <if test="depositCode != null" >
+        DEPOSIT_CODE,
+      </if>
+      <if test="acctBalanceId != null" >
+        ACCT_BALANCE_ID,
+      </if>
+      <if test="writeoffFee != null" >
+        WRITEOFF_FEE,
+      </if>
+      <if test="impFee != null" >
+        IMP_FEE,
+      </if>
+      <if test="fee != null" >
+        FEE,
+      </if>
+      <if test="oldBalance != null" >
+        OLD_BALANCE,
+      </if>
+      <if test="newBalance != null" >
+        NEW_BALANCE,
+      </if>
+      <if test="lateFee != null" >
+        LATE_FEE,
+      </if>
+      <if test="lateBalance != null" >
+        LATE_BALANCE,
+      </if>
+      <if test="oldLateBalance != null" >
+        OLD_LATE_BALANCE,
+      </if>
+      <if test="newLateBalance != null" >
+        NEW_LATE_BALANCE,
+      </if>
+      <if test="derateLateFee != null" >
+        DERATE_LATE_FEE,
+      </if>
+      <if test="latecalDate != null" >
+        LATECAL_DATE,
+      </if>
+      <if test="oldPaytag != null" >
+        OLD_PAYTAG,
+      </if>
+      <if test="newPaytag != null" >
+        NEW_PAYTAG,
+      </if>
+      <if test="canPaytag != null" >
+        CAN_PAYTAG,
+      </if>
+      <if test="operateTime != null" >
+        OPERATE_TIME,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="drecvTimes != null" >
+        DRECV_TIMES,
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG,
+      </if>
+      <if test="depositLimitRuleid != null" >
+        DEPOSIT_LIMIT_RULEID,
+      </if>
+      <if test="depositPriorRuleid != null" >
+        DEPOSIT_PRIOR_RULEID,
+      </if>
+      <if test="itemPriorRuleid != null" >
+        ITEM_PRIOR_RULEID,
+      </if>
+      <if test="userBeginDate != null" >
+        USER_BEGIN_DATE,
+      </if>
+      <if test="userEndDate != null" >
+        USER_END_DATE,
+      </if>
+      <if test="acctBeginDate != null" >
+        ACCT_BEGIN_DATE,
+      </if>
+      <if test="acctDay != null" >
+        ACCT_DAY,
+      </if>
+      <if test="noTaxFee != null" >
+        NO_TAX_FEE,
+      </if>
+      <if test="taxFee != null" >
+        TAX_FEE,
+      </if>
+      <if test="taxRate != null" >
+        TAX_RATE,
+      </if>
+      <if test="noTaxLatefee != null" >
+        NO_TAX_LATEFEE,
+      </if>
+      <if test="taxLatefee != null" >
+        TAX_LATEFEE,
+      </if>
+      <if test="taxLaterate != null" >
+        TAX_LATERATE,
+      </if>
+      <if test="oldItemId != null" >
+        OLD_ITEM_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="writeoffId != null" >
+        #{writeoffId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="chargeId != null" >
+        #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="cycleId != null" >
+        #{cycleId,jdbcType=DECIMAL},
+      </if>
+      <if test="netTypeCode != null" >
+        #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null" >
+        #{billId,jdbcType=DECIMAL},
+      </if>
+      <if test="integrateItemCode != null" >
+        #{integrateItemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="depositCode != null" >
+        #{depositCode,jdbcType=DECIMAL},
+      </if>
+      <if test="acctBalanceId != null" >
+        #{acctBalanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffFee != null" >
+        #{writeoffFee,jdbcType=DECIMAL},
+      </if>
+      <if test="impFee != null" >
+        #{impFee,jdbcType=DECIMAL},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="oldBalance != null" >
+        #{oldBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="newBalance != null" >
+        #{newBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="lateFee != null" >
+        #{lateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="lateBalance != null" >
+        #{lateBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="oldLateBalance != null" >
+        #{oldLateBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="newLateBalance != null" >
+        #{newLateBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="derateLateFee != null" >
+        #{derateLateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="latecalDate != null" >
+        #{latecalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldPaytag != null" >
+        #{oldPaytag,jdbcType=CHAR},
+      </if>
+      <if test="newPaytag != null" >
+        #{newPaytag,jdbcType=CHAR},
+      </if>
+      <if test="canPaytag != null" >
+        #{canPaytag,jdbcType=CHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="drecvTimes != null" >
+        #{drecvTimes,jdbcType=DECIMAL},
+      </if>
+      <if test="cancelTag != null" >
+        #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="depositLimitRuleid != null" >
+        #{depositLimitRuleid,jdbcType=DECIMAL},
+      </if>
+      <if test="depositPriorRuleid != null" >
+        #{depositPriorRuleid,jdbcType=DECIMAL},
+      </if>
+      <if test="itemPriorRuleid != null" >
+        #{itemPriorRuleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userBeginDate != null" >
+        #{userBeginDate,jdbcType=DECIMAL},
+      </if>
+      <if test="userEndDate != null" >
+        #{userEndDate,jdbcType=DECIMAL},
+      </if>
+      <if test="acctBeginDate != null" >
+        #{acctBeginDate,jdbcType=DECIMAL},
+      </if>
+      <if test="acctDay != null" >
+        #{acctDay,jdbcType=DECIMAL},
+      </if>
+      <if test="noTaxFee != null" >
+        #{noTaxFee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxFee != null" >
+        #{taxFee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null" >
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="noTaxLatefee != null" >
+        #{noTaxLatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxLatefee != null" >
+        #{taxLatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxLaterate != null" >
+        #{taxLaterate,jdbcType=DECIMAL},
+      </if>
+      <if test="oldItemId != null" >
+        #{oldItemId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.ac.bean.WriteOffLogBean" >
+    update tf_b_writeofflog
+    <set >
+      <if test="chargeId != null" >
+        CHARGE_ID = #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="cycleId != null" >
+        CYCLE_ID = #{cycleId,jdbcType=DECIMAL},
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null" >
+        BILL_ID = #{billId,jdbcType=DECIMAL},
+      </if>
+      <if test="integrateItemCode != null" >
+        INTEGRATE_ITEM_CODE = #{integrateItemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="depositCode != null" >
+        DEPOSIT_CODE = #{depositCode,jdbcType=DECIMAL},
+      </if>
+      <if test="acctBalanceId != null" >
+        ACCT_BALANCE_ID = #{acctBalanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffFee != null" >
+        WRITEOFF_FEE = #{writeoffFee,jdbcType=DECIMAL},
+      </if>
+      <if test="impFee != null" >
+        IMP_FEE = #{impFee,jdbcType=DECIMAL},
+      </if>
+      <if test="fee != null" >
+        FEE = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="oldBalance != null" >
+        OLD_BALANCE = #{oldBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="newBalance != null" >
+        NEW_BALANCE = #{newBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="lateFee != null" >
+        LATE_FEE = #{lateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="lateBalance != null" >
+        LATE_BALANCE = #{lateBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="oldLateBalance != null" >
+        OLD_LATE_BALANCE = #{oldLateBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="newLateBalance != null" >
+        NEW_LATE_BALANCE = #{newLateBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="derateLateFee != null" >
+        DERATE_LATE_FEE = #{derateLateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="latecalDate != null" >
+        LATECAL_DATE = #{latecalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldPaytag != null" >
+        OLD_PAYTAG = #{oldPaytag,jdbcType=CHAR},
+      </if>
+      <if test="newPaytag != null" >
+        NEW_PAYTAG = #{newPaytag,jdbcType=CHAR},
+      </if>
+      <if test="canPaytag != null" >
+        CAN_PAYTAG = #{canPaytag,jdbcType=CHAR},
+      </if>
+      <if test="operateTime != null" >
+        OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="drecvTimes != null" >
+        DRECV_TIMES = #{drecvTimes,jdbcType=DECIMAL},
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="depositLimitRuleid != null" >
+        DEPOSIT_LIMIT_RULEID = #{depositLimitRuleid,jdbcType=DECIMAL},
+      </if>
+      <if test="depositPriorRuleid != null" >
+        DEPOSIT_PRIOR_RULEID = #{depositPriorRuleid,jdbcType=DECIMAL},
+      </if>
+      <if test="itemPriorRuleid != null" >
+        ITEM_PRIOR_RULEID = #{itemPriorRuleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userBeginDate != null" >
+        USER_BEGIN_DATE = #{userBeginDate,jdbcType=DECIMAL},
+      </if>
+      <if test="userEndDate != null" >
+        USER_END_DATE = #{userEndDate,jdbcType=DECIMAL},
+      </if>
+      <if test="acctBeginDate != null" >
+        ACCT_BEGIN_DATE = #{acctBeginDate,jdbcType=DECIMAL},
+      </if>
+      <if test="acctDay != null" >
+        ACCT_DAY = #{acctDay,jdbcType=DECIMAL},
+      </if>
+      <if test="noTaxFee != null" >
+        NO_TAX_FEE = #{noTaxFee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxFee != null" >
+        TAX_FEE = #{taxFee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null" >
+        TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="noTaxLatefee != null" >
+        NO_TAX_LATEFEE = #{noTaxLatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxLatefee != null" >
+        TAX_LATEFEE = #{taxLatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="taxLaterate != null" >
+        TAX_LATERATE = #{taxLaterate,jdbcType=DECIMAL},
+      </if>
+      <if test="oldItemId != null" >
+        OLD_ITEM_ID = #{oldItemId,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where WRITEOFF_ID = #{writeoffId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.WriteOffLogBean" >
+    update tf_b_writeofflog
+    set CHARGE_ID = #{chargeId,jdbcType=DECIMAL},
+      ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      CYCLE_ID = #{cycleId,jdbcType=DECIMAL},
+      NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      BILL_ID = #{billId,jdbcType=DECIMAL},
+      INTEGRATE_ITEM_CODE = #{integrateItemCode,jdbcType=DECIMAL},
+      DEPOSIT_CODE = #{depositCode,jdbcType=DECIMAL},
+      ACCT_BALANCE_ID = #{acctBalanceId,jdbcType=DECIMAL},
+      WRITEOFF_FEE = #{writeoffFee,jdbcType=DECIMAL},
+      IMP_FEE = #{impFee,jdbcType=DECIMAL},
+      FEE = #{fee,jdbcType=DECIMAL},
+      OLD_BALANCE = #{oldBalance,jdbcType=DECIMAL},
+      NEW_BALANCE = #{newBalance,jdbcType=DECIMAL},
+      LATE_FEE = #{lateFee,jdbcType=DECIMAL},
+      LATE_BALANCE = #{lateBalance,jdbcType=DECIMAL},
+      OLD_LATE_BALANCE = #{oldLateBalance,jdbcType=DECIMAL},
+      NEW_LATE_BALANCE = #{newLateBalance,jdbcType=DECIMAL},
+      DERATE_LATE_FEE = #{derateLateFee,jdbcType=DECIMAL},
+      LATECAL_DATE = #{latecalDate,jdbcType=TIMESTAMP},
+      OLD_PAYTAG = #{oldPaytag,jdbcType=CHAR},
+      NEW_PAYTAG = #{newPaytag,jdbcType=CHAR},
+      CAN_PAYTAG = #{canPaytag,jdbcType=CHAR},
+      OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      DRECV_TIMES = #{drecvTimes,jdbcType=DECIMAL},
+      CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      DEPOSIT_LIMIT_RULEID = #{depositLimitRuleid,jdbcType=DECIMAL},
+      DEPOSIT_PRIOR_RULEID = #{depositPriorRuleid,jdbcType=DECIMAL},
+      ITEM_PRIOR_RULEID = #{itemPriorRuleid,jdbcType=DECIMAL},
+      USER_BEGIN_DATE = #{userBeginDate,jdbcType=DECIMAL},
+      USER_END_DATE = #{userEndDate,jdbcType=DECIMAL},
+      ACCT_BEGIN_DATE = #{acctBeginDate,jdbcType=DECIMAL},
+      ACCT_DAY = #{acctDay,jdbcType=DECIMAL},
+      NO_TAX_FEE = #{noTaxFee,jdbcType=DECIMAL},
+      TAX_FEE = #{taxFee,jdbcType=DECIMAL},
+      TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+      NO_TAX_LATEFEE = #{noTaxLatefee,jdbcType=DECIMAL},
+      TAX_LATEFEE = #{taxLatefee,jdbcType=DECIMAL},
+      TAX_LATERATE = #{taxLaterate,jdbcType=DECIMAL},
+      OLD_ITEM_ID = #{oldItemId,jdbcType=DECIMAL}
+    where WRITEOFF_ID = #{writeoffId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+</mapper>

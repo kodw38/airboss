@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.ac.dao.AccessLogBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.ac.bean.AccessLogBean" >
+    <id column="ACCESS_ID" property="accessId" jdbcType="DECIMAL" />
+    <id column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="ROWID" property="rowid" jdbcType="BIGINT" />
+    <result column="CHARGE_ID" property="chargeId" jdbcType="DECIMAL" />
+    <result column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <result column="ACCT_BALANCE_ID" property="acctBalanceId" jdbcType="DECIMAL" />
+    <result column="DEPOSIT_CODE" property="depositCode" jdbcType="DECIMAL" />
+    <result column="OLD_BALANCE" property="oldBalance" jdbcType="DECIMAL" />
+    <result column="MONEY" property="money" jdbcType="DECIMAL" />
+    <result column="NEW_BALANCE" property="newBalance" jdbcType="DECIMAL" />
+    <result column="ACCESS_TAG" property="accessTag" jdbcType="CHAR" />
+    <result column="OPERATE_TIME" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CANCEL_TAG" property="cancelTag" jdbcType="CHAR" />
+    <result column="INVOICE_FEE" property="invoiceFee" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ACCESS_ID, partition_id, ROWID, CHARGE_ID, ACCT_ID, ACCT_BALANCE_ID, DEPOSIT_CODE, 
+    OLD_BALANCE, MONEY, NEW_BALANCE, ACCESS_TAG, OPERATE_TIME, EPARCHY_CODE, CANCEL_TAG, 
+    INVOICE_FEE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.ac.bean.AccessLogBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_b_accesslog
+    where ACCESS_ID = #{accessId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.AccessLogBeanKey" >
+    delete from tf_b_accesslog
+    where ACCESS_ID = #{accessId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.ac.bean.AccessLogBean" >
+    insert into tf_b_accesslog (ACCESS_ID, partition_id, ROWID, 
+      CHARGE_ID, ACCT_ID, ACCT_BALANCE_ID, 
+      DEPOSIT_CODE, OLD_BALANCE, MONEY, 
+      NEW_BALANCE, ACCESS_TAG, OPERATE_TIME, 
+      EPARCHY_CODE, CANCEL_TAG, INVOICE_FEE
+      )
+    values (#{accessId,jdbcType=DECIMAL}, #{partitionId,jdbcType=INTEGER}, #{rowid,jdbcType=BIGINT}, 
+      #{chargeId,jdbcType=DECIMAL}, #{acctId,jdbcType=DECIMAL}, #{acctBalanceId,jdbcType=DECIMAL}, 
+      #{depositCode,jdbcType=DECIMAL}, #{oldBalance,jdbcType=DECIMAL}, #{money,jdbcType=DECIMAL}, 
+      #{newBalance,jdbcType=DECIMAL}, #{accessTag,jdbcType=CHAR}, #{operateTime,jdbcType=TIMESTAMP}, 
+      #{eparchyCode,jdbcType=CHAR}, #{cancelTag,jdbcType=CHAR}, #{invoiceFee,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.ac.bean.AccessLogBean" >
+    insert into tf_b_accesslog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accessId != null" >
+        ACCESS_ID,
+      </if>
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="rowid != null" >
+        ROWID,
+      </if>
+      <if test="chargeId != null" >
+        CHARGE_ID,
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="acctBalanceId != null" >
+        ACCT_BALANCE_ID,
+      </if>
+      <if test="depositCode != null" >
+        DEPOSIT_CODE,
+      </if>
+      <if test="oldBalance != null" >
+        OLD_BALANCE,
+      </if>
+      <if test="money != null" >
+        MONEY,
+      </if>
+      <if test="newBalance != null" >
+        NEW_BALANCE,
+      </if>
+      <if test="accessTag != null" >
+        ACCESS_TAG,
+      </if>
+      <if test="operateTime != null" >
+        OPERATE_TIME,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG,
+      </if>
+      <if test="invoiceFee != null" >
+        INVOICE_FEE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accessId != null" >
+        #{accessId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="rowid != null" >
+        #{rowid,jdbcType=BIGINT},
+      </if>
+      <if test="chargeId != null" >
+        #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctBalanceId != null" >
+        #{acctBalanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="depositCode != null" >
+        #{depositCode,jdbcType=DECIMAL},
+      </if>
+      <if test="oldBalance != null" >
+        #{oldBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="newBalance != null" >
+        #{newBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="accessTag != null" >
+        #{accessTag,jdbcType=CHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cancelTag != null" >
+        #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="invoiceFee != null" >
+        #{invoiceFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.ac.bean.AccessLogBean" >
+    update tf_b_accesslog
+    <set >
+      <if test="rowid != null" >
+        ROWID = #{rowid,jdbcType=BIGINT},
+      </if>
+      <if test="chargeId != null" >
+        CHARGE_ID = #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctBalanceId != null" >
+        ACCT_BALANCE_ID = #{acctBalanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="depositCode != null" >
+        DEPOSIT_CODE = #{depositCode,jdbcType=DECIMAL},
+      </if>
+      <if test="oldBalance != null" >
+        OLD_BALANCE = #{oldBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null" >
+        MONEY = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="newBalance != null" >
+        NEW_BALANCE = #{newBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="accessTag != null" >
+        ACCESS_TAG = #{accessTag,jdbcType=CHAR},
+      </if>
+      <if test="operateTime != null" >
+        OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cancelTag != null" >
+        CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      </if>
+      <if test="invoiceFee != null" >
+        INVOICE_FEE = #{invoiceFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ACCESS_ID = #{accessId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.AccessLogBean" >
+    update tf_b_accesslog
+    set ROWID = #{rowid,jdbcType=BIGINT},
+      CHARGE_ID = #{chargeId,jdbcType=DECIMAL},
+      ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      ACCT_BALANCE_ID = #{acctBalanceId,jdbcType=DECIMAL},
+      DEPOSIT_CODE = #{depositCode,jdbcType=DECIMAL},
+      OLD_BALANCE = #{oldBalance,jdbcType=DECIMAL},
+      MONEY = #{money,jdbcType=DECIMAL},
+      NEW_BALANCE = #{newBalance,jdbcType=DECIMAL},
+      ACCESS_TAG = #{accessTag,jdbcType=CHAR},
+      OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      CANCEL_TAG = #{cancelTag,jdbcType=CHAR},
+      INVOICE_FEE = #{invoiceFee,jdbcType=DECIMAL}
+    where ACCESS_ID = #{accessId,jdbcType=DECIMAL}
+      and partition_id = #{partitionId,jdbcType=INTEGER}
+  </update>
+</mapper>

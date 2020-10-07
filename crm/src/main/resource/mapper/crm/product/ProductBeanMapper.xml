@@ -83,6 +83,10 @@
     SELECT s.* FROM td_b_product p,TD_B_PRODUCTCOMP pp,TD_B_SERVICE_BUNDLE sb,TD_B_SERVICE_BUNDLECOMP sp,td_b_service s
 WHERE p.PRODUCT_ID=#{prodId} AND pp.PRODUCT_ID=p.PRODUCT_ID AND pp.SERV_BUND_ID=sb.SERV_BUND_ID AND sb.SERV_BUND_ID=sp.SERV_BUND_ID AND sp.SERV_SPEC_ID=s.SERVICE_ID
   </select>
+  <select id="selectFeeListByProductId" resultType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean">
+SELECT i.* FROM td_b_tp_interface i,td_b_feepolicy_bundle b
+WHERE b.DISCNT_CODE=i.FEEPOLICY_ID AND b.PRODUCT_ID=#{prodId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.product.bean.ProductBeanKey" >
     delete from td_b_product
     where PRODUCT_ID = #{productId,jdbcType=DECIMAL}

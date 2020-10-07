@@ -9,6 +9,26 @@ public class FeePolicyBundleBean {
 
     private Short maxFeepolicyNum;
 
+    private Integer discntCode;
+
+    private Integer productId;
+
+    public Integer getDiscntCode() {
+        return discntCode;
+    }
+
+    public void setDiscntCode(Integer discntCode) {
+        this.discntCode = discntCode;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
     public Integer getFeepolicyBundId() {
         return feepolicyBundId;
     }

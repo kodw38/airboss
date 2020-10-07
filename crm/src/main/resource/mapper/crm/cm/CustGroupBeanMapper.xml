@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.CustGroupBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.CustGroupBean" >
+    <result column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="GROUP_ID" property="groupId" jdbcType="VARCHAR" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="GROUP_TYPE" property="groupType" jdbcType="CHAR" />
+    <result column="CLASS_ID" property="classId" jdbcType="VARCHAR" />
+    <result column="CUST_CLASS_TYPE" property="custClassType" jdbcType="CHAR" />
+    <result column="GROUP_ATTR" property="groupAttr" jdbcType="CHAR" />
+    <result column="GROUP_STATUS" property="groupStatus" jdbcType="CHAR" />
+    <result column="GROUP_ADDR" property="groupAddr" jdbcType="VARCHAR" />
+    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="SUPER_GROUP_ID" property="superGroupId" jdbcType="VARCHAR" />
+    <result column="PNATIONAL_GROUP_ID" property="pnationalGroupId" jdbcType="VARCHAR" />
+    <result column="MP_GROUP_CUST_CODE" property="mpGroupCustCode" jdbcType="VARCHAR" />
+    <result column="UNIFY_PAY_CODE" property="unifyPayCode" jdbcType="VARCHAR" />
+    <result column="CUST_MANAGER_ID" property="custManagerId" jdbcType="CHAR" />
+    <result column="ASSIGN_DATE" property="assignDate" jdbcType="TIMESTAMP" />
+    <result column="ASSIGN_STAFF_ID" property="assignStaffId" jdbcType="CHAR" />
+    <result column="WEBSITE" property="website" jdbcType="VARCHAR" />
+    <result column="FAX_NBR" property="faxNbr" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="CHAR" />
+    <result column="GROUP_MGR_SN" property="groupMgrSn" jdbcType="VARCHAR" />
+    <result column="GROUP_MGR_CUST_NAME" property="groupMgrCustName" jdbcType="VARCHAR" />
+    <result column="CUST_SERV_NBR" property="custServNbr" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CUST_MANAGER_ID_B" property="custManagerIdB" jdbcType="CHAR" />
+    <result column="RSRV_TAG1" property="rsrvTag1" jdbcType="CHAR" />
+    <result column="RSRV_STR2" property="rsrvStr2" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" extends="BaseResultMap" >
+    <result column="PNATIONAL_GROUP_NAME" property="pnationalGroupName" jdbcType="LONGVARCHAR" />
+    <result column="GROUP_CONTACT_PHONE" property="groupContactPhone" jdbcType="LONGVARCHAR" />
+    <result column="RSRV_STR7" property="rsrvStr7" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    PNATIONAL_GROUP_NAME, GROUP_CONTACT_PHONE, RSRV_STR7
+  </sql>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" >
+    insert into tf_f_cust_group (partition_id, CUST_ID, GROUP_ID, 
+      CUST_NAME, GROUP_TYPE, CLASS_ID, 
+      CUST_CLASS_TYPE, GROUP_ATTR, GROUP_STATUS, 
+      GROUP_ADDR, PROVINCE_CODE, EPARCHY_CODE, 
+      CITY_CODE, SUPER_GROUP_ID, PNATIONAL_GROUP_ID, 
+      MP_GROUP_CUST_CODE, UNIFY_PAY_CODE, CUST_MANAGER_ID, 
+      ASSIGN_DATE, ASSIGN_STAFF_ID, WEBSITE, 
+      FAX_NBR, EMAIL, POST_CODE, 
+      GROUP_MGR_SN, GROUP_MGR_CUST_NAME, CUST_SERV_NBR, 
+      UPDATE_TIME, UPDATE_STAFF_ID, UPDATE_DEPART_ID, 
+      REMARK, CUST_MANAGER_ID_B, RSRV_TAG1, 
+      RSRV_STR2, PNATIONAL_GROUP_NAME, GROUP_CONTACT_PHONE, 
+      RSRV_STR7)
+    values (#{partitionId,jdbcType=INTEGER}, #{custId,jdbcType=DECIMAL}, #{groupId,jdbcType=VARCHAR}, 
+      #{custName,jdbcType=VARCHAR}, #{groupType,jdbcType=CHAR}, #{classId,jdbcType=VARCHAR}, 
+      #{custClassType,jdbcType=CHAR}, #{groupAttr,jdbcType=CHAR}, #{groupStatus,jdbcType=CHAR}, 
+      #{groupAddr,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, #{eparchyCode,jdbcType=CHAR}, 
+      #{cityCode,jdbcType=CHAR}, #{superGroupId,jdbcType=VARCHAR}, #{pnationalGroupId,jdbcType=VARCHAR}, 
+      #{mpGroupCustCode,jdbcType=VARCHAR}, #{unifyPayCode,jdbcType=VARCHAR}, #{custManagerId,jdbcType=CHAR}, 
+      #{assignDate,jdbcType=TIMESTAMP}, #{assignStaffId,jdbcType=CHAR}, #{website,jdbcType=VARCHAR}, 
+      #{faxNbr,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR}, 
+      #{groupMgrSn,jdbcType=VARCHAR}, #{groupMgrCustName,jdbcType=VARCHAR}, #{custServNbr,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateStaffId,jdbcType=CHAR}, #{updateDepartId,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{custManagerIdB,jdbcType=CHAR}, #{rsrvTag1,jdbcType=CHAR}, 
+      #{rsrvStr2,jdbcType=VARCHAR}, #{pnationalGroupName,jdbcType=LONGVARCHAR}, #{groupContactPhone,jdbcType=LONGVARCHAR}, 
+      #{rsrvStr7,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" >
+    insert into tf_f_cust_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="groupId != null" >
+        GROUP_ID,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="groupType != null" >
+        GROUP_TYPE,
+      </if>
+      <if test="classId != null" >
+        CLASS_ID,
+      </if>
+      <if test="custClassType != null" >
+        CUST_CLASS_TYPE,
+      </if>
+      <if test="groupAttr != null" >
+        GROUP_ATTR,
+      </if>
+      <if test="groupStatus != null" >
+        GROUP_STATUS,
+      </if>
+      <if test="groupAddr != null" >
+        GROUP_ADDR,
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="superGroupId != null" >
+        SUPER_GROUP_ID,
+      </if>
+      <if test="pnationalGroupId != null" >
+        PNATIONAL_GROUP_ID,
+      </if>
+      <if test="mpGroupCustCode != null" >
+        MP_GROUP_CUST_CODE,
+      </if>
+      <if test="unifyPayCode != null" >
+        UNIFY_PAY_CODE,
+      </if>
+      <if test="custManagerId != null" >
+        CUST_MANAGER_ID,
+      </if>
+      <if test="assignDate != null" >
+        ASSIGN_DATE,
+      </if>
+      <if test="assignStaffId != null" >
+        ASSIGN_STAFF_ID,
+      </if>
+      <if test="website != null" >
+        WEBSITE,
+      </if>
+      <if test="faxNbr != null" >
+        FAX_NBR,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="groupMgrSn != null" >
+        GROUP_MGR_SN,
+      </if>
+      <if test="groupMgrCustName != null" >
+        GROUP_MGR_CUST_NAME,
+      </if>
+      <if test="custServNbr != null" >
+        CUST_SERV_NBR,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="custManagerIdB != null" >
+        CUST_MANAGER_ID_B,
+      </if>
+      <if test="rsrvTag1 != null" >
+        RSRV_TAG1,
+      </if>
+      <if test="rsrvStr2 != null" >
+        RSRV_STR2,
+      </if>
+      <if test="pnationalGroupName != null" >
+        PNATIONAL_GROUP_NAME,
+      </if>
+      <if test="groupContactPhone != null" >
+        GROUP_CONTACT_PHONE,
+      </if>
+      <if test="rsrvStr7 != null" >
+        RSRV_STR7,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null" >
+        #{groupType,jdbcType=CHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="custClassType != null" >
+        #{custClassType,jdbcType=CHAR},
+      </if>
+      <if test="groupAttr != null" >
+        #{groupAttr,jdbcType=CHAR},
+      </if>
+      <if test="groupStatus != null" >
+        #{groupStatus,jdbcType=CHAR},
+      </if>
+      <if test="groupAddr != null" >
+        #{groupAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="superGroupId != null" >
+        #{superGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="pnationalGroupId != null" >
+        #{pnationalGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="mpGroupCustCode != null" >
+        #{mpGroupCustCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unifyPayCode != null" >
+        #{unifyPayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="custManagerId != null" >
+        #{custManagerId,jdbcType=CHAR},
+      </if>
+      <if test="assignDate != null" >
+        #{assignDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assignStaffId != null" >
+        #{assignStaffId,jdbcType=CHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="faxNbr != null" >
+        #{faxNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=CHAR},
+      </if>
+      <if test="groupMgrSn != null" >
+        #{groupMgrSn,jdbcType=VARCHAR},
+      </if>
+      <if test="groupMgrCustName != null" >
+        #{groupMgrCustName,jdbcType=VARCHAR},
+      </if>
+      <if test="custServNbr != null" >
+        #{custServNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="custManagerIdB != null" >
+        #{custManagerIdB,jdbcType=CHAR},
+      </if>
+      <if test="rsrvTag1 != null" >
+        #{rsrvTag1,jdbcType=CHAR},
+      </if>
+      <if test="rsrvStr2 != null" >
+        #{rsrvStr2,jdbcType=VARCHAR},
+      </if>
+      <if test="pnationalGroupName != null" >
+        #{pnationalGroupName,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="groupContactPhone != null" >
+        #{groupContactPhone,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="rsrvStr7 != null" >
+        #{rsrvStr7,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.AccountBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.AccountBean" >
+    <id column="PARTITION_ID" property="partitionId" jdbcType="DECIMAL" />
+    <id column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <result column="NET_TYPE_CODE" property="netTypeCode" jdbcType="VARCHAR" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="PAY_NAME" property="payName" jdbcType="VARCHAR" />
+    <result column="PAY_MODE_CODE" property="payModeCode" jdbcType="CHAR" />
+    <result column="SCORE_VALUE" property="scoreValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_CLASS_ID" property="creditClassId" jdbcType="DECIMAL" />
+    <result column="BASIC_CREDIT_VALUE" property="basicCreditValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_VALUE" property="creditValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_CONTROL_ID" property="creditControlId" jdbcType="DECIMAL" />
+    <result column="DEBUTY_USER_ID" property="debutyUserId" jdbcType="DECIMAL" />
+    <result column="DEBUTY_CODE" property="debutyCode" jdbcType="VARCHAR" />
+    <result column="CONTRACT_NO" property="contractNo" jdbcType="VARCHAR" />
+    <result column="REMOVE_TAG" property="removeTag" jdbcType="CHAR" />
+    <result column="OPEN_DATE" property="openDate" jdbcType="TIMESTAMP" />
+    <result column="REMOVE_DATE" property="removeDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PARTITION_ID, ACCT_ID, NET_TYPE_CODE, EPARCHY_CODE, CITY_CODE, CUST_ID, PAY_NAME, 
+    PAY_MODE_CODE, SCORE_VALUE, CREDIT_CLASS_ID, BASIC_CREDIT_VALUE, CREDIT_VALUE, CREDIT_CONTROL_ID, 
+    DEBUTY_USER_ID, DEBUTY_CODE, CONTRACT_NO, REMOVE_TAG, OPEN_DATE, REMOVE_DATE, UPDATE_TIME, 
+    UPDATE_DEPART_ID, UPDATE_STAFF_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.AccountBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_account
+    where PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AccountBeanKey" >
+    delete from tf_f_account
+    where PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.AccountBean" >
+    insert into tf_f_account (PARTITION_ID, ACCT_ID, NET_TYPE_CODE, 
+      EPARCHY_CODE, CITY_CODE, CUST_ID, 
+      PAY_NAME, PAY_MODE_CODE, SCORE_VALUE, 
+      CREDIT_CLASS_ID, BASIC_CREDIT_VALUE, CREDIT_VALUE, 
+      CREDIT_CONTROL_ID, DEBUTY_USER_ID, DEBUTY_CODE, 
+      CONTRACT_NO, REMOVE_TAG, OPEN_DATE, 
+      REMOVE_DATE, UPDATE_TIME, UPDATE_DEPART_ID, 
+      UPDATE_STAFF_ID)
+    values (#{partitionId,jdbcType=DECIMAL}, #{acctId,jdbcType=DECIMAL}, #{netTypeCode,jdbcType=VARCHAR}, 
+      #{eparchyCode,jdbcType=CHAR}, #{cityCode,jdbcType=CHAR}, #{custId,jdbcType=DECIMAL}, 
+      #{payName,jdbcType=VARCHAR}, #{payModeCode,jdbcType=CHAR}, #{scoreValue,jdbcType=DECIMAL}, 
+      #{creditClassId,jdbcType=DECIMAL}, #{basicCreditValue,jdbcType=DECIMAL}, #{creditValue,jdbcType=DECIMAL}, 
+      #{creditControlId,jdbcType=DECIMAL}, #{debutyUserId,jdbcType=DECIMAL}, #{debutyCode,jdbcType=VARCHAR}, 
+      #{contractNo,jdbcType=VARCHAR}, #{removeTag,jdbcType=CHAR}, #{openDate,jdbcType=TIMESTAMP}, 
+      #{removeDate,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{updateDepartId,jdbcType=CHAR}, 
+      #{updateStaffId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.AccountBean" >
+    insert into tf_f_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        PARTITION_ID,
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="payName != null" >
+        PAY_NAME,
+      </if>
+      <if test="payModeCode != null" >
+        PAY_MODE_CODE,
+      </if>
+      <if test="scoreValue != null" >
+        SCORE_VALUE,
+      </if>
+      <if test="creditClassId != null" >
+        CREDIT_CLASS_ID,
+      </if>
+      <if test="basicCreditValue != null" >
+        BASIC_CREDIT_VALUE,
+      </if>
+      <if test="creditValue != null" >
+        CREDIT_VALUE,
+      </if>
+      <if test="creditControlId != null" >
+        CREDIT_CONTROL_ID,
+      </if>
+      <if test="debutyUserId != null" >
+        DEBUTY_USER_ID,
+      </if>
+      <if test="debutyCode != null" >
+        DEBUTY_CODE,
+      </if>
+      <if test="contractNo != null" >
+        CONTRACT_NO,
+      </if>
+      <if test="removeTag != null" >
+        REMOVE_TAG,
+      </if>
+      <if test="openDate != null" >
+        OPEN_DATE,
+      </if>
+      <if test="removeDate != null" >
+        REMOVE_DATE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="netTypeCode != null" >
+        #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="payName != null" >
+        #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="payModeCode != null" >
+        #{payModeCode,jdbcType=CHAR},
+      </if>
+      <if test="scoreValue != null" >
+        #{scoreValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditClassId != null" >
+        #{creditClassId,jdbcType=DECIMAL},
+      </if>
+      <if test="basicCreditValue != null" >
+        #{basicCreditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditValue != null" >
+        #{creditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditControlId != null" >
+        #{creditControlId,jdbcType=DECIMAL},
+      </if>
+      <if test="debutyUserId != null" >
+        #{debutyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="debutyCode != null" >
+        #{debutyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null" >
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="removeTag != null" >
+        #{removeTag,jdbcType=CHAR},
+      </if>
+      <if test="openDate != null" >
+        #{openDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="removeDate != null" >
+        #{removeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.AccountBean" >
+    update tf_f_account
+    <set >
+      <if test="netTypeCode != null" >
+        NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custId != null" >
+        CUST_ID = #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="payName != null" >
+        PAY_NAME = #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="payModeCode != null" >
+        PAY_MODE_CODE = #{payModeCode,jdbcType=CHAR},
+      </if>
+      <if test="scoreValue != null" >
+        SCORE_VALUE = #{scoreValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditClassId != null" >
+        CREDIT_CLASS_ID = #{creditClassId,jdbcType=DECIMAL},
+      </if>
+      <if test="basicCreditValue != null" >
+        BASIC_CREDIT_VALUE = #{basicCreditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditValue != null" >
+        CREDIT_VALUE = #{creditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditControlId != null" >
+        CREDIT_CONTROL_ID = #{creditControlId,jdbcType=DECIMAL},
+      </if>
+      <if test="debutyUserId != null" >
+        DEBUTY_USER_ID = #{debutyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="debutyCode != null" >
+        DEBUTY_CODE = #{debutyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null" >
+        CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="removeTag != null" >
+        REMOVE_TAG = #{removeTag,jdbcType=CHAR},
+      </if>
+      <if test="openDate != null" >
+        OPEN_DATE = #{openDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="removeDate != null" >
+        REMOVE_DATE = #{removeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR},
+      </if>
+    </set>
+    where PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AccountBean" >
+    update tf_f_account
+    set NET_TYPE_CODE = #{netTypeCode,jdbcType=VARCHAR},
+      EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      CITY_CODE = #{cityCode,jdbcType=CHAR},
+      CUST_ID = #{custId,jdbcType=DECIMAL},
+      PAY_NAME = #{payName,jdbcType=VARCHAR},
+      PAY_MODE_CODE = #{payModeCode,jdbcType=CHAR},
+      SCORE_VALUE = #{scoreValue,jdbcType=DECIMAL},
+      CREDIT_CLASS_ID = #{creditClassId,jdbcType=DECIMAL},
+      BASIC_CREDIT_VALUE = #{basicCreditValue,jdbcType=DECIMAL},
+      CREDIT_VALUE = #{creditValue,jdbcType=DECIMAL},
+      CREDIT_CONTROL_ID = #{creditControlId,jdbcType=DECIMAL},
+      DEBUTY_USER_ID = #{debutyUserId,jdbcType=DECIMAL},
+      DEBUTY_CODE = #{debutyCode,jdbcType=VARCHAR},
+      CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      REMOVE_TAG = #{removeTag,jdbcType=CHAR},
+      OPEN_DATE = #{openDate,jdbcType=TIMESTAMP},
+      REMOVE_DATE = #{removeDate,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR}
+    where PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+  </update>
+</mapper>

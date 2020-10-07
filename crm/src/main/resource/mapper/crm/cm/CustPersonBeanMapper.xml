@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.CustPersonBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.CustPersonBean" >
+    <result column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="PSPT_TYPE_CODE" property="psptTypeCode" jdbcType="CHAR" />
+    <result column="PSPT_ID" property="psptId" jdbcType="VARCHAR" />
+    <result column="PSPT_END_DATE" property="psptEndDate" jdbcType="TIMESTAMP" />
+    <result column="PSPT_ADDR" property="psptAddr" jdbcType="VARCHAR" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="CHAR" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="POST_ADDRESS" property="postAddress" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="CHAR" />
+    <result column="POST_PERSON" property="postPerson" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="FAX_NBR" property="faxNbr" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="HOME_ADDRESS" property="homeAddress" jdbcType="VARCHAR" />
+    <result column="HOME_PHONE" property="homePhone" jdbcType="VARCHAR" />
+    <result column="WORK_NAME" property="workName" jdbcType="VARCHAR" />
+    <result column="WORK_KIND" property="workKind" jdbcType="CHAR" />
+    <result column="WORK_ADDRESS" property="workAddress" jdbcType="VARCHAR" />
+    <result column="WORK_PHONE" property="workPhone" jdbcType="VARCHAR" />
+    <result column="WORK_POST_CODE" property="workPostCode" jdbcType="CHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_PHONE" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="CONTACT_TYPE_CODE" property="contactTypeCode" jdbcType="CHAR" />
+    <result column="CONTACT_FREQ" property="contactFreq" jdbcType="CHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.pl.airboss.crm.cm.bean.CustPersonBean" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustPersonBean" >
+    insert into tf_f_cust_person (partition_id, CUST_ID, PSPT_TYPE_CODE, 
+      PSPT_ID, PSPT_END_DATE, PSPT_ADDR, 
+      CUST_NAME, SEX, EPARCHY_CODE, 
+      CITY_CODE, POST_ADDRESS, POST_CODE, 
+      POST_PERSON, PHONE, FAX_NBR, 
+      EMAIL, HOME_ADDRESS, HOME_PHONE, 
+      WORK_NAME, WORK_KIND, WORK_ADDRESS, 
+      WORK_PHONE, WORK_POST_CODE, CONTACT, 
+      CONTACT_PHONE, CONTACT_TYPE_CODE, CONTACT_FREQ, 
+      UPDATE_TIME, UPDATE_STAFF_ID, UPDATE_DEPART_ID, 
+      REMARK)
+    values (#{partitionId,jdbcType=INTEGER}, #{custId,jdbcType=DECIMAL}, #{psptTypeCode,jdbcType=CHAR}, 
+      #{psptId,jdbcType=VARCHAR}, #{psptEndDate,jdbcType=TIMESTAMP}, #{psptAddr,jdbcType=VARCHAR}, 
+      #{custName,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{eparchyCode,jdbcType=CHAR}, 
+      #{cityCode,jdbcType=CHAR}, #{postAddress,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR}, 
+      #{postPerson,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{faxNbr,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{homeAddress,jdbcType=VARCHAR}, #{homePhone,jdbcType=VARCHAR}, 
+      #{workName,jdbcType=VARCHAR}, #{workKind,jdbcType=CHAR}, #{workAddress,jdbcType=VARCHAR}, 
+      #{workPhone,jdbcType=VARCHAR}, #{workPostCode,jdbcType=CHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{contactPhone,jdbcType=VARCHAR}, #{contactTypeCode,jdbcType=CHAR}, #{contactFreq,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateStaffId,jdbcType=CHAR}, #{updateDepartId,jdbcType=CHAR}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.CustPersonBean" >
+    insert into tf_f_cust_person
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="psptTypeCode != null" >
+        PSPT_TYPE_CODE,
+      </if>
+      <if test="psptId != null" >
+        PSPT_ID,
+      </if>
+      <if test="psptEndDate != null" >
+        PSPT_END_DATE,
+      </if>
+      <if test="psptAddr != null" >
+        PSPT_ADDR,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="postAddress != null" >
+        POST_ADDRESS,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="postPerson != null" >
+        POST_PERSON,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="faxNbr != null" >
+        FAX_NBR,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="homeAddress != null" >
+        HOME_ADDRESS,
+      </if>
+      <if test="homePhone != null" >
+        HOME_PHONE,
+      </if>
+      <if test="workName != null" >
+        WORK_NAME,
+      </if>
+      <if test="workKind != null" >
+        WORK_KIND,
+      </if>
+      <if test="workAddress != null" >
+        WORK_ADDRESS,
+      </if>
+      <if test="workPhone != null" >
+        WORK_PHONE,
+      </if>
+      <if test="workPostCode != null" >
+        WORK_POST_CODE,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactPhone != null" >
+        CONTACT_PHONE,
+      </if>
+      <if test="contactTypeCode != null" >
+        CONTACT_TYPE_CODE,
+      </if>
+      <if test="contactFreq != null" >
+        CONTACT_FREQ,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="psptTypeCode != null" >
+        #{psptTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="psptId != null" >
+        #{psptId,jdbcType=VARCHAR},
+      </if>
+      <if test="psptEndDate != null" >
+        #{psptEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="psptAddr != null" >
+        #{psptAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="postAddress != null" >
+        #{postAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=CHAR},
+      </if>
+      <if test="postPerson != null" >
+        #{postPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="faxNbr != null" >
+        #{faxNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        #{homeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null" >
+        #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="workName != null" >
+        #{workName,jdbcType=VARCHAR},
+      </if>
+      <if test="workKind != null" >
+        #{workKind,jdbcType=CHAR},
+      </if>
+      <if test="workAddress != null" >
+        #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workPhone != null" >
+        #{workPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="workPostCode != null" >
+        #{workPostCode,jdbcType=CHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTypeCode != null" >
+        #{contactTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="contactFreq != null" >
+        #{contactFreq,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

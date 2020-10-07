@@ -1,6 +1,9 @@
 package com.pl.airboss.crm.product.service.interfaces;
 
+import com.pl.airboss.crm.ac.bean.FeeCycleBean;
+import com.pl.airboss.crm.ac.bean.FeeInterfaceBean;
 import com.pl.airboss.crm.product.bean.*;
+import com.pl.airboss.web.utils.Ztree;
 
 import javax.xml.ws.Service;
 import java.util.HashMap;
@@ -12,11 +15,15 @@ import java.util.Map;
  */
 public interface IOfferSV {
 
+    public List<ServiceBean> queryServices(ServiceBean bean);
+
+    public ServiceBean queryServiceById(int id);
     /**
      * 增加服务
      * @param bean
      * @return
      */
+
     public int addService(ServiceBean bean);
 
     /**
@@ -26,6 +33,11 @@ public interface IOfferSV {
      */
     public int addServiceParams(List<ServiceParamBean> paramBeans);
 
+    public int addServiceParam(ServiceParamBean bean);
+
+    public List<Ztree> selectFeePolicyBundleTree(FeePolicyBundleBean cond);
+
+    public ServiceParamBean queryServiceParam(Long propertyId);
     /**
      * 跟新服务
      * @param bean
@@ -146,8 +158,33 @@ public interface IOfferSV {
 
 
 
+    public List<FeeInterfaceBean> queryFeeInterface(FeeInterfaceBean cond);
 
 
+    public List<FeeInterfaceBean> queryFeeInterfaceByBundleId(Long bundleId);
 
+    public int addFeeInterface(FeeInterfaceBean bean);
+
+    public FeeInterfaceBean getFeeInterface(Integer feeId);
+
+    public int updateFeeInterface(FeeInterfaceBean bean);
+
+    public int deleteFeeInterface(Integer recId);
+
+    public List<FeeCycleBean> listCycle();
+
+    public List<Ztree> selectProductCategoryTree();
+
+    public List<FeeInterfaceBean> queryFeeInterfaceListByProductId(Long productId);
+
+    public int addProductFee(Integer prodId,Integer feeId);
+
+    public FeePolicyBundleBean getProductFeeBundle(Integer prodId,Integer feeId);
+
+    public int deleteFeePolicyBundle(Integer bundleId);
+
+    public int addProductService(Integer productId,Integer serviceId)throws Exception;
+
+    public int deleteProductService(Integer productId,Integer serviceId)throws Exception;
 
 }

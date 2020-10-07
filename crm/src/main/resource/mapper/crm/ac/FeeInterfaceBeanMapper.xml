@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.ac.dao.FeeInterfaceBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" >
+    <id column="FEEPOLICY_ID" property="feepolicyId" jdbcType="DECIMAL" />
+    <result column="FEEPOLICY_NAME" property="feepolicyName" jdbcType="VARCHAR" />
+    <result column="FOR_BOSS_TAG" property="forBossTag" jdbcType="CHAR" />
+    <result column="IMPL_METHOD" property="implMethod" jdbcType="CHAR" />
+    <result column="FP_TYPE" property="fpType" jdbcType="DECIMAL" />
+    <result column="PRESENT_TAG" property="presentTag" jdbcType="CHAR" />
+    <result column="RES_SHARE_TAG" property="resShareTag" jdbcType="CHAR" />
+    <result column="EXCHANGE_TAG" property="exchangeTag" jdbcType="CHAR" />
+    <result column="CYCLE_RULE_ID" property="cycleRuleId" jdbcType="DECIMAL" />
+    <result column="TRACE_TAG" property="traceTag" jdbcType="CHAR" />
+    <result column="ADJUST_TAG" property="adjustTag" jdbcType="CHAR" />
+    <result column="ADJUST_METHOD" property="adjustMethod" jdbcType="CHAR" />
+    <result column="PARAM_NUM" property="paramNum" jdbcType="DECIMAL" />
+    <result column="STATE_RELA" property="stateRela" jdbcType="CHAR" />
+    <result column="STATE_PRI" property="statePri" jdbcType="CHAR" />
+    <result column="FEESTATE_ID" property="feestateId" jdbcType="DECIMAL" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="SEND_TAG" property="sendTag" jdbcType="DECIMAL" />
+    <result column="ENABLE_TAG" property="enableTag" jdbcType="CHAR" />
+    <result column="DISCOUNT_SCOPE" property="discountScope" jdbcType="CHAR" />
+    <result column="REMIND_TAG" property="remindTag" jdbcType="CHAR" />
+    <result column="RATE_TAG" property="rateTag" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FEEPOLICY_ID, FEEPOLICY_NAME, FOR_BOSS_TAG, IMPL_METHOD, FP_TYPE, PRESENT_TAG, RES_SHARE_TAG, 
+    EXCHANGE_TAG, CYCLE_RULE_ID, TRACE_TAG, ADJUST_TAG, ADJUST_METHOD, PARAM_NUM, STATE_RELA, 
+    STATE_PRI, FEESTATE_ID, START_DATE, END_DATE, SEND_TAG, ENABLE_TAG, DISCOUNT_SCOPE, 
+    REMIND_TAG, RATE_TAG
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from td_b_tp_interface
+    where FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL}
+  </select>
+  <select id="select" resultMap="ResultMapWithBLOBs" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from td_b_tp_interface
+    where FOR_BOSS_TAG='1'
+  </select>
+  <select id="selectByBundleId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+    select i.* from td_b_tp_interface i, td_b_feepolicy_bundle b where b.DISCNT_CODE=i.FEEPOLICY_ID
+    where b.RATE_TAG=#{bundleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from td_b_tp_interface
+    where FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" >
+    insert into td_b_tp_interface (FEEPOLICY_ID, FEEPOLICY_NAME, FOR_BOSS_TAG, 
+      IMPL_METHOD, FP_TYPE, PRESENT_TAG, 
+      RES_SHARE_TAG, EXCHANGE_TAG, CYCLE_RULE_ID, 
+      TRACE_TAG, ADJUST_TAG, ADJUST_METHOD, 
+      PARAM_NUM, STATE_RELA, STATE_PRI, 
+      FEESTATE_ID, START_DATE, END_DATE, 
+      SEND_TAG, ENABLE_TAG, DISCOUNT_SCOPE, 
+      REMIND_TAG, RATE_TAG, REMARK
+      )
+    values (#{feepolicyId,jdbcType=DECIMAL}, #{feepolicyName,jdbcType=VARCHAR}, #{forBossTag,jdbcType=CHAR}, 
+      #{implMethod,jdbcType=CHAR}, #{fpType,jdbcType=DECIMAL}, #{presentTag,jdbcType=CHAR}, 
+      #{resShareTag,jdbcType=CHAR}, #{exchangeTag,jdbcType=CHAR}, #{cycleRuleId,jdbcType=DECIMAL}, 
+      #{traceTag,jdbcType=CHAR}, #{adjustTag,jdbcType=CHAR}, #{adjustMethod,jdbcType=CHAR}, 
+      #{paramNum,jdbcType=DECIMAL}, #{stateRela,jdbcType=CHAR}, #{statePri,jdbcType=CHAR}, 
+      #{feestateId,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{sendTag,jdbcType=DECIMAL}, #{enableTag,jdbcType=CHAR}, #{discountScope,jdbcType=CHAR}, 
+      #{remindTag,jdbcType=CHAR}, #{rateTag,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" >
+    insert into td_b_tp_interface
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feepolicyId != null" >
+        FEEPOLICY_ID,
+      </if>
+      <if test="feepolicyName != null" >
+        FEEPOLICY_NAME,
+      </if>
+      <if test="forBossTag != null" >
+        FOR_BOSS_TAG,
+      </if>
+      <if test="implMethod != null" >
+        IMPL_METHOD,
+      </if>
+      <if test="fpType != null" >
+        FP_TYPE,
+      </if>
+      <if test="presentTag != null" >
+        PRESENT_TAG,
+      </if>
+      <if test="resShareTag != null" >
+        RES_SHARE_TAG,
+      </if>
+      <if test="exchangeTag != null" >
+        EXCHANGE_TAG,
+      </if>
+      <if test="cycleRuleId != null" >
+        CYCLE_RULE_ID,
+      </if>
+      <if test="traceTag != null" >
+        TRACE_TAG,
+      </if>
+      <if test="adjustTag != null" >
+        ADJUST_TAG,
+      </if>
+      <if test="adjustMethod != null" >
+        ADJUST_METHOD,
+      </if>
+      <if test="paramNum != null" >
+        PARAM_NUM,
+      </if>
+      <if test="stateRela != null" >
+        STATE_RELA,
+      </if>
+      <if test="statePri != null" >
+        STATE_PRI,
+      </if>
+      <if test="feestateId != null" >
+        FEESTATE_ID,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="sendTag != null" >
+        SEND_TAG,
+      </if>
+      <if test="enableTag != null" >
+        ENABLE_TAG,
+      </if>
+      <if test="discountScope != null" >
+        DISCOUNT_SCOPE,
+      </if>
+      <if test="remindTag != null" >
+        REMIND_TAG,
+      </if>
+      <if test="rateTag != null" >
+        RATE_TAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feepolicyId != null" >
+        #{feepolicyId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyName != null" >
+        #{feepolicyName,jdbcType=VARCHAR},
+      </if>
+      <if test="forBossTag != null" >
+        #{forBossTag,jdbcType=CHAR},
+      </if>
+      <if test="implMethod != null" >
+        #{implMethod,jdbcType=CHAR},
+      </if>
+      <if test="fpType != null" >
+        #{fpType,jdbcType=DECIMAL},
+      </if>
+      <if test="presentTag != null" >
+        #{presentTag,jdbcType=CHAR},
+      </if>
+      <if test="resShareTag != null" >
+        #{resShareTag,jdbcType=CHAR},
+      </if>
+      <if test="exchangeTag != null" >
+        #{exchangeTag,jdbcType=CHAR},
+      </if>
+      <if test="cycleRuleId != null" >
+        #{cycleRuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="traceTag != null" >
+        #{traceTag,jdbcType=CHAR},
+      </if>
+      <if test="adjustTag != null" >
+        #{adjustTag,jdbcType=CHAR},
+      </if>
+      <if test="adjustMethod != null" >
+        #{adjustMethod,jdbcType=CHAR},
+      </if>
+      <if test="paramNum != null" >
+        #{paramNum,jdbcType=DECIMAL},
+      </if>
+      <if test="stateRela != null" >
+        #{stateRela,jdbcType=CHAR},
+      </if>
+      <if test="statePri != null" >
+        #{statePri,jdbcType=CHAR},
+      </if>
+      <if test="feestateId != null" >
+        #{feestateId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTag != null" >
+        #{sendTag,jdbcType=DECIMAL},
+      </if>
+      <if test="enableTag != null" >
+        #{enableTag,jdbcType=CHAR},
+      </if>
+      <if test="discountScope != null" >
+        #{discountScope,jdbcType=CHAR},
+      </if>
+      <if test="remindTag != null" >
+        #{remindTag,jdbcType=CHAR},
+      </if>
+      <if test="rateTag != null" >
+        #{rateTag,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" >
+    update td_b_tp_interface
+    <set >
+      <if test="feepolicyName != null" >
+        FEEPOLICY_NAME = #{feepolicyName,jdbcType=VARCHAR},
+      </if>
+      <if test="forBossTag != null" >
+        FOR_BOSS_TAG = #{forBossTag,jdbcType=CHAR},
+      </if>
+      <if test="implMethod != null" >
+        IMPL_METHOD = #{implMethod,jdbcType=CHAR},
+      </if>
+      <if test="fpType != null" >
+        FP_TYPE = #{fpType,jdbcType=DECIMAL},
+      </if>
+      <if test="presentTag != null" >
+        PRESENT_TAG = #{presentTag,jdbcType=CHAR},
+      </if>
+      <if test="resShareTag != null" >
+        RES_SHARE_TAG = #{resShareTag,jdbcType=CHAR},
+      </if>
+      <if test="exchangeTag != null" >
+        EXCHANGE_TAG = #{exchangeTag,jdbcType=CHAR},
+      </if>
+      <if test="cycleRuleId != null" >
+        CYCLE_RULE_ID = #{cycleRuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="traceTag != null" >
+        TRACE_TAG = #{traceTag,jdbcType=CHAR},
+      </if>
+      <if test="adjustTag != null" >
+        ADJUST_TAG = #{adjustTag,jdbcType=CHAR},
+      </if>
+      <if test="adjustMethod != null" >
+        ADJUST_METHOD = #{adjustMethod,jdbcType=CHAR},
+      </if>
+      <if test="paramNum != null" >
+        PARAM_NUM = #{paramNum,jdbcType=DECIMAL},
+      </if>
+      <if test="stateRela != null" >
+        STATE_RELA = #{stateRela,jdbcType=CHAR},
+      </if>
+      <if test="statePri != null" >
+        STATE_PRI = #{statePri,jdbcType=CHAR},
+      </if>
+      <if test="feestateId != null" >
+        FEESTATE_ID = #{feestateId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTag != null" >
+        SEND_TAG = #{sendTag,jdbcType=DECIMAL},
+      </if>
+      <if test="enableTag != null" >
+        ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      </if>
+      <if test="discountScope != null" >
+        DISCOUNT_SCOPE = #{discountScope,jdbcType=CHAR},
+      </if>
+      <if test="remindTag != null" >
+        REMIND_TAG = #{remindTag,jdbcType=CHAR},
+      </if>
+      <if test="rateTag != null" >
+        RATE_TAG = #{rateTag,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" >
+    update td_b_tp_interface
+    set FEEPOLICY_NAME = #{feepolicyName,jdbcType=VARCHAR},
+      FOR_BOSS_TAG = #{forBossTag,jdbcType=CHAR},
+      IMPL_METHOD = #{implMethod,jdbcType=CHAR},
+      FP_TYPE = #{fpType,jdbcType=DECIMAL},
+      PRESENT_TAG = #{presentTag,jdbcType=CHAR},
+      RES_SHARE_TAG = #{resShareTag,jdbcType=CHAR},
+      EXCHANGE_TAG = #{exchangeTag,jdbcType=CHAR},
+      CYCLE_RULE_ID = #{cycleRuleId,jdbcType=DECIMAL},
+      TRACE_TAG = #{traceTag,jdbcType=CHAR},
+      ADJUST_TAG = #{adjustTag,jdbcType=CHAR},
+      ADJUST_METHOD = #{adjustMethod,jdbcType=CHAR},
+      PARAM_NUM = #{paramNum,jdbcType=DECIMAL},
+      STATE_RELA = #{stateRela,jdbcType=CHAR},
+      STATE_PRI = #{statePri,jdbcType=CHAR},
+      FEESTATE_ID = #{feestateId,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      SEND_TAG = #{sendTag,jdbcType=DECIMAL},
+      ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      DISCOUNT_SCOPE = #{discountScope,jdbcType=CHAR},
+      REMIND_TAG = #{remindTag,jdbcType=CHAR},
+      RATE_TAG = #{rateTag,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean" >
+    update td_b_tp_interface
+    set FEEPOLICY_NAME = #{feepolicyName,jdbcType=VARCHAR},
+      FOR_BOSS_TAG = #{forBossTag,jdbcType=CHAR},
+      IMPL_METHOD = #{implMethod,jdbcType=CHAR},
+      FP_TYPE = #{fpType,jdbcType=DECIMAL},
+      PRESENT_TAG = #{presentTag,jdbcType=CHAR},
+      RES_SHARE_TAG = #{resShareTag,jdbcType=CHAR},
+      EXCHANGE_TAG = #{exchangeTag,jdbcType=CHAR},
+      CYCLE_RULE_ID = #{cycleRuleId,jdbcType=DECIMAL},
+      TRACE_TAG = #{traceTag,jdbcType=CHAR},
+      ADJUST_TAG = #{adjustTag,jdbcType=CHAR},
+      ADJUST_METHOD = #{adjustMethod,jdbcType=CHAR},
+      PARAM_NUM = #{paramNum,jdbcType=DECIMAL},
+      STATE_RELA = #{stateRela,jdbcType=CHAR},
+      STATE_PRI = #{statePri,jdbcType=CHAR},
+      FEESTATE_ID = #{feestateId,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      SEND_TAG = #{sendTag,jdbcType=DECIMAL},
+      ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      DISCOUNT_SCOPE = #{discountScope,jdbcType=CHAR},
+      REMIND_TAG = #{remindTag,jdbcType=CHAR},
+      RATE_TAG = #{rateTag,jdbcType=CHAR}
+    where FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL}
+  </update>
+</mapper>

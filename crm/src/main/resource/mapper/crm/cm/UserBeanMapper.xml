@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.UserBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.UserBean" >
+    <id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="PARTITION_ID" property="partitionId" jdbcType="DECIMAL" />
+    <result column="DUMMY_TAG" property="dummyTag" jdbcType="CHAR" />
+    <result column="SERV_TYPE" property="servType" jdbcType="CHAR" />
+    <result column="SERIAL_NUMBER" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="USER_PASSWD" property="userPasswd" jdbcType="VARCHAR" />
+    <result column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="CUST_ID" property="custId" jdbcType="DECIMAL" />
+    <result column="USECUST_ID" property="usecustId" jdbcType="DECIMAL" />
+    <result column="BRAND_CODE" property="brandCode" jdbcType="CHAR" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="DECIMAL" />
+    <result column="USER_TYPE_CODE" property="userTypeCode" jdbcType="CHAR" />
+    <result column="PREPAY_TAG" property="prepayTag" jdbcType="CHAR" />
+    <result column="SERVICE_STATE_CODE" property="serviceStateCode" jdbcType="VARCHAR" />
+    <result column="OPEN_MODE" property="openMode" jdbcType="CHAR" />
+    <result column="ACCT_TAG" property="acctTag" jdbcType="CHAR" />
+    <result column="REMOVE_TAG" property="removeTag" jdbcType="CHAR" />
+    <result column="IN_DATE" property="inDate" jdbcType="TIMESTAMP" />
+    <result column="OPEN_DATE" property="openDate" jdbcType="TIMESTAMP" />
+    <result column="PRE_DESTROY_DATE" property="preDestroyDate" jdbcType="TIMESTAMP" />
+    <result column="DESTROY_DATE" property="destroyDate" jdbcType="TIMESTAMP" />
+    <result column="FIRST_CALL_DATE" property="firstCallDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_STOP_DATE" property="lastStopDate" jdbcType="TIMESTAMP" />
+    <result column="CREDIT_CLASS" property="creditClass" jdbcType="DECIMAL" />
+    <result column="BASE_CREDIT_VALUE" property="baseCreditValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_VALUE" property="creditValue" jdbcType="DECIMAL" />
+    <result column="CREDIT_CONTROL_ID" property="creditControlId" jdbcType="DECIMAL" />
+    <result column="DEPOSIT_VALUE" property="depositValue" jdbcType="DECIMAL" />
+    <result column="SCORE_VALUE" property="scoreValue" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, PARTITION_ID, DUMMY_TAG, SERV_TYPE, SERIAL_NUMBER, USER_PASSWD, EPARCHY_CODE, 
+    CITY_CODE, CUST_ID, USECUST_ID, BRAND_CODE, PRODUCT_ID, USER_TYPE_CODE, PREPAY_TAG, 
+    SERVICE_STATE_CODE, OPEN_MODE, ACCT_TAG, REMOVE_TAG, IN_DATE, OPEN_DATE, PRE_DESTROY_DATE, 
+    DESTROY_DATE, FIRST_CALL_DATE, LAST_STOP_DATE, CREDIT_CLASS, BASE_CREDIT_VALUE, CREDIT_VALUE, 
+    CREDIT_CONTROL_ID, DEPOSIT_VALUE, SCORE_VALUE, UPDATE_TIME, UPDATE_DEPART_ID, UPDATE_STAFF_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_user
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tf_f_user
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.UserBean" >
+    insert into tf_f_user (USER_ID, PARTITION_ID, DUMMY_TAG, 
+      SERV_TYPE, SERIAL_NUMBER, USER_PASSWD, 
+      EPARCHY_CODE, CITY_CODE, CUST_ID, 
+      USECUST_ID, BRAND_CODE, PRODUCT_ID, 
+      USER_TYPE_CODE, PREPAY_TAG, SERVICE_STATE_CODE, 
+      OPEN_MODE, ACCT_TAG, REMOVE_TAG, 
+      IN_DATE, OPEN_DATE, PRE_DESTROY_DATE, 
+      DESTROY_DATE, FIRST_CALL_DATE, LAST_STOP_DATE, 
+      CREDIT_CLASS, BASE_CREDIT_VALUE, CREDIT_VALUE, 
+      CREDIT_CONTROL_ID, DEPOSIT_VALUE, SCORE_VALUE, 
+      UPDATE_TIME, UPDATE_DEPART_ID, UPDATE_STAFF_ID
+      )
+    values (#{userId,jdbcType=DECIMAL}, #{partitionId,jdbcType=DECIMAL}, #{dummyTag,jdbcType=CHAR}, 
+      #{servType,jdbcType=CHAR}, #{serialNumber,jdbcType=VARCHAR}, #{userPasswd,jdbcType=VARCHAR}, 
+      #{eparchyCode,jdbcType=CHAR}, #{cityCode,jdbcType=CHAR}, #{custId,jdbcType=DECIMAL}, 
+      #{usecustId,jdbcType=DECIMAL}, #{brandCode,jdbcType=CHAR}, #{productId,jdbcType=DECIMAL}, 
+      #{userTypeCode,jdbcType=CHAR}, #{prepayTag,jdbcType=CHAR}, #{serviceStateCode,jdbcType=VARCHAR}, 
+      #{openMode,jdbcType=CHAR}, #{acctTag,jdbcType=CHAR}, #{removeTag,jdbcType=CHAR}, 
+      #{inDate,jdbcType=TIMESTAMP}, #{openDate,jdbcType=TIMESTAMP}, #{preDestroyDate,jdbcType=TIMESTAMP}, 
+      #{destroyDate,jdbcType=TIMESTAMP}, #{firstCallDate,jdbcType=TIMESTAMP}, #{lastStopDate,jdbcType=TIMESTAMP}, 
+      #{creditClass,jdbcType=DECIMAL}, #{baseCreditValue,jdbcType=DECIMAL}, #{creditValue,jdbcType=DECIMAL}, 
+      #{creditControlId,jdbcType=DECIMAL}, #{depositValue,jdbcType=DECIMAL}, #{scoreValue,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateDepartId,jdbcType=CHAR}, #{updateStaffId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.UserBean" >
+    insert into tf_f_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="partitionId != null" >
+        PARTITION_ID,
+      </if>
+      <if test="dummyTag != null" >
+        DUMMY_TAG,
+      </if>
+      <if test="servType != null" >
+        SERV_TYPE,
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER,
+      </if>
+      <if test="userPasswd != null" >
+        USER_PASSWD,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="usecustId != null" >
+        USECUST_ID,
+      </if>
+      <if test="brandCode != null" >
+        BRAND_CODE,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="userTypeCode != null" >
+        USER_TYPE_CODE,
+      </if>
+      <if test="prepayTag != null" >
+        PREPAY_TAG,
+      </if>
+      <if test="serviceStateCode != null" >
+        SERVICE_STATE_CODE,
+      </if>
+      <if test="openMode != null" >
+        OPEN_MODE,
+      </if>
+      <if test="acctTag != null" >
+        ACCT_TAG,
+      </if>
+      <if test="removeTag != null" >
+        REMOVE_TAG,
+      </if>
+      <if test="inDate != null" >
+        IN_DATE,
+      </if>
+      <if test="openDate != null" >
+        OPEN_DATE,
+      </if>
+      <if test="preDestroyDate != null" >
+        PRE_DESTROY_DATE,
+      </if>
+      <if test="destroyDate != null" >
+        DESTROY_DATE,
+      </if>
+      <if test="firstCallDate != null" >
+        FIRST_CALL_DATE,
+      </if>
+      <if test="lastStopDate != null" >
+        LAST_STOP_DATE,
+      </if>
+      <if test="creditClass != null" >
+        CREDIT_CLASS,
+      </if>
+      <if test="baseCreditValue != null" >
+        BASE_CREDIT_VALUE,
+      </if>
+      <if test="creditValue != null" >
+        CREDIT_VALUE,
+      </if>
+      <if test="creditControlId != null" >
+        CREDIT_CONTROL_ID,
+      </if>
+      <if test="depositValue != null" >
+        DEPOSIT_VALUE,
+      </if>
+      <if test="scoreValue != null" >
+        SCORE_VALUE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="dummyTag != null" >
+        #{dummyTag,jdbcType=CHAR},
+      </if>
+      <if test="servType != null" >
+        #{servType,jdbcType=CHAR},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPasswd != null" >
+        #{userPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="usecustId != null" >
+        #{usecustId,jdbcType=DECIMAL},
+      </if>
+      <if test="brandCode != null" >
+        #{brandCode,jdbcType=CHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="userTypeCode != null" >
+        #{userTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="prepayTag != null" >
+        #{prepayTag,jdbcType=CHAR},
+      </if>
+      <if test="serviceStateCode != null" >
+        #{serviceStateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="openMode != null" >
+        #{openMode,jdbcType=CHAR},
+      </if>
+      <if test="acctTag != null" >
+        #{acctTag,jdbcType=CHAR},
+      </if>
+      <if test="removeTag != null" >
+        #{removeTag,jdbcType=CHAR},
+      </if>
+      <if test="inDate != null" >
+        #{inDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openDate != null" >
+        #{openDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preDestroyDate != null" >
+        #{preDestroyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="destroyDate != null" >
+        #{destroyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstCallDate != null" >
+        #{firstCallDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastStopDate != null" >
+        #{lastStopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creditClass != null" >
+        #{creditClass,jdbcType=DECIMAL},
+      </if>
+      <if test="baseCreditValue != null" >
+        #{baseCreditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditValue != null" >
+        #{creditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditControlId != null" >
+        #{creditControlId,jdbcType=DECIMAL},
+      </if>
+      <if test="depositValue != null" >
+        #{depositValue,jdbcType=DECIMAL},
+      </if>
+      <if test="scoreValue != null" >
+        #{scoreValue,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.UserBean" >
+    update tf_f_user
+    <set >
+      <if test="partitionId != null" >
+        PARTITION_ID = #{partitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="dummyTag != null" >
+        DUMMY_TAG = #{dummyTag,jdbcType=CHAR},
+      </if>
+      <if test="servType != null" >
+        SERV_TYPE = #{servType,jdbcType=CHAR},
+      </if>
+      <if test="serialNumber != null" >
+        SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPasswd != null" >
+        USER_PASSWD = #{userPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="custId != null" >
+        CUST_ID = #{custId,jdbcType=DECIMAL},
+      </if>
+      <if test="usecustId != null" >
+        USECUST_ID = #{usecustId,jdbcType=DECIMAL},
+      </if>
+      <if test="brandCode != null" >
+        BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="userTypeCode != null" >
+        USER_TYPE_CODE = #{userTypeCode,jdbcType=CHAR},
+      </if>
+      <if test="prepayTag != null" >
+        PREPAY_TAG = #{prepayTag,jdbcType=CHAR},
+      </if>
+      <if test="serviceStateCode != null" >
+        SERVICE_STATE_CODE = #{serviceStateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="openMode != null" >
+        OPEN_MODE = #{openMode,jdbcType=CHAR},
+      </if>
+      <if test="acctTag != null" >
+        ACCT_TAG = #{acctTag,jdbcType=CHAR},
+      </if>
+      <if test="removeTag != null" >
+        REMOVE_TAG = #{removeTag,jdbcType=CHAR},
+      </if>
+      <if test="inDate != null" >
+        IN_DATE = #{inDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openDate != null" >
+        OPEN_DATE = #{openDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preDestroyDate != null" >
+        PRE_DESTROY_DATE = #{preDestroyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="destroyDate != null" >
+        DESTROY_DATE = #{destroyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstCallDate != null" >
+        FIRST_CALL_DATE = #{firstCallDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastStopDate != null" >
+        LAST_STOP_DATE = #{lastStopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creditClass != null" >
+        CREDIT_CLASS = #{creditClass,jdbcType=DECIMAL},
+      </if>
+      <if test="baseCreditValue != null" >
+        BASE_CREDIT_VALUE = #{baseCreditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditValue != null" >
+        CREDIT_VALUE = #{creditValue,jdbcType=DECIMAL},
+      </if>
+      <if test="creditControlId != null" >
+        CREDIT_CONTROL_ID = #{creditControlId,jdbcType=DECIMAL},
+      </if>
+      <if test="depositValue != null" >
+        DEPOSIT_VALUE = #{depositValue,jdbcType=DECIMAL},
+      </if>
+      <if test="scoreValue != null" >
+        SCORE_VALUE = #{scoreValue,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserBean" >
+    update tf_f_user
+    set PARTITION_ID = #{partitionId,jdbcType=DECIMAL},
+      DUMMY_TAG = #{dummyTag,jdbcType=CHAR},
+      SERV_TYPE = #{servType,jdbcType=CHAR},
+      SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR},
+      USER_PASSWD = #{userPasswd,jdbcType=VARCHAR},
+      EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR},
+      CITY_CODE = #{cityCode,jdbcType=CHAR},
+      CUST_ID = #{custId,jdbcType=DECIMAL},
+      USECUST_ID = #{usecustId,jdbcType=DECIMAL},
+      BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      USER_TYPE_CODE = #{userTypeCode,jdbcType=CHAR},
+      PREPAY_TAG = #{prepayTag,jdbcType=CHAR},
+      SERVICE_STATE_CODE = #{serviceStateCode,jdbcType=VARCHAR},
+      OPEN_MODE = #{openMode,jdbcType=CHAR},
+      ACCT_TAG = #{acctTag,jdbcType=CHAR},
+      REMOVE_TAG = #{removeTag,jdbcType=CHAR},
+      IN_DATE = #{inDate,jdbcType=TIMESTAMP},
+      OPEN_DATE = #{openDate,jdbcType=TIMESTAMP},
+      PRE_DESTROY_DATE = #{preDestroyDate,jdbcType=TIMESTAMP},
+      DESTROY_DATE = #{destroyDate,jdbcType=TIMESTAMP},
+      FIRST_CALL_DATE = #{firstCallDate,jdbcType=TIMESTAMP},
+      LAST_STOP_DATE = #{lastStopDate,jdbcType=TIMESTAMP},
+      CREDIT_CLASS = #{creditClass,jdbcType=DECIMAL},
+      BASE_CREDIT_VALUE = #{baseCreditValue,jdbcType=DECIMAL},
+      CREDIT_VALUE = #{creditValue,jdbcType=DECIMAL},
+      CREDIT_CONTROL_ID = #{creditControlId,jdbcType=DECIMAL},
+      DEPOSIT_VALUE = #{depositValue,jdbcType=DECIMAL},
+      SCORE_VALUE = #{scoreValue,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+</mapper>
