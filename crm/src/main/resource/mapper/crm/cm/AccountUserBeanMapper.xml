@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.AccountUserBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.AccountUserBean" >
+    <id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <id column="ITEM_CODE" property="itemCode" jdbcType="DECIMAL" />
+    <id column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <id column="START_DATE" property="startDate" jdbcType="DECIMAL" />
+    <id column="PARTITION_ID" property="partitionId" jdbcType="DECIMAL" />
+    <result column="PAYRELATION_ID" property="payrelationId" jdbcType="DECIMAL" />
+    <result column="PAY_PRIORITY" property="payPriority" jdbcType="DECIMAL" />
+    <result column="LIMIT_TYPE" property="limitType" jdbcType="CHAR" />
+    <result column="LIMIT_VALUE" property="limitValue" jdbcType="DECIMAL" />
+    <result column="END_DATE" property="endDate" jdbcType="DECIMAL" />
+    <result column="ACCT_CHNO" property="acctChno" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="VARCHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="VARCHAR" />
+    <result column="FILL_TAG" property="fillTag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, ITEM_CODE, ACCT_ID, START_DATE, PARTITION_ID, PAYRELATION_ID, PAY_PRIORITY, 
+    LIMIT_TYPE, LIMIT_VALUE, END_DATE, ACCT_CHNO, UPDATE_TIME, UPDATE_DEPART_ID, UPDATE_STAFF_ID, 
+    FILL_TAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.AccountUserBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_account_user
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and ITEM_CODE = #{itemCode,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AccountUserBeanKey" >
+    delete from tf_f_account_user
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and ITEM_CODE = #{itemCode,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.AccountUserBean" >
+    insert into tf_f_account_user (USER_ID, ITEM_CODE, ACCT_ID, 
+      START_DATE, PARTITION_ID, PAYRELATION_ID, 
+      PAY_PRIORITY, LIMIT_TYPE, LIMIT_VALUE, 
+      END_DATE, ACCT_CHNO, UPDATE_TIME, 
+      UPDATE_DEPART_ID, UPDATE_STAFF_ID, FILL_TAG
+      )
+    values (#{userId,jdbcType=DECIMAL}, #{itemCode,jdbcType=DECIMAL}, #{acctId,jdbcType=DECIMAL}, 
+      #{startDate,jdbcType=DECIMAL}, #{partitionId,jdbcType=DECIMAL}, #{payrelationId,jdbcType=DECIMAL}, 
+      #{payPriority,jdbcType=DECIMAL}, #{limitType,jdbcType=CHAR}, #{limitValue,jdbcType=DECIMAL}, 
+      #{endDate,jdbcType=DECIMAL}, #{acctChno,jdbcType=DECIMAL}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateDepartId,jdbcType=VARCHAR}, #{updateStaffId,jdbcType=VARCHAR}, #{fillTag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.AccountUserBean" >
+    insert into tf_f_account_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="itemCode != null" >
+        ITEM_CODE,
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="partitionId != null" >
+        PARTITION_ID,
+      </if>
+      <if test="payrelationId != null" >
+        PAYRELATION_ID,
+      </if>
+      <if test="payPriority != null" >
+        PAY_PRIORITY,
+      </if>
+      <if test="limitType != null" >
+        LIMIT_TYPE,
+      </if>
+      <if test="limitValue != null" >
+        LIMIT_VALUE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="acctChno != null" >
+        ACCT_CHNO,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="fillTag != null" >
+        FILL_TAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=DECIMAL},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="payrelationId != null" >
+        #{payrelationId,jdbcType=DECIMAL},
+      </if>
+      <if test="payPriority != null" >
+        #{payPriority,jdbcType=DECIMAL},
+      </if>
+      <if test="limitType != null" >
+        #{limitType,jdbcType=CHAR},
+      </if>
+      <if test="limitValue != null" >
+        #{limitValue,jdbcType=DECIMAL},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DECIMAL},
+      </if>
+      <if test="acctChno != null" >
+        #{acctChno,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fillTag != null" >
+        #{fillTag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.AccountUserBean" >
+    update tf_f_account_user
+    <set >
+      <if test="payrelationId != null" >
+        PAYRELATION_ID = #{payrelationId,jdbcType=DECIMAL},
+      </if>
+      <if test="payPriority != null" >
+        PAY_PRIORITY = #{payPriority,jdbcType=DECIMAL},
+      </if>
+      <if test="limitType != null" >
+        LIMIT_TYPE = #{limitType,jdbcType=CHAR},
+      </if>
+      <if test="limitValue != null" >
+        LIMIT_VALUE = #{limitValue,jdbcType=DECIMAL},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=DECIMAL},
+      </if>
+      <if test="acctChno != null" >
+        ACCT_CHNO = #{acctChno,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fillTag != null" >
+        FILL_TAG = #{fillTag,jdbcType=CHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and ITEM_CODE = #{itemCode,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AccountUserBean" >
+    update tf_f_account_user
+    set PAYRELATION_ID = #{payrelationId,jdbcType=DECIMAL},
+      PAY_PRIORITY = #{payPriority,jdbcType=DECIMAL},
+      LIMIT_TYPE = #{limitType,jdbcType=CHAR},
+      LIMIT_VALUE = #{limitValue,jdbcType=DECIMAL},
+      END_DATE = #{endDate,jdbcType=DECIMAL},
+      ACCT_CHNO = #{acctChno,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      FILL_TAG = #{fillTag,jdbcType=CHAR}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and ITEM_CODE = #{itemCode,jdbcType=DECIMAL}
+      and ACCT_ID = #{acctId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -17,16 +17,16 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.pl.airboss.crm.ac.bean" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
+        <javaModelGenerator targetPackage="com.pl.airboss.crm.cm.bean" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="mapper" targetProject="C:/work/code/GitHub/airboss/crm/src/main/resource/mapper/crm/ac">
+        <sqlMapGenerator targetPackage="mapper" targetProject="C:/work/code/GitHub/airboss/crm/src/main/resource/mapper/crm/cm">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.pl.airboss.crm.ac.dao" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.pl.airboss.crm.cm.dao" targetProject="C:/work/code/GitHub/airboss/crm/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -44,6 +44,20 @@
         <table schema="airboss" catalog="" tableName="tf_f_user" domainObjectName="UserBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table schema="airboss" catalog="" tableName="tf_f_account" domainObjectName="AccountBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 -->
+        <table schema="airboss" catalog="" tableName="tf_o_creditvalue" domainObjectName="CreditvalueBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_product" domainObjectName="UserProductBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_feepolicy" domainObjectName="FeepolicyBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_feepolicy_param" domainObjectName="FeepolicyParamBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_feepolicy_present" domainObjectName="FeepolicyPresentBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_serv" domainObjectName="UserServBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_servparam" domainObjectName="UserServparamBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_servstate" domainObjectName="UserServstateBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_dpayrelation" domainObjectName="DpayrelationBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_account_user" domainObjectName="AccountUserBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_user_member" domainObjectName="UserMemberBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_acct_feepolicy" domainObjectName="AcctFeepolicyBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_f_acct_feepolicy_param" domainObjectName="AcctFeepolicyParamBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="airboss" catalog="" tableName="tf_b_account_owefee" domainObjectName="AccountOwefeeBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
 <!--
         <table schema="airboss" catalog="" tableName="tf_b_account_balance" domainObjectName="AccountBalanceBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
@@ -53,7 +67,7 @@
         <table schema="airboss" catalog="" tableName="tf_b_writeofflog" domainObjectName="WriteOffLogBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table schema="airboss" catalog="" tableName="tf_b_paylog" domainObjectName="PayLogBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table schema="airboss" catalog="" tableName="td_b_tp_interface" domainObjectName="FeeInterfaceBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
--->
         <table schema="airboss" catalog="" tableName="td_b_cyclerule" domainObjectName="FeeCycleBean" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+-->
     </context>
 </generatorConfiguration>

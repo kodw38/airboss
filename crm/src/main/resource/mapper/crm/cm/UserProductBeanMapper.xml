@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.UserProductBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.UserProductBean" >
+    <id column="PARTITION_ID" property="partitionId" jdbcType="INTEGER" />
+    <id column="INST_ID" property="instId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="DECIMAL" />
+    <result column="BRAND_CODE" property="brandCode" jdbcType="CHAR" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="product_mode" property="productMode" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PARTITION_ID, INST_ID, USER_ID, PRODUCT_ID, BRAND_CODE, START_DATE, END_DATE, UPDATE_TIME, 
+    product_mode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.UserProductBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_user_product
+    where PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+      and INST_ID = #{instId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserProductBeanKey" >
+    delete from tf_f_user_product
+    where PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+      and INST_ID = #{instId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.UserProductBean" >
+    insert into tf_f_user_product (PARTITION_ID, INST_ID, USER_ID, 
+      PRODUCT_ID, BRAND_CODE, START_DATE, 
+      END_DATE, UPDATE_TIME, product_mode
+      )
+    values (#{partitionId,jdbcType=INTEGER}, #{instId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{productId,jdbcType=DECIMAL}, #{brandCode,jdbcType=CHAR}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{productMode,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.UserProductBean" >
+    insert into tf_f_user_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        PARTITION_ID,
+      </if>
+      <if test="instId != null" >
+        INST_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="brandCode != null" >
+        BRAND_CODE,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="productMode != null" >
+        product_mode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="instId != null" >
+        #{instId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="brandCode != null" >
+        #{brandCode,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productMode != null" >
+        #{productMode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.UserProductBean" >
+    update tf_f_user_product
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="brandCode != null" >
+        BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productMode != null" >
+        product_mode = #{productMode,jdbcType=CHAR},
+      </if>
+    </set>
+    where PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+      and INST_ID = #{instId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserProductBean" >
+    update tf_f_user_product
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      BRAND_CODE = #{brandCode,jdbcType=CHAR},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      product_mode = #{productMode,jdbcType=CHAR}
+    where PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+      and INST_ID = #{instId,jdbcType=DECIMAL}
+  </update>
+</mapper>

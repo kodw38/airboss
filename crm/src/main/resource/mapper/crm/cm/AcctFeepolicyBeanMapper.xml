@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.AcctFeepolicyBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.AcctFeepolicyBean" >
+    <id column="FEEPOLICY_INS_ID" property="feepolicyInsId" jdbcType="DECIMAL" />
+    <id column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="ACCT_ID" property="acctId" jdbcType="DECIMAL" />
+    <result column="FEEPOLICY_ID" property="feepolicyId" jdbcType="DECIMAL" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="DECIMAL" />
+    <result column="PACKAGE_ID" property="packageId" jdbcType="DECIMAL" />
+    <result column="FP_TYPE" property="fpType" jdbcType="CHAR" />
+    <result column="HAS_PARAM" property="hasParam" jdbcType="CHAR" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FEEPOLICY_INS_ID, START_DATE, ACCT_ID, FEEPOLICY_ID, PRODUCT_ID, PACKAGE_ID, FP_TYPE, 
+    HAS_PARAM, END_DATE, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.AcctFeepolicyBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_acct_feepolicy
+    where FEEPOLICY_INS_ID = #{feepolicyInsId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AcctFeepolicyBeanKey" >
+    delete from tf_f_acct_feepolicy
+    where FEEPOLICY_INS_ID = #{feepolicyInsId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.AcctFeepolicyBean" >
+    insert into tf_f_acct_feepolicy (FEEPOLICY_INS_ID, START_DATE, ACCT_ID, 
+      FEEPOLICY_ID, PRODUCT_ID, PACKAGE_ID, 
+      FP_TYPE, HAS_PARAM, END_DATE, 
+      UPDATE_TIME)
+    values (#{feepolicyInsId,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, #{acctId,jdbcType=DECIMAL}, 
+      #{feepolicyId,jdbcType=DECIMAL}, #{productId,jdbcType=DECIMAL}, #{packageId,jdbcType=DECIMAL}, 
+      #{fpType,jdbcType=CHAR}, #{hasParam,jdbcType=CHAR}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.AcctFeepolicyBean" >
+    insert into tf_f_acct_feepolicy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feepolicyInsId != null" >
+        FEEPOLICY_INS_ID,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="feepolicyId != null" >
+        FEEPOLICY_ID,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="packageId != null" >
+        PACKAGE_ID,
+      </if>
+      <if test="fpType != null" >
+        FP_TYPE,
+      </if>
+      <if test="hasParam != null" >
+        HAS_PARAM,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feepolicyInsId != null" >
+        #{feepolicyInsId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyId != null" >
+        #{feepolicyId,jdbcType=DECIMAL},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="packageId != null" >
+        #{packageId,jdbcType=DECIMAL},
+      </if>
+      <if test="fpType != null" >
+        #{fpType,jdbcType=CHAR},
+      </if>
+      <if test="hasParam != null" >
+        #{hasParam,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.AcctFeepolicyBean" >
+    update tf_f_acct_feepolicy
+    <set >
+      <if test="acctId != null" >
+        ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyId != null" >
+        FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL},
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="packageId != null" >
+        PACKAGE_ID = #{packageId,jdbcType=DECIMAL},
+      </if>
+      <if test="fpType != null" >
+        FP_TYPE = #{fpType,jdbcType=CHAR},
+      </if>
+      <if test="hasParam != null" >
+        HAS_PARAM = #{hasParam,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where FEEPOLICY_INS_ID = #{feepolicyInsId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AcctFeepolicyBean" >
+    update tf_f_acct_feepolicy
+    set ACCT_ID = #{acctId,jdbcType=DECIMAL},
+      FEEPOLICY_ID = #{feepolicyId,jdbcType=DECIMAL},
+      PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      PACKAGE_ID = #{packageId,jdbcType=DECIMAL},
+      FP_TYPE = #{fpType,jdbcType=CHAR},
+      HAS_PARAM = #{hasParam,jdbcType=CHAR},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where FEEPOLICY_INS_ID = #{feepolicyInsId,jdbcType=DECIMAL}
+      and START_DATE = #{startDate,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

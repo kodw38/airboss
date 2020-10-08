@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.UserServBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.UserServBean" >
+    <id column="SERV_INS_ID" property="servInsId" jdbcType="DECIMAL" />
+    <result column="PARTITION_ID" property="partitionId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="SERV_ID" property="servId" jdbcType="DECIMAL" />
+    <result column="PRIOR_ORDER_TIME" property="priorOrderTime" jdbcType="TIMESTAMP" />
+    <result column="MAIN_TAG" property="mainTag" jdbcType="CHAR" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="DECIMAL" />
+    <result column="SERV_BUND_ID" property="servBundId" jdbcType="DECIMAL" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SERV_INS_ID, PARTITION_ID, USER_ID, SERV_ID, PRIOR_ORDER_TIME, MAIN_TAG, PRODUCT_ID, 
+    SERV_BUND_ID, START_DATE, END_DATE, UPDATE_TIME, UPDATE_DEPART_ID, UPDATE_STAFF_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_user_serv
+    where SERV_INS_ID = #{servInsId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tf_f_user_serv
+    where SERV_INS_ID = #{servInsId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.UserServBean" >
+    insert into tf_f_user_serv (SERV_INS_ID, PARTITION_ID, USER_ID, 
+      SERV_ID, PRIOR_ORDER_TIME, MAIN_TAG, 
+      PRODUCT_ID, SERV_BUND_ID, START_DATE, 
+      END_DATE, UPDATE_TIME, UPDATE_DEPART_ID, 
+      UPDATE_STAFF_ID)
+    values (#{servInsId,jdbcType=DECIMAL}, #{partitionId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{servId,jdbcType=DECIMAL}, #{priorOrderTime,jdbcType=TIMESTAMP}, #{mainTag,jdbcType=CHAR}, 
+      #{productId,jdbcType=DECIMAL}, #{servBundId,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{updateDepartId,jdbcType=CHAR}, 
+      #{updateStaffId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.UserServBean" >
+    insert into tf_f_user_serv
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="servInsId != null" >
+        SERV_INS_ID,
+      </if>
+      <if test="partitionId != null" >
+        PARTITION_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="servId != null" >
+        SERV_ID,
+      </if>
+      <if test="priorOrderTime != null" >
+        PRIOR_ORDER_TIME,
+      </if>
+      <if test="mainTag != null" >
+        MAIN_TAG,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="servBundId != null" >
+        SERV_BUND_ID,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="servInsId != null" >
+        #{servInsId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="servId != null" >
+        #{servId,jdbcType=DECIMAL},
+      </if>
+      <if test="priorOrderTime != null" >
+        #{priorOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainTag != null" >
+        #{mainTag,jdbcType=CHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="servBundId != null" >
+        #{servBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.UserServBean" >
+    update tf_f_user_serv
+    <set >
+      <if test="partitionId != null" >
+        PARTITION_ID = #{partitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="servId != null" >
+        SERV_ID = #{servId,jdbcType=DECIMAL},
+      </if>
+      <if test="priorOrderTime != null" >
+        PRIOR_ORDER_TIME = #{priorOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainTag != null" >
+        MAIN_TAG = #{mainTag,jdbcType=CHAR},
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="servBundId != null" >
+        SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR},
+      </if>
+    </set>
+    where SERV_INS_ID = #{servInsId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserServBean" >
+    update tf_f_user_serv
+    set PARTITION_ID = #{partitionId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      SERV_ID = #{servId,jdbcType=DECIMAL},
+      PRIOR_ORDER_TIME = #{priorOrderTime,jdbcType=TIMESTAMP},
+      MAIN_TAG = #{mainTag,jdbcType=CHAR},
+      PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      SERV_BUND_ID = #{servBundId,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR}
+    where SERV_INS_ID = #{servInsId,jdbcType=DECIMAL}
+  </update>
+</mapper>

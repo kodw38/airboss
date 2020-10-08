@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.UserMemberBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.UserMemberBean" >
+    <id column="INST_ID" property="instId" jdbcType="DECIMAL" />
+    <id column="PARTITION_ID" property="partitionId" jdbcType="INTEGER" />
+    <result column="VPN_ID" property="vpnId" jdbcType="DECIMAL" />
+    <result column="MEMBER_ROLE_TYPE" property="memberRoleType" jdbcType="CHAR" />
+    <result column="MEMBER_ROLE_CODE" property="memberRoleCode" jdbcType="VARCHAR" />
+    <result column="MEMBER_ROLE_ID" property="memberRoleId" jdbcType="DECIMAL" />
+    <result column="MEMBER_ROLE_NUMBER" property="memberRoleNumber" jdbcType="VARCHAR" />
+    <result column="DISCNT_PRIORITY" property="discntPriority" jdbcType="DECIMAL" />
+    <result column="P_VPN_TAG" property="pVpnTag" jdbcType="CHAR" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="VARCHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    INST_ID, PARTITION_ID, VPN_ID, MEMBER_ROLE_TYPE, MEMBER_ROLE_CODE, MEMBER_ROLE_ID, 
+    MEMBER_ROLE_NUMBER, DISCNT_PRIORITY, P_VPN_TAG, START_DATE, END_DATE, UPDATE_TIME, 
+    UPDATE_DEPART_ID, UPDATE_STAFF_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBeanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_f_user_member
+    where INST_ID = #{instId,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBeanKey" >
+    delete from tf_f_user_member
+    where INST_ID = #{instId,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBean" >
+    insert into tf_f_user_member (INST_ID, PARTITION_ID, VPN_ID, 
+      MEMBER_ROLE_TYPE, MEMBER_ROLE_CODE, MEMBER_ROLE_ID, 
+      MEMBER_ROLE_NUMBER, DISCNT_PRIORITY, P_VPN_TAG, 
+      START_DATE, END_DATE, UPDATE_TIME, 
+      UPDATE_DEPART_ID, UPDATE_STAFF_ID)
+    values (#{instId,jdbcType=DECIMAL}, #{partitionId,jdbcType=INTEGER}, #{vpnId,jdbcType=DECIMAL}, 
+      #{memberRoleType,jdbcType=CHAR}, #{memberRoleCode,jdbcType=VARCHAR}, #{memberRoleId,jdbcType=DECIMAL}, 
+      #{memberRoleNumber,jdbcType=VARCHAR}, #{discntPriority,jdbcType=DECIMAL}, #{pVpnTag,jdbcType=CHAR}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateDepartId,jdbcType=VARCHAR}, #{updateStaffId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBean" >
+    insert into tf_f_user_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="instId != null" >
+        INST_ID,
+      </if>
+      <if test="partitionId != null" >
+        PARTITION_ID,
+      </if>
+      <if test="vpnId != null" >
+        VPN_ID,
+      </if>
+      <if test="memberRoleType != null" >
+        MEMBER_ROLE_TYPE,
+      </if>
+      <if test="memberRoleCode != null" >
+        MEMBER_ROLE_CODE,
+      </if>
+      <if test="memberRoleId != null" >
+        MEMBER_ROLE_ID,
+      </if>
+      <if test="memberRoleNumber != null" >
+        MEMBER_ROLE_NUMBER,
+      </if>
+      <if test="discntPriority != null" >
+        DISCNT_PRIORITY,
+      </if>
+      <if test="pVpnTag != null" >
+        P_VPN_TAG,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="instId != null" >
+        #{instId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="vpnId != null" >
+        #{vpnId,jdbcType=DECIMAL},
+      </if>
+      <if test="memberRoleType != null" >
+        #{memberRoleType,jdbcType=CHAR},
+      </if>
+      <if test="memberRoleCode != null" >
+        #{memberRoleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRoleId != null" >
+        #{memberRoleId,jdbcType=DECIMAL},
+      </if>
+      <if test="memberRoleNumber != null" >
+        #{memberRoleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="discntPriority != null" >
+        #{discntPriority,jdbcType=DECIMAL},
+      </if>
+      <if test="pVpnTag != null" >
+        #{pVpnTag,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBean" >
+    update tf_f_user_member
+    <set >
+      <if test="vpnId != null" >
+        VPN_ID = #{vpnId,jdbcType=DECIMAL},
+      </if>
+      <if test="memberRoleType != null" >
+        MEMBER_ROLE_TYPE = #{memberRoleType,jdbcType=CHAR},
+      </if>
+      <if test="memberRoleCode != null" >
+        MEMBER_ROLE_CODE = #{memberRoleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRoleId != null" >
+        MEMBER_ROLE_ID = #{memberRoleId,jdbcType=DECIMAL},
+      </if>
+      <if test="memberRoleNumber != null" >
+        MEMBER_ROLE_NUMBER = #{memberRoleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="discntPriority != null" >
+        DISCNT_PRIORITY = #{discntPriority,jdbcType=DECIMAL},
+      </if>
+      <if test="pVpnTag != null" >
+        P_VPN_TAG = #{pVpnTag,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INST_ID = #{instId,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBean" >
+    update tf_f_user_member
+    set VPN_ID = #{vpnId,jdbcType=DECIMAL},
+      MEMBER_ROLE_TYPE = #{memberRoleType,jdbcType=CHAR},
+      MEMBER_ROLE_CODE = #{memberRoleCode,jdbcType=VARCHAR},
+      MEMBER_ROLE_ID = #{memberRoleId,jdbcType=DECIMAL},
+      MEMBER_ROLE_NUMBER = #{memberRoleNumber,jdbcType=VARCHAR},
+      DISCNT_PRIORITY = #{discntPriority,jdbcType=DECIMAL},
+      P_VPN_TAG = #{pVpnTag,jdbcType=CHAR},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=VARCHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=VARCHAR}
+    where INST_ID = #{instId,jdbcType=DECIMAL}
+      and PARTITION_ID = #{partitionId,jdbcType=INTEGER}
+  </update>
+</mapper>

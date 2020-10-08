@@ -2,7 +2,7 @@ package com.pl.airboss.crm.cm.bean;
 
 import java.util.Date;
 
-public class CustPersonBean {
+public class CustPersonBean extends CustomerBean {
     private Integer partitionId;
 
     private Long custId;

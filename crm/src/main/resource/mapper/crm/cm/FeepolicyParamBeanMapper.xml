@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pl.airboss.crm.cm.dao.FeepolicyParamBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.pl.airboss.crm.cm.bean.FeepolicyParamBean" >
+    <result column="partition_id" property="partitionId" jdbcType="INTEGER" />
+    <result column="FEEPOLICY_INS_ID" property="feepolicyInsId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="FEEPOLICY_ID" property="feepolicyId" jdbcType="DECIMAL" />
+    <result column="FEEPOLICY_PARAM_ID" property="feepolicyParamId" jdbcType="DECIMAL" />
+    <result column="FEEPOLICY_PARAM_VALUE" property="feepolicyParamValue" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.FeepolicyParamBean" >
+    insert into tf_f_user_feepolicy_param (partition_id, FEEPOLICY_INS_ID, USER_ID, 
+      FEEPOLICY_ID, FEEPOLICY_PARAM_ID, FEEPOLICY_PARAM_VALUE, 
+      UPDATE_TIME, START_DATE, END_DATE
+      )
+    values (#{partitionId,jdbcType=INTEGER}, #{feepolicyInsId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{feepolicyId,jdbcType=DECIMAL}, #{feepolicyParamId,jdbcType=DECIMAL}, #{feepolicyParamValue,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.FeepolicyParamBean" >
+    insert into tf_f_user_feepolicy_param
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        partition_id,
+      </if>
+      <if test="feepolicyInsId != null" >
+        FEEPOLICY_INS_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="feepolicyId != null" >
+        FEEPOLICY_ID,
+      </if>
+      <if test="feepolicyParamId != null" >
+        FEEPOLICY_PARAM_ID,
+      </if>
+      <if test="feepolicyParamValue != null" >
+        FEEPOLICY_PARAM_VALUE,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partitionId != null" >
+        #{partitionId,jdbcType=INTEGER},
+      </if>
+      <if test="feepolicyInsId != null" >
+        #{feepolicyInsId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyId != null" >
+        #{feepolicyId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyParamId != null" >
+        #{feepolicyParamId,jdbcType=DECIMAL},
+      </if>
+      <if test="feepolicyParamValue != null" >
+        #{feepolicyParamValue,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
