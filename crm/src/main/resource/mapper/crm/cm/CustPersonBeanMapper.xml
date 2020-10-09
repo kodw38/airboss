@@ -39,6 +39,17 @@
   <sql id="Blob_Column_List" >
     REMARK
   </sql>
+
+  <select id="select" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.CustomerBean">
+    select * from tf_f_cust_person
+    where 1=1
+    <if test="psptTypeCode!=null and psptTypeCode!=''">
+      and PSPT_TYPE_CODE=#{psptTypeCode}
+    </if>
+    <if test="psptId!=null and psptId!=''">
+      and PSPT_ID=#{psptId}
+    </if>
+  </select>
   <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustPersonBean" >
     insert into tf_f_cust_person (partition_id, CUST_ID, PSPT_TYPE_CODE, 
       PSPT_ID, PSPT_END_DATE, PSPT_ADDR, 

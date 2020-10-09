@@ -29,6 +29,9 @@
     where INST_ID = #{instId,jdbcType=DECIMAL}
       and PARTITION_ID = #{partitionId,jdbcType=INTEGER}
   </select>
+  <select id="selectGroupCustByUserId" resultType="com.pl.airboss.crm.cm.bean.CustGroupBean" parameterType="java.lang.Long">
+    SELECT c.* FROM tf_f_user u,tf_f_user_member m,tf_f_customer c WHERE m.VPN_ID=c.CUST_ID AND m.MEMBER_ROLE_NUMBER=u.SERIAL_NUMBER AND u.USER_ID =#{userId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.UserMemberBeanKey" >
     delete from tf_f_user_member
     where INST_ID = #{instId,jdbcType=DECIMAL}

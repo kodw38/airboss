@@ -45,6 +45,16 @@
   <sql id="Blob_Column_List" >
     PNATIONAL_GROUP_NAME, GROUP_CONTACT_PHONE, RSRV_STR7
   </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.CustomerBean">
+    select * from tf_f_cust_group
+    where 1=1
+    <if test="psptTypeCode!=null and psptTypeCode!=''">
+      and PSPT_TYPE_CODE=#{psptTypeCode}
+    </if>
+    <if test="psptId!=null and psptId!=''">
+      and PSPT_ID=#{psptId}
+    </if>
+  </select>
   <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" >
     insert into tf_f_cust_group (partition_id, CUST_ID, GROUP_ID, 
       CUST_NAME, GROUP_TYPE, CLASS_ID, 

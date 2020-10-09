@@ -2,6 +2,8 @@ package com.pl.airboss.crm.cm.dao;
 
 import com.pl.airboss.crm.cm.bean.UserBean;
 
+import java.util.List;
+
 public interface UserBeanMapper {
     int deleteByPrimaryKey(Long userId);
 
@@ -14,4 +16,6 @@ public interface UserBeanMapper {
     int updateByPrimaryKeySelective(UserBean record);
 
     int updateByPrimaryKey(UserBean record);
+
+    List<UserBean> selectUserListByCustId(Long custId);
 }

@@ -1,0 +1,156 @@
+package com.pl.airboss.crm.cm.controller;
+
+import com.pl.airboss.crm.cm.bean.AccountBean;
+import com.pl.airboss.crm.cm.bean.CustGroupBean;
+import com.pl.airboss.crm.cm.bean.CustPersonBean;
+import com.pl.airboss.crm.cm.bean.UserBean;
+import com.pl.airboss.crm.cm.service.interfaces.IOrderSV;
+import com.pl.airboss.framework.annotation.Log;
+import com.pl.airboss.framework.bean.BusinessType;
+import com.pl.airboss.web.bean.SecOperatorBean;
+import com.pl.airboss.web.controller.BaseController;
+import com.pl.airboss.web.utils.AjaxResult;
+import com.pl.airboss.web.utils.FastDFSClient;
+import com.pl.airboss.web.utils.ShiroUtils;
+import com.pl.airboss.web.utils.TableDataInfo;
+import org.apache.commons.logging.LogFactory;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Controller
+@RequestMapping("/crm/order")
+public class OrderController extends BaseController {
+    static transient org.apache.commons.logging.Log log = LogFactory.getLog(OrderController.class);
+    private String prefix = "crm/order";
+
+    @Autowired
+    IOrderSV orderSV;
+
+    protected AjaxResult toAjax(int rows)
+    {
+        return rows > 0 ? success() : error();
+    }
+
+
+    @RequiresPermissions("order:subscribe:view")
+    @GetMapping("/subscribe")
+    public String offer()
+    {
+        return prefix + "/subscribe";
+    }
+
+    @RequiresPermissions("order:subscribe:view")
+    @PostMapping("/queryCustomer/{psptTypeCode}/{psptId}")
+    @ResponseBody
+    public CustPersonBean queryCustomer(@PathVariable("psptTypeCode") String psptTypeCode, @PathVariable("psptId") String psptId){
+        return orderSV.queryIndividualCustomer(psptTypeCode,psptId);
+    }
+
+    @RequiresPermissions("order:subscribe:view")
+    @PostMapping("/querySubscribe/{customerID}")
+    @ResponseBody
+    public TableDataInfo querySubscribe(@PathVariable("customerID") Long customerID){
+        startPage();
+        List<UserBean> ls = orderSV.queryUserByCustId(customerID);
+        return new TableDataInfo(ls,ls.size());
+    }
+
+    /**
+     * 保存头像
+     */
+    @Log(title = "上传客户附件", businessType = BusinessType.UPDATE)
+    @PostMapping("/upload")
+    @ResponseBody
+    public AjaxResult updateAvatar(@RequestParam("file") MultipartFile file)
+    {
+        SecOperatorBean currentUser = ShiroUtils.getSysUser();
+        try
+        {
+            if (!file.isEmpty()) {
+                //上传头像
+                //String avatar = FileUploadUtils.upload(Global.getAvatarPath(), file);
+                //upload to fastdfs server
+                String path = FastDFSClient.saveFile(file, "");
+
+                Map map = new HashMap();
+                map.put("path",path);
+                return AjaxResult.success(map);
+            }
+            return error();
+        }
+        catch (Exception e)
+        {
+            return error(e.getMessage());
+        }
+    }
+
+    @GetMapping("/download/{path}")
+    public void downloadAvatar(@PathVariable("path") String path, HttpServletResponse response, HttpServletRequest request){
+        try {
+            //String url = FastDFSClient.getTrackerUrl() + path;
+            OutputStream out = response.getOutputStream();
+            //response.setContentType("text/html;charset=utf-8");
+            response.setStatus(HttpServletResponse.SC_OK);
+            String group = path.substring(0,path.indexOf("/"));
+            String name  = path.substring(path.indexOf("/")+1);
+            byte[] byts=FastDFSClient.downFile(group,name);
+            if(null !=byts) {
+                out.write(byts);
+            }
+            out.close();
+
+        }catch (Exception e){
+            log.error("",e);
+        }
+    }
+
+
+    @RequiresPermissions("order:subscribe:view")
+    @PostMapping("/queryCustAccount/{customerId}")
+    @ResponseBody
+    public List<AccountBean> queryCustAccount(@PathVariable("customerId") Long customerId){
+        List<AccountBean> ls = orderSV.queryCustAccount(customerId);
+        return ls;
+    }
+
+    @RequiresPermissions("order:subscribe:view")
+    @PostMapping("/queryGroup")
+    @ResponseBody
+    public TableDataInfo queryGroup(CustGroupBean cond){
+        startPage();
+        List<CustGroupBean> ls = orderSV.queryCustGroup(cond);
+        return new TableDataInfo(ls,ls.size());
+    }
+
+    @RequiresPermissions("order:subscribe:add")
+    @PostMapping("/submitSubscribe/{phoneNumber}/{productId}/{accountId}/{groupCustId}/{groupRoleId}/{prepayTag}")
+    @ResponseBody
+    public AjaxResult submitSubscribe(CustPersonBean cust,String[] filePaths
+            ,@PathVariable("phoneNumber")String phoneNumber
+            ,@PathVariable("productId")Integer productId
+            ,@PathVariable("accountId")Long accountId
+            ,@PathVariable("groupCustId")Long groupCustId
+            ,@PathVariable("groupRoleId")Long groupRoleId
+            ,@PathVariable("prepayTag")Integer prepayTag
+    ){
+        try {
+            Long userId = orderSV.submitSubscribe(cust, phoneNumber, productId, accountId, groupCustId, groupRoleId, prepayTag, filePaths);
+            return AjaxResult.success(userId);
+        }catch (Exception e){
+            return error(e.getMessage());
+        }
+    }
+
+
+}

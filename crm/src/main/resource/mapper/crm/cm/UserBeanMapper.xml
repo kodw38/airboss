@@ -49,6 +49,12 @@
     from tf_f_user
     where USER_ID = #{userId,jdbcType=DECIMAL}
   </select>
+  <select id="selectUserListByCustId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List" />
+    from tf_f_user
+    where CUST_ID = #{custId,jdbcType=DECIMAL}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tf_f_user
     where USER_ID = #{userId,jdbcType=DECIMAL}

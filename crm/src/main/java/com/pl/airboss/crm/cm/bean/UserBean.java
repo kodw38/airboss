@@ -69,6 +69,25 @@ public class UserBean {
 
     private String updateStaffId;
 
+    private Long groupCustId;
+    private String groupCustName;
+
+    public Long getGroupCustId() {
+        return groupCustId;
+    }
+
+    public void setGroupCustId(Long groupCustId) {
+        this.groupCustId = groupCustId;
+    }
+
+    public String getGroupCustName() {
+        return groupCustName;
+    }
+
+    public void setGroupCustName(String groupCustName) {
+        this.groupCustName = groupCustName;
+    }
+
     public Long getUserId() {
         return userId;
     }

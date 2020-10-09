@@ -38,6 +38,12 @@
     where PARTITION_ID = #{partitionId,jdbcType=DECIMAL}
       and ACCT_ID = #{acctId,jdbcType=DECIMAL}
   </select>
+  <select id="selectByCustId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List" />
+    from tf_f_account
+    where CUST_ID=#{custId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.pl.airboss.crm.cm.bean.AccountBeanKey" >
     delete from tf_f_account
     where PARTITION_ID = #{partitionId,jdbcType=DECIMAL}

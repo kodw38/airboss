@@ -118,6 +118,31 @@ public class LogAspect
         }
     }
 
+    public static void saveBusinessLog(String method,Object input,Exception e,Object output){
+        try {
+            SecOpLogBean operLog = new SecOpLogBean();
+            operLog.setStatus(BusinessStatus.SUCCESS.ordinal());
+            if (e != null) {
+                operLog.setStatus(BusinessStatus.FAIL.ordinal());
+                operLog.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
+            }
+            SecOperatorBean currentUser = ShiroUtils.getSysUser();
+            if (currentUser != null) {
+                operLog.setOperName(currentUser.getLoginCode());
+
+            }
+            operLog.setMethod(method);
+            String ip = ShiroUtils.getIp();
+            operLog.setOperIp(ip);
+            operLog.setRequestMethod("SV");
+            operLog.setJsonResult(JSON.marshal(output));
+            operLog.setOperParam(JSON.marshal(input));
+            AsyncManager.me().execute(AsyncFactory.recordOper(operLog));
+        }catch (Exception ex){
+
+        }
+    }
+
     /**
      * 获取注解中对方法的描述信息 用于Controller层注解
      * 
