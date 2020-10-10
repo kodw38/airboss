@@ -78,6 +78,27 @@ public class OrderSVImpl implements IOrderSV {
         return null;
     }
 
+    public CustGroupBean queryGroupCustomer(String psptTypeCode, String psptId){
+        CustomerBean b = new CustomerBean();
+        b.setPsptTypeCode(psptTypeCode);
+        b.setPsptId(psptId);
+        List<CustomerBean> q = customerBeanMapper.select(b);
+        if(null != q && q.size()==1) {
+            CustomerBean c = q.get(0);
+            if ("0".equalsIgnoreCase(c.getCustType())) {
+                //个人客户
+                CustGroupBean cq = new CustGroupBean();
+                cq.setPsptTypeCode(psptTypeCode);
+                cq.setPsptId(psptId);
+                List<CustGroupBean> list = groupBeanMapper.select(cq);
+                if(null != list && list.size()==1){
+                    return list.get(0);
+                }
+            }
+        }
+        return null;
+    }
+
 
     public List<UserBean> queryUserByCustId(Long custId){
         List<UserBean> ls = userBeanMapper.selectUserListByCustId(custId);
@@ -93,6 +114,9 @@ public class OrderSVImpl implements IOrderSV {
         return ls;
     }
 
+    public List<UserBean> queryGroupUserByGroupCustId(Long custId){
+        return groupBeanMapper.selectUsers(custId);
+    }
     public List<AccountBean> queryCustAccount(Long custId){
         return accountBeanMapper.selectByCustId(custId);
     }
@@ -243,6 +267,68 @@ public class OrderSVImpl implements IOrderSV {
 
 
 
+    public List<UserBean> queryUser(UserBean bean){
+        return userBeanMapper.selectList(bean);
+    }
 
+    @Transactional
+    public int addUser2Group(Long userId,Long groupId,Long accountId,String roleType)throws Exception{
+        UserBean u = userBeanMapper.selectByPrimaryKey(userId);
+        if(null == u)throw new Exception("用户不存在:"+userId);
+        //变更集团客户关系
+        UserMemberBean b = userMemberBeanMapper.selectByPhoneNumberAndCustId(u.getSerialNumber(),groupId);
+        if(null !=b){
+            CustGroupBean g = groupBeanMapper.selectByCustId(groupId);
+            String custName="";
+            if(null !=g){
+                custName=g.getCustName();
+            }
+            throw new Exception("用户:"+userId+" 已经归属集团客户 "+custName+",需要先解除，在加入到当前客户下");
+        }
+        UserMemberBean um = new UserMemberBean();
+        um.setVpnId(groupId);
+        um.setMemberRoleType(roleType);
+        um.setStartDate(new Date());
+        um.setMemberRoleNumber(u.getSerialNumber());
+        userMemberBeanMapper.insert(um);
+
+        //变更账户
+        AccountUserBean a = accountUserBeanMapper.selectByUserIdAndAccountId(userId,accountId);
+        if(null != a){
+            AccountUserBeanKey key  = new AccountUserBeanKey();
+            key.setAcctId(a.getAcctId());
+            key.setUserId(a.getUserId());
+            accountUserBeanMapper.deleteByPrimaryKey(key);
+        }
+        AccountUserBean na = new AccountUserBean();
+        na.setUserId(userId);
+        na.setAcctId(accountId);
+        accountUserBeanMapper.insert(na);
+        return 1;
+    }
+
+    public int addAccount(AccountBean bean){
+        return accountBeanMapper.insert(bean);
+    }
+
+    public int addCustGroup(CustGroupBean bean){
+        return groupBeanMapper.insertBase(bean);
+    }
+
+    @Transactional
+    public int removeGroupCust(Long custId)throws Exception{
+        List<UserMemberBean> ls = userMemberBeanMapper.selectUserMemberList(custId);
+        if(null !=ls && ls.size()>0){
+            throw new Exception("该集团客户下还有用户，不能销户");
+        }
+        List<AccountUserBean> as = accountUserBeanMapper.selectAccountUserListByCustId(custId);
+        if(null !=as && as.size()>0){
+            throw new Exception("该集团客户下的账户还有关联的用户，不能销户");
+        }
+
+        customerBeanMapper.delete(custId);
+        groupBeanMapper.delete(custId);
+        return 1;
+    }
 
 }

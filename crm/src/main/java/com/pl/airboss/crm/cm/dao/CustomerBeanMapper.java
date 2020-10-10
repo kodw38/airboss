@@ -10,4 +10,6 @@ public interface CustomerBeanMapper {
     int insertSelective(CustomerBean record);
 
     List<CustomerBean> select(CustomerBean record);
+
+    int delete(Long custId);
 }

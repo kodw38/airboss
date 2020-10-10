@@ -152,5 +152,102 @@ public class OrderController extends BaseController {
         }
     }
 
+    @RequiresPermissions("customer:groupcustomer:view")
+    @GetMapping("/groupCustomer")
+    public String groupCustomer(){
+        return prefix+"/groupCustomer";
+    }
 
+    @RequiresPermissions("order:subscribe:view")
+    @PostMapping("/queryGroupCustomer/{psptTypeCode}/{psptId}")
+    @ResponseBody
+    public CustGroupBean queryGroupCustomer(@PathVariable("psptTypeCode") String psptTypeCode, @PathVariable("psptId") String psptId){
+        return orderSV.queryGroupCustomer(psptTypeCode,psptId);
+    }
+
+
+    @RequiresPermissions("customer:groupcustomer:view")
+    @PostMapping("/queryGroupSubscribe/{customerID}")
+    @ResponseBody
+    public TableDataInfo queryGroupCustomer(@PathVariable("customerID") Long custGroupId){
+        startPage();
+        List<UserBean> ls = orderSV.queryGroupUserByGroupCustId(custGroupId);
+        return new TableDataInfo(ls,ls.size());
+    }
+
+    @RequiresPermissions("customer:groupcustomer:addUser")
+    @PostMapping("/queryUser")
+    @ResponseBody
+    public TableDataInfo queryUser(UserBean cond){
+        startPage();
+        List<UserBean> ls = orderSV.queryUser(cond);
+        return new TableDataInfo(ls,ls.size());
+    }
+
+
+    @RequiresPermissions("customer:groupcustomer:addUser")
+    @PostMapping("/addUser2Group/{userId}/{groupId}/{accountId}/{roleType}")
+    @ResponseBody
+    public AjaxResult addUser2Group(@PathVariable("userId") Long userId,@PathVariable("groupId") Long groupId,@PathVariable("accountId") Long accountId,@PathVariable("roleType") String roleType){
+        try {
+            int n = orderSV.addUser2Group(userId, groupId, accountId,roleType);
+            if (n > 0)
+                return success();
+            else
+                return error();
+        }catch (Exception e){
+            return error(e.getMessage());
+        }
+    }
+
+    @RequiresPermissions("customer:groupcustomer:view")
+    @PostMapping("/queryGroupAccount/{custId}")
+    @ResponseBody
+    public TableDataInfo queryGroupAccount(@PathVariable("custId") Long custId){
+        startPage();
+        List<AccountBean> ls = orderSV.queryCustAccount(custId);
+        return new TableDataInfo(ls,ls.size());
+    }
+
+
+    @RequiresPermissions("account:groupcustomer:add")
+    @PostMapping("/newAccount")
+    @ResponseBody
+    public AjaxResult newAccount(AccountBean bean){
+        int n = orderSV.addAccount(bean);
+        if(n>0){
+            return success();
+        }else{
+            return error();
+        }
+    }
+
+    @RequiresPermissions("customer:group:add")
+    @PostMapping("/newGroupCustomer")
+    @ResponseBody
+    public AjaxResult newGroupCustomer(CustGroupBean bean){
+        int n = orderSV.addCustGroup(bean);
+        if(n>0){
+            return success();
+        }else{
+            return error();
+        }
+    }
+
+
+    @RequiresPermissions("customer:group:delete")
+    @PostMapping("/removeGroupCustomer/{custId}")
+    @ResponseBody
+    public AjaxResult removeGroupCustomer(@PathVariable("custId")Long custId){
+        try {
+            int n = orderSV.removeGroupCust(custId);
+            if (n > 0) {
+                return success();
+            } else {
+                return error();
+            }
+        }catch (Exception e){
+            return error(e.getMessage());
+        }
+    }
 }

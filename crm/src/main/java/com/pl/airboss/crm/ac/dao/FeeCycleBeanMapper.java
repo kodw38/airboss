@@ -18,4 +18,6 @@ public interface FeeCycleBeanMapper {
     int updateByPrimaryKey(FeeCycleBean record);
 
     List<FeeCycleBean> list();
+
+
 }

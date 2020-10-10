@@ -55,34 +55,71 @@
       and PSPT_ID=#{psptId}
     </if>
   </select>
+  <select id="selectByCustId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select * from tf_f_cust_group where CUST_ID=#{custId}
+  </select>
+  <select id="selectUsers" parameterType="java.lang.Long" resultType="com.pl.airboss.crm.cm.bean.UserBean">
+    SELECT u.* FROM tf_f_cust_group g,tf_f_user u, tf_f_user_member m WHERE g.CUST_ID=m.VPN_ID AND m.MEMBER_ROLE_NUMBER=u.SERIAL_NUMBER AND g.CUST_ID= #{custId}
+  </select>
   <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" >
-    insert into tf_f_cust_group (partition_id, CUST_ID, GROUP_ID, 
-      CUST_NAME, GROUP_TYPE, CLASS_ID, 
-      CUST_CLASS_TYPE, GROUP_ATTR, GROUP_STATUS, 
-      GROUP_ADDR, PROVINCE_CODE, EPARCHY_CODE, 
-      CITY_CODE, SUPER_GROUP_ID, PNATIONAL_GROUP_ID, 
-      MP_GROUP_CUST_CODE, UNIFY_PAY_CODE, CUST_MANAGER_ID, 
-      ASSIGN_DATE, ASSIGN_STAFF_ID, WEBSITE, 
-      FAX_NBR, EMAIL, POST_CODE, 
-      GROUP_MGR_SN, GROUP_MGR_CUST_NAME, CUST_SERV_NBR, 
-      UPDATE_TIME, UPDATE_STAFF_ID, UPDATE_DEPART_ID, 
-      REMARK, CUST_MANAGER_ID_B, RSRV_TAG1, 
-      RSRV_STR2, PNATIONAL_GROUP_NAME, GROUP_CONTACT_PHONE, 
+    insert into tf_f_cust_group (partition_id, CUST_ID, GROUP_ID,
+      CUST_NAME, GROUP_TYPE, CLASS_ID,
+      CUST_CLASS_TYPE, GROUP_ATTR, GROUP_STATUS,
+      GROUP_ADDR, PROVINCE_CODE, EPARCHY_CODE,
+      CITY_CODE, SUPER_GROUP_ID, PNATIONAL_GROUP_ID,
+      MP_GROUP_CUST_CODE, UNIFY_PAY_CODE, CUST_MANAGER_ID,
+      ASSIGN_DATE, ASSIGN_STAFF_ID, WEBSITE,
+      FAX_NBR, EMAIL, POST_CODE,
+      GROUP_MGR_SN, GROUP_MGR_CUST_NAME, CUST_SERV_NBR,
+      UPDATE_TIME, UPDATE_STAFF_ID, UPDATE_DEPART_ID,
+      REMARK, CUST_MANAGER_ID_B, RSRV_TAG1,
+      RSRV_STR2, PNATIONAL_GROUP_NAME, GROUP_CONTACT_PHONE,
       RSRV_STR7)
-    values (#{partitionId,jdbcType=INTEGER}, #{custId,jdbcType=DECIMAL}, #{groupId,jdbcType=VARCHAR}, 
-      #{custName,jdbcType=VARCHAR}, #{groupType,jdbcType=CHAR}, #{classId,jdbcType=VARCHAR}, 
-      #{custClassType,jdbcType=CHAR}, #{groupAttr,jdbcType=CHAR}, #{groupStatus,jdbcType=CHAR}, 
-      #{groupAddr,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, #{eparchyCode,jdbcType=CHAR}, 
-      #{cityCode,jdbcType=CHAR}, #{superGroupId,jdbcType=VARCHAR}, #{pnationalGroupId,jdbcType=VARCHAR}, 
-      #{mpGroupCustCode,jdbcType=VARCHAR}, #{unifyPayCode,jdbcType=VARCHAR}, #{custManagerId,jdbcType=CHAR}, 
-      #{assignDate,jdbcType=TIMESTAMP}, #{assignStaffId,jdbcType=CHAR}, #{website,jdbcType=VARCHAR}, 
-      #{faxNbr,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR}, 
-      #{groupMgrSn,jdbcType=VARCHAR}, #{groupMgrCustName,jdbcType=VARCHAR}, #{custServNbr,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{updateStaffId,jdbcType=CHAR}, #{updateDepartId,jdbcType=CHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{custManagerIdB,jdbcType=CHAR}, #{rsrvTag1,jdbcType=CHAR}, 
-      #{rsrvStr2,jdbcType=VARCHAR}, #{pnationalGroupName,jdbcType=LONGVARCHAR}, #{groupContactPhone,jdbcType=LONGVARCHAR}, 
+    values (#{partitionId,jdbcType=INTEGER}, #{custId,jdbcType=DECIMAL}, #{groupId,jdbcType=VARCHAR},
+      #{custName,jdbcType=VARCHAR}, #{groupType,jdbcType=CHAR}, #{classId,jdbcType=VARCHAR},
+      #{custClassType,jdbcType=CHAR}, #{groupAttr,jdbcType=CHAR}, #{groupStatus,jdbcType=CHAR},
+      #{groupAddr,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, #{eparchyCode,jdbcType=CHAR},
+      #{cityCode,jdbcType=CHAR}, #{superGroupId,jdbcType=VARCHAR}, #{pnationalGroupId,jdbcType=VARCHAR},
+      #{mpGroupCustCode,jdbcType=VARCHAR}, #{unifyPayCode,jdbcType=VARCHAR}, #{custManagerId,jdbcType=CHAR},
+      #{assignDate,jdbcType=TIMESTAMP}, #{assignStaffId,jdbcType=CHAR}, #{website,jdbcType=VARCHAR},
+      #{faxNbr,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR},
+      #{groupMgrSn,jdbcType=VARCHAR}, #{groupMgrCustName,jdbcType=VARCHAR}, #{custServNbr,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateStaffId,jdbcType=CHAR}, #{updateDepartId,jdbcType=CHAR},
+      #{remark,jdbcType=VARCHAR}, #{custManagerIdB,jdbcType=CHAR}, #{rsrvTag1,jdbcType=CHAR},
+      #{rsrvStr2,jdbcType=VARCHAR}, #{pnationalGroupName,jdbcType=LONGVARCHAR}, #{groupContactPhone,jdbcType=LONGVARCHAR},
       #{rsrvStr7,jdbcType=LONGVARCHAR})
   </insert>
+  <insert id="insertBase" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBean" >
+    insert into tf_f_cust_group (partition_id, CUST_ID, GROUP_ID,
+      CUST_NAME, GROUP_TYPE, CLASS_ID,
+      CUST_CLASS_TYPE, GROUP_ATTR, GROUP_STATUS,
+      GROUP_ADDR, PROVINCE_CODE, EPARCHY_CODE,
+      CITY_CODE, SUPER_GROUP_ID, PNATIONAL_GROUP_ID,
+      MP_GROUP_CUST_CODE, UNIFY_PAY_CODE, CUST_MANAGER_ID,
+      ASSIGN_DATE, ASSIGN_STAFF_ID, WEBSITE,
+      FAX_NBR, EMAIL, POST_CODE,
+      GROUP_MGR_SN, GROUP_MGR_CUST_NAME, CUST_SERV_NBR,
+      UPDATE_TIME, UPDATE_STAFF_ID, UPDATE_DEPART_ID,
+      REMARK, CUST_MANAGER_ID_B, RSRV_TAG1,
+      RSRV_STR2
+      )
+    values (#{partitionId,jdbcType=INTEGER}, #{custId,jdbcType=DECIMAL}, #{groupId,jdbcType=VARCHAR},
+      #{custName,jdbcType=VARCHAR}, #{groupType,jdbcType=CHAR}, #{classId,jdbcType=VARCHAR},
+      #{custClassType,jdbcType=CHAR}, #{groupAttr,jdbcType=CHAR}, #{groupStatus,jdbcType=CHAR},
+      #{groupAddr,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, #{eparchyCode,jdbcType=CHAR},
+      #{cityCode,jdbcType=CHAR}, #{superGroupId,jdbcType=VARCHAR}, #{pnationalGroupId,jdbcType=VARCHAR},
+      #{mpGroupCustCode,jdbcType=VARCHAR}, #{unifyPayCode,jdbcType=VARCHAR}, #{custManagerId,jdbcType=CHAR},
+      #{assignDate,jdbcType=TIMESTAMP}, #{assignStaffId,jdbcType=CHAR}, #{website,jdbcType=VARCHAR},
+      #{faxNbr,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR},
+      #{groupMgrSn,jdbcType=VARCHAR}, #{groupMgrCustName,jdbcType=VARCHAR}, #{custServNbr,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateStaffId,jdbcType=CHAR}, #{updateDepartId,jdbcType=CHAR},
+      #{remark,jdbcType=VARCHAR}, #{custManagerIdB,jdbcType=CHAR}, #{rsrvTag1,jdbcType=CHAR},
+      #{rsrvStr2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from tf_f_cust_group where CUST_ID=#{custId}
+  </delete>
   <insert id="insertSelective" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" >
     insert into tf_f_cust_group
     <trim prefix="(" suffix=")" suffixOverrides="," >

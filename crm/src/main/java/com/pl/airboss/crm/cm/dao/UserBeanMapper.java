@@ -18,4 +18,6 @@ public interface UserBeanMapper {
     int updateByPrimaryKey(UserBean record);
 
     List<UserBean> selectUserListByCustId(Long custId);
+
+    List<UserBean> selectList(UserBean bean);
 }

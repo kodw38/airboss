@@ -55,6 +55,61 @@
     from tf_f_user
     where CUST_ID = #{custId,jdbcType=DECIMAL}
   </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.UserBean">
+    select <include refid="Base_Column_List" />
+    from tf_f_user
+    where 1=1
+    <if test="userId != null" >
+      and USER_ID=#{userId}
+    </if>
+    <if test="partitionId != null" >
+      and PARTITION_ID=#{partitionId}
+    </if>
+    <if test="dummyTag != null" >
+      and DUMMY_TAG=#{dummyTag}
+    </if>
+    <if test="servType != null" >
+      and SERV_TYPE=#{servType}
+    </if>
+    <if test="serialNumber != null" >
+      and SERIAL_NUMBER=#{serialNumber}
+    </if>
+    <if test="userPasswd != null" >
+      and USER_PASSWD=#{userPasswd}
+    </if>
+
+    <if test="custId != null" >
+      and CUST_ID=#{custId}
+    </if>
+    <if test="usecustId != null" >
+      and USECUST_ID=#{usecustId}
+    </if>
+    <if test="brandCode != null" >
+      and BRAND_CODE=#{brandCode}
+    </if>
+    <if test="productId != null" >
+      and PRODUCT_ID=#{productId}
+    </if>
+    <if test="userTypeCode != null" >
+      and USER_TYPE_CODE=#{userTypeCode}
+    </if>
+    <if test="prepayTag != null" >
+      and PREPAY_TAG=#{prepayTag}
+    </if>
+    <if test="serviceStateCode != null" >
+      and SERVICE_STATE_CODE=#{serviceStateCode}
+    </if>
+    <if test="openMode != null" >
+      and OPEN_MODE=#{openMode}
+    </if>
+    <if test="acctTag != null" >
+      and ACCT_TAG=#{acctTag}
+    </if>
+    <if test="removeTag != null" >
+      and REMOVE_TAG=#{removeTag}
+    </if>
+
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tf_f_user
     where USER_ID = #{userId,jdbcType=DECIMAL}

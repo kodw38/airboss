@@ -29,6 +29,17 @@
     where INST_ID = #{instId,jdbcType=DECIMAL}
       and PARTITION_ID = #{partitionId,jdbcType=INTEGER}
   </select>
+  <select id="selectByPhoneNumberAndCustId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tf_f_user_member
+    where VPN_ID=#{custId} and MEMBER_ROLE_NUMBER=#{phoneNumber}
+  </select>
+  <select id="selectUserMemberList" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select <include refid="Base_Column_List" />
+    from tf_f_user_member
+    where VPN_ID=#{custId}
+  </select>
   <select id="selectGroupCustByUserId" resultType="com.pl.airboss.crm.cm.bean.CustGroupBean" parameterType="java.lang.Long">
     SELECT c.* FROM tf_f_user u,tf_f_user_member m,tf_f_customer c WHERE m.VPN_ID=c.CUST_ID AND m.MEMBER_ROLE_NUMBER=u.SERIAL_NUMBER AND u.USER_ID =#{userId}
   </select>
