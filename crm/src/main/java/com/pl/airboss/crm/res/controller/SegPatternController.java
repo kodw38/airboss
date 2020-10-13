@@ -181,4 +181,16 @@ public class SegPatternController extends BaseController {
         }
 
     }
+
+
+    /**
+     * 号段模式状态修改
+     */
+    @Log(title = "号段模式状态修改", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("crm.res:resPhoneSegment:edit")
+    @PostMapping("/changeStatus")
+    @ResponseBody
+    public AjaxResult changeStatus(ResPatternSegmentBean bean) {
+        return toAjax(resPhoneNumSV.changeStatus(bean));
+    }
 }
