@@ -5,6 +5,7 @@ import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
 import com.pl.airboss.utils.StringUtils;
+import com.pl.airboss.web.bean.SecOperatorBean;
 import com.pl.airboss.web.controller.BaseController;
 import com.pl.airboss.web.utils.AjaxResult;
 import com.pl.airboss.web.utils.ExcelUtil;
@@ -193,4 +194,14 @@ public class SegPatternController extends BaseController {
     public AjaxResult changeStatus(ResPatternSegmentBean bean) {
         return toAjax(resPhoneNumSV.changeStatus(bean));
     }
+
+    /**
+     * 校验号段名称是否已经存在
+     */
+    @PostMapping("/checkPatternSegNameUnique")
+    @ResponseBody
+    public Boolean checkPatternSegNameUnique(ResPatternSegmentBean bean) {
+        return !resPhoneNumSV.checkPatternSegNameUnique(bean.getPatternSegName(),bean.getPatternSegId());
+    }
+
 }

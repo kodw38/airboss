@@ -220,4 +220,11 @@ public interface IResPhoneNumSV {
      * @return
      */
     public int changeStatus(ResPatternSegmentBean record);
+
+    /**
+     * 校验segName是否存在
+     * @param segName
+     * @return
+     */
+    public boolean checkPatternSegNameUnique(String segName, Long patternSegId);
 }

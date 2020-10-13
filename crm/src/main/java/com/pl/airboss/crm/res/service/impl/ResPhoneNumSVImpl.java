@@ -308,4 +308,9 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
     public int changeStatus(ResPatternSegmentBean record) {
         return resPatternSegmentBeanMapper.changeStatus(record);
     }
+
+    @Override
+    public boolean checkPatternSegNameUnique(String segName, Long patternSegId) {
+        return resPatternSegmentBeanMapper.checkPatternSegNameUnique(segName,patternSegId);
+    }
 }

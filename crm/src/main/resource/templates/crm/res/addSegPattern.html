@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <th:block th:include="include :: header('新增角色')" />
-    <th:block th:include="include :: ztree-css" />
-    <th:block th:include="include :: select2-css" />
-    <th:block th:include="include :: bootstrap-select-css" />
+    <th:block th:include="include :: header('新增号段')" />
 </head>
+
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
     <form class="form-horizontal m" id="form-segPattern-add">
@@ -31,19 +29,28 @@
             <label class="col-sm-3 control-label">资源类型：</label>
             <div class="col-sm-8">
                 <div class="input-group" style="width: 100%">
-                    <select id="resType" name="resType" class="form-control noselect2 selectpicker" th:with="type=${@SysService.getType('sys_role_type')}">
+                    <select id="resType" name="resType" class="form-control noselect2 selectpicker" th:with="type=${@SysService.getType('res_type')}">
                         <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                     </select>
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">号段状态：</label>
+            <div class="col-sm-8">
+                <div class="radio-box" th:each="dict : ${@SysService.getType('res_pattern_segment_state')}">
+                    <input type="radio" th:id="${dict.dictValue}" name="state" th:value="${dict.dictValue}" th:checked="${dict.dictValue}==1?1:0">
+                    <label th:for="${dict.dictValue}" th:text="${dict.dictLabel}"></label>
+                </div>
+            </div>
+        </div>
+
     </form>
 </div>
 <th:block th:include="include :: footer" />
-<th:block th:include="include :: ztree-js" />
-<th:block th:include="include :: bootstrap-select-js" />
-<th:block th:include="include :: select2-js" />
-<script th:inline="javascript">
+
+<script>
     // $(function() {
     //     var url = ctx + "system/menu/roleMenuTreeData";
     //     var options = {
@@ -54,14 +61,33 @@
     //     };
     //     $.tree.init(options);
     // });
+    var prefix = ctx + "crm/res";
 
     $("#form-segPattern-add").validate({
+        onkeyup: false,
+        rules:{
+            patternSegName:{
+                remote: {
+                    url: prefix + "/checkPatternSegNameUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        "patternSegName": function() {
+                            return $.common.trim($("#patternSegName").val());
+                        }
+                    },
+                    dataFilter: function(data, type) {
+                        return $.validate.unique(data);
+                    }
+                }
+            }
+        },
         messages: {
-            "roleName": {
-                remote: "角色名称已经存在"
+            "patternSegName": {
+                remote: "号段名称已经存在"
             },
-            "roleKey": {
-                remote: "角色权限已经存在"
+            "netId": {
+                remote: "网号已经存在"
             }
         },
         focusCleanup: true
@@ -69,16 +95,15 @@
 
     function submitHandler() {
         if ($.validate.form()) {
-            add();
+            $.operate.save(prefix + "/addSegPattern", $('#form-segPattern-add').serialize());
         }
     }
 
     function add() {
-        var patternSegName = $("input[name='patternSegName']").val();
+        /*var patternSegName = $("input[name='patternSegName']").val();
         var netId = $("input[name='netId']").val();
         var segExp = $("select[name='segExp']").val();
         var resType = $("select[name='resType']").val();
-
         $.ajax({
             cache : true,
             type : "POST",
@@ -96,7 +121,7 @@
             success : function(data) {
                 $.operate.successCallback(data);
             }
-        });
+        });*/
     }
 </script>
 </body>

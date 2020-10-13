@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('修改号段')" />
+</head>
+
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-segPattern-edit" th:object="${bean}" ><!--后台传的参数名是bean-->
+        <input id="patternSegId" name="patternSegId" type="hidden" th:field="*{patternSegId}"/>
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">号段名称：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="patternSegName" id="patternSegName" th:field="*{patternSegName}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">网号：</label>
+            <div class="col-sm-8">
+                <input id="netId" name="netId" class="form-control" type="text" th:field="*{netId}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">表达式：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="segExp" id="segExp" th:field="*{segExp}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">资源类型：</label>
+            <div class="col-sm-8">
+                <div class="input-group" style="width: 100%">
+                    <select id="resType" name="resType" class="form-control noselect2 selectpicker" th:with="type=${@SysService.getType('res_type')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"  th:selected="${dict.dictValue} == *{resType} ? true : false"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">号段状态：</label>
+            <div class="col-sm-8">
+                <div class="radio-box" th:each="dict : ${@SysService.getType('res_pattern_segment_state')}">
+                    <input type="radio" th:id="${dict.dictValue}" name="state" th:value="${dict.dictValue}" th:field="*{state}">
+                    <label th:for="${dict.dictLabel}" th:text="${dict.dictLabel}"></label>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<th:block th:include="include :: footer" />
+
+
+<script th:inline="javascript">
+    var prefix = ctx + "crm/res";
+
+    $("#form-segPattern-edit").validate({
+        onkeyup: false,
+        rules:{
+            patternSegName:{
+                remote: {
+                    url: prefix + "/checkPatternSegNameUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        "patternSegId": function() {
+                            return $("#patternSegId").val();
+                        },
+                        "patternSegName": function() {
+                            return $.common.trim($("#patternSegName").val());
+                        }
+                    },
+                    dataFilter: function(data, type) {
+                        return $.validate.unique(data);
+                    }
+                }
+            }
+        },
+        messages: {
+            "patternSegName": {
+                remote: "号段名称已经存在"
+            },
+            "netId": {
+                remote: "网号已经存在"
+            }
+        },
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+        alert('123');
+        if ($.validate.form()) {
+            edit();
+        }
+    }
+
+
+    function edit() {
+        debugger;
+        var patternSegId = $("#patternSegId").val();
+        var patternSegName = $("#patternSegName").val();
+        var netId = $("#netId").val();
+        var segExp = $("#segExp").val();
+        var resType = $("select[name='resType']").val();
+        var state = $("input[id='state']").is(':checked') == true ? 1 : 0;
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/editSegPattern",
+            data : {
+                "patternSegId": patternSegId,
+                "patternSegName": patternSegName,
+                "netId": netId,
+                "segExp": segExp,
+                "resType":resType,
+                "state": state
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+
+
+</script>
+</body>
+</html>

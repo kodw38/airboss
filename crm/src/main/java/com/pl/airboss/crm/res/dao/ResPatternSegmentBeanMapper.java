@@ -1,6 +1,7 @@
 package com.pl.airboss.crm.res.dao;
 
 import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,8 @@ public interface ResPatternSegmentBeanMapper {
     int updateByPrimaryKey(ResPatternSegmentBean record);
 
     int changeStatus(ResPatternSegmentBean record);
+
+    Boolean checkPatternSegNameUnique(@Param("segName") String segName, @Param("patternSegId") Long patternSegId);
+
+
 }

@@ -55,6 +55,13 @@
   <update id="changeStatus" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean">
     update res_pattern_segment set STATE = #{state,jdbcType=INTEGER} where PATTERN_SEG_ID = #{patternSegId,jdbcType=INTEGER}
   </update>
+  <select id="checkPatternSegNameUnique" resultType="Boolean">
+    select count(0) from res_pattern_segment where PATTERN_SEG_NAME=#{segName}
+    <if test="patternSegId != null and patternSegId !=0">
+      and PATTERN_SEG_ID !=#{patternSegId,jdbcType=BIGINT}
+    </if>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from res_pattern_segment
     where PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT}
