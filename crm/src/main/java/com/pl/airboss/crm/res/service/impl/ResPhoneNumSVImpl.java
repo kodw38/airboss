@@ -303,4 +303,9 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
             throw new Exception(phoneNum+" 没有该号码，请核查");
         }
     }
+
+    @Override
+    public int changeStatus(ResPatternSegmentBean record) {
+        return resPatternSegmentBeanMapper.changeStatus(record);
+    }
 }

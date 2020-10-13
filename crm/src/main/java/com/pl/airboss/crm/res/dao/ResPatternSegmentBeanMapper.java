@@ -20,4 +20,6 @@ public interface ResPatternSegmentBeanMapper {
     int updateByPrimaryKeySelective(ResPatternSegmentBean record);
 
     int updateByPrimaryKey(ResPatternSegmentBean record);
+
+    int changeStatus(ResPatternSegmentBean record);
 }

@@ -40,7 +40,7 @@
     from res_pattern_segment
     where 1=1
     <if test="patternSegName != null and patternSegName!=''" >
-      and PATTERN_SEG_ID = #{patternSegName}
+      and PATTERN_SEG_NAME = #{patternSegName}
     </if>
     <if test="netId != null and netId!=''" >
       and NET_ID = #{netId}
@@ -48,7 +48,13 @@
     <if test="segExp != null and segExp!=''" >
       and SEG_EXP = #{segExp}
     </if>
+    <if test="state != null and state!=''" >
+      and STATE = #{state}
+    </if>
   </select>
+  <update id="changeStatus" parameterType="com.pl.airboss.crm.res.bean.ResPatternSegmentBean">
+    update res_pattern_segment set STATE = #{state,jdbcType=INTEGER} where PATTERN_SEG_ID = #{patternSegId,jdbcType=INTEGER}
+  </update>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from res_pattern_segment
     where PATTERN_SEG_ID = #{patternSegId,jdbcType=BIGINT}

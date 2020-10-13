@@ -2,6 +2,7 @@ package com.pl.airboss.crm.res.service.interfaces;
 
 
 import com.pl.airboss.crm.res.bean.*;
+import com.pl.airboss.web.bean.SecOperatorBean;
 
 import java.io.InputStream;
 import java.rmi.RemoteException;
@@ -212,4 +213,11 @@ public interface IResPhoneNumSV {
      * @return
      */
     public int releasePhoneNum(String phoneNum)throws Exception;
+
+    /**
+     * 状态修改
+     * @param record
+     * @return
+     */
+    public int changeStatus(ResPatternSegmentBean record);
 }
