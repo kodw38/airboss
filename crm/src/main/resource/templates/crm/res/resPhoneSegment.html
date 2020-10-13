@@ -11,7 +11,13 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            号段名称：<input id="ResPatternSegmentBean" type="text" name="ResPatternSegmentBean"/>
+                            号段名称：<input type="text" name="patternSegName"/>
+                        </li>
+                        <li>
+                            状态：<select name="state" th:with="type=${@SysService.getType('res_pattern_segment_state')}">
+                            <option value="">所有</option>
+                            <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                        </select>
                         </li>
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
@@ -52,8 +58,9 @@
 <script th:inline="javascript">
     var editFlag = [[${@permission.hasPermi('crm.res:resPhoneSegment:edit')}]];
     var removeFlag = [[${@permission.hasPermi('crm.res:resPhoneSegment:remove')}]];
-    var datas = [[${@SysService.getType('sys_normal_disable')}]];
+    var datas = [[${@SysService.getType('res_pattern_segment_state')}]];
     var prefix = ctx + "crm/res";
+    var resType=[[${@SysService.getType('res_type')}]];
 
     $(function () {
         var options = {
@@ -62,7 +69,7 @@
             updateUrl: prefix + "/editSegPattern/{id}",
             removeUrl: prefix + "/removeSegPattern/{id}",
             exportUrl: prefix + "/export",
-            queryParams: queryParams,
+           // queryParams: queryParams,
             sortName: "patternSegId",
             sortOrder: "desc",
             modalName: "数据",
@@ -87,13 +94,25 @@
                 },
                 {
                     field: 'resType',
-                    title: '资源类型'
+                    title: '资源类型',
+                    formatter:function (value,row,index) {
+                        return $.table.selectDictLabel(resType,value);
+                    }
                 },
-                {
-                    field: 'resType',
+                /*{
+                    field: 'state',
                     title: '状态',
-                    formatter: function (value) {
+                    formatter: function (value, row, index) {
+                        //res_pattern_segment_state
                          return value === '1' ? '有效' : '无效';
+                    }
+                },*/
+                {
+                    visible: editFlag == 'hidden' ? false : true,
+                    title: '状态',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return statusTools(row);
                     }
                 },
                 {
@@ -111,16 +130,43 @@
         $.table.init(options);
     });
 
+
+    /* 号段模式状态显示 */
+    function statusTools(row) {
+        if (row.state == 0) {
+            return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.patternSegId + '\')"></i> ';
+        } else {
+            return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.patternSegId + '\')"></i> ';
+        }
+
+
+    }
+
+    /* 号段模式状态管理-停用 */
+    function disable(userId) {
+        $.modal.confirm("确认要停用号段模式吗？", function() {
+            $.operate.post(prefix + "/changeStatus", { "patternSegId": userId, "state": 0 });
+        })
+    }
+
+    /* 号段模式状态管理启用 */
+    function enable(userId) {
+        $.modal.confirm("确认要启用号段模式吗？", function() {
+            $.operate.post(prefix + "/changeStatus", { "patternSegId": userId, "state": 1 });
+        })
+    }
+
     function queryParams(params) {
         var search = $.table.queryParams(params);
         search.ResPatternSegmentBean = $("#ResPatternSegmentBean").val();
         return search;
     }
 
-    /*字典数据-新增字典*/
     function add() {
-        var dictType = $("#dictType option:selected").val();
-        $.operate.add(dictType);
+        /*var dictType = $("#dictType option:selected").val();
+        alert(dictType);
+        $.operate.add(dictType);*/
+        $.operate.add("");//创建的url无需参数
     }
 
     function resetPre() {
