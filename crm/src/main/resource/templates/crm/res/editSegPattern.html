@@ -90,7 +90,7 @@
     });
 
     function submitHandler() {
-        alert('123');
+       // alert('123');
         if ($.validate.form()) {
             edit();
         }
@@ -104,7 +104,7 @@
         var netId = $("#netId").val();
         var segExp = $("#segExp").val();
         var resType = $("select[name='resType']").val();
-        var state = $("input[id='state']").is(':checked') == true ? 1 : 0;
+        var state =  $("input[name='state']:checked").val();
         $.ajax({
             cache : true,
             type : "POST",
