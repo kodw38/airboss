@@ -112,7 +112,7 @@ public class SegPatternController extends BaseController {
      */
     @Log(title = "号段模式", businessType = BusinessType.DELETE)
     @RequiresPermissions("res:segPattern:delete")
-    @GetMapping("/removeSegPattern/{recId}")
+    @PostMapping("/removeSegPattern/{recId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("recId") Long recId)
     {
@@ -202,6 +202,18 @@ public class SegPatternController extends BaseController {
     @ResponseBody
     public Boolean checkPatternSegNameUnique(ResPatternSegmentBean bean) {
         return !resPhoneNumSV.checkPatternSegNameUnique(bean.getPatternSegName(),bean.getPatternSegId());
+    }
+
+    @RequiresPermissions("res:segPattern:delete")
+    @Log(title = "号段模式的删除", businessType = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids) {
+        try {
+            return toAjax(resPhoneNumSV.deleteSegPatternByIds(ids));
+        } catch (Exception e) {
+            return error(e.getMessage());
+        }
     }
 
 }

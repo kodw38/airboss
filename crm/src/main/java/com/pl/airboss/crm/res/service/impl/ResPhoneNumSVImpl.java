@@ -313,4 +313,10 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
     public boolean checkPatternSegNameUnique(String segName, Long patternSegId) {
         return resPatternSegmentBeanMapper.checkPatternSegNameUnique(segName,patternSegId);
     }
+
+    @Override
+    public int deleteSegPatternByIds(String ids) {
+        Long[] segPatternIds = Convert.toLongArray(ids);
+        return resPatternSegmentBeanMapper.deleteSegPatternByIds(segPatternIds);
+    }
 }

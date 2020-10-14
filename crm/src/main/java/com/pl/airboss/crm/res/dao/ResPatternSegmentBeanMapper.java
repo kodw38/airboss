@@ -26,5 +26,7 @@ public interface ResPatternSegmentBeanMapper {
 
     Boolean checkPatternSegNameUnique(@Param("segName") String segName, @Param("patternSegId") Long patternSegId);
 
+    int deleteSegPatternByIds(Long[] ids);
+
 
 }

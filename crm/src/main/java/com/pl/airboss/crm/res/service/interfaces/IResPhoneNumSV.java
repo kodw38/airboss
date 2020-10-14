@@ -227,4 +227,11 @@ public interface IResPhoneNumSV {
      * @return
      */
     public boolean checkPatternSegNameUnique(String segName, Long patternSegId);
+
+    /**
+     * 批量删除号段规则
+     * @param ids
+     * @return
+     */
+    public int deleteSegPatternByIds(String ids);
 }
