@@ -49,9 +49,12 @@
                 <i class="fa fa-upload"></i> 导入
             </a>
 
-
-            <a onclick="$.table.importTemplate()" shiro:hasPermission="res:resPhoneSegment:export">
+            <!--<a onclick="$.table.importTemplate()" shiro:hasPermission="res:resPhoneSegment:export">
                 <i class="fa fa-download"></i> 下载号段模板
+            </a>-->
+
+            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="res:resPhoneSegment:export">
+                <i class="fa fa-download"></i> 导出
             </a>
         </div>
 
@@ -99,6 +102,16 @@
                 {
                     field: 'segExp',
                     title: '号段表达式'
+                },
+                {
+                    field: 'effectiveDate',
+                    title: '生效时间',
+                    visible: false
+                },
+                {
+                    field: 'expireDate',
+                    title: '失效时间',
+                    visible: false
                 },
                 {
                     field: 'resType',

@@ -234,4 +234,18 @@ public interface IResPhoneNumSV {
      * @return
      */
     public int deleteSegPatternByIds(String ids);
+
+    /**
+     * 导入号段
+     * @param segmentList
+     * @return
+     */
+    public String importSegment(List<ResPatternSegmentBean> segmentList, boolean updateSupport);
+
+    /**
+     * 导出号段
+     * @param segment
+     * @return
+     */
+    List<ResPatternSegmentBean> selectList(ResPatternSegmentBean segment);
 }

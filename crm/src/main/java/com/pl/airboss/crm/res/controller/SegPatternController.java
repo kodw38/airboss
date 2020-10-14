@@ -221,8 +221,28 @@ public class SegPatternController extends BaseController {
     @ResponseBody
     public AjaxResult importTemplate() {
         ExcelUtil<ResPatternSegmentBean> util = new ExcelUtil<ResPatternSegmentBean>(ResPatternSegmentBean.class);
-        return util.importTemplateExcel("操作员数据");
+        return util.importTemplateExcel("NumSegment");
     }
 
+    @Log(title = "导入号段", businessType = BusinessType.IMPORT)
+    @RequiresPermissions("res:segment:import")
+    @PostMapping("/importData")
+    @ResponseBody
+    public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception {
+        ExcelUtil<ResPatternSegmentBean> util = new ExcelUtil<ResPatternSegmentBean>(ResPatternSegmentBean.class);
+        List<ResPatternSegmentBean> segmentList = util.importExcel(file.getInputStream());
+        String message = resPhoneNumSV.importSegment(segmentList, updateSupport);
+        return AjaxResult.success(message);
+    }
+
+    @Log(title = "号段管理", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("res:segment:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(ResPatternSegmentBean segment) {
+        List<ResPatternSegmentBean> list = resPhoneNumSV.selectList(segment);
+        ExcelUtil<ResPatternSegmentBean> util = new ExcelUtil<ResPatternSegmentBean>(ResPatternSegmentBean.class);
+        return util.exportExcel(list, "号段数据");
+    }
 
 }

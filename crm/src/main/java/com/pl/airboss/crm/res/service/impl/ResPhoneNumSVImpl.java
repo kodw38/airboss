@@ -10,17 +10,23 @@ import com.pl.airboss.crm.res.dao.ResSelpriceModeBeanMapper;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.crm.utils.PatternMatch;
 import com.pl.airboss.crm.utils.Utils;
+import com.pl.airboss.framework.bean.BusinessException;
 import com.pl.airboss.framework.cache.impl.CacheManager;
 import com.pl.airboss.utils.Convert;
+import com.pl.airboss.utils.StringUtils;
 import com.pl.airboss.web.bean.SecOperatorBean;
 import com.pl.airboss.web.cache.CacheCfgSystem;
 import com.pl.airboss.web.cache.CacheResPatternDefine;
 import com.pl.airboss.web.cache.CacheStaticData;
+import com.pl.airboss.web.service.impl.SysServiceImpl;
 import com.pl.airboss.web.utils.ShiroUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +40,7 @@ import java.util.List;
  **/
 @Service
 public class ResPhoneNumSVImpl implements IResPhoneNumSV {
+    transient static Logger log = LoggerFactory.getLogger(ResPhoneNumSVImpl.class);
 
     @Autowired
     ResPatternDefineBeanMapper resPatternDefineBeanMapper;
@@ -318,5 +325,59 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
     public int deleteSegPatternByIds(String ids) {
         Long[] segPatternIds = Convert.toLongArray(ids);
         return resPatternSegmentBeanMapper.deleteSegPatternByIds(segPatternIds);
+    }
+
+    @Override
+    public String importSegment(List<ResPatternSegmentBean> segmentList, boolean updateSupport) {
+        if (StringUtils.isNull(segmentList) || segmentList.size() == 0) {
+            throw new BusinessException("导入用户数据不能为空！");
+        }
+        int successNum = 0;
+        int failureNum = 0;
+        StringBuilder successMsg = new StringBuilder();
+        StringBuilder failureMsg = new StringBuilder();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+        for (ResPatternSegmentBean segment : segmentList) {
+            //segment.setEffectiveDate(sf.parse((String)segment.get("生效时间")));
+           // segment.setExpireDate(sf.parse((String)m.get("失效时间")));
+            try {
+                //验证号段是否存在
+                Boolean exist = resPatternSegmentBeanMapper.checkPatternSegNameUnique(segment.getPatternSegName(), null);
+                if (!exist) {//不存在
+                    segment.setState("1");
+                    segment.setCreateDate(new Date());
+                    segment.setResType(1L);
+                    resPatternSegmentBeanMapper.insert(segment);
+                    successNum++;
+                    successMsg.append("<br/>" + successNum + "、号段名称 " + segment.getPatternSegName()+ " 导入成功");
+
+                } else if (updateSupport) {//存在更新
+                    resPatternSegmentBeanMapper.updateByPrimaryKey(segment);
+                    successNum++;
+                    successMsg.append("<br/>" + successNum + "、号段名称 " + segment.getPatternSegName() + " 更新成功");
+                } else {
+                    failureNum++;
+                    failureMsg.append("<br/>" + failureNum + "、号段名称 " + segment.getPatternSegName() + " 已存在");
+                }
+            } catch (Exception e) {
+                failureNum++;
+                String msg = "<br/>" + failureNum + "、号段名称 " + segment.getPatternSegName() + " 导入失败：";
+                failureMsg.append(msg + e.getMessage());
+                log.error(msg, e);
+            }
+        }
+        if (failureNum > 0) {
+            failureMsg.insert(0, "很抱歉，导入失败！共 " + failureNum + " 条数据格式不正确，错误如下：");
+            throw new BusinessException(failureMsg.toString());
+        }
+        else {
+            successMsg.insert(0, "恭喜您，数据已全部导入成功！共 " + successNum + " 条，数据如下：");
+        }
+        return successMsg.toString();
+    }
+
+    @Override
+    public List<ResPatternSegmentBean> selectList(ResPatternSegmentBean segment) {
+        return resPatternSegmentBeanMapper.selectList(segment);
     }
 }

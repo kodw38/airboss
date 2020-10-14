@@ -1,10 +1,13 @@
 package com.pl.airboss.crm.res.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pl.airboss.framework.annotation.Excel;
 
 import java.util.Date;
 
 public class ResPatternSegmentBean {
+
+    @Excel(name = "编号",cellType = Excel.ColumnType.STRING , type = Excel.Type.EXPORT)
     private Long patternSegId;
 
     @Excel(name = "号段名称",cellType = Excel.ColumnType.STRING)
@@ -30,9 +33,11 @@ public class ResPatternSegmentBean {
 
     private Date doneDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "生效时间",cellType = Excel.ColumnType.STRING)
     private Date effectiveDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "失效时间",cellType = Excel.ColumnType.STRING)
     private Date expireDate;
 
