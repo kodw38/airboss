@@ -40,10 +40,16 @@
             <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="crm.res:resPhoneSegment:remove">
                 <i class="fa fa-remove"></i> 删除
             </a>
-            <a class="btn btn-warning" onclick="$.table.importExcel()"
+            <!--<a class="btn btn-warning" onclick="$.table.importExcel()"
                shiro:hasPermission="crm.res:resPhoneSegment:import">
                 <i class="fa fa-download"></i> 导入
+            </a>-->
+
+            <a class="btn btn-info" onclick="$.table.importExcel()" shiro:hasPermission="crm.res:resPhoneSegment:import">
+                <i class="fa fa-upload"></i> 导入
             </a>
+
+
             <a onclick="$.table.importTemplate()" shiro:hasPermission="crm.res:resPhoneSegment:export">
                 <i class="fa fa-download"></i> 下载号段模板
             </a>
@@ -69,6 +75,8 @@
             updateUrl: prefix + "/editSegPattern/{id}",
             removeUrl: prefix + "/removeSegPattern",
             exportUrl: prefix + "/export",
+            importUrl: prefix + "/importData",
+            importTemplateUrl: prefix + "/importTemplate",
            // queryParams: queryParams,
             sortName: "patternSegId",
             sortOrder: "desc",
@@ -138,8 +146,6 @@
         } else {
             return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.patternSegId + '\')"></i> ';
         }
-
-
     }
 
     /* 号段模式状态管理-停用 */
@@ -174,4 +180,22 @@
     }
 </script>
 </body>
+
+<!-- 导入区域 -->
+<script id="importTpl" type="text/template">
+    <form enctype="multipart/form-data" class="mt20 mb10">
+        <div class="col-xs-offset-1">
+            <input type="file" id="file" name="file"/>
+            <div class="mt10 pt5">
+                <input type="checkbox" id="updateSupport" name="updateSupport" title="如果号段名称已经存在，更新这条数据。"> 是否更新已经存在的号段名称数据
+                &nbsp;	<a onclick="$.table.importTemplate()" class="btn btn-default btn-xs"><i class="fa fa-file-excel-o"></i> 下载模板</a>
+            </div>
+            <font color="red" class="pull-left mt10">
+                提示：仅允许导入“xls”或“xlsx”格式文件！
+            </font>
+        </div>
+    </form>
+</script>
+
+
 </html>
