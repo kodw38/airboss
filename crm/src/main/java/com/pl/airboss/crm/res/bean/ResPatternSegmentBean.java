@@ -1,14 +1,19 @@
 package com.pl.airboss.crm.res.bean;
 
+import com.pl.airboss.framework.annotation.Excel;
+
 import java.util.Date;
 
 public class ResPatternSegmentBean {
     private Long patternSegId;
 
+    @Excel(name = "号段名称",cellType = Excel.ColumnType.STRING)
     private String patternSegName;
 
+    @Excel(name = "归属网元",cellType = Excel.ColumnType.STRING)
     private String netId;
 
+    @Excel(name = "号段表达式",cellType = Excel.ColumnType.STRING)
     private String segExp;
 
     private String segRpnExp;
@@ -25,8 +30,10 @@ public class ResPatternSegmentBean {
 
     private Date doneDate;
 
+    @Excel(name = "生效时间",cellType = Excel.ColumnType.STRING)
     private Date effectiveDate;
 
+    @Excel(name = "失效时间",cellType = Excel.ColumnType.STRING)
     private Date expireDate;
 
     private Date createDate;

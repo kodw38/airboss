@@ -111,7 +111,7 @@ public class SegPatternController extends BaseController {
      * 删除
      */
     @Log(title = "号段模式", businessType = BusinessType.DELETE)
-    @RequiresPermissions("res:segPattern:delete")
+    @RequiresPermissions("res:segPattern:remove")
     @PostMapping("/removeSegPattern/{recId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("recId") Long recId)
@@ -204,7 +204,7 @@ public class SegPatternController extends BaseController {
         return !resPhoneNumSV.checkPatternSegNameUnique(bean.getPatternSegName(),bean.getPatternSegId());
     }
 
-    @RequiresPermissions("res:segPattern:delete")
+    @RequiresPermissions("res:segPattern:remove")
     @Log(title = "号段模式的删除", businessType = BusinessType.DELETE)
     @PostMapping("/removeSegPattern")
     @ResponseBody
@@ -215,5 +215,14 @@ public class SegPatternController extends BaseController {
             return error(e.getMessage());
         }
     }
+
+    @RequiresPermissions("res:segment:view")
+    @GetMapping("/importTemplate")
+    @ResponseBody
+    public AjaxResult importTemplate() {
+        ExcelUtil<ResPatternSegmentBean> util = new ExcelUtil<ResPatternSegmentBean>(ResPatternSegmentBean.class);
+        return util.importTemplateExcel("操作员数据");
+    }
+
 
 }
