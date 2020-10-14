@@ -186,9 +186,12 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
                     b.setPatternSegId(segmentId);//PATTERN_SEG_ID模式号段编号
                     b.setPatternDefId(matchPatternDef(n));//PATTERN_DEF_ID号码模式编号
                     b.setRsrvStr2(n);
-                    b.setOpId(Long.valueOf(op.getOpId()));//当前操作员
+                    if (op.getOpId() != null && !"".equals(op.getOpId())) {
+                        b.setOpId(Long.valueOf(op.getOpId()));//当前操作员
+                    }
                     b.setResStatus(ResConst.PHONE_NUM_STATUS_G);//生成
                     b.setPassword(pwd);//密码
+                    nums.add(b);
                 }
                 resPhoneNumOriginBeanMapper.insertList(nums);
                 return true;

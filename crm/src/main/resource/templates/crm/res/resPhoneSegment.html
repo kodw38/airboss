@@ -67,6 +67,8 @@
 <script th:inline="javascript">
     var editFlag = [[${@permission.hasPermi('res:resPhoneSegment:edit')}]];
     var removeFlag = [[${@permission.hasPermi('res:resPhoneSegment:remove')}]];
+    var numGenFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
+
     var datas = [[${@SysService.getType('res_pattern_segment_state')}]];
     var prefix = ctx + "crm/res";
     var resType=[[${@SysService.getType('res_type')}]];
@@ -143,7 +145,7 @@
                         var actions = [];
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.patternSegId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.patternSegId + '\')"><i class="fa fa-remove"></i>删除</a> ');
-                        actions.push('<a class="btn btn-info btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.patternSegId + '\')"><i class="fa fa-send"></i>生成号码</a>');
+                        actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="generateNumBySegPattern(\'' + row.patternSegId + '\')"><i class="fa fa-send"></i>生成号码</a>');
                         return actions.join('');
                     }
                 }]
@@ -162,16 +164,16 @@
     }
 
     /* 号段模式状态管理-停用 */
-    function disable(userId) {
+    function disable(patternSegId) {
         $.modal.confirm("确认要停用号段模式吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "patternSegId": userId, "state": 0 });
+            $.operate.post(prefix + "/changeStatus", { "patternSegId": patternSegId, "state": 0 });
         })
     }
 
     /* 号段模式状态管理启用 */
-    function enable(userId) {
+    function enable(patternSegId) {
         $.modal.confirm("确认要启用号段模式吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "patternSegId": userId, "state": 1 });
+            $.operate.post(prefix + "/changeStatus", { "patternSegId": patternSegId, "state": 1 });
         })
     }
 
@@ -187,6 +189,29 @@
         $.operate.add(dictType);*/
         $.operate.add("");//创建的url无需参数
     }
+
+
+
+    function generateNumBySegPattern(patternSegId) {
+        debugger;
+        //var patternSegId = $("input[name='patternSegId']").val();
+        $.ajax({
+            cache: true,
+            type: "GET",
+            url: prefix + "/generateNumBySegPattern/"+patternSegId,
+            data: {
+                //"recId": patternSegId
+            },
+            async: true,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
 
     function resetPre() {
         $.form.reset();

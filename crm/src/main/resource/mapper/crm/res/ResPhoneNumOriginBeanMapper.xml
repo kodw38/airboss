@@ -281,6 +281,60 @@
       #{rsrvStr3,jdbcType=VARCHAR}, #{rsrvNum1,jdbcType=BIGINT}, #{rsrvNum2,jdbcType=BIGINT}, 
       #{stockInDate,jdbcType=TIMESTAMP})
   </insert>
+
+
+
+
+  <insert id="insertList">
+    insert into res_phone_num_origin (
+    RES_ID, SEC_ORG_ID, BATCH_ID,
+    RES_INST_ID, PATTERN_SEG_ID, PATTERN_DEF_ID,
+    RES_STORE_ID, RES_USED_ID, ORG_ID,
+    OP_ID, DONE_CODE, DONE_DATE,
+    USE_TYPE, MANAGE_STATUS, RES_STATUS,
+    GENERATION_TYPE, RES_NUMBER_HLR, TRADE_ID,
+    OFFER_ID, SUB_OFFER_ID, RECEIVER,
+    COUNTY_ID, REGION_ID, SELECT_PRICE_MODE,
+    RESERVE_FEE, RES_LEVEL, CHOOSE_LEVEL,
+    RES_CLASS, PRESENT_MONTH, DEPOSIT_MONTH,
+    DEPOSIT_AMOUNT, IS_CONFIRM, ICC_ID,
+    IMSI, PRE_DATE, USE_DATE,
+    USE_DONE_CODE, USE_ORG_ID, BUSI_CODE,
+    ROUTING_INFO, BEAUTIFUAL_TAG, HOT_POINT_TAG,
+    DIGITAL_TAG, BIRTHDAY_TAG, CHARGING_INFO,
+    REUSE_FLAG, OUT_LEVEL, RES_EVENT_ID,
+    PASSWORD, IFEETYPE, AGENT_PHONE,
+    NOTES, PORT_STATUS, RSRV_STR2,
+    RSRV_STR3, RSRV_NUM1, RSRV_NUM2,
+    STOCK_IN_DATE)
+    values
+    <foreach item="item" index="index" collection="list" separator=",">
+      (
+      #{item.resId,jdbcType=VARCHAR}, #{item.secOrgId,jdbcType=BIGINT}, #{item.batchId,jdbcType=VARCHAR},
+      #{item.resInstId,jdbcType=VARCHAR}, #{item.patternSegId,jdbcType=BIGINT}, #{item.patternDefId,jdbcType=BIGINT},
+      #{item.resStoreId,jdbcType=BIGINT}, #{item.resUsedId,jdbcType=BIGINT}, #{item.orgId,jdbcType=BIGINT},
+      #{item.opId,jdbcType=BIGINT}, #{item.doneCode,jdbcType=BIGINT}, #{item.doneDate,jdbcType=TIMESTAMP},
+      #{item.useType,jdbcType=BIGINT}, #{item.manageStatus,jdbcType=VARCHAR}, #{item.resStatus,jdbcType=VARCHAR},
+      #{item.generationType,jdbcType=VARCHAR}, #{item.resNumberHlr,jdbcType=VARCHAR}, #{item.tradeId,jdbcType=BIGINT},
+      #{item.offerId,jdbcType=BIGINT}, #{item.subOfferId,jdbcType=BIGINT}, #{item.receiver,jdbcType=VARCHAR},
+      #{item.countyId,jdbcType=VARCHAR}, #{item.regionId,jdbcType=VARCHAR}, #{item.selectPriceMode,jdbcType=BIGINT},
+      #{item.reserveFee,jdbcType=BIGINT}, #{item.resLevel,jdbcType=BIGINT}, #{item.chooseLevel,jdbcType=BIGINT},
+      #{item.resClass,jdbcType=BIGINT}, #{item.presentMonth,jdbcType=BIGINT}, #{item.depositMonth,jdbcType=BIGINT},
+      #{item.depositAmount,jdbcType=BIGINT}, #{item.isConfirm,jdbcType=BIGINT}, #{item.iccId,jdbcType=VARCHAR},
+      #{item.imsi,jdbcType=VARCHAR}, #{item.preDate,jdbcType=TIMESTAMP}, #{item.useDate,jdbcType=TIMESTAMP},
+      #{item.useDoneCode,jdbcType=BIGINT}, #{item.useOrgId,jdbcType=BIGINT}, #{item.busiCode,jdbcType=BIGINT},
+      #{item.routingInfo,jdbcType=VARCHAR}, #{item.beautifualTag,jdbcType=VARCHAR}, #{item.hotPointTag,jdbcType=VARCHAR},
+      #{item.digitalTag,jdbcType=VARCHAR}, #{item.birthdayTag,jdbcType=VARCHAR}, #{item.chargingInfo,jdbcType=VARCHAR},
+      #{item.reuseFlag,jdbcType=VARCHAR}, #{item.outLevel,jdbcType=VARCHAR}, #{item.resEventId,jdbcType=BIGINT},
+      #{item.password,jdbcType=VARCHAR}, #{item.ifeetype,jdbcType=VARCHAR}, #{item.agentPhone,jdbcType=VARCHAR},
+      #{item.notes,jdbcType=VARCHAR}, #{item.portStatus,jdbcType=VARCHAR}, #{item.rsrvStr2,jdbcType=VARCHAR},
+      #{item.rsrvStr3,jdbcType=VARCHAR}, #{item.rsrvNum1,jdbcType=BIGINT}, #{item.rsrvNum2,jdbcType=BIGINT},
+      #{item.stockInDate,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+
+
   <insert id="insertSelective" parameterType="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" >
     insert into res_phone_num_origin
     <trim prefix="(" suffix=")" suffixOverrides="," >
