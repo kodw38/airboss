@@ -206,7 +206,7 @@ public class SegPatternController extends BaseController {
 
     @RequiresPermissions("res:segPattern:delete")
     @Log(title = "号段模式的删除", businessType = BusinessType.DELETE)
-    @PostMapping("/remove")
+    @PostMapping("/removeSegPattern")
     @ResponseBody
     public AjaxResult remove(String ids) {
         try {
