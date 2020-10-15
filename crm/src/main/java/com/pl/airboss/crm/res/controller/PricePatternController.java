@@ -121,7 +121,7 @@ public class PricePatternController extends BaseController {
      * 保存
      */
     @Log(title = "资源-价格模式", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("res:pricePattern:update")
+    @RequiresPermissions("res:pricePattern:edit")
     @PostMapping("/editPricePattern")
     @ResponseBody
     public AjaxResult editSave(@Validated ResSelpriceModeBean bean)
@@ -133,7 +133,7 @@ public class PricePatternController extends BaseController {
      * 删除
      */
     @Log(title = "资源-价格模式", businessType = BusinessType.DELETE)
-    @RequiresPermissions("res:pricePattern:delete")
+    @RequiresPermissions("res:pricePattern:remove")
     @GetMapping("/removePricePattern/{recId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("recId") Long recId)

@@ -48,7 +48,7 @@
                 <i class="fa fa-download"></i> 导出
             </a>
 
-            <a class="btn btn-success" onclick="pricePatternConfig()" shiro:hasPermission="res:numPattern:add">
+            <a class="btn btn-success" onclick="pricePatternConfig()" shiro:hasPermission="res:pricePattern:add">
                 <i class="fa fa-plus"></i> 资费配置
             </a>
 
@@ -158,7 +158,7 @@
     /* 号码模式状态管理启用 */
     function enable(patternDefId) {
         $.modal.confirm("确认要启用号码模式吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "patternDefId": patternDefId, "state": 1 });
+            $.operate.post(prefix + "/changeNumPatternStatus", { "patternDefId": patternDefId, "state": 1 });
         })
     }
 
@@ -192,6 +192,11 @@
 
     function pricePatternConfig() {
         //打开资费配置tab
+        //$.operate.addTab();
+        //openTab: function (title, url) {
+        var pricePatternUrl = prefix + "/pricePattern";//pricePattern.html
+        var title = "资费配置";
+        $.operate.openTab(title, pricePatternUrl);
     }
 
 

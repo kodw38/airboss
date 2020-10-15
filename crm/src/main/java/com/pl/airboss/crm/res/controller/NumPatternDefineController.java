@@ -123,7 +123,7 @@ public class NumPatternDefineController extends BaseController {
     /**
      * 导出
      */
-    @Log(title = "导出号码模式", businessType = BusinessType.DELETE)
+    /*@Log(title = "导出号码模式", businessType = BusinessType.DELETE)
     @RequiresPermissions("res:numPattern:export")
     @GetMapping("/exportNumPattern")
     @ResponseBody
@@ -134,7 +134,7 @@ public class NumPatternDefineController extends BaseController {
         List<ResPatternSegmentBean> list = resPhoneNumSV.querySegmentList(b);
         ExcelUtil eu = new ExcelUtil(ResPatternSegmentBean.class);
         return eu.exportExcel(list,"号码模式");
-    }
+    }*/
 
 
 
@@ -145,7 +145,7 @@ public class NumPatternDefineController extends BaseController {
      */
     @Log(title = "号码模式状态修改", businessType = BusinessType.UPDATE)
     @RequiresPermissions("res:numPattern:edit")
-    @PostMapping("/changeStatus")
+    @PostMapping("/changeNumPatternStatus")
     @ResponseBody
     public AjaxResult changeStatus(ResPatternDefineBean bean) {
         return toAjax(resPhoneNumSV.changeStatus(bean));
@@ -174,7 +174,7 @@ public class NumPatternDefineController extends BaseController {
 
     @Log(title = "导出号码模式", businessType = BusinessType.EXPORT)
     @RequiresPermissions("res:numPattern:export")
-    @PostMapping("/export")
+    @PostMapping("/exportNumPattern")
     @ResponseBody
     public AjaxResult exportNumPattern(ResPatternDefineBean numPattDef) {
         List<ResPatternDefineBean> list = resPhoneNumSV.selectList(numPattDef);
