@@ -191,12 +191,20 @@
     }
 
     function pricePatternConfig() {
+        debugger;
         //打开资费配置tab
         //$.operate.addTab();
         //openTab: function (title, url) {
-        var pricePatternUrl = prefix + "/pricePattern";//pricePattern.html
+        /*var pricePatternUrl = prefix + "/pricePattern";//pricePattern.html
         var title = "资费配置";
-        $.operate.openTab(title, pricePatternUrl);
+        $.operate.openTab(title, pricePatternUrl);*/
+
+
+        /*var url = prefix + '/authRole/' + userId;///system/user/authRole/9  会去请求后台，然后打开authRole.html页面
+        $.modal.openTab("操作员分配角色", url);*/
+
+        var url = prefix + '/pricePattern';///system/user/authRole/9  会去请求后台，然后打开authRole.html页面
+        $.modal.openTab("资费配置", url);
     }
 
 

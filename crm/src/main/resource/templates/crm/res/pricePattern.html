@@ -11,13 +11,7 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            资费名称：<input type="text" name="patternSegName"/>
-                        </li>
-                        <li>
-                            状态：<select name="state" th:with="type=${@SysService.getType('res_pattern_segment_state')}">
-                            <option value="">所有</option>
-                            <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                        </select>
+                            资费名称：<input type="text" name="modeDesc"/>
                         </li>
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
@@ -31,30 +25,8 @@
         </div>
 
         <div class="btn-group-sm" id="toolbar" role="group">
-            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:resPhoneSegment:add">
+            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:pricePattern:add">
                 <i class="fa fa-plus"></i> 新增
-            </a>
-            <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="res:resPhoneSegment:edit">
-                <i class="fa fa-edit"></i> 编辑
-            </a>
-            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="res:resPhoneSegment:remove">
-                <i class="fa fa-remove"></i> 删除
-            </a>
-            <!--<a class="btn btn-warning" onclick="$.table.importExcel()"
-               shiro:hasPermission="res:resPhoneSegment:import">
-                <i class="fa fa-download"></i> 导入
-            </a>-->
-
-            <a class="btn btn-info" onclick="$.table.importExcel()" shiro:hasPermission="res:resPhoneSegment:import">
-                <i class="fa fa-upload"></i> 导入
-            </a>
-
-            <!--<a onclick="$.table.importTemplate()" shiro:hasPermission="res:resPhoneSegment:export">
-                <i class="fa fa-download"></i> 下载号段模板
-            </a>-->
-
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="res:resPhoneSegment:export">
-                <i class="fa fa-download"></i> 导出
             </a>
         </div>
 
@@ -65,45 +37,53 @@
 </div>
 <th:block th:include="include :: footer"/>
 <script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('res:resPhoneSegment:edit')}]];
-    var removeFlag = [[${@permission.hasPermi('res:resPhoneSegment:remove')}]];
-    var numGenFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
+    var editFlag = [[${@permission.hasPermi('res:pricePattern:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('res:pricePattern:remove')}]];
+   // var numGenFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
 
     var datas = [[${@SysService.getType('res_pattern_segment_state')}]];
     var prefix = ctx + "crm/res";
-    var resType=[[${@SysService.getType('res_type')}]];
+   // var resType=[[${@SysService.getType('res_type')}]];
 
     $(function () {
         var options = {
-            url: prefix + "/listPhoneSegment",
-            createUrl: prefix + "/addSegPattern",
-            updateUrl: prefix + "/editSegPattern/{id}",
-            removeUrl: prefix + "/removeSegPattern",
-            exportUrl: prefix + "/export",
-            importUrl: prefix + "/importData",
-            importTemplateUrl: prefix + "/importTemplate",
+            url: prefix + "/listPricePattern",
+            createUrl: prefix + "/addPricePattern",
+            updateUrl: prefix + "/editPricePattern/{id}",
+            removeUrl: prefix + "/removePricePattern",
+            //exportUrl: prefix + "/export",
+            //importUrl: prefix + "/importData",
+            //importTemplateUrl: prefix + "/importTemplate",
             // queryParams: queryParams,
-            sortName: "patternSegId",
+            sortName: "resSpecId",
             sortOrder: "desc",
-            modalName: "号段",
+            modalName: "资费",
             columns: [{
                 checkbox: true
             },
                 {
-                    field: 'patternSegId',
+                    field: 'resSpecId',
                     title: '编号'
                 },
                 {
-                    field: 'patternSegName',
-                    title: '号段名称'
+                    field: 'modeDesc',
+                    title: '资费名称'
                 },
                 {
-                    field: 'netId',
-                    title: '网号'
+                    field: 'reserveFee',
+                    title: '预存话费'
                 },
                 {
-                    field: 'segExp',
-                    title: '号段表达式'
+                    field: 'orderFee',
+                    title: '预定费'
+                },
+                {
+                    field: 'orderDays',
+                    title: '可预定天数'
+                },
+                {
+                    field: 'points',
+                    title: '月保底金额'
                 },
                 {
                     field: 'effectiveDate',
@@ -115,13 +95,13 @@
                     title: '失效时间',
                     visible: false
                 },
-                {
+                /*{
                     field: 'resType',
                     title: '资源类型',
                     formatter:function (value,row,index) {
                         return $.table.selectDictLabel(resType,value);
                     }
-                },
+                },*/
                 /*{
                  field: 'state',
                  title: '状态',
@@ -143,9 +123,8 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.patternSegId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.patternSegId + '\')"><i class="fa fa-remove"></i>删除</a> ');
-                        actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="generateNumBySegPattern(\'' + row.patternSegId + '\')"><i class="fa fa-send"></i>生成号码</a>');
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.resSpecId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.resSpecId + '\')"><i class="fa fa-remove"></i>删除</a> ');
                         return actions.join('');
                     }
                 }]
@@ -157,30 +136,24 @@
     /* 号段模式状态显示 */
     function statusTools(row) {
         if (row.state == 0) {
-            return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.patternSegId + '\')"></i> ';
+            return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.resSpecId + '\')"></i> ';
         } else {
-            return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.patternSegId + '\')"></i> ';
+            return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.resSpecId + '\')"></i> ';
         }
     }
 
     /* 号段模式状态管理-停用 */
-    function disable(patternSegId) {
-        $.modal.confirm("确认要停用号段模式吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "patternSegId": patternSegId, "state": 0 });
+    function disable(resSpecId) {
+        $.modal.confirm("确认要停用资费模式吗？", function() {
+            $.operate.post(prefix + "/changeStatus", { "resSpecId": resSpecId, "state": 0 });
         })
     }
 
     /* 号段模式状态管理启用 */
-    function enable(patternSegId) {
-        $.modal.confirm("确认要启用号段模式吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "patternSegId": patternSegId, "state": 1 });
+    function enable(resSpecId) {
+        $.modal.confirm("确认要启用资费模式吗？", function() {
+            $.operate.post(prefix + "/changeStatus", { "resSpecId": resSpecId, "state": 1 });
         })
-    }
-
-    function queryParams(params) {
-        var search = $.table.queryParams(params);
-        search.ResPatternSegmentBean = $("#ResPatternSegmentBean").val();
-        return search;
     }
 
     function add() {
