@@ -1,10 +1,14 @@
 package com.pl.airboss.utils;
 
+import com.pl.airboss.web.bean.SysConfig;
+import com.pl.airboss.web.cache.CacheCfgSystem;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.NumberFormat;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -35,6 +39,10 @@ public class Convert
         if (value instanceof String)
         {
             return (String) value;
+        }
+        if (value instanceof SysConfig)//cfg_system表
+        {
+            return  ((SysConfig)value).getConfigValue();
         }
         return value.toString();
     }
