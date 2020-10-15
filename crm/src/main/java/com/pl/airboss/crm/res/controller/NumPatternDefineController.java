@@ -93,7 +93,7 @@ public class NumPatternDefineController extends BaseController {
      * 保存
      */
     @Log(title = "号码模式", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("res:numPattern:update")
+    @RequiresPermissions("res:numPattern:edit")
     @PostMapping("/editNumPattern")
     @ResponseBody
     public AjaxResult editSave(@Validated ResPatternDefineBean bean)
@@ -105,7 +105,7 @@ public class NumPatternDefineController extends BaseController {
      * 删除
      */
     @Log(title = "号码模式", businessType = BusinessType.DELETE)
-    @RequiresPermissions("res:numPattern:delete")
+    @RequiresPermissions("res:numPattern:remove")
     @GetMapping("/removeNumPattern/{recId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("recId") Long recId)
@@ -135,4 +135,53 @@ public class NumPatternDefineController extends BaseController {
         ExcelUtil eu = new ExcelUtil(ResPatternSegmentBean.class);
         return eu.exportExcel(list,"号码模式");
     }
+
+
+
+
+
+    /**
+     * 号码模式状态修改
+     */
+    @Log(title = "号码模式状态修改", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("res:numPattern:edit")
+    @PostMapping("/changeStatus")
+    @ResponseBody
+    public AjaxResult changeStatus(ResPatternDefineBean bean) {
+        return toAjax(resPhoneNumSV.changeStatus(bean));
+    }
+
+    /**
+     * 校验号码名称是否已经存在
+     */
+    @PostMapping("/checkPatternDefNameUnique")
+    @ResponseBody
+    public Boolean checkPatternDefNameUnique(ResPatternDefineBean bean) {
+        return !resPhoneNumSV.checkPatternDefNameUnique(bean.getPatternDefName(),bean.getPatternDefId());
+    }
+
+    @RequiresPermissions("res:numPattern:remove")
+    @Log(title = "号码模式的删除", businessType = BusinessType.DELETE)
+    @PostMapping("/removeNumPattern")
+    @ResponseBody
+    public AjaxResult remove(String ids) {
+        try {
+            return toAjax(resPhoneNumSV.deleteNumPatternByIds(ids));
+        } catch (Exception e) {
+            return error(e.getMessage());
+        }
+    }
+
+    @Log(title = "导出号码模式", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("res:numPattern:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult exportNumPattern(ResPatternDefineBean numPattDef) {
+        List<ResPatternDefineBean> list = resPhoneNumSV.selectList(numPattDef);
+        ExcelUtil<ResPatternDefineBean> util = new ExcelUtil<ResPatternDefineBean>(ResPatternDefineBean.class);
+        return util.exportExcel(list, "号码模式数据");
+    }
+
+
+
 }

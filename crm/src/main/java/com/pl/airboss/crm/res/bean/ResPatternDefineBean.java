@@ -1,12 +1,18 @@
 package com.pl.airboss.crm.res.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pl.airboss.framework.annotation.Excel;
+
 import java.util.Date;
 
 public class ResPatternDefineBean {
+    @Excel(name = "模式编号",cellType = Excel.ColumnType.STRING , type = Excel.Type.EXPORT)
     private Long patternDefId;
 
+    @Excel(name = "模式名称",cellType = Excel.ColumnType.STRING)
     private String patternDefName;
 
+    @Excel(name = "号码模式",cellType = Excel.ColumnType.STRING)
     private String bitRel;
 
     private Long bitOrder;
@@ -17,8 +23,10 @@ public class ResPatternDefineBean {
 
     private Long priorty;
 
+    @Excel(name = "类型",cellType = Excel.ColumnType.STRING, type = Excel.Type.EXPORT)
     private Long resType;
 
+    @Excel(name = "状态",cellType = Excel.ColumnType.STRING, type = Excel.Type.EXPORT)
     private String state;
 
     private String regionId;
@@ -27,8 +35,12 @@ public class ResPatternDefineBean {
 
     private Date createDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Excel(name = "生效时间",cellType = Excel.ColumnType.STRING)
     private Date effectiveDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Excel(name = "失效时间",cellType = Excel.ColumnType.STRING)
     private Date expireDate;
 
     private Date doneDate;

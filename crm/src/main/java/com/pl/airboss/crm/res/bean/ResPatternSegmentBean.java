@@ -23,8 +23,10 @@ public class ResPatternSegmentBean {
 
     private Long priorty;
 
+    @Excel(name = "类型",cellType = Excel.ColumnType.STRING, type = Excel.Type.EXPORT)
     private Long resType;
 
+    @Excel(name = "状态",cellType = Excel.ColumnType.STRING, type = Excel.Type.EXPORT)
     private String state;
 
     private String regionId;

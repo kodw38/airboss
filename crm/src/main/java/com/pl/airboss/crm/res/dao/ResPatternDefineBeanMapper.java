@@ -1,6 +1,7 @@
 package com.pl.airboss.crm.res.dao;
 
 import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,10 @@ public interface ResPatternDefineBeanMapper {
     int updateByPrimaryKeySelective(ResPatternDefineBean record);
 
     int updateByPrimaryKey(ResPatternDefineBean record);
+
+    int changeStatus(ResPatternDefineBean record);
+
+    boolean checkPatternDefNameUnique(@Param("patternDefName") String patternDefName, @Param("patternDefId") Long patternDefId);
+
+    int deleteNumPatternByIds(Long[] numPatternIds);
 }

@@ -248,4 +248,36 @@ public interface IResPhoneNumSV {
      * @return
      */
     List<ResPatternSegmentBean> selectList(ResPatternSegmentBean segment);
+
+
+
+
+
+    /**
+     * 号码模式状态修改
+     * @param record
+     * @return
+     */
+    public int changeStatus(ResPatternDefineBean record);
+
+    /**
+     * 校验patternDefName是否存在
+     * @param patternDefName
+     * @return
+     */
+    public boolean checkPatternDefNameUnique(String patternDefName,Long patternDefId);
+
+    /**
+     * 批量删除号码模式规则
+     * @param ids
+     * @return
+     */
+    public int deleteNumPatternByIds(String ids);
+
+    /**
+     * 导出号码模式
+     * @param numPattDef
+     * @return
+     */
+    List<ResPatternDefineBean> selectList(ResPatternDefineBean numPattDef);
 }

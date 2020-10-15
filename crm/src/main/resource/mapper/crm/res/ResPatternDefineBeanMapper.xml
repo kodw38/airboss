@@ -48,6 +48,27 @@
       </if>
     </where>
   </select>
+
+
+  <update id="changeStatus" parameterType="com.pl.airboss.crm.res.bean.ResPatternDefineBean">
+    update res_pattern_define set STATE = #{state,jdbcType=INTEGER} where PATTERN_DEF_ID = #{patternDefId,jdbcType=INTEGER}
+  </update>
+
+  <select id="checkPatternDefNameUnique" resultType="Boolean">
+    select count(0) from res_pattern_define where PATTERN_DEF_NAME=#{patternDefName}
+    <if test="patternDefId != null and patternDefId !=0">
+      and PATTERN_DEF_ID !=#{patternDefId,jdbcType=BIGINT}
+    </if>
+  </select>
+
+  <delete id="deleteNumPatternByIds">
+    delete from res_pattern_define where PATTERN_DEF_ID in
+    <foreach collection="array" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from res_pattern_define
     where PATTERN_DEF_ID = #{patternDefId,jdbcType=BIGINT}

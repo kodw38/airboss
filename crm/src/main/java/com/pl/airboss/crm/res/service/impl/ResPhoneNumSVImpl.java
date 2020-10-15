@@ -383,4 +383,28 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
     public List<ResPatternSegmentBean> selectList(ResPatternSegmentBean segment) {
         return resPatternSegmentBeanMapper.selectList(segment);
     }
+
+
+
+
+    @Override
+    public int changeStatus(ResPatternDefineBean record) {
+        return resPatternDefineBeanMapper.changeStatus(record);
+    }
+
+    @Override
+    public boolean checkPatternDefNameUnique(String patternDefName, Long patternDefId) {
+        return resPatternDefineBeanMapper.checkPatternDefNameUnique(patternDefName,patternDefId);
+    }
+
+    @Override
+    public int deleteNumPatternByIds(String ids) {
+        Long[] numPatternIds = Convert.toLongArray(ids);
+        return resPatternDefineBeanMapper.deleteNumPatternByIds(numPatternIds);
+    }
+
+    @Override
+    public List<ResPatternDefineBean> selectList(ResPatternDefineBean numPattDef) {
+        return resPatternDefineBeanMapper.selectList(numPattDef);
+    }
 }

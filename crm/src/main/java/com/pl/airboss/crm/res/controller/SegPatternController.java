@@ -99,7 +99,7 @@ public class SegPatternController extends BaseController {
      * 保存
      */
     @Log(title = "号段模式", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("res:segPattern:update")
+    @RequiresPermissions("res:segPattern:edit")
     @PostMapping("/editSegPattern")
     @ResponseBody
     public AjaxResult editSave(@Validated ResPatternSegmentBean bean)
@@ -188,7 +188,7 @@ public class SegPatternController extends BaseController {
      * 号段模式状态修改
      */
     @Log(title = "号段模式状态修改", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("crm.res:resPhoneSegment:edit")
+    @RequiresPermissions("res:resPhoneSegment:edit")
     @PostMapping("/changeStatus")
     @ResponseBody
     public AjaxResult changeStatus(ResPatternSegmentBean bean) {
@@ -235,7 +235,7 @@ public class SegPatternController extends BaseController {
         return AjaxResult.success(message);
     }
 
-    @Log(title = "号段管理", businessType = BusinessType.EXPORT)
+    @Log(title = "导出号段模式", businessType = BusinessType.EXPORT)
     @RequiresPermissions("res:segment:export")
     @PostMapping("/export")
     @ResponseBody
