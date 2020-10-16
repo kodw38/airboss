@@ -57,7 +57,7 @@ public interface IResPhoneNumSV {
      *@return
      *@Version 1.0
      */
-    public List<ResSelpriceModeBean> queryPriceList();
+    public List<ResSelpriceModeBean> queryPriceList(ResSelpriceModeBean bean);
 
     public ResSelpriceModeBean queryPriceByPrimaryKey(Long id);
     /**
@@ -280,4 +280,11 @@ public interface IResPhoneNumSV {
      * @return
      */
     List<ResPatternDefineBean> selectList(ResPatternDefineBean numPattDef);
+
+    /**
+     * 校验资费名称是否存在
+     * @param modeDesc
+     * @return
+     */
+    boolean checkPatternPriceNameUnique(String modeDesc, Long resSpecId);
 }

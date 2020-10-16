@@ -91,7 +91,8 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
      * @return
      */
     public int updateNumPatternDefine(ResPatternDefineBean bean){
-        return resPatternDefineBeanMapper.updateByPrimaryKey(bean);
+        //return resPatternDefineBeanMapper.updateByPrimaryKey(bean);
+        return resPatternDefineBeanMapper.updateByPrimaryKeySelective(bean);
     }
 
     /**
@@ -104,8 +105,8 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
     }
 
     @Override
-    public List<ResSelpriceModeBean> queryPriceList() {
-        List<ResSelpriceModeBean> ret = resSelpriceModeBeanMapper.selectList();
+    public List<ResSelpriceModeBean> queryPriceList(ResSelpriceModeBean bean) {
+        List<ResSelpriceModeBean> ret = resSelpriceModeBeanMapper.selectList(bean);
         return ret;
     }
 
@@ -116,7 +117,8 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
 
     @Override
     public int updatePrice(ResSelpriceModeBean bean) {
-        return resSelpriceModeBeanMapper.updateByPrimaryKey(bean);
+        //return resSelpriceModeBeanMapper.updateByPrimaryKey(bean);
+        return resSelpriceModeBeanMapper.updateByPrimaryKeySelective(bean);
     }
 
     public int addPrice(ResSelpriceModeBean bean){
@@ -406,5 +408,10 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
     @Override
     public List<ResPatternDefineBean> selectList(ResPatternDefineBean numPattDef) {
         return resPatternDefineBeanMapper.selectList(numPattDef);
+    }
+
+    @Override
+    public boolean checkPatternPriceNameUnique(String modeDesc, Long resSpecId) {
+        return resSelpriceModeBeanMapper.checkPatternPriceNameUnique(modeDesc,resSpecId);
     }
 }

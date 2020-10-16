@@ -39,12 +39,39 @@
     from res_selprice_mode
     where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
   </select>
-  <select id="selectList" resultMap="BaseResultMap">
+  <!--<select id="selectList" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from res_selprice_mode
     order by CREATE_DATE
+  </select>-->
+
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.res.bean.ResSelpriceModeBean">
+    select
+    <include refid="Base_Column_List" />
+    from res_selprice_mode
+    where 1=1
+    <if test="modeDesc != null and modeDesc!=''" >
+      and MODE_DESC = #{modeDesc}
+    </if>
+   <!-- <if test="netId != null and netId!=''" >
+      and NET_ID = #{netId}
+    </if>
+    <if test="segExp != null and segExp!=''" >
+      and SEG_EXP = #{segExp}
+    </if>
+    <if test="state != null and state!=''" >
+      and STATE = #{state}
+    </if>-->
   </select>
+
+  <select id="checkPatternPriceNameUnique" resultType="Boolean">
+    select count(0) from res_selprice_mode where MODE_DESC=#{modeDesc}
+    <if test="resSpecId != null and resSpecId !=0">
+      and RES_SPEC_ID !=#{resSpecId,jdbcType=BIGINT}
+    </if>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from res_selprice_mode
     where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
@@ -288,34 +315,34 @@
       </if>
     </set>
     where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
-      and PATTERN_ID = #{patternId,jdbcType=BIGINT}
-      and REGION_ID = #{regionId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.res.bean.ResSelpriceModeBean" >
-    update res_selprice_mode
-    set MODE_DESC = #{modeDesc,jdbcType=VARCHAR},
-      IS_USED = #{isUsed,jdbcType=BIGINT},
-      RESERVE_FEE = #{reserveFee,jdbcType=BIGINT},
-      POINTS = #{points,jdbcType=BIGINT},
-      ORDER_FEE = #{orderFee,jdbcType=BIGINT},
-      ORDER_DAYS = #{orderDays,jdbcType=BIGINT},
-      CHOOSE_LEVEL = #{chooseLevel,jdbcType=BIGINT},
-      COUNTY_ID = #{countyId,jdbcType=VARCHAR},
-      DONE_CODE = #{doneCode,jdbcType=BIGINT},
-      DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
-      EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
-      EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
-      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
-      OP_ID = #{opId,jdbcType=BIGINT},
-      ORG_ID = #{orgId,jdbcType=BIGINT},
-      NOTES = #{notes,jdbcType=VARCHAR},
-      PRESENT_MONTH = #{presentMonth,jdbcType=BIGINT},
-      DEPOSIT_MONTH = #{depositMonth,jdbcType=BIGINT},
-      DEPOSIT_AMOUNT = #{depositAmount,jdbcType=BIGINT},
-      PATTERN_NAME = #{patternName,jdbcType=VARCHAR},
-      IFEE_TYPE = #{ifeeType,jdbcType=VARCHAR}
-    where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
-      and PATTERN_ID = #{patternId,jdbcType=BIGINT}
-      and REGION_ID = #{regionId,jdbcType=VARCHAR}
-  </update>
+    <!--and PATTERN_ID = #{patternId,jdbcType=BIGINT}
+   and REGION_ID = #{regionId,jdbcType=VARCHAR} -->
+</update>
+<update id="updateByPrimaryKey" parameterType="com.pl.airboss.crm.res.bean.ResSelpriceModeBean" >
+ update res_selprice_mode
+ set MODE_DESC = #{modeDesc,jdbcType=VARCHAR},
+   IS_USED = #{isUsed,jdbcType=BIGINT},
+   RESERVE_FEE = #{reserveFee,jdbcType=BIGINT},
+   POINTS = #{points,jdbcType=BIGINT},
+   ORDER_FEE = #{orderFee,jdbcType=BIGINT},
+   ORDER_DAYS = #{orderDays,jdbcType=BIGINT},
+   CHOOSE_LEVEL = #{chooseLevel,jdbcType=BIGINT},
+   COUNTY_ID = #{countyId,jdbcType=VARCHAR},
+   DONE_CODE = #{doneCode,jdbcType=BIGINT},
+   DONE_DATE = #{doneDate,jdbcType=TIMESTAMP},
+   EFFECTIVE_DATE = #{effectiveDate,jdbcType=TIMESTAMP},
+   EXPIRE_DATE = #{expireDate,jdbcType=TIMESTAMP},
+   CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+   OP_ID = #{opId,jdbcType=BIGINT},
+   ORG_ID = #{orgId,jdbcType=BIGINT},
+   NOTES = #{notes,jdbcType=VARCHAR},
+   PRESENT_MONTH = #{presentMonth,jdbcType=BIGINT},
+   DEPOSIT_MONTH = #{depositMonth,jdbcType=BIGINT},
+   DEPOSIT_AMOUNT = #{depositAmount,jdbcType=BIGINT},
+   PATTERN_NAME = #{patternName,jdbcType=VARCHAR},
+   IFEE_TYPE = #{ifeeType,jdbcType=VARCHAR}
+ where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
+   and PATTERN_ID = #{patternId,jdbcType=BIGINT}
+   and REGION_ID = #{regionId,jdbcType=VARCHAR}
+</update>
 </mapper>

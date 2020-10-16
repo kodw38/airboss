@@ -60,15 +60,24 @@ public class PricePatternController extends BaseController {
     @ResponseBody
     public TableDataInfo listPricePattern(ResSelpriceModeBean bean){
         startPage();
-        List<ResSelpriceModeBean> ls = resPhoneNumSV.queryPriceList();
+        List<ResSelpriceModeBean> ls = resPhoneNumSV.queryPriceList(bean);
         return new TableDataInfo(ls,ls.size());
     }
 
 
-    @GetMapping("/checkUniquePricePattern")
+    /*@GetMapping("/checkPatternPriceNameUnique")
     @ResponseBody
     public Boolean checkUnique(String code){
        return true;
+    }*/
+
+    /**
+     * 校验资费名称是否已经存在
+     */
+    @PostMapping("/checkPatternPriceNameUnique")
+    @ResponseBody
+    public Boolean checkPatternDefNameUnique(ResSelpriceModeBean bean) {
+        return !resPhoneNumSV.checkPatternPriceNameUnique(bean.getModeDesc(),bean.getResSpecId());
     }
 
     /**
@@ -85,7 +94,7 @@ public class PricePatternController extends BaseController {
      */
     @Log(title = "资源-价格模式", businessType = BusinessType.INSERT)
     @RequiresPermissions("res:pricePattern:add")
-    @PostMapping("/addPricePattern")
+    @PostMapping("/addPricePatternDefRel")
     @ResponseBody
     public AjaxResult addSave(@Validated ResSelpriceModeBean bean,long patternDefId)
     {
@@ -134,7 +143,7 @@ public class PricePatternController extends BaseController {
      */
     @Log(title = "资源-价格模式", businessType = BusinessType.DELETE)
     @RequiresPermissions("res:pricePattern:remove")
-    @GetMapping("/removePricePattern/{recId}")
+    @PostMapping("/removePricePattern/{recId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("recId") Long recId)
     {
@@ -146,6 +155,20 @@ public class PricePatternController extends BaseController {
             return success();
         }
 
+    }
+
+
+    /**
+     * 新增价格模式
+     */
+    @Log(title = "号码模式", businessType = BusinessType.INSERT)
+    @RequiresPermissions("res:pricePattern:add")
+    @PostMapping("/addPricePattern")
+    @ResponseBody
+    public AjaxResult addSave(@Validated ResSelpriceModeBean bean) {
+        bean.setCreateDate(new Date());
+        bean.setOpId(Long.valueOf(ShiroUtils.getUserId()));
+        return toAjax(resPhoneNumSV.addPrice(bean));
     }
 
 
