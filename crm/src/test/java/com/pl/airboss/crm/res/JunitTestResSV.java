@@ -56,7 +56,7 @@ public class JunitTestResSV {
         @Test
         public void testQueryPriceList(){
 
-            List<ResSelpriceModeBean> list = resPhoneNumSV.queryPriceList();
+            List<ResSelpriceModeBean> list = resPhoneNumSV.queryPriceList(null);
             System.out.println(list.size());
         }
         @Test
