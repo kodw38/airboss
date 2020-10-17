@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('选择资费')" />
+</head>
+
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="price-form">
+				    <!--<input type="hidden" id="roleId" name="roleId" th:value="${role.recId}">-->
+				    <input type="hidden" id="patternDefId" name="patternDefId" th:value="${patternDefId}">
+					<div class="select-list">
+						<ul>
+							<!--<li>
+								登录名称：<input type="text" name="loginCode"/>
+							</li>-->
+							<li>
+								资费名称：<input type="text" name="modeDesc"/>
+							</li>
+							<!--<li>
+								手机号码：<input type="text" name="phoneNum"/>
+							</li>-->
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+			    <table id="bootstrap-table"></table>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var datas = [[${@SysService.getType('sys_normal_disable')}]];
+		var admintypes = [[${@SysService.getType('sys_isadmin')}]];
+		var prefix = ctx + "crm/res";
+
+		$(function() {
+			var options = {
+		        url: prefix + "/listPricePattern",
+		        createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        removeUrl: prefix + "/remove",
+		        exportUrl: prefix + "/export",
+		        importUrl: prefix + "/importData",
+		        importTemplateUrl: prefix + "/importTemplate",
+		        queryParams: queryParams,
+		        sortName: "createDate",
+		        sortOrder: "desc",
+		        modalName: "资费",
+		        showSearch: false,
+		        showRefresh: false,
+		        showToggle: false,
+		        showColumns: false,
+		        clickToSelect: true,
+		        rememberSelected: true,
+		        columns: [{
+		            field:'selectItem',
+					radio:true
+				},
+				{
+					field: 'resSpecId',
+					title: '编号',
+                    visible: false
+				},
+				{
+					field: 'modeDesc',
+					title: '资费名称'
+				},
+				{
+					field: 'reserveFee',
+					title: '预存话费'
+				},
+				{
+					field: 'orderFee',
+					title: '预定费'
+				},
+				{
+					field: 'orderDays',
+					title: '可预定天数'
+				},
+				{
+					field: 'points',
+					title: '月保底金额'
+				},
+		        {
+		            field: 'createDate',
+		            title: '创建时间',
+		            sortable: true
+		        }]
+		    };
+		    $.table.init(options);
+		});
+		
+		function queryParams(params) {
+			var search = $.table.queryParams(params);
+			search.roleCode = $("#roleCode").val();
+			return search;
+		}
+		
+		/* 添加用户-选择用户-提交 */
+		function submitHandler() {
+		    debugger;
+			var rows = $.table.selectFirstColumns();
+			if (rows.length == 0) {
+       			$.modal.alertWarning("请至少选择一条记录");
+       			return;
+       		}
+			/*var data = { "roleCode": $("#roleCode").val(), "userIds": rows.join() };
+			$.operate.save(prefix + "/selectAll", data);*/
+
+            var data = { "patternDefId": $("#patternDefId").val(), "resSpecId": rows.join() };
+            $.operate.save(prefix + "/selectPricePattern", data);
+
+		}
+	</script>
+</body>
+</html>
