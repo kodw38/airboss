@@ -116,6 +116,33 @@ public class PricePatternController extends BaseController {
     }
 
     /**
+     * 选择资费
+     */
+    @GetMapping("/selectPricePattern/{patternDefId}")
+    public String selectPricePattern(@PathVariable("patternDefId") String patternDefId, ModelMap mmap) {
+       // mmap.put("role", roleService.selectRoleByCode(roleCode));
+        mmap.put("patternDefId",patternDefId);
+        return prefix + "/selectPricePattern";
+    }
+
+    /**
+     * 选择资费
+     */
+    @Log(title = "选择资费", businessType = BusinessType.GRANT)
+    @PostMapping("/selectPricePattern")
+    @ResponseBody
+    public AjaxResult selectPricePattern(Long patternDefId, Long resSpecId) {
+       // return toAjax(sysService.insertAuthUsers(roleCode, userIds));
+        //更新号码模式关联的价格id
+        ResPatternDefineBean b = new ResPatternDefineBean();
+        b.setPatternDefId(patternDefId);
+        b.setIpriceMode(resSpecId);
+        int count = resPhoneNumSV.updateNumPatternDefine(b);
+        return toAjax(count);
+    }
+
+
+    /**
      * 修改
      */
     @GetMapping("/editPricePattern/{recId}")

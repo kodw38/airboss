@@ -115,6 +115,10 @@
                     }
                 },
                 {
+                    field: 'ipriceMode',
+                    title: '资费',
+                },
+                {
                     visible: editFlag == 'hidden' ? false : true,
                     title: '状态',
                     align: 'center',
@@ -127,7 +131,7 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="generateNumBySegPattern(\'' + row.patternDefId + '\')"><i class="fa fa-send"></i>资费</a> ');
+                        actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="selectPricePattern(\'' + row.patternDefId + '\')"><i class="fa fa-send"></i>资费</a> ');
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.patternDefId + '\')"><i class="fa fa-edit"></i>修改</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.patternDefId + '\')"><i class="fa fa-remove"></i>删除</a>');
                        // actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="generateNumBySegPattern(\'' + row.patternDefId + '\')"><i class="fa fa-send"></i>生成号码</a>');
@@ -170,10 +174,12 @@
     }
 
 
-    function generateNumBySegPattern(patternDefId) {
+    function selectPricePattern(patternDefId) {
         debugger;
-        //var patternDefId = $("input[name='patternDefId']").val();
-        $.ajax({
+
+        var url = prefix + '/selectPricePattern/' + patternDefId;
+        $.modal.open("选择资费", url);
+        /*$.ajax({
             cache: true,
             type: "GET",
             url: prefix + "/generateNumBySegPattern/"+patternDefId,
@@ -187,7 +193,7 @@
             success: function (data) {
                 $.operate.successCallback(data);
             }
-        });
+        });*/
     }
 
     function pricePatternConfig() {
