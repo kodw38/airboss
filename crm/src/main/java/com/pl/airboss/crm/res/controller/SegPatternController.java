@@ -56,7 +56,8 @@ public class SegPatternController extends BaseController {
     public TableDataInfo list(ResPatternSegmentBean bean){
         startPage();
         List<ResPatternSegmentBean> ls = resPhoneNumSV.querySegmentList(bean);
-        return new TableDataInfo(ls,ls.size());
+       // return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
     /**
@@ -79,6 +80,7 @@ public class SegPatternController extends BaseController {
     {
 
         bean.setCreateDate(new Date());
+        bean.setEffectiveDate(new Date());
         bean.setOpId(Long.valueOf(ShiroUtils.getUserId()));
         //dept.setCreateBy(ShiroUtils.getLoginCode());
         return toAjax(resPhoneNumSV.addSegmentPattern(bean));
@@ -104,6 +106,13 @@ public class SegPatternController extends BaseController {
     @ResponseBody
     public AjaxResult editSave(@Validated ResPatternSegmentBean bean)
     {
+        String state = bean.getState();
+        if ("0".equals(state)) {//改成无效
+            bean.setExpireDate(new Date());
+        } else if ("1".equals(state)) {//改成有效
+            bean.setEffectiveDate(new Date());
+            bean.setExpireDate(null);
+        }
         return toAjax(resPhoneNumSV.updateSegment(bean));
     }
 

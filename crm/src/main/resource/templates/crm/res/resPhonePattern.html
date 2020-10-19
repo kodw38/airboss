@@ -14,7 +14,7 @@
                             号码模式：<input type="text" name="patternDefName"/>
                         </li>
                         <li>
-                            状态：<select name="state" th:with="type=${@SysService.getType('res_pattern_segment_state')}">
+                            状态：<select name="state" th:with="type=${@SysService.getType('sys_normal_disable')}">
                             <option value="">所有</option>
                             <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                         </select>
@@ -65,7 +65,7 @@
     var removeFlag = [[${@permission.hasPermi('res:numPattern:remove')}]];
     var numGenFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
 
-    var datas = [[${@SysService.getType('res_pattern_segment_state')}]];
+    var datas = [[${@SysService.getType('sys_normal_disable')}]];
     var prefix = ctx + "crm/res";
     var resType=[[${@SysService.getType('res_type')}]];
 
@@ -81,6 +81,7 @@
             // queryParams: queryParams,
             sortName: "patternDefId",
             sortOrder: "desc",
+            showPageGo: true,
             modalName: "号码",
             columns: [{
                 checkbox: true
@@ -119,11 +120,17 @@
                     title: '资费',
                 },
                 {
-                    visible: editFlag == 'hidden' ? false : true,
+                    /*visible: editFlag == 'hidden' ? false : true,
                     title: '状态',
                     align: 'center',
                     formatter: function (value, row, index) {
                         return statusTools(row);
+                    }*/
+                    field: 'state',
+                    title: '状态',
+                    align: "center",
+                    formatter: function(value, item, index) {
+                        return $.table.selectDictLabel(datas, item.state);
                     }
                 },
                 {

@@ -61,7 +61,8 @@ public class PricePatternController extends BaseController {
     public TableDataInfo listPricePattern(ResSelpriceModeBean bean){
         startPage();
         List<ResSelpriceModeBean> ls = resPhoneNumSV.queryPriceList(bean);
-        return new TableDataInfo(ls,ls.size());
+      //  return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
 

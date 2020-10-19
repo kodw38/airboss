@@ -46,6 +46,9 @@
       <if test="bitRel != null and bitRel!=''">
         and BIT_REL like concat('%',#{bitRel},'%')
       </if>
+      <if test="state != null and state!=''" >
+        and STATE = #{state}
+      </if>
     </where>
   </select>
 
