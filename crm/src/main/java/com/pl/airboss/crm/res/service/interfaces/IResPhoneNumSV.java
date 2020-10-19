@@ -176,6 +176,11 @@ public interface IResPhoneNumSV {
      */
     public List<ResPhoneNumOriginBean> queryNum(ResPhoneNumOriginBean bean,int offSet,int limit);
 
+    /*
+    * 查询号码 关联segment和pattern表
+    * */
+    public List<ResPhoneNumQueryRspBean> queryNumList(ResPhoneNumOriginBean bean,int offSet,int limit);
+
     public ResPhoneNumOriginBean queryNumById(String recid);
     /**
      *变更号码，包括填补资料，号码状态变更

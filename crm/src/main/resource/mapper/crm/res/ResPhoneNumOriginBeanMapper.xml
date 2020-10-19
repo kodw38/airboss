@@ -61,6 +61,16 @@
     <result column="RSRV_NUM2" property="rsrvNum2" jdbcType="BIGINT" />
     <result column="STOCK_IN_DATE" property="stockInDate" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <resultMap id="NumListResultMap" extends="BaseResultMap" type="com.pl.airboss.crm.res.bean.ResPhoneNumQueryRspBean" >
+    <result column="PATTERN_SEG_NAME" property="patternSegName" jdbcType="VARCHAR" />
+    <result column="NET_ID" property="netId" jdbcType="VARCHAR" />
+    <result column="SEG_EXP" property="segExp" jdbcType="VARCHAR" />
+
+    <result column="PATTERN_DEF_NAME" property="patternDefName" jdbcType="VARCHAR" />
+    <result column="BIT_REL" property="bitRel" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     RES_ID, SEC_ORG_ID, BATCH_ID, RES_INST_ID, PATTERN_SEG_ID, PATTERN_DEF_ID, RES_STORE_ID, 
     RES_USED_ID, ORG_ID, OP_ID, DONE_CODE, DONE_DATE, USE_TYPE, MANAGE_STATUS, RES_STATUS, 
@@ -227,6 +237,34 @@
     LIMIT #{offSet},#{limit}
     </if>
   </select>
+
+
+
+
+  <select id="selectNumList" parameterType="com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean" resultMap="NumListResultMap">
+    SELECT
+    /*num.res_id,num.batch_id,num.pattern_seg_id,num.pattern_def_id,num.res_status,num.op_id,num.password,num.rsrv_str2,num.stock_in_date,*/
+    num.*,
+    seg.pattern_seg_name,seg.net_id,seg.seg_exp,
+    def.pattern_def_name,def.bit_rel
+    FROM res_phone_num_origin num
+    INNER JOIN res_pattern_segment seg ON num.pattern_seg_id = seg.pattern_seg_id
+    LEFT JOIN res_pattern_define def ON num.pattern_def_id = def.pattern_def_id
+    where 1=1
+    <if test="bean.resId != null and bean.resId != ''">
+      AND num.res_id  = #{bean.resId}
+    </if>
+    <if test="bean.resStatus != null and bean.resStatus != ''">
+      AND num.res_status  = #{bean.resStatus}
+    </if>
+    <if test="limit != null and limit>0">
+      LIMIT #{offSet},#{limit}
+    </if>
+
+  </select>
+
+
+
   <select id="matchRegexpWithoutStateGEND" parameterType="long" resultType="int">
     select count(0) from res_phone_num_origin where RES_STATUS != 'GEND' and PATTERN_SEG_ID = #{segmentId}
   </select>

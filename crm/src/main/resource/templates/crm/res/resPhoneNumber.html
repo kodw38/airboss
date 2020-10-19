@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('号码管理')"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="data-form">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            号码：<input type="text" name="resId"/>
+                        </li>
+                        <li>
+                            状态：<select name="resStatus" th:with="type=${@SysService.getType('res_num_status')}">
+                            <option value="">所有</option>
+                            <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                        </select>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="resetPre()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <!--<div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:numPhone:add">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+            <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="res:numPhone:edit">
+                <i class="fa fa-edit"></i> 编辑
+            </a>
+            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="res:numPhone:remove">
+                <i class="fa fa-remove"></i> 删除
+            </a>
+        </div>-->
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('res:numPhone:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('res:numPhone:remove')}]];
+    var occupyFlag = [[${@permission.hasPermi('res:numPhone:occupy')}]];
+    var releaseFlag = [[${@permission.hasPermi('res:numPhone:release')}]];
+
+    var prefix = ctx + "crm/res";
+    var resNumStatus = [[${@SysService.getType('res_num_status')}]];
+    $(function () {
+        var options = {
+            url: prefix + "/listPhoneNumber",
+            createUrl: prefix + "/addNumPhone",
+            updateUrl: prefix + "/editNumPhone/{id}",
+           // removeUrl: prefix + "/removeSegPattern",
+           // exportUrl: prefix + "/export",
+           // importUrl: prefix + "/importData",
+            //importTemplateUrl: prefix + "/importTemplate",
+            // queryParams: queryParams,
+            sortName: "resId",
+            sortOrder: "desc",
+            modalName: "号码",
+            columns: [
+                /*{
+                    checkbox: true
+                },*/
+                {
+                    field: 'resId',
+                    title: '号码'
+                },
+                {
+                    field: 'patternSegName',
+                    title: '号段编号'
+                },
+                {
+                    field: 'patternDefName',
+                    title: '号码模式'
+                },
+                {
+                    field: 'segExp',
+                    title: '号段表达式'
+                },
+                {
+                    field: 'stockInDate',
+                    title: '入库时间',
+                    visible: false
+                },
+                {
+                    field: 'resStatus',
+                    title: '状态',
+                    align: 'center',
+                    formatter: function(value, item, index) {
+                        return $.table.selectDictLabel(resNumStatus, item.resStatus);
+                    }
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + occupyFlag + '" href="javascript:void(0)" onclick="occupy(\'' + row.resId + '\')"><i class="fa fa-edit"></i>预占</a> ');
+                        actions.push('<a class="btn btn-info btn-xs ' + releaseFlag + '" href="javascript:void(0)" onclick="release(\'' + row.resId + '\')"><i class="fa fa-send"></i>释放</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    function add() {
+        $.operate.add("");//创建的url无需参数
+    }
+
+    function occupy(resId) {
+        debugger;
+        var url = prefix + "/occupyNumPhone/"+resId;
+        var data = { "phoneNum": resId };
+        $.operate.submit(url, "post", "json", data);
+        /*$.ajax({
+            cache: true,
+            type: "POST",
+            url: prefix + "/occupyNumPhone/"+resId,
+            data: {
+                "phoneNum": resId
+            },
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.successCallback(data);
+            }
+        });*/
+    }
+
+    function release(resId) {
+        debugger;
+        var url = prefix + "/releaseNumPhone/"+resId;
+        var data = { "phoneNum": resId };
+        $.operate.submit(url, "post", "json", data);
+    }
+
+    function resetPre() {
+        $.form.reset();
+    }
+</script>
+</body>
+</html>

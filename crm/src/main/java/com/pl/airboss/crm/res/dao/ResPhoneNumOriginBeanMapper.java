@@ -2,6 +2,7 @@ package com.pl.airboss.crm.res.dao;
 
 import com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean;
 import com.pl.airboss.crm.res.bean.ResPhoneNumOriginBeanKey;
+import com.pl.airboss.crm.res.bean.ResPhoneNumQueryRspBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,4 +31,6 @@ public interface ResPhoneNumOriginBeanMapper {
     int deleteBySegId(long segId);
 
     List<ResPhoneNumOriginBean> selectList(@Param("bean") ResPhoneNumOriginBean b,@Param("offSet") int start,@Param("limit") int end);
+
+    List<ResPhoneNumQueryRspBean> selectNumList(@Param("bean") ResPhoneNumOriginBean b, @Param("offSet") int start, @Param("limit") int end);
 }

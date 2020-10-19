@@ -1,6 +1,7 @@
 package com.pl.airboss.crm.res.controller;
 
 import com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean;
+import com.pl.airboss.crm.res.bean.ResPhoneNumQueryRspBean;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
@@ -48,7 +49,8 @@ public class NumPhoneController extends BaseController {
     @ResponseBody
     public TableDataInfo list(ResPhoneNumOriginBean bean){
         startPage();
-        List<ResPhoneNumOriginBean>ls =  resPhoneNumSV.queryNum(bean,0,0);
+     //   List<ResPhoneNumOriginBean>ls =  resPhoneNumSV.queryNum(bean,0,0);
+        List<ResPhoneNumQueryRspBean>ls =  resPhoneNumSV.queryNumList(bean,0,0); //使用新的关联查询方法
         return getDataTable(ls);
     }
 
@@ -67,7 +69,7 @@ public class NumPhoneController extends BaseController {
      * 保存
      */
     @Log(title = "号码", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("res:numPhone:update")
+    @RequiresPermissions("res:numPhone:edit")
     @PostMapping("/editNumPhone")
     @ResponseBody
     public AjaxResult editSave(@Validated ResPhoneNumOriginBean bean)

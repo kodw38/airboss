@@ -3,10 +3,7 @@ package com.pl.airboss.crm.res;/**
  */
 
 import com.pl.airboss.app.AirBossApplication;
-import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
-import com.pl.airboss.crm.res.bean.ResPhoneNumOriginBean;
-import com.pl.airboss.crm.res.bean.ResSelpriceModeBean;
-import com.pl.airboss.crm.res.bean.ResSelpriceModeBeanKey;
+import com.pl.airboss.crm.res.bean.*;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import javafx.application.Application;
 import org.junit.After;
@@ -157,5 +154,18 @@ public class JunitTestResSV {
                 e.printStackTrace();
             }
         }
+
+    @Test
+    public void testQueryNumList(){
+        try {
+            ResPhoneNumOriginBean bean = new ResPhoneNumOriginBean();
+            List<ResPhoneNumQueryRspBean>ls =  resPhoneNumSV.queryNumList(bean,0,10);
+            System.out.println("==========ls==========="+ls.size());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

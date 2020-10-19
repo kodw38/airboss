@@ -237,6 +237,11 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
         return resPhoneNumOriginBeanMapper.selectList(bean,start,end);
     }
 
+    @Override
+    public List<ResPhoneNumQueryRspBean> queryNumList(ResPhoneNumOriginBean bean, int start, int end) {
+        return resPhoneNumOriginBeanMapper.selectNumList(bean,start,end);
+    }
+
     public ResPhoneNumOriginBean queryNumById(String recid){
         return resPhoneNumOriginBeanMapper.selectByPrimaryKey(recid);
     }
@@ -265,14 +270,16 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
             if(!b.getResStatus().equalsIgnoreCase(ResConst.PHONE_NUM_STATUS_G)){
                 throw new Exception(phoneNum+" 该号码已经被使用，请选择其他号码");
             }
-            long done = b.getDoneCode();
-            long nextdone = done+1;
-            b.setDoneCode(nextdone);  //增加操作批号
+            if (b.getDoneCode() != null) {
+                long done = b.getDoneCode();
+                long nextdone = done+1;
+                b.setDoneCode(nextdone);  //增加操作批号
+            }
             b.setResStatus(ResConst.PHONE_NUM_STATUS_O); //设置号码为预占
             ResPhoneNumOriginBean cond = new ResPhoneNumOriginBean();
             cond.setResId(b.getResId());
             cond.setResStatus(ResConst.PHONE_NUM_STATUS_G);
-            cond.setDoneCode(done);
+           // cond.setDoneCode(done);
             int n = resPhoneNumOriginBeanMapper.update(b,cond);
             if(n==0){
                 throw new Exception(phoneNum+" 该号码已经被使用，请选择其他号码");
