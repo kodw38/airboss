@@ -86,141 +86,141 @@
     <include refid="Base_Column_List" />
     from res_phone_num_origin
     where 1=1
-    <if test="bean.resId != null" >
+    <if test="bean.resId != null and bean.resId!=''" >
       and RES_ID=#{bean.resId,jdbcType=VARCHAR}
     </if>
-    <if test="bean.secOrgId != null" >
+    <if test="bean.secOrgId != null and bean.secOrgId!=''" >
       and SEC_ORG_ID=#{bean.secOrgId,jdbcType=BIGINT}
     </if>
-    <if test="bean.batchId != null" >
+    <if test="bean.batchId != null and bean.batchId!=''" >
       and BATCH_ID=#{bean.batchId,jdbcType=VARCHAR}
     </if>
-    <if test="bean.resInstId != null" >
+    <if test="bean.resInstId != null and bean.resInstId!=''" >
       and RES_INST_ID=#{bean.resInstId,jdbcType=VARCHAR}
     </if>
-    <if test="bean.patternSegId != null" >
+    <if test="bean.patternSegId != null and bean.patternSegId!=''" >
       and PATTERN_SEG_ID=#{bean.patternSegId,jdbcType=BIGINT}
     </if>
-    <if test="bean.patternDefId != null" >
+    <if test="bean.patternDefId != null and bean.patternDefId!=''" >
       and PATTERN_DEF_ID=#{bean.patternDefId,jdbcType=BIGINT}
     </if>
-    <if test="bean.resStoreId != null" >
+    <if test="bean.resStoreId != null and bean.resStoreId!=''" >
       and RES_STORE_ID=#{bean.resStoreId,jdbcType=BIGINT}
     </if>
-    <if test="bean.resUsedId != null" >
+    <if test="bean.resUsedId != null and bean.resUsedId!=''" >
       and RES_USED_ID=#{bean.resUsedId,jdbcType=BIGINT}
     </if>
-    <if test="bean.orgId != null" >
+    <if test="bean.orgId != null and bean.orgId!=''" >
       and ORG_ID=#{bean.orgId,jdbcType=BIGINT}
     </if>
-    <if test="bean.opId != null" >
+    <if test="bean.opId != null and bean.opId!=''" >
       and OP_ID=#{bean.opId,jdbcType=BIGINT}
     </if>
-    <if test="bean.doneCode != null" >
+    <if test="bean.doneCode != null and bean.doneCode!=''" >
       and DONE_CODE=#{bean.doneCode,jdbcType=BIGINT}
     </if>
-    <if test="bean.doneDate != null" >
+    <if test="bean.doneDate != null and bean.doneDate!=''" >
       and DONE_DATE=#{bean.doneDate,jdbcType=TIMESTAMP}
     </if>
-    <if test="bean.useType != null" >
+    <if test="bean.useType != null and bean.useType!=''" >
       and USE_TYPE=#{bean.useType,jdbcType=BIGINT}
     </if>
-    <if test="bean.manageStatus != null" >
+    <if test="bean.manageStatus != null and bean.manageStatus!=''" >
       and MANAGE_STATUS=#{bean.manageStatus,jdbcType=VARCHAR}
     </if>
-    <if test="bean.resStatus != null" >
+    <if test="bean.resStatus != null and bean.resStatus!=''" >
       and res_STATUS=#{bean.resStatus,jdbcType=VARCHAR}
     </if>
-    <if test="bean.generationType != null" >
+    <if test="bean.generationType != null and bean.generationType!=''" >
       and GENERATION_TYPE=#{bean.generationType,jdbcType=VARCHAR}
     </if>
-    <if test="bean.resNumberHlr != null" >
+    <if test="bean.resNumberHlr != null and bean.resNumberHlr!=''" >
       and RES_NUMBER_HLR=#{bean.resNumberHlr,jdbcType=VARCHAR}
     </if>
-    <if test="bean.tradeId != null" >
+    <if test="bean.tradeId != null and bean.tradeId!=''" >
       and TRADE_ID=#{bean.tradeId,jdbcType=BIGINT}
     </if>
-    <if test="bean.offerId != null" >
+    <if test="bean.offerId != null and bean.offerId!=''" >
       and OFFER_ID=#{bean.offerId,jdbcType=BIGINT}
     </if>
-    <if test="bean.subOfferId != null" >
+    <if test="bean.subOfferId != null and bean.subOfferId!=''" >
       and SUB_OFFER_ID=#{bean.subOfferId,jdbcType=BIGINT}
     </if>
-    <if test="bean.receiver != null" >
+    <if test="bean.receiver != null and bean.receiver!=''" >
       and RECEIVER=#{bean.receiver,jdbcType=VARCHAR}
     </if>
-    <if test="bean.countyId != null" >
+    <if test="bean.countyId != null and bean.countyId!=''" >
       and COUNTY_ID=#{bean.countyId,jdbcType=VARCHAR}
     </if>
-    <if test="bean.regionId != null" >
+    <if test="bean.regionId != null and bean.regionId!=''" >
       and REGION_ID=#{bean.regionId,jdbcType=VARCHAR}
     </if>
-    <if test="bean.selectPriceMode != null" >
+    <if test="bean.selectPriceMode != null and bean.selectPriceMode!=''" >
       and SELECT_PRICE_MODE=#{bean.selectPriceMode,jdbcType=BIGINT}
     </if>
-    <if test="bean.reserveFee != null" >
+    <if test="bean.reserveFee != null and bean.reserveFee!=''" >
       and RESERVE_FEE=#{bean.reserveFee,jdbcType=BIGINT}
     </if>
-    <if test="bean.resLevel != null" >
+    <if test="bean.resLevel != null and bean.resLevel!=''" >
       and RES_LEVEL=#{bean.resLevel,jdbcType=BIGINT}
     </if>
-    <if test="bean.chooseLevel != null" >
+    <if test="bean.chooseLevel != null and bean.chooseLevel!=''" >
       and CHOOSE_LEVEL=#{bean.chooseLevel,jdbcType=BIGINT}
     </if>
-    <if test="bean.resClass != null" >
+    <if test="bean.resClass != null and bean.resClass!=''" >
       and RES_CLASS=#{bean.resClass,jdbcType=BIGINT}
     </if>
-    <if test="bean.presentMonth != null" >
+    <if test="bean.presentMonth != null and bean.presentMonth!=''" >
       and PRESENT_MONTH=#{bean.presentMonth,jdbcType=BIGINT}
     </if>
-    <if test="bean.depositMonth != null" >
+    <if test="bean.depositMonth != null and bean.depositMonth!=''" >
       and DEPOSIT_MONTH=#{bean.depositMonth,jdbcType=BIGINT}
     </if>
-    <if test="bean.depositAmount != null" >
+    <if test="bean.depositAmount != null and bean.depositAmount!=''" >
       and DEPOSIT_AMOUNT=#{bean.depositAmount,jdbcType=BIGINT}
     </if>
-    <if test="bean.isConfirm != null" >
+    <if test="bean.isConfirm != null and bean.isConfirm!=''" >
       and IS_CONFIRM=#{bean.isConfirm,jdbcType=BIGINT}
     </if>
-    <if test="bean.iccId != null" >
+    <if test="bean.iccId != null and bean.iccId!=''" >
       and ICCID=#{bean.iccId,jdbcType=VARCHAR}
     </if>
-    <if test="bean.imsi != null" >
+    <if test="bean.imsi != null and bean.imsi!=''" >
       and IMSI=#{bean.imsi,jdbcType=VARCHAR}
     </if>
-    <if test="bean.preDate != null" >
+    <if test="bean.preDate != null and bean.preDate!=''" >
       and PRE_DATE=#{bean.preDate,jdbcType=TIMESTAMP}
     </if>
-    <if test="bean.useDate != null" >
+    <if test="bean.useDate != null and bean.useDate!=''" >
       and USE_DATE=#{bean.useDate,jdbcType=TIMESTAMP}
     </if>
-    <if test="bean.useDoneCode != null" >
+    <if test="bean.useDoneCode != null and bean.useDoneCode!=''" >
       and USE_DONE_CODE=#{bean.useDoneCode,jdbcType=BIGINT}
     </if>
-    <if test="bean.useOrgId != null" >
+    <if test="bean.useOrgId != null and bean.useOrgId!=''" >
       and USER_ORG_ID=#{bean.useOrgId,jdbcType=BIGINT}
     </if>
-    <if test="bean.busiCode != null" >
+    <if test="bean.busiCode != null and bean.busiCode!=''" >
       and BUSI_CODE=#{bean.busiCode,jdbcType=BIGINT}
     </if>
-    <if test="bean.routingInfo != null" >
+    <if test="bean.routingInfo != null and bean.routingInfo!=''" >
       and ROUTING_INFO=#{bean.routingInfo,jdbcType=VARCHAR}
     </if>
 
-    <if test="bean.password != null" >
+    <if test="bean.password != null and bean.password!=''" >
       and PASSWORD=#{bean.password,jdbcType=VARCHAR}
     </if>
-    <if test="bean.ifeetype != null" >
+    <if test="bean.ifeetype != null and bean.resId!=''" >
       and IFEETYPE=#{bean.ifeetype,jdbcType=VARCHAR}
     </if>
-    <if test="bean.agentPhone != null" >
+    <if test="bean.agentPhone != null and bean.agentPhone!=''" >
       and AGENT_PHONE=#{bean.agentPhone,jdbcType=VARCHAR}
     </if>
-    <if test="bean.portStatus != null" >
+    <if test="bean.portStatus != null and bean.portStatus!=''" >
       and PORT_STATUS=#{bean.portStatus,jdbcType=VARCHAR}
     </if>
 
-    <if test="bean.stockInDate != null" >
+    <if test="bean.stockInDate != null and bean.stockInDate!=''" >
       and STOCK_IN_DATE=#{bean.stockInDate,jdbcType=TIMESTAMP}
     </if>
     <if test="limit != null and limit>0">
