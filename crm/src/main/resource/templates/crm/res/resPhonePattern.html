@@ -11,7 +11,7 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            号码模式：<input type="text" name="patternDefName"/>
+                            号码模式：<input type="text" name="bitRel"/>
                         </li>
                         <li>
                             状态：<select name="state" th:with="type=${@SysService.getType('sys_normal_disable')}">
@@ -117,7 +117,12 @@
                 },
                 {
                     field: 'ipriceMode',
-                    title: '资费',
+                    title: '资费Id',
+                    visible: false
+                },
+                {
+                    field: 'modeDesc',
+                    title: '资费'
                 },
                 {
                     /*visible: editFlag == 'hidden' ? false : true,

@@ -26,12 +26,14 @@
     <result column="DEPOSIT_AMOUNT" property="depositAmount" jdbcType="BIGINT" />
     <result column="PATTERN_NAME" property="patternName" jdbcType="VARCHAR" />
     <result column="IFEE_TYPE" property="ifeeType" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     RES_SPEC_ID, PATTERN_ID, REGION_ID, MODE_DESC, IS_USED, RESERVE_FEE, POINTS, ORDER_FEE, 
     ORDER_DAYS, CHOOSE_LEVEL, COUNTY_ID, DONE_CODE, DONE_DATE, EFFECTIVE_DATE, EXPIRE_DATE, 
     CREATE_DATE, OP_ID, ORG_ID, NOTES, PRESENT_MONTH, DEPOSIT_MONTH, DEPOSIT_AMOUNT, 
-    PATTERN_NAME, IFEE_TYPE
+    PATTERN_NAME, IFEE_TYPE,STATE
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -59,10 +61,10 @@
     </if>
     <if test="segExp != null and segExp!=''" >
       and SEG_EXP = #{segExp}
-    </if>
+    </if>-->
     <if test="state != null and state!=''" >
       and STATE = #{state}
-    </if>-->
+    </if>
   </select>
 
   <select id="checkPatternPriceNameUnique" resultType="Boolean">
@@ -84,7 +86,7 @@
       DONE_DATE, EFFECTIVE_DATE, EXPIRE_DATE, 
       CREATE_DATE, OP_ID, ORG_ID, 
       NOTES, PRESENT_MONTH, DEPOSIT_MONTH, 
-      DEPOSIT_AMOUNT, PATTERN_NAME, IFEE_TYPE
+      DEPOSIT_AMOUNT, PATTERN_NAME, IFEE_TYPE,STATE
       )
     values (#{resSpecId,jdbcType=BIGINT}, #{patternId,jdbcType=BIGINT}, #{regionId,jdbcType=VARCHAR}, 
       #{modeDesc,jdbcType=VARCHAR}, #{isUsed,jdbcType=BIGINT}, #{reserveFee,jdbcType=BIGINT}, 
@@ -93,7 +95,7 @@
       #{doneDate,jdbcType=TIMESTAMP}, #{effectiveDate,jdbcType=TIMESTAMP}, #{expireDate,jdbcType=TIMESTAMP}, 
       #{createDate,jdbcType=TIMESTAMP}, #{opId,jdbcType=BIGINT}, #{orgId,jdbcType=BIGINT}, 
       #{notes,jdbcType=VARCHAR}, #{presentMonth,jdbcType=BIGINT}, #{depositMonth,jdbcType=BIGINT}, 
-      #{depositAmount,jdbcType=BIGINT}, #{patternName,jdbcType=VARCHAR}, #{ifeeType,jdbcType=VARCHAR}
+      #{depositAmount,jdbcType=BIGINT}, #{patternName,jdbcType=VARCHAR}, #{ifeeType,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pl.airboss.crm.res.bean.ResSelpriceModeBean" >
@@ -171,6 +173,9 @@
       <if test="ifeeType != null" >
         IFEE_TYPE,
       </if>
+      <if test="state != null and state!=''" >
+        STATE,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="resSpecId != null" >
@@ -245,6 +250,9 @@
       <if test="ifeeType != null" >
         #{ifeeType,jdbcType=VARCHAR},
       </if>
+      <if test="state != null and state!=''" >
+        #{state,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.pl.airboss.crm.res.bean.ResSelpriceModeBean" >
@@ -313,6 +321,9 @@
       <if test="ifeeType != null" >
         IFEE_TYPE = #{ifeeType,jdbcType=VARCHAR},
       </if>
+      <if test="state != null and state!=''" >
+        and STATE = #{state,jdbcType=VARCHAR},
+      </if>
     </set>
     where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
     <!--and PATTERN_ID = #{patternId,jdbcType=BIGINT}
@@ -341,6 +352,7 @@
    DEPOSIT_AMOUNT = #{depositAmount,jdbcType=BIGINT},
    PATTERN_NAME = #{patternName,jdbcType=VARCHAR},
    IFEE_TYPE = #{ifeeType,jdbcType=VARCHAR}
+   STATE = #{state,jdbcType=VARCHAR}
  where RES_SPEC_ID = #{resSpecId,jdbcType=BIGINT}
    and PATTERN_ID = #{patternId,jdbcType=BIGINT}
    and REGION_ID = #{regionId,jdbcType=VARCHAR}

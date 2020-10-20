@@ -40,7 +40,7 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">号段状态：</label>
             <div class="col-sm-8">
-                <div class="radio-box" th:each="dict : ${@SysService.getType('res_pattern_segment_state')}">
+                <div class="radio-box" th:each="dict : ${@SysService.getType('sys_normal_disable')}">
                     <input type="radio" th:id="${dict.dictValue}" name="state" th:value="${dict.dictValue}" th:field="*{state}">
                     <label th:for="${dict.dictLabel}" th:text="${dict.dictLabel}"></label>
                 </div>

@@ -45,6 +45,8 @@ public class ResSelpriceModeBean extends ResSelpriceModeBeanKey {
 
     private String ifeeType;
 
+    private String state;
+
     public String getModeDesc() {
         return modeDesc;
     }
@@ -211,5 +213,13 @@ public class ResSelpriceModeBean extends ResSelpriceModeBeanKey {
 
     public void setIfeeType(String ifeeType) {
         this.ifeeType = ifeeType == null ? null : ifeeType.trim();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
     }
 }

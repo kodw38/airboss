@@ -163,6 +163,12 @@ public class PricePatternController extends BaseController {
     @ResponseBody
     public AjaxResult editSave(@Validated ResSelpriceModeBean bean)
     {
+        if ("0".equals(bean.getState())) {//改成无效
+            bean.setExpireDate(new Date());
+        } else if ("1".equals(bean.getState())) {//改成有效
+            bean.setEffectiveDate(new Date());
+            bean.setExpireDate(null);
+        }
         return toAjax(resPhoneNumSV.updatePrice(bean));
     }
 
@@ -195,6 +201,9 @@ public class PricePatternController extends BaseController {
     @ResponseBody
     public AjaxResult addSave(@Validated ResSelpriceModeBean bean) {
         bean.setCreateDate(new Date());
+        if ("1".equals(bean.getState())) {//有效
+            bean.setEffectiveDate(new Date());
+        }
         bean.setOpId(Long.valueOf(ShiroUtils.getUserId()));
         return toAjax(resPhoneNumSV.addPrice(bean));
     }

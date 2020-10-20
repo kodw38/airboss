@@ -1,6 +1,7 @@
 package com.pl.airboss.crm.res.dao;
 
 import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
+import com.pl.airboss.crm.res.bean.ResPatternDefineQueryRspBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface ResPatternDefineBeanMapper {
     ResPatternDefineBean selectByPrimaryKey(Long patternDefId);
 
     List<ResPatternDefineBean> selectList(ResPatternDefineBean bean);
+
+    List<ResPatternDefineQueryRspBean> selectDefineList(ResPatternDefineBean bean);
 
     int updateByPrimaryKeySelective(ResPatternDefineBean record);
 

@@ -1,6 +1,7 @@
 package com.pl.airboss.crm.res.controller;
 
 import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
+import com.pl.airboss.crm.res.bean.ResPatternDefineQueryRspBean;
 import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.crm.res.service.interfaces.IResPhoneNumSV;
 import com.pl.airboss.framework.annotation.Log;
@@ -49,7 +50,8 @@ public class NumPatternDefineController extends BaseController {
     @ResponseBody
     public TableDataInfo list(ResPatternDefineBean bean){
         startPage();
-        List<ResPatternDefineBean> ls =  resPhoneNumSV.queryNumPatternDefineList(bean);
+     //   List<ResPatternDefineBean> ls =  resPhoneNumSV.queryNumPatternDefineList(bean);
+        List<ResPatternDefineQueryRspBean> ls =  resPhoneNumSV.queryDefineList(bean);//新方法 关联price表
       //  return new TableDataInfo(ls,ls.size());
         return getDataTable(ls);
     }

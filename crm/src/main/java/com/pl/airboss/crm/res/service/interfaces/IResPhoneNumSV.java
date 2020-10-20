@@ -19,6 +19,8 @@ public interface IResPhoneNumSV {
      */
     public List<ResPatternDefineBean> queryNumPatternDefineList(ResPatternDefineBean bean);
 
+    public List<ResPatternDefineQueryRspBean> queryDefineList(ResPatternDefineBean bean);
+
     /**
      * 查询号码模式
      * @param defId

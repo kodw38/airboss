@@ -18,7 +18,7 @@
                             状态：<select name="state" th:with="type=${@SysService.getType('sys_normal_disable')}">
                             <option value="">所有</option>
                             <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                        </select>
+                                 </select>
                         </li>
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i

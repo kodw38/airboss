@@ -39,7 +39,15 @@
                 <input class="form-control" type="text" name="points" id="points" required>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="col-sm-3 control-label">资费状态：</label>
+            <div class="col-sm-8">
+                <div class="radio-box" th:each="dict : ${@SysService.getType('sys_normal_disable')}">
+                    <input type="radio" th:id="${dict.dictValue}" name="state" th:value="${dict.dictValue}" th:checked="${dict.dictValue}==1?1:0">
+                    <label th:for="${dict.dictValue}" th:text="${dict.dictLabel}"></label>
+                </div>
+            </div>
+        </div>
 
     </form>
 </div>

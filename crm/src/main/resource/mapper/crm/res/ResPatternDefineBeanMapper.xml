@@ -22,6 +22,12 @@
     <result column="IPRICE_MODE" property="ipriceMode" jdbcType="VARCHAR" />
     <result column="NOTES" property="notes" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="DefineListResultMap" extends="BaseResultMap" type="com.pl.airboss.crm.res.bean.ResPatternDefineQueryRspBean" >
+    <result column="RES_SPEC_ID" property="resSpecId" jdbcType="BIGINT" />
+    <result column="MODE_DESC" property="modeDesc" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     PATTERN_DEF_ID, PATTERN_DEF_NAME, BIT_REL, BIT_ORDER, BIT_RESTRICT_EXP, BIT_RESTRICT_RPN, 
     PRIORTY, RES_TYPE, STATE, REGION_ID, DONE_CODE, CREATE_DATE, EFFECTIVE_DATE, EXPIRE_DATE, 
@@ -50,6 +56,25 @@
         and STATE = #{state}
       </if>
     </where>
+  </select>
+
+
+  <select id="selectDefineList" parameterType="com.pl.airboss.crm.res.bean.ResPatternDefineBean" resultMap="DefineListResultMap">
+    SELECT
+    def.*,
+    mode.res_spec_id,mode.mode_desc
+    FROM res_pattern_define def
+    LEFT JOIN res_selprice_mode mode ON def.iprice_mode = mode.res_spec_id
+    where 1=1
+    <if test="patternDefId !=null and patternDefId!=''">
+      and PATTERN_DEF_ID=#{patternDefId}
+    </if>
+    <if test="bitRel != null and bitRel!=''">
+      and BIT_REL like concat('%',#{bitRel},'%')
+    </if>
+    <if test="state != null and state!=''" >
+      and STATE = #{state}
+    </if>
   </select>
 
 

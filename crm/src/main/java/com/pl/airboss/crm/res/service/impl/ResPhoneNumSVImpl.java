@@ -67,6 +67,10 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
         return resPatternDefineBeanMapper.selectList(bean);
     }
 
+    public List<ResPatternDefineQueryRspBean> queryDefineList(ResPatternDefineBean bean) {
+        return resPatternDefineBeanMapper.selectDefineList(bean);
+    }
+
     /**
      * 查询号码模式
      * @param defId
@@ -305,14 +309,16 @@ public class ResPhoneNumSVImpl implements IResPhoneNumSV {
                     throw new Exception(phoneNum + " 该号码已经被使用，不能释放");
                 }
             }
-            long done = b.getDoneCode();
-            long nextdone = done+1;
-            b.setDoneCode(nextdone);  //增加操作批号
+            if (b.getDoneCode() != null) {
+                long done = b.getDoneCode();
+                long nextdone = done+1;
+                b.setDoneCode(nextdone);  //增加操作批号
+            }
             b.setResStatus(ResConst.PHONE_NUM_STATUS_G); //设置号码为预占
             ResPhoneNumOriginBean cond = new ResPhoneNumOriginBean();
             cond.setResId(b.getResId());
             cond.setResStatus(ResConst.PHONE_NUM_STATUS_O);
-            cond.setDoneCode(done);
+            //cond.setDoneCode(done);
             int n = resPhoneNumOriginBeanMapper.update(b,cond);
             if(n==0){
                 throw new Exception(phoneNum+" 该号码释放失败");
