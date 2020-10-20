@@ -80,7 +80,9 @@ public class SegPatternController extends BaseController {
     {
 
         bean.setCreateDate(new Date());
-        bean.setEffectiveDate(new Date());
+        if ("1".equals(bean.getState())) {//有效
+            bean.setEffectiveDate(new Date());
+        }
         bean.setOpId(Long.valueOf(ShiroUtils.getUserId()));
         //dept.setCreateBy(ShiroUtils.getLoginCode());
         return toAjax(resPhoneNumSV.addSegmentPattern(bean));
