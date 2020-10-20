@@ -31,10 +31,10 @@ public class ServiceController extends BaseController {
 
 
     @RequiresPermissions("product:service:view")
-    @GetMapping("/servicecfg")
+    @GetMapping("/serviceCfg")
     public String pricePattern()
     {
-        return prefix + "/servicecfg";
+        return prefix + "/serviceCfg";
     }
 
 
@@ -45,7 +45,8 @@ public class ServiceController extends BaseController {
     public TableDataInfo list(ServiceBean bean){
         startPage();
         List<ServiceBean> ls = offerSV.queryServices(bean);
-        return new TableDataInfo(ls,ls.size());
+        //return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
 
@@ -92,7 +93,7 @@ public class ServiceController extends BaseController {
      * 保存
      */
     @Log(title = "产品-服务-修改", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("product:service:update")
+    @RequiresPermissions("product:service:edit")
     @PostMapping("/editService")
     @ResponseBody
     public AjaxResult editSave(@Validated ServiceBean bean)
@@ -104,7 +105,7 @@ public class ServiceController extends BaseController {
      * 删除
      */
     @Log(title = "产品-服务-删除", businessType = BusinessType.DELETE)
-    @RequiresPermissions("product:service:delete")
+    @RequiresPermissions("product:service:remove")
     @GetMapping("/removeService/{recId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("recId") Integer recId)
