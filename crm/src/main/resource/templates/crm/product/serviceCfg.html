@@ -12,10 +12,10 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            服务名称：<input type="text" name="patternSegName"/>
+                            服务名称：<input type="text" name="productName"/>
                         </li>
                         <li>
-                            状态：<select name="state" th:with="type=${@SysService.getType('sys_normal_disable')}">
+                            状态：<select name="productState" th:with="type=${@SysService.getType('sys_normal_disable')}">
                             <option value="">所有</option>
                             <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                         </select>
