@@ -38,10 +38,10 @@ public class FeeController extends BaseController {
 
 
     @RequiresPermissions("product:fee:view")
-    @GetMapping("/feecfg")
+    @GetMapping("/feeCfg")
     public String pricePattern()
     {
-        return prefix + "/feecfg";
+        return prefix + "/feeCfg";
     }
 
 
