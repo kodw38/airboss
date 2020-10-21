@@ -368,4 +368,9 @@ public class OfferSVImpl implements IOfferSV {
     public int deleteFeePolicyBundle(Integer bundleId){
         return feePolicyBundleBeanMapper.deleteByPrimaryKey(bundleId);
     }
+
+    @Override
+    public boolean checkServiceUnique(String serviceName, Integer serviceId) {
+        return serviceBeanMapper.checkServiceUnique(serviceName,serviceId);
+    }
 }

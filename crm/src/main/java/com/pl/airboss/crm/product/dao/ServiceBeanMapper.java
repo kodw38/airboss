@@ -18,4 +18,6 @@ public interface ServiceBeanMapper {
     int updateByPrimaryKey(ServiceBean record);
 
     List<ServiceBean> select(ServiceBean cond);
+
+    boolean checkServiceUnique(String serviceName, Integer serviceId);
 }

@@ -187,4 +187,5 @@ public interface IOfferSV {
 
     public int deleteProductService(Integer productId,Integer serviceId)throws Exception;
 
+    public boolean checkServiceUnique(String serviceName, Integer serviceId);
 }

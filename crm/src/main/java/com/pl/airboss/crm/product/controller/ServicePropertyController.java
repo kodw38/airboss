@@ -3,6 +3,7 @@ package com.pl.airboss.crm.product.controller;
 import com.pl.airboss.crm.product.bean.ServiceBean;
 import com.pl.airboss.crm.product.bean.ServiceParamBean;
 import com.pl.airboss.crm.product.service.interfaces.IOfferSV;
+import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
 import com.pl.airboss.web.controller.BaseController;
@@ -30,15 +31,13 @@ public class ServicePropertyController extends BaseController {
         return rows > 0 ? success() : error();
     }
 
-
     @RequiresPermissions("product:service:view")
-    @GetMapping("/serviceProperty")
-    public String serviceProperty()
-    {
+    @GetMapping("/serviceProperty/{serviceId}")
+    public String serviceProperty(@PathVariable("serviceId") Integer serviceId, ModelMap mmap) {
+        ServiceBean serviceBean = offerSV.queryServiceById(serviceId);
+        mmap.put("bean", serviceBean);
         return prefix + "/serviceProperty";
     }
-
-
 
     @RequiresPermissions("product:serviceProperty:view")
     @PostMapping("/listServiceProperties/{serviceId}")

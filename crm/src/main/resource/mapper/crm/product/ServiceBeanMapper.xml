@@ -50,11 +50,22 @@
     select
     <include refid="Base_Column_List" />
     from td_b_service
-    where SERVICE_STATE='1'
+    where 1=1
     <if test="serviceName != null and serviceName!=''" >
       and Service_Name like concat('%',#{serviceName,jdbcType=DECIMAL},'%')
     </if>
+    <if test="serviceState != null and serviceState!=''" >
+      and SERVICE_STATE = #{serviceState,jdbcType=CHAR}
+    </if>
   </select>
+
+  <select id="checkServiceUnique" resultType="Boolean">
+    select count(0) from td_b_service where SERVICE_NAME=#{serviceName}
+    <if test="serviceId != null and serviceId !=0">
+      and SERVICE_ID !=#{serviceId,jdbcType=BIGINT}
+    </if>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from td_b_service
     where SERVICE_ID = #{serviceId,jdbcType=DECIMAL}

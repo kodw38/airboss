@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 @RequestMapping("/crm/product")
 @Controller
@@ -32,7 +33,7 @@ public class ServiceController extends BaseController {
 
     @RequiresPermissions("product:service:view")
     @GetMapping("/serviceCfg")
-    public String pricePattern()
+    public String serviceCfg()
     {
         return prefix + "/serviceCfg";
     }
@@ -50,19 +51,11 @@ public class ServiceController extends BaseController {
     }
 
 
-    @GetMapping("/checkServiceUniqueService")
+    @PostMapping("/checkServiceUnique")
     @ResponseBody
-    public Boolean checkUnique(String code){
-        return true;
-    }
-
-    /**
-     * 新增
-     */
-    @GetMapping("/addService")
-    public String add(ModelMap mmap)
-    {
-        return prefix + "/addService";
+    public Boolean checkServiceUnique(ServiceBean bean) {
+        return !offerSV.checkServiceUnique(bean.getServiceName(),bean.getServiceId());
+        //return true;
     }
 
     /**
@@ -74,8 +67,20 @@ public class ServiceController extends BaseController {
     @ResponseBody
     public AjaxResult addSave(@Validated ServiceBean bean)
     {
-        bean.setServiceState("1");
+      //  bean.setServiceState("1");
+        if ("1".equals(bean.getServiceState())) {//有效
+            bean.setStartDate(new Date());
+        }
         return toAjax(offerSV.addService(bean));
+    }
+
+    /**
+     * 新增服务属性
+     */
+    @GetMapping("/addService")
+    public String add(ModelMap mmap)
+    {
+        return prefix + "/addService";
     }
 
     /**
@@ -96,8 +101,14 @@ public class ServiceController extends BaseController {
     @RequiresPermissions("product:service:edit")
     @PostMapping("/editService")
     @ResponseBody
-    public AjaxResult editSave(@Validated ServiceBean bean)
-    {
+    public AjaxResult editSave(@Validated ServiceBean bean) {
+        String serviceState = bean.getServiceState();
+        if ("0".equals(serviceState)) {//改成无效
+            bean.setEndDate(new Date());
+        } else if ("1".equals(serviceState)) {//改成有效
+            bean.setStartDate(new Date());
+            bean.setEndDate(null);
+        }
         return toAjax(offerSV.updateService(bean));
     }
 
