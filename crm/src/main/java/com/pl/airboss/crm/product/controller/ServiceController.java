@@ -117,9 +117,9 @@ public class ServiceController extends BaseController {
      */
     @Log(title = "产品-服务-删除", businessType = BusinessType.DELETE)
     @RequiresPermissions("product:service:remove")
-    @GetMapping("/removeService/{recId}")
+    @PostMapping("/removeService")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("recId") Integer recId)
+    public AjaxResult remove(@RequestParam(value = "ids") Integer recId)
     {
 
         int n = offerSV.deleteService(recId);

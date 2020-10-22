@@ -20,4 +20,6 @@ public interface ServiceParamBeanMapper {
     int insertList(List<ServiceParamBean> list);
 
     List<ServiceParamBean> selectByServiceId(Integer serviceId);
+
+    boolean checkPropertyUnique(Long paramId, String paramName,Long serviceId);
 }

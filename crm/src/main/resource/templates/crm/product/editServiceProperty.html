@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <th:block th:include="include :: header('新增服务属性')" />
+    <th:block th:include="include :: header('修改属性')" />
 </head>
 
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-    <form class="form-horizontal m" id="form-propertyCfg-add">
-        <!--<input class="form-control" id="serviceId" name="serviceId" type="hidden" th:field="*{serviceId}"/>&lt;!&ndash;服务Id&ndash;&gt;-->
+    <form class="form-horizontal m" id="form-propertyCfg-edit" th:object="${bean}" ><!--后台传的参数名是bean-->
+        <input id="paramId" name="serviceId" type="hidden" th:field="*{paramId}"/>
 
         <div class="form-group">
-            <label class="col-sm-3 control-label">服务Id：</label>
+            <label class="col-sm-3 control-label is-required">服务Id：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" id="serviceId" name="serviceId" readonly="true" th:value="${serviceId}">
+                <input class="form-control" type="text" name="serviceId" id="serviceId" readonly="true" th:field="*{serviceId}" required>
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-3 control-label is-required">属性名称：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="paramName" id="paramName" required>
+                <input class="form-control" type="text" name="paramName" id="paramName" th:field="*{paramName}" required>
             </div>
         </div>
+
         <div class="form-group">
             <label class="col-sm-3 control-label is-required">属性类型：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="paramType" id="paramType" required>
+                <input class="form-control" type="text" name="paramType" id="paramType" th:field="*{paramType}" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label is-required">属性编码：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="paramCode" id="paramCode" required>
+                <input class="form-control" type="text" name="paramCode" id="paramCode" th:field="*{paramCode}" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label is-required">属性值：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="paramValue" id="paramValue" required>
+                <input class="form-control" type="text" name="paramValue" id="paramValue" th:field="*{paramValue}" required>
             </div>
         </div>
+
+
+
 
         <div class="form-group">
             <label class="col-sm-3 control-label">是否选择：</label>
             <div class="col-sm-8">
                 <div class="input-group" style="width: 100%">
                     <select id="paramSelect" name="paramSelect" class="form-control noselect2 selectpicker" th:with="type=${@SysService.getType('service_param_select')}">
-                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"  th:selected="${dict.dictValue} == *{paramSelect} ? true : false"></option>
                     </select>
                 </div>
             </div>
         </div>
 
+
+
         <div class="form-group">
             <label class="col-sm-3 control-label">属性状态：</label>
             <div class="col-sm-8">
                 <div class="radio-box" th:each="dict : ${@SysService.getType('sys_normal_disable')}">
-                    <input type="radio" th:id="${dict.dictValue}" name="paramStatus" th:value="${dict.dictValue}" th:checked="${dict.dictValue}==1?1:0">
-                    <label th:for="${dict.dictValue}" th:text="${dict.dictLabel}"></label>
+                    <input type="radio" th:id="${dict.dictValue}" name="paramStatus" th:value="${dict.dictValue}" th:field="*{paramStatus}">
+                    <label th:for="${dict.dictLabel}" th:text="${dict.dictLabel}"></label>
                 </div>
             </div>
+
         </div>
 
     </form>
 </div>
 <th:block th:include="include :: footer" />
 
-<script>
-    // $(function() {
-    //     var url = ctx + "system/menu/roleMenuTreeData";
-    //     var options = {
-    //         id: "menuTrees",
-    //         url: url,
-    //         check: { enable: true },
-    //         expandLevel: 0
-    //     };
-    //     $.tree.init(options);
-    // });
+
+<script th:inline="javascript">
     var prefix = ctx + "crm/product";
 
-    $("#form-propertyCfg-add").validate({
+    $("#form-propertyCfg-edit").validate({
         onkeyup: false,
         rules:{
             paramName:{
@@ -88,6 +86,9 @@
                     type: "post",
                     dataType: "json",
                     data: {
+                        "paramId": function() {
+                            return $("#paramId").val();
+                        },
                         "paramName": function() {
                             return $.common.trim($("#paramName").val());
                         },
@@ -113,16 +114,49 @@
     });
 
     function submitHandler() {
-        debugger;
-        alert($("#serviceId").val());
+        // alert('123');
         if ($.validate.form()) {
-            $.operate.save(prefix + "/addServiceProperty", $('#form-propertyCfg-add').serialize());
+            edit();
         }
     }
 
-    function add() {
 
+    function edit() {
+        debugger;
+        let serviceId = $("#serviceId").val();
+        let paramId = $("#paramId").val();
+        let paramName = $("#paramName").val();
+        let paramType = $("#paramType").val();
+        let paramCode = $("#paramCode").val();
+        let paramValue = $("#paramValue").val();
+        let paramSelect = $("select[name='paramSelect']").val();
+        let paramStatus =  $("input[name='paramStatus']:checked").val();
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/editServiceProperty",
+            data : {
+                "serviceId": serviceId,
+                "paramId": paramId,
+                "paramName": paramName,
+                "paramType": paramType,
+                "paramCode": paramCode,
+                "paramValue":paramValue,
+                "paramSelect": paramSelect,
+                "paramStatus":paramStatus
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
     }
+
+
+
 </script>
 </body>
 </html>

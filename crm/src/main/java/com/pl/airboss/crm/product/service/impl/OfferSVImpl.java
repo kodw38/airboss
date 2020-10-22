@@ -373,4 +373,9 @@ public class OfferSVImpl implements IOfferSV {
     public boolean checkServiceUnique(String serviceName, Integer serviceId) {
         return serviceBeanMapper.checkServiceUnique(serviceName,serviceId);
     }
+
+    @Override
+    public boolean checkPropertyUnique(Long paramId, String paramName,Long serviceId) {
+        return serviceParamBeanMapper.checkPropertyUnique(paramId,paramName,serviceId);
+    }
 }

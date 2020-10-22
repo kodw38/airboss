@@ -13,6 +13,10 @@ public class ServiceParamBean {
 
     private String paramType;
 
+    private Long paramSelect;
+
+    private Long paramStatus;
+
     public Long getParamId() {
         return paramId;
     }
@@ -59,5 +63,21 @@ public class ServiceParamBean {
 
     public void setParamType(String paramType) {
         this.paramType = paramType == null ? null : paramType.trim();
+    }
+
+    public Long getParamSelect() {
+        return paramSelect;
+    }
+
+    public void setParamSelect(Long paramSelect) {
+        this.paramSelect = paramSelect;
+    }
+
+    public Long getParamStatus() {
+        return paramStatus;
+    }
+
+    public void setParamStatus(Long paramStatus) {
+        this.paramStatus = paramStatus;
     }
 }

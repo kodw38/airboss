@@ -4,6 +4,7 @@ import com.pl.airboss.crm.product.bean.ServiceBean;
 import com.pl.airboss.crm.product.bean.ServiceParamBean;
 import com.pl.airboss.crm.product.service.interfaces.IOfferSV;
 import com.pl.airboss.crm.res.bean.ResPatternDefineBean;
+import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
 import com.pl.airboss.web.controller.BaseController;
@@ -45,23 +46,24 @@ public class ServicePropertyController extends BaseController {
     @ResponseBody
    // public TableDataInfo list(@PathVariable("serviceId") int serviceId){
     public TableDataInfo list(@RequestParam(value = "serviceId") int serviceId){
+   // public TableDataInfo list(ServiceParamBean bean){
         startPage();
         List<ServiceParamBean> ls = offerSV.queryServiceParams(serviceId);
         return new TableDataInfo(ls,ls.size());
     }
 
 
-    @GetMapping("/checkUniqueService")
+    @PostMapping("/checkPropertyUnique")
     @ResponseBody
-    public Boolean checkUnique(String code){
-        return true;
+    public Boolean checkPropertyUnique(ServiceParamBean bean){
+        return !offerSV.checkPropertyUnique(bean.getParamId(),bean.getParamName(),bean.getServiceId());
     }
 
     /**
      * 新增
      */
-    @GetMapping("/addServiceProperties")
-    public String add(@PathVariable("serviceId") Long serviceId, ModelMap mmap)
+    @GetMapping("/addServiceProperties/{serviceId}")
+    public String add(@PathVariable("serviceId") Integer serviceId, ModelMap mmap)
     {
         mmap.put("serviceId", serviceId);
         return prefix + "/addServiceProperties";
@@ -107,9 +109,9 @@ public class ServicePropertyController extends BaseController {
      */
     @Log(title = "产品-服务-服务-删除", businessType = BusinessType.DELETE)
     @RequiresPermissions("product:serviceProperty:remove")
-    @GetMapping("/removeServiceProperty/{propertyId}")
+    @PostMapping("/removeServiceProperty")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("propertyId") Long propertyId)
+    public AjaxResult remove(@RequestParam(value = "ids")  Long propertyId)
     {
 
         int n = offerSV.deleteServiceParam(propertyId);
