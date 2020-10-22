@@ -40,9 +40,11 @@ public class ServicePropertyController extends BaseController {
     }
 
     @RequiresPermissions("product:serviceProperty:view")
-    @PostMapping("/listServiceProperties/{serviceId}")
+   // @PostMapping("/listServiceProperties/{serviceId}")
+    @PostMapping("/listServiceProperties")
     @ResponseBody
-    public TableDataInfo list(@PathVariable("serviceId") int serviceId){
+   // public TableDataInfo list(@PathVariable("serviceId") int serviceId){
+    public TableDataInfo list(@RequestParam(value = "serviceId") int serviceId){
         startPage();
         List<ServiceParamBean> ls = offerSV.queryServiceParams(serviceId);
         return new TableDataInfo(ls,ls.size());
@@ -59,8 +61,9 @@ public class ServicePropertyController extends BaseController {
      * 新增
      */
     @GetMapping("/addServiceProperties")
-    public String add(ModelMap mmap)
+    public String add(@PathVariable("serviceId") Long serviceId, ModelMap mmap)
     {
+        mmap.put("serviceId", serviceId);
         return prefix + "/addServiceProperties";
     }
 
@@ -91,7 +94,7 @@ public class ServicePropertyController extends BaseController {
      * 保存
      */
     @Log(title = "产品-服务-服务-修改", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("product:serviceProperty:update")
+    @RequiresPermissions("product:serviceProperty:eidt")
     @PostMapping("/editServiceProperty")
     @ResponseBody
     public AjaxResult editSave(@Validated ServiceParamBean bean)
@@ -103,7 +106,7 @@ public class ServicePropertyController extends BaseController {
      * 删除
      */
     @Log(title = "产品-服务-服务-删除", businessType = BusinessType.DELETE)
-    @RequiresPermissions("product:serviceProperty:delete")
+    @RequiresPermissions("product:serviceProperty:remove")
     @GetMapping("/removeServiceProperty/{propertyId}")
     @ResponseBody
     public AjaxResult remove(@PathVariable("propertyId") Long propertyId)
