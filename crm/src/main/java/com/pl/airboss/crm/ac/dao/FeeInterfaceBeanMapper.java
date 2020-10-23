@@ -21,6 +21,8 @@ public interface FeeInterfaceBeanMapper {
 
     List<FeeInterfaceBean> select(FeeInterfaceBean cond);
 
+    List<FeeInterfaceBean> selectList(FeeInterfaceBean cond);
+
     List<FeeInterfaceBean> selectByBundleId(Long bundleId);
 
 

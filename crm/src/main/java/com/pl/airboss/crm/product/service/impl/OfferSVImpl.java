@@ -7,6 +7,8 @@ import com.pl.airboss.crm.ac.dao.FeeInterfaceBeanMapper;
 import com.pl.airboss.crm.product.bean.*;
 import com.pl.airboss.crm.product.dao.*;
 import com.pl.airboss.crm.product.service.interfaces.IOfferSV;
+import com.pl.airboss.web.bean.SysDictData;
+import com.pl.airboss.web.service.ISysDictDataService;
 import com.pl.airboss.web.utils.Ztree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +58,10 @@ public class OfferSVImpl implements IOfferSV {
     @Autowired
     FeeCycleBeanMapper feeCycleBeanMapper;
 
+
+    @Autowired
+    private ISysDictDataService dictDataService;
+
     public List<ServiceBean> queryServices(ServiceBean bean){
         return serviceBeanMapper.select(bean);
     }
@@ -78,7 +84,14 @@ public class OfferSVImpl implements IOfferSV {
 
     @Override
     public List<Ztree> selectFeePolicyBundleTree(FeePolicyBundleBean cond) {
-        List<FeePolicyBundleBean> list = feePolicyBundleBeanMapper.selectList(cond);
+        //待确认？改成从配置的数据字典中获取:
+        /*.td_b_feepolicy_bundle这个表是资费和产品的绑定表，不是定义资费分类的表。
+        资费左侧，定义个静态数据。用静态数据显示。
+        td_b_tp_interface中找个字段ENABLE_TAG作为分类和静态数据值对应。*/
+       // List<FeePolicyBundleBean> list = feePolicyBundleBeanMapper.selectList(cond);
+        SysDictData dictData = new SysDictData();
+        dictData.setDictType("fee_tree_config");
+        List<SysDictData> list = dictDataService.selectDictDataList(dictData);
         List<Ztree> ztrees = initZtree(list);
         return ztrees;
     }
@@ -88,16 +101,19 @@ public class OfferSVImpl implements IOfferSV {
      * @param list 列表
      * @return 树结构列表
      */
-    public List<Ztree> initZtree(List<FeePolicyBundleBean> list)
+    public List<Ztree> initZtree(List<SysDictData> list)
     {
         List<Ztree> ztrees = new ArrayList<Ztree>();
-        for (FeePolicyBundleBean data : list)
+        for (SysDictData data : list)
         {
             Ztree ztree = new Ztree();
-            ztree.setId(data.getFeepolicyBundId().longValue());
+            //ztree.setId(data.getFeepolicyBundId().longValue());
+            ztree.setId(Long.parseLong(data.getDictValue()));
             ztree.setpId(0L);
-            ztree.setName(data.getFeepolicyBundName());
-            ztree.setTitle(data.getFeepolicyBundName());
+            //ztree.setName(data.getFeepolicyBundName());
+          //  ztree.setTitle(data.getFeepolicyBundName());
+            ztree.setName(data.getDictLabel());
+            ztree.setTitle(data.getDictLabel());
             ztree.setpId(0l);//父级id
             ztrees.add(ztree);
         }
@@ -308,7 +324,8 @@ public class OfferSVImpl implements IOfferSV {
     }
 
     public List<FeeInterfaceBean> queryFeeInterface(FeeInterfaceBean cond){
-        return feeInterfaceBeanMapper.select(cond);
+       // return feeInterfaceBeanMapper.select(cond);
+        return feeInterfaceBeanMapper.selectList(cond);
     }
 
     public List<FeeInterfaceBean> queryFeeInterfaceByBundleId(Long bundleId){

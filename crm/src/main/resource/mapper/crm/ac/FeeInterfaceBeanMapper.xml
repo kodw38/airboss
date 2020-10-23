@@ -21,7 +21,7 @@
     <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
     <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
     <result column="SEND_TAG" property="sendTag" jdbcType="DECIMAL" />
-    <result column="ENABLE_TAG" property="enableTag" jdbcType="CHAR" />
+    <result column="ENABLE_TAG" property="enableTag" jdbcType="VARCHAR" />
     <result column="DISCOUNT_SCOPE" property="discountScope" jdbcType="CHAR" />
     <result column="REMIND_TAG" property="remindTag" jdbcType="CHAR" />
     <result column="RATE_TAG" property="rateTag" jdbcType="CHAR" />
@@ -54,6 +54,30 @@
     from td_b_tp_interface
     where FOR_BOSS_TAG='1'
   </select>
+
+  <select id="selectList" resultMap="ResultMapWithBLOBs" parameterType="com.pl.airboss.crm.ac.bean.FeeInterfaceBean">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from td_b_tp_interface
+    where 1=1
+    <if test="feepolicyId != null and feepolicyId!=''" >
+      and FEEPOLICY_ID = #{feepolicyId}
+    </if>
+    <if test="feepolicyName != null and feepolicyName!=''" >
+      and FEEPOLICY_NAME = #{feepolicyName}
+    </if>
+    <if test="statePri != null and statePri!=''" >
+      and STATE_PRI = #{statePri}
+    </if>
+    <if test="enableTag != null and enableTag!=''" >
+      and ENABLE_TAG = #{enableTag}
+    </if>
+  </select>
+
+
+
   <select id="selectByBundleId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
     select i.* from td_b_tp_interface i, td_b_feepolicy_bundle b where b.DISCNT_CODE=i.FEEPOLICY_ID
     where b.RATE_TAG=#{bundleId,jdbcType=BIGINT}
@@ -78,7 +102,7 @@
       #{traceTag,jdbcType=CHAR}, #{adjustTag,jdbcType=CHAR}, #{adjustMethod,jdbcType=CHAR}, 
       #{paramNum,jdbcType=DECIMAL}, #{stateRela,jdbcType=CHAR}, #{statePri,jdbcType=CHAR}, 
       #{feestateId,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
-      #{sendTag,jdbcType=DECIMAL}, #{enableTag,jdbcType=CHAR}, #{discountScope,jdbcType=CHAR}, 
+      #{sendTag,jdbcType=DECIMAL}, #{enableTag,jdbcType=VARCHAR}, #{discountScope,jdbcType=CHAR},
       #{remindTag,jdbcType=CHAR}, #{rateTag,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -291,7 +315,7 @@
         SEND_TAG = #{sendTag,jdbcType=DECIMAL},
       </if>
       <if test="enableTag != null" >
-        ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+        ENABLE_TAG = #{enableTag,jdbcType=VARCHAR},
       </if>
       <if test="discountScope != null" >
         DISCOUNT_SCOPE = #{discountScope,jdbcType=CHAR},
@@ -328,7 +352,7 @@
       START_DATE = #{startDate,jdbcType=TIMESTAMP},
       END_DATE = #{endDate,jdbcType=TIMESTAMP},
       SEND_TAG = #{sendTag,jdbcType=DECIMAL},
-      ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      ENABLE_TAG = #{enableTag,jdbcType=VARCHAR},
       DISCOUNT_SCOPE = #{discountScope,jdbcType=CHAR},
       REMIND_TAG = #{remindTag,jdbcType=CHAR},
       RATE_TAG = #{rateTag,jdbcType=CHAR},
@@ -355,7 +379,7 @@
       START_DATE = #{startDate,jdbcType=TIMESTAMP},
       END_DATE = #{endDate,jdbcType=TIMESTAMP},
       SEND_TAG = #{sendTag,jdbcType=DECIMAL},
-      ENABLE_TAG = #{enableTag,jdbcType=CHAR},
+      ENABLE_TAG = #{enableTag,jdbcType=VARCHAR},
       DISCOUNT_SCOPE = #{discountScope,jdbcType=CHAR},
       REMIND_TAG = #{remindTag,jdbcType=CHAR},
       RATE_TAG = #{rateTag,jdbcType=CHAR}

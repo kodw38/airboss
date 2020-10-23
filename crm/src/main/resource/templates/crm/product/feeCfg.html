@@ -13,7 +13,7 @@
                 <i class="fa icon-grid"></i> 资费配置
             </div>
             <div class="box-tools pull-right">
-                <!--<a type="button" class="btn btn-box-tool" href="#" onclick="dept()" title="管理部门"><i class="fa fa-edit"></i></a>-->
+                <a type="button" class="btn btn-box-tool" href="#" onclick="dept()" title="管理部门"><i class="fa fa-edit"></i></a>
                 <button type="button" class="btn btn-box-tool" id="btnExpand" title="展开" style="display:none;"><i class="fa fa-chevron-up"></i></button>
                 <button type="button" class="btn btn-box-tool" id="btnCollapse" title="折叠"><i class="fa fa-chevron-down"></i></button>
                 <button type="button" class="btn btn-box-tool" id="btnRefresh" title="刷新资费"><i class="fa fa-refresh"></i></button>
@@ -28,9 +28,9 @@
 <div class="ui-layout-center">
     <div class="container-div">
         <div class="row">
-            <div class="col-sm-12 search-collapse">
+            <div class="col-sm-12 search-collapse" ><!--style="display: none"-->
                 <form id="user-form">
-                    <input type="hidden" id="deptId" name="organizeId">
+                    <input id="enableTag" name="enableTag">
                     <input type="hidden" id="parentId" name="parentId">
                     <div class="select-list">
                         <ul>
@@ -62,19 +62,19 @@
             </div>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="system:user:add">
+                <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="product:fee:add">
                     <i class="fa fa-plus"></i> 新增
                 </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.editTab()" shiro:hasPermission="system:user:edit">
+                <a class="btn btn-primary single disabled" onclick="$.operate.editTab()" shiro:hasPermission="product:fee:edit">
                     <i class="fa fa-edit"></i> 修改
                 </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:user:remove">
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="product:fee:remove">
                     <i class="fa fa-remove"></i> 删除
                 </a>
-                <a class="btn btn-info" onclick="$.table.importExcel()" shiro:hasPermission="system:user:import">
+                <a class="btn btn-info" onclick="$.table.importExcel()" shiro:hasPermission="product:fee:import">
                     <i class="fa fa-upload"></i> 导入
                 </a>
-                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:user:export">
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="product:fee:export">
                     <i class="fa fa-download"></i> 导出
                 </a>
             </div>
@@ -90,9 +90,9 @@
 <th:block th:include="include :: layout-latest-js" />
 <th:block th:include="include :: ztree-js" />
 <script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('system:user:edit')}]];
-    var removeFlag = [[${@permission.hasPermi('system:user:remove')}]];
-    var resetPwdFlag = [[${@permission.hasPermi('system:user:resetPwd')}]];
+    var editFlag = [[${@permission.hasPermi('product:fee:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('product:fee:remove')}]];
+    var resetPwdFlag = [[${@permission.hasPermi('product:fee:resetPwd')}]];
     var admintype=[[${@SysService.getType('sys_isadmin')}]];
   //  var prefix = ctx + "system/user";
     var prefix = ctx + "crm/product";
@@ -103,32 +103,33 @@
             panehHidden = true;
         }
         $('body').layout({ initClosed: panehHidden, west__size: 185 });
-    //    queryUserList();
+        queryUserList();
         queryDeptTree();
     });
 
     function queryUserList() {
         var options = {
-            url: prefix + "/list",
+            url: prefix + "/listFee",
             createUrl: prefix + "/add",
             updateUrl: prefix + "/edit/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             importUrl: prefix + "/importData",
             importTemplateUrl: prefix + "/importTemplate",
-            sortName: "createDate",
+            sortName: "feepolicyId",
             sortOrder: "desc",
-            modalName: "操作员",
-            columns: [{
+            modalName: "资费",
+            columns: [
+               /* {
                 checkbox: true
-            },
+            },*/
                 {
-                    field: 'recId',
-                    title: '操作员ID'
+                    field: 'feepolicyId',
+                    title: '编号'
                 },
                 {
-                    field: 'loginCode',
-                    title: '登录名称',
+                    field: 'feepolicyName',
+                    title: '资费名称',
                     sortable: true
                 },
                 {
@@ -195,8 +196,9 @@
         $.tree.init(options);
 
         function zOnClick(event, treeId, treeNode) {
-            $("#deptId").val(treeNode.id);
-            $("#parentId").val(treeNode.pId);
+            /*$("#deptId").val(treeNode.id);
+            $("#parentId").val(treeNode.pId);*/
+            $("#enableTag").val(treeNode.id);
             $.table.search();
         }
     }
