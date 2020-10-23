@@ -98,8 +98,14 @@ public class OfferSVImpl implements IOfferSV {
             ztree.setpId(0L);
             ztree.setName(data.getFeepolicyBundName());
             ztree.setTitle(data.getFeepolicyBundName());
+            ztree.setpId(0l);//父级id
             ztrees.add(ztree);
         }
+
+        Ztree ztree = new Ztree();
+        ztree.setId(0l);
+        ztree.setName("资费列表");
+        ztrees.add(0,ztree);
         return ztrees;
     }
 
@@ -109,12 +115,14 @@ public class OfferSVImpl implements IOfferSV {
 
     @Override
     public int updateService(ServiceBean bean) {
-        return serviceBeanMapper.updateByPrimaryKey(bean);
+        //return serviceBeanMapper.updateByPrimaryKey(bean);
+        return serviceBeanMapper.updateByPrimaryKeySelective(bean);
     }
 
     @Override
     public int updateServiceParam(ServiceParamBean bean) {
-        return serviceParamBeanMapper.updateByPrimaryKey(bean);
+        //return serviceParamBeanMapper.updateByPrimaryKey(bean);
+        return serviceParamBeanMapper.updateByPrimaryKeySelective(bean);
     }
 
     @Override
