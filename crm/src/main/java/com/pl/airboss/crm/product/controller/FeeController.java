@@ -9,7 +9,9 @@ import com.pl.airboss.crm.product.service.interfaces.IOfferSV;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
 import com.pl.airboss.utils.StringUtils;
+import com.pl.airboss.web.bean.SysDictData;
 import com.pl.airboss.web.controller.BaseController;
+import com.pl.airboss.web.service.ISysDictDataService;
 import com.pl.airboss.web.utils.AjaxResult;
 import com.pl.airboss.web.utils.TableDataInfo;
 import com.pl.airboss.web.utils.Ztree;
@@ -53,7 +55,6 @@ public class FeeController extends BaseController {
     public List<Ztree> treeData()
     {
         List<Ztree> ztrees = offerSV.selectFeePolicyBundleTree(new FeePolicyBundleBean());
-
         return ztrees;
     }
 
@@ -64,7 +65,8 @@ public class FeeController extends BaseController {
     public TableDataInfo list(FeeInterfaceBean bean){
         startPage();
         List<FeeInterfaceBean> ls = offerSV.queryFeeInterface(bean);
-        return new TableDataInfo(ls,ls.size());
+        //return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
     @RequiresPermissions("product:fee:view")
