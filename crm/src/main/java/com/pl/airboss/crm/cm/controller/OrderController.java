@@ -5,6 +5,7 @@ import com.pl.airboss.crm.cm.bean.CustGroupBean;
 import com.pl.airboss.crm.cm.bean.CustPersonBean;
 import com.pl.airboss.crm.cm.bean.UserBean;
 import com.pl.airboss.crm.cm.service.interfaces.IOrderSV;
+import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
 import com.pl.airboss.web.bean.SecOperatorBean;
@@ -63,7 +64,8 @@ public class OrderController extends BaseController {
     public TableDataInfo querySubscribe(@PathVariable("customerID") Long customerID){
         startPage();
         List<UserBean> ls = orderSV.queryUserByCustId(customerID);
-        return new TableDataInfo(ls,ls.size());
+        //return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
     /**
@@ -152,7 +154,7 @@ public class OrderController extends BaseController {
         }
     }
 
-    @RequiresPermissions("customer:groupcustomer:view")
+    @RequiresPermissions("customer:groupCustomer:view")
     @GetMapping("/groupCustomer")
     public String groupCustomer(){
         return prefix+"/groupCustomer";
@@ -166,7 +168,17 @@ public class OrderController extends BaseController {
     }
 
 
-    @RequiresPermissions("customer:groupcustomer:view")
+    @RequiresPermissions("order:subscribe:view")
+    @PostMapping("/queryGroupCustomer")
+    @ResponseBody
+    public TableDataInfo queryGroupCustomer(CustGroupBean bean){
+        startPage();
+        List<CustGroupBean> ls = orderSV.queryGroupCustomer(bean);
+        return getDataTable(ls);
+    }
+
+
+    @RequiresPermissions("customer:groupCustomer:view")
     @PostMapping("/queryGroupSubscribe/{customerID}")
     @ResponseBody
     public TableDataInfo queryGroupCustomer(@PathVariable("customerID") Long custGroupId){
@@ -175,7 +187,7 @@ public class OrderController extends BaseController {
         return new TableDataInfo(ls,ls.size());
     }
 
-    @RequiresPermissions("customer:groupcustomer:addUser")
+    @RequiresPermissions("customer:groupCustomer:addUser")
     @PostMapping("/queryUser")
     @ResponseBody
     public TableDataInfo queryUser(UserBean cond){
@@ -185,7 +197,7 @@ public class OrderController extends BaseController {
     }
 
 
-    @RequiresPermissions("customer:groupcustomer:addUser")
+    @RequiresPermissions("customer:groupCustomer:addUser")
     @PostMapping("/addUser2Group/{userId}/{groupId}/{accountId}/{roleType}")
     @ResponseBody
     public AjaxResult addUser2Group(@PathVariable("userId") Long userId,@PathVariable("groupId") Long groupId,@PathVariable("accountId") Long accountId,@PathVariable("roleType") String roleType){
@@ -200,7 +212,7 @@ public class OrderController extends BaseController {
         }
     }
 
-    @RequiresPermissions("customer:groupcustomer:view")
+    @RequiresPermissions("customer:groupCustomer:view")
     @PostMapping("/queryGroupAccount/{custId}")
     @ResponseBody
     public TableDataInfo queryGroupAccount(@PathVariable("custId") Long custId){
@@ -210,7 +222,7 @@ public class OrderController extends BaseController {
     }
 
 
-    @RequiresPermissions("account:groupcustomer:add")
+    @RequiresPermissions("account:groupCustomer:add")
     @PostMapping("/newAccount")
     @ResponseBody
     public AjaxResult newAccount(AccountBean bean){

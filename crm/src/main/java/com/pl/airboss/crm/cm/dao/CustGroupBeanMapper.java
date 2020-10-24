@@ -19,4 +19,6 @@ public interface CustGroupBeanMapper {
 
     CustGroupBean selectByCustId(Long custId);
     int delete(Long custId);
+
+    List<CustGroupBean> selectList(CustGroupBean record);
 }

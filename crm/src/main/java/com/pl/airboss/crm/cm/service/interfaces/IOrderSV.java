@@ -29,4 +29,5 @@ public interface IOrderSV {
     public int removeGroupCust(Long custId)throws Exception;
 
 
+    public List<CustGroupBean> queryGroupCustomer(CustGroupBean bean);
 }

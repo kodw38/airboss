@@ -331,4 +331,8 @@ public class OrderSVImpl implements IOrderSV {
         return 1;
     }
 
+    @Override
+    public List<CustGroupBean> queryGroupCustomer(CustGroupBean bean) {
+        return groupBeanMapper.selectList(bean);
+    }
 }
