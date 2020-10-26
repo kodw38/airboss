@@ -71,6 +71,8 @@ public class CustGroupBean extends CustomerBean{
 
     private String rsrvStr2;
 
+    private String groupContactPhone;
+
     public Integer getPartitionId() {
         return partitionId;
     }
@@ -341,5 +343,13 @@ public class CustGroupBean extends CustomerBean{
 
     public void setRsrvStr2(String rsrvStr2) {
         this.rsrvStr2 = rsrvStr2 == null ? null : rsrvStr2.trim();
+    }
+
+    public String getGroupContactPhone() {
+        return groupContactPhone;
+    }
+
+    public void setGroupContactPhone(String groupContactPhone) {
+        this.groupContactPhone = groupContactPhone;
     }
 }

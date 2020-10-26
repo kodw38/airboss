@@ -61,6 +61,15 @@ public class OrderSVImpl implements IOrderSV {
         CustomerBean b = new CustomerBean();
         b.setPsptTypeCode(psptTypeCode);
         b.setPsptId(psptId);
+        b.setCustType("0");//集团客户
+        List<CustPersonBean> list = personBeanMapper.selectList(b);
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+        /*CustomerBean b = new CustomerBean();
+        b.setPsptTypeCode(psptTypeCode);
+        b.setPsptId(psptId);
         List<CustomerBean> q = customerBeanMapper.select(b);
         if(null != q && q.size()==1) {
             CustomerBean c = q.get(0);
@@ -75,18 +84,26 @@ public class OrderSVImpl implements IOrderSV {
                 }
             }
         }
-        return null;
+        return null;*/
     }
 
     public CustGroupBean queryGroupCustomer(String psptTypeCode, String psptId){
         CustomerBean b = new CustomerBean();
         b.setPsptTypeCode(psptTypeCode);
         b.setPsptId(psptId);
+        b.setCustType("1");//集团客户
+        List<CustGroupBean> list = groupBeanMapper.selectList(b);
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+        /*CustomerBean b = new CustomerBean();
+        b.setPsptTypeCode(psptTypeCode);
+        b.setPsptId(psptId);
         List<CustomerBean> q = customerBeanMapper.select(b);
         if(null != q && q.size()==1) {
             CustomerBean c = q.get(0);
-            if ("0".equalsIgnoreCase(c.getCustType())) {
-                //个人客户
+            if ("1".equalsIgnoreCase(c.getCustType())) { //集团客户
                 CustGroupBean cq = new CustGroupBean();
                 cq.setPsptTypeCode(psptTypeCode);
                 cq.setPsptId(psptId);
@@ -96,7 +113,7 @@ public class OrderSVImpl implements IOrderSV {
                 }
             }
         }
-        return null;
+        return null;*/
     }
 
 

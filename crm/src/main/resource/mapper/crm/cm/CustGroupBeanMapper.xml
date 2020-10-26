@@ -48,26 +48,33 @@
   <select id="select" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.CustomerBean">
     select * from tf_f_cust_group
     where 1=1
-    <if test="psptTypeCode!=null and psptTypeCode!=''">
+    and CUST_ID=#{custId}
+    <!--<if test="psptTypeCode!=null and psptTypeCode!=''">
       and PSPT_TYPE_CODE=#{psptTypeCode}
     </if>
     <if test="psptId!=null and psptId!=''">
       and PSPT_ID=#{psptId}
-    </if>
+    </if>-->
   </select>
 
 
   <select id="selectList" resultMap="BaseResultMap" parameterType="com.pl.airboss.crm.cm.bean.CustomerBean">
-    SELECT t2.* FROM tf_f_customer t1 INNER JOIN tf_f_cust_group t2 ON t1.cust_id = t2.cust_id
-    WHERE t1.`CUST_TYPE` = '1'
+    SELECT t2.*,t1.PSPT_TYPE_CODE,t1.PSPT_ID FROM tf_f_customer t1 INNER JOIN tf_f_cust_group t2 ON t1.cust_id = t2.cust_id
+    WHERE 1=1
     <if test="psptTypeCode!=null and psptTypeCode!=''">
       and t1.PSPT_TYPE_CODE=#{psptTypeCode}
     </if>
     <if test="psptId!=null and psptId!=''">
       and t1.PSPT_ID=#{psptId}
     </if>
+    <if test="custId!=null and custId!=''">
+      and t1.CUST_ID=#{custId}
+    </if>
     <if test="custName!=null and custName!=''">
       and t1.CUST_NAME like concat('%',#{custName},'%')
+    </if>
+    <if test="custType!=null and custType!=''">
+      and t1.CUST_TYPE= #{custType}
     </if>
   </select>
 

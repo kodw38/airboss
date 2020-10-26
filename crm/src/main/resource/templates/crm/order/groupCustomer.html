@@ -11,70 +11,81 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            客户名称：<input type="text" id="custName" name="custName"/>
+                            <input id="custId" name="custId" type="hidden"/>
+                            集团名称：<input type="text" id="custName" name="custName"  />
                         </li>
                         <li>
-                            证件类型：<select name="psptTypeCode" th:with="type=${@SysService.getType('sys_normal_disable')}">
-                            <option value="">所有</option>
+                            证件类型：<select id="psptTypeCode" name="psptTypeCode" th:with="type=${@SysService.getType('cust_cert_type')}">
+                            <option value="">--请选择--</option>
                             <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                         </select>
-                        <li>
-                            证件编码：<input type="text" id="psptId" name="psptTypepsptIdCode"/>
-                        </li>
                         </li>
                         <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                            证件编码：<input type="text" id="psptId" name="psptId"/>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="searchCustomer()"><i
                                     class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-warning btn-rounded btn-sm" onclick="resetPre()"><i
-                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                           <a class="btn btn-warning btn-rounded btn-sm" onclick="saveCustomer()"><i
+                                    class="fa fa-refresh"></i>&nbsp;保存</a>
+                        </li>
+                        <li>
+                            集团类型：<input type="text" id="groupType" name="groupType" />
+                        </li>
+                        <li>
+                            E-MAIL：<input type="text" id="email" name="email"  />
+                        </li>
+                        <li>
+                            联系电话：<input type="text" id="groupContactPhone" name="groupContactPhone" />
+                        </li>
+                        <li>
+                            联系地址：<input type="text" id="groupAddr" name="groupAddr" />
                         </li>
                     </ul>
                 </div>
             </form>
         </div>
 
-        <div class="btn-group-sm" id="toolbar" role="group">
-            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:numPattern:add">
-                <i class="fa fa-plus"></i> 新增
+        <div class="btn-group-sm" id="toolbar-user" role="group">
+            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:resPhoneSegment:add">
+                <i class="fa fa-plus"></i> 增加成员
             </a>
-            <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="res:numPattern:edit">
-                <i class="fa fa-edit"></i> 编辑
-            </a>
-            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="res:numPattern:remove">
-                <i class="fa fa-remove"></i> 删除
-            </a>
-
-            <!--<a class="btn btn-info" onclick="$.table.importExcel()" shiro:hasPermission="res:resPhonePattern:import">
-                <i class="fa fa-upload"></i> 导入
-            </a>-->
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="res:numPattern:export">
-                <i class="fa fa-download"></i> 导出
-            </a>
-
-            <a class="btn btn-success" onclick="pricePatternConfig()" shiro:hasPermission="res:pricePattern:add">
-                <i class="fa fa-plus"></i> 资费配置
-            </a>
-
         </div>
-
         <div class="col-sm-12 select-table table-striped">
-            <table id="bootstrap-table"></table>
+            <table id="bootstrap-table-user"></table>
         </div>
+
+
+
+        <div class="btn-group-sm" id="toolbar-account" role="group">
+            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:resPhoneSegment:add">
+                <i class="fa fa-plus"></i> 增加账户
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table-account"></table>
+        </div>
+
     </div>
 </div>
 <th:block th:include="include :: footer"/>
 <script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('res:numPattern:edit')}]];
-    var removeFlag = [[${@permission.hasPermi('res:numPattern:remove')}]];
-    var numGenFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
+    var editFlag = [[${@permission.hasPermi('customer:groupCustomer:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('customer:groupCustomer:remove')}]];
+    var userManageFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
+    var accountManageFlag = [[${@permission.hasPermi('res:segPattern:num_generate')}]];
 
     var datas = [[${@SysService.getType('sys_normal_disable')}]];
-    var prefix = ctx + "crm/res";
-    var resType=[[${@SysService.getType('res_type')}]];
+    var prefix = ctx + "crm/order";
+    var groupTypes=[[${@SysService.getType('cust_group_type')}]];
 
     $(function () {
+        debugger;
         var options = {
-            url: prefix + "/listPhonePattern",
+            id: "bootstrap-table-user",
+            toolbar: "toolbar-user",
+           // url: prefix + "/queryGroupCustomer",
             createUrl: prefix + "/addNumPattern",
             updateUrl: prefix + "/editNumPattern/{id}",
             removeUrl: prefix + "/removeNumPattern",
@@ -82,74 +93,59 @@
             importUrl: prefix + "/importData",
             importTemplateUrl: prefix + "/importTemplate",
             // queryParams: queryParams,
-            sortName: "patternDefId",
+            sortName: "partitionId",
             sortOrder: "desc",
+            height:"100px",
             showPageGo: true,
             modalName: "号码",
-            columns: [{
+            columns: [
+                /*{
                 checkbox: true
-            },
+            },*/
                 {
-                    field: 'patternDefId',
-                    title: '模式编号'
-                },
-                {
-                    field: 'patternDefName',
-                    title: '模式名称'
-                },
-                {
-                    field: 'bitRel',
-                    title: '号码模式'
-                },
-                {
-                    field: 'effectiveDate',
-                    title: '生效时间',
+                    field: 'partitionId',
+                    title: '序号',
                     visible: false
                 },
                 {
-                    field: 'expireDate',
-                    title: '失效时间',
+                    field: 'custId',
+                    title: '用户'
+                },
+                {
+                    field: 'groupId',
+                    title: '套餐',
                     visible: false
                 },
                 {
-                    field: 'resType',
-                    title: '资源类型',
-                    formatter:function (value,row,index) {
-                        return $.table.selectDictLabel(resType,value);
-                    }
+                    field: 'custName',
+                    title: '归属集团'
                 },
-                {
-                    field: 'ipriceMode',
-                    title: '资费Id',
-                    visible: false
-                },
-                {
-                    field: 'modeDesc',
-                    title: '资费'
-                },
-                {
-                    /*visible: editFlag == 'hidden' ? false : true,
-                    title: '状态',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        return statusTools(row);
-                    }*/
-                    field: 'state',
-                    title: '状态',
-                    align: "center",
+                /*{
+                    field: 'groupType',
+                    title: '集团类型',
+                    //align: 'center',
                     formatter: function(value, item, index) {
-                        return $.table.selectDictLabel(datas, item.state);
+                        return $.table.selectDictLabel(groupTypes, item.groupType);
                     }
+                },*/
+                {
+                    field: 'email',
+                    title: '资费',
+                },
+                {
+                    field: 'createDate',
+                    title: '生效日期',
+                    sortable: true
                 },
                 {
                     title: '操作',
                     align: 'center',
                     formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="selectPricePattern(\'' + row.patternDefId + '\')"><i class="fa fa-send"></i>资费</a> ');
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.patternDefId + '\')"><i class="fa fa-edit"></i>修改</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.patternDefId + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        // actions.push('<a class="btn btn-info btn-xs ' + numGenFlag + '" href="javascript:void(0)" onclick="generateNumBySegPattern(\'' + row.patternDefId + '\')"><i class="fa fa-send"></i>生成号码</a>');
+                        /*actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.partitionId + '\')"><i class="fa fa-edit"></i>修改</a> ');*/
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.partitionId + '\')"><i class="fa fa-remove"></i>解除</a> ');
+                        /*actions.push('<a class="btn btn-info btn-xs ' + userManageFlag + '" href="javascript:void(0)" onclick="userManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-user"></i>用户</a> ');
+                        actions.push('<a class="btn btn-info btn-xs ' + accountManageFlag + '" href="javascript:void(0)" onclick="accountManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-list-ul"></i>账户</a>');*/
                         return actions.join('');
                     }
                 }]
@@ -158,40 +154,180 @@
     });
 
 
-    /* 号码模式状态显示 */
-    function statusTools(row) {
-        if (row.state == 0) {
-            return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.patternDefId + '\')"></i> ';
-        } else {
-            return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.patternDefId + '\')"></i> ';
+
+
+    $(function () {
+        debugger;
+        var options = {
+            id: "bootstrap-table-account",
+            toolbar: "toolbar-account",
+            // url: prefix + "/queryGroupCustomer",
+            createUrl: prefix + "/addNumPattern",
+            updateUrl: prefix + "/editNumPattern/{id}",
+            removeUrl: prefix + "/removeNumPattern",
+            exportUrl: prefix + "/exportNumPattern",
+            importUrl: prefix + "/importData",
+            importTemplateUrl: prefix + "/importTemplate",
+            // queryParams: queryParams,
+            sortName: "partitionId",
+            sortOrder: "desc",
+            showPageGo: true,
+            height:"100px" ,
+            modalName: "号码",
+            columns: [
+                /*{
+                checkbox: true
+            },*/
+                {
+                    field: 'partitionId',
+                    title: '序号'
+                },
+                {
+                    field: 'custId',
+                    title: '账户'
+                },
+                {
+                    field: 'groupId',
+                    title: '集团ID',
+                    visible: false
+                },
+                {
+                    field: 'custName',
+                    title: '集团名称'
+                },
+                {
+                    field: 'groupType',
+                    title: '集团类型',
+                    //align: 'center',
+                    formatter: function(value, item, index) {
+                        return $.table.selectDictLabel(groupTypes, item.groupType);
+                    }
+                },
+                {
+                    field: 'email',
+                    title: 'E-MAIL',
+                },
+                {
+                    field: 'groupContactPhone',
+                    title: '联系电话'
+                },
+                {
+                    field: 'groupAddr',
+                    title: '联系地址'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.partitionId + '\')"><i class="fa fa-edit"></i>修改</a> ');
+                        /*actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.partitionId + '\')"><i class="fa fa-remove"></i>删除</a> ');*/
+                        actions.push('<a class="btn btn-info btn-xs ' + userManageFlag + '" href="javascript:void(0)" onclick="userManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-user"></i>用户</a> ');
+                        actions.push('<a class="btn btn-info btn-xs ' + accountManageFlag + '" href="javascript:void(0)" onclick="accountManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-list-ul"></i>账户</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+
+
+    function searchCustomer() {
+        debugger;
+        let psptId = $("input[name='psptId']").val();
+       // let psptTypeCode = $("input[name='psptTypeCode']").val();
+        var psptTypeCode = $("select[name='psptTypeCode']").val();
+        if ((psptId==null || psptId=='') || (psptTypeCode==null || psptTypeCode=='')) {
+            $.modal.alertWarning("请输入证件类型和编码");
+            return;
         }
+        /*var state =  $("input[name='state']:checked").val();*/
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/queryGroupCustomer/" + psptTypeCode + "/" + psptId,
+            data : {
+                /*"patternDefId": patternDefId,
+                "patternDefName": patternDefName*/
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                console.log(data);
+               // $.operate.successCallback(data);
+                if (data != null && data != "" && data != "null") {
+                    setFeildValue(data);//设置字段值
+                    let feildsArr = ['psptTypeCode','psptId','custName','email','groupContactPhone','groupAddr','groupType'];
+                    setFeildEditStatus(feildsArr,false);
+                } else {
+                    //客户不存在
+                    $.modal.alertWarning("客户不存在，请创建新的客户并保存");
+
+
+                }
+
+            }
+        });
+        
+        function saveCustomer() {
+            let custId = $("input[name='custId']").val();
+            if (custId > 0) { //已存在客户
+
+            } else { //新建
+
+            }
+
+        }
+
+        function setFeildValue(data) {
+            $("#custId").val(data.custId);
+            $("#custName").val(data.custName);
+            $("#email").val(data.email);
+            $("#groupContactPhone").val(data.groupContactPhone);
+            $("#groupAddr").val(data.groupAddr);
+            $("#groupType").val(data.groupType);
+        }
+
+        function setFeildEditStatus(feildsArr,status) {
+            $.each(feildsArr,function(index,feildName){
+                if (status) {//true
+                    $("#"+feildName).css("background", "");
+                    $("#"+feildName).removeAttr("onfocus")
+                    $("#"+feildName).css("cursor", "text");
+                } else {
+                    $("#"+feildName).attr("onfocus", "this.blur()");
+                    $("#"+feildName).css("background", "#CCCCCC");
+                    $("#"+feildName).css("cursor", "not-allowed");
+                }
+                //$('#button').attr('disabled',"true");添加disabled属性
+                //$('#button').removeAttr("disabled"); 移除disabled属性
+                //alert(index+"..."+value);
+                /*$("#custName").attr("readOnly","true");*/
+                // $('#custName').attr("disabled",true);
+            });
+
+        }
+
+
     }
 
-    /* 号码模式状态管理-停用 */
-    function disable(patternDefId) {
-        $.modal.confirm("确认要停用号码模式吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "patternDefId": patternDefId, "state": 0 });
-        })
-    }
-
-    /* 号码模式状态管理启用 */
-    function enable(patternDefId) {
-        $.modal.confirm("确认要启用号码模式吗？", function() {
-            $.operate.post(prefix + "/changeNumPatternStatus", { "patternDefId": patternDefId, "state": 1 });
-        })
-    }
-
-    function add() {
+    function addUser() {
         /*var dictType = $("#dictType option:selected").val();
          alert(dictType);
          $.operate.add(dictType);*/
         $.operate.add("");//创建的url无需参数
     }
 
+    function addAccount() {
+        $.operate.add("");//创建的url无需参数
+    }
+
 
     function selectPricePattern(patternDefId) {
         debugger;
-
         var url = prefix + '/selectPricePattern/' + patternDefId;
         $.modal.open("选择资费", url);
         /*$.ajax({
@@ -228,28 +364,27 @@
         $.modal.openTab("资费配置", url);
     }
 
+    function options1() {
+        var temp = "";
+        var obj = table.config['bootstrap-table1'];
+        for (var i in obj) {
+            temp += i + ":" + obj[i] + "<br/>";
+        }
+        $.modal.alert(temp);
+    }
+
+    function options2() {
+        var temp = "";
+        var obj = table.config['bootstrap-table2'];
+        for (var i in obj) {
+            temp += i + ":" + obj[i] + "<br/>";
+        }
+        $.modal.alert(temp);
+    }
+
 
     function resetPre() {
         $.form.reset();
     }
 </script>
 </body>
-
-<!-- 导入区域 -->
-<!--<script id="importTpl" type="text/template">
-    <form enctype="multipart/form-data" class="mt20 mb10">
-        <div class="col-xs-offset-1">
-            <input type="file" id="file" name="file"/>
-            <div class="mt10 pt5">
-                <input type="checkbox" id="updateSupport" name="updateSupport" title="如果号码名称已经存在，更新这条数据。"> 是否更新已经存在的号码名称数据
-                &nbsp;	<a onclick="$.table.importTemplate()" class="btn btn-default btn-xs"><i class="fa fa-file-excel-o"></i> 下载模板</a>
-            </div>
-            <font color="red" class="pull-left mt10">
-                提示：仅允许导入“xls”或“xlsx”格式文件！
-            </font>
-        </div>
-    </form>
-</script>-->
-
-
-</html>

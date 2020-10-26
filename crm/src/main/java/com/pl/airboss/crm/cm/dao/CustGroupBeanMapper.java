@@ -2,6 +2,7 @@ package com.pl.airboss.crm.cm.dao;
 
 import com.pl.airboss.crm.cm.bean.CustGroupBean;
 import com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs;
+import com.pl.airboss.crm.cm.bean.CustomerBean;
 import com.pl.airboss.crm.cm.bean.UserBean;
 
 import java.util.List;
@@ -20,5 +21,5 @@ public interface CustGroupBeanMapper {
     CustGroupBean selectByCustId(Long custId);
     int delete(Long custId);
 
-    List<CustGroupBean> selectList(CustGroupBean record);
+    List<CustGroupBean> selectList(CustomerBean record);
 }
