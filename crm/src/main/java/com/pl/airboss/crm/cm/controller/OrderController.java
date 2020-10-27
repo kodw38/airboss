@@ -19,6 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -194,7 +195,7 @@ public class OrderController extends BaseController {
     @RequiresPermissions("customer:groupCustomer:view")
     @PostMapping("/queryGroupSubscribe")
     @ResponseBody
-    public TableDataInfo queryGroupCustomer(UserBean bean){
+    public TableDataInfo queryGroupSubscribe(UserBean bean){
         startPage();
         if (bean == null || bean.getCustId()==null || bean.getCustId()==0) {
             return getDataTable(new ArrayList<>());
@@ -203,13 +204,24 @@ public class OrderController extends BaseController {
         return getDataTable(ls);
     }
 
+    /**
+     * 添加集团用户
+     */
+    @GetMapping("/addGroupUser/{custId}")
+    public String selectUser(@PathVariable("custId") String custId, ModelMap mmap) {
+        mmap.put("custId", custId);
+        return prefix + "/addGroupUser";
+    }
+
+
+
     @RequiresPermissions("customer:groupCustomer:addUser")
     @PostMapping("/queryUser")
     @ResponseBody
     public TableDataInfo queryUser(UserBean cond){
         startPage();
         List<UserBean> ls = orderSV.queryUser(cond);
-        return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
 
@@ -218,7 +230,7 @@ public class OrderController extends BaseController {
     @ResponseBody
     public AjaxResult addUser2Group(@PathVariable("userId") Long userId,@PathVariable("groupId") Long groupId,@PathVariable("accountId") Long accountId,@PathVariable("roleType") String roleType){
         try {
-            int n = orderSV.addUser2Group(userId, groupId, accountId,roleType);
+            int n = 1;//orderSV.addUser2Group(userId, groupId, accountId,roleType);
             if (n > 0)
                 return success();
             else

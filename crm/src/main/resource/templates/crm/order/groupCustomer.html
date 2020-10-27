@@ -61,7 +61,7 @@
 
 
         <div class="btn-group-sm" id="toolbar-user" role="group">
-            <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:resPhoneSegment:add">
+            <a class="btn btn-success" onclick="addUser()" shiro:hasPermission="res:resPhoneSegment:add">
                 <i class="fa fa-plus"></i> 增加成员
             </a>
         </div>
@@ -166,7 +166,7 @@
         var options = {
             id: "bootstrap-table-account",
             toolbar: "toolbar-account",
-            // url: prefix + "/queryGroupCustomer",
+            //url: prefix + "/queryGroupAccount",
             createUrl: prefix + "/addNumPattern",
             updateUrl: prefix + "/editNumPattern/{id}",
             removeUrl: prefix + "/removeNumPattern",
@@ -323,9 +323,15 @@
         }
     }
 
+    /* 分配用户-选择用户 */
     function addUser() {
-        $.operate.add("");//创建的url无需参数
+        var url = prefix + '/addGroupUser/' + $("#custId").val();
+        $.modal.open("选择用户", url);
     }
+
+   /* function addUser() {
+        $.operate.add("");//创建的url无需参数
+    }*/
 
     function addAccount() {
         $.operate.add("");//创建的url无需参数

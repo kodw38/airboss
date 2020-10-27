@@ -71,14 +71,14 @@
     <if test="servType != null" >
       and SERV_TYPE=#{servType}
     </if>
-    <if test="serialNumber != null" >
+    <if test="serialNumber != null and serialNumber != ''" >
       and SERIAL_NUMBER=#{serialNumber}
     </if>
     <if test="userPasswd != null" >
       and USER_PASSWD=#{userPasswd}
     </if>
 
-    <if test="custId != null" >
+    <if test="custId != null and custId != ''" >
       and CUST_ID=#{custId}
     </if>
     <if test="usecustId != null" >
