@@ -42,6 +42,22 @@
     <result column="GROUP_CONTACT_PHONE" property="groupContactPhone" jdbcType="LONGVARCHAR" />
     <result column="RSRV_STR7" property="rsrvStr7" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+
+  <resultMap id="UserResultMap" type="com.pl.airboss.crm.cm.bean.UserBean" >
+     <id column="PARTITION_ID" property="partitionId" jdbcType="BIGINT" />
+     <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+     <result column="SERIAL_NUMBER" property="serialNumber" jdbcType="VARCHAR" />
+     <result column="CUST_ID" property="custId" jdbcType="BIGINT" />
+     <result column="PRODUCT_ID" property="productId" jdbcType="BIGINT" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="BRAND_CODE" property="brandCode" jdbcType="VARCHAR" />
+     <result column="IN_DATE" property="inDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+
+
+
   <sql id="Blob_Column_List" >
     PNATIONAL_GROUP_NAME, GROUP_CONTACT_PHONE, RSRV_STR7
   </sql>
@@ -82,7 +98,8 @@
   <select id="selectByCustId" resultMap="BaseResultMap" parameterType="java.lang.Long">
     select * from tf_f_cust_group where CUST_ID=#{custId}
   </select>
-  <select id="selectUsers" parameterType="java.lang.Long" resultType="com.pl.airboss.crm.cm.bean.UserBean">
+ <!-- <select id="selectUsers" parameterType="java.lang.Long" resultType="com.pl.airboss.crm.cm.bean.UserBean">-->
+  <select id="selectUsers" parameterType="java.lang.Long" resultMap="UserResultMap">
     SELECT u.* FROM tf_f_cust_group g,tf_f_user u, tf_f_user_member m WHERE g.CUST_ID=m.VPN_ID AND m.MEMBER_ROLE_NUMBER=u.SERIAL_NUMBER AND g.CUST_ID= #{custId}
   </select>
   <insert id="insert" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBeanWithBLOBs" >

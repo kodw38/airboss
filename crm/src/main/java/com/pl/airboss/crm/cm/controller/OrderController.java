@@ -8,6 +8,7 @@ import com.pl.airboss.crm.cm.service.interfaces.IOrderSV;
 import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
+import com.pl.airboss.utils.StringUtils;
 import com.pl.airboss.web.bean.SecOperatorBean;
 import com.pl.airboss.web.controller.BaseController;
 import com.pl.airboss.web.utils.AjaxResult;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -132,7 +134,8 @@ public class OrderController extends BaseController {
     public TableDataInfo queryGroup(CustGroupBean cond){
         startPage();
         List<CustGroupBean> ls = orderSV.queryCustGroup(cond);
-        return new TableDataInfo(ls,ls.size());
+       // return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
     }
 
     @RequiresPermissions("order:subscribe:add")
@@ -178,13 +181,26 @@ public class OrderController extends BaseController {
     }
 
 
-    @RequiresPermissions("customer:groupCustomer:view")
+    /*@RequiresPermissions("customer:groupCustomer:view")
     @PostMapping("/queryGroupSubscribe/{customerID}")
     @ResponseBody
     public TableDataInfo queryGroupCustomer(@PathVariable("customerID") Long custGroupId){
         startPage();
         List<UserBean> ls = orderSV.queryGroupUserByGroupCustId(custGroupId);
-        return new TableDataInfo(ls,ls.size());
+       // return new TableDataInfo(ls,ls.size());
+        return getDataTable(ls);
+    }*/
+
+    @RequiresPermissions("customer:groupCustomer:view")
+    @PostMapping("/queryGroupSubscribe")
+    @ResponseBody
+    public TableDataInfo queryGroupCustomer(UserBean bean){
+        startPage();
+        if (bean == null || bean.getCustId()==null || bean.getCustId()==0) {
+            return getDataTable(new ArrayList<>());
+        }
+        List<UserBean> ls = orderSV.queryGroupUserByGroupCustId(bean.getCustId());
+        return getDataTable(ls);
     }
 
     @RequiresPermissions("customer:groupCustomer:addUser")

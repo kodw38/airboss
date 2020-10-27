@@ -7,7 +7,7 @@
 <div class="container-div">
     <div class="row">
         <div class="col-sm-12 search-collapse">
-            <form id="data-form">
+            <form id="data-cust-form">
                 <div class="select-list">
                     <ul>
                         <li>
@@ -47,6 +47,19 @@
             </form>
         </div>
 
+       <!-- <div class="col-sm-12 search-collapse">
+            <form id="data-form-user">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            custId：<input type="text" name="custId" id="custId"/>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>-->
+
+
         <div class="btn-group-sm" id="toolbar-user" role="group">
             <a class="btn btn-success" onclick="add()" shiro:hasPermission="res:resPhoneSegment:add">
                 <i class="fa fa-plus"></i> 增加成员
@@ -85,14 +98,14 @@
         var options = {
             id: "bootstrap-table-user",
             toolbar: "toolbar-user",
-           // url: prefix + "/queryGroupCustomer",
+            url: prefix + "/queryGroupSubscribe",
             createUrl: prefix + "/addNumPattern",
             updateUrl: prefix + "/editNumPattern/{id}",
             removeUrl: prefix + "/removeNumPattern",
             exportUrl: prefix + "/exportNumPattern",
             importUrl: prefix + "/importData",
             importTemplateUrl: prefix + "/importTemplate",
-            // queryParams: queryParams,
+            //queryParams: queryParams,
             sortName: "partitionId",
             sortOrder: "desc",
             height:"100px",
@@ -108,32 +121,24 @@
                     visible: false
                 },
                 {
-                    field: 'custId',
+                    field: 'serialNumber',
                     title: '用户'
                 },
                 {
-                    field: 'groupId',
+                    field: 'productId',
                     title: '套餐',
                     visible: false
                 },
                 {
-                    field: 'custName',
+                    field: 'cityCode',
                     title: '归属集团'
                 },
-                /*{
-                    field: 'groupType',
-                    title: '集团类型',
-                    //align: 'center',
-                    formatter: function(value, item, index) {
-                        return $.table.selectDictLabel(groupTypes, item.groupType);
-                    }
-                },*/
                 {
-                    field: 'email',
+                    field: 'brandCode',
                     title: '资费',
                 },
                 {
-                    field: 'createDate',
+                    field: 'inDate',
                     title: '生效日期',
                     sortable: true
                 },
@@ -168,7 +173,7 @@
             exportUrl: prefix + "/exportNumPattern",
             importUrl: prefix + "/importData",
             importTemplateUrl: prefix + "/importTemplate",
-            // queryParams: queryParams,
+            //queryParams: queryParams,
             sortName: "partitionId",
             sortOrder: "desc",
             showPageGo: true,
@@ -235,21 +240,19 @@
 
     function searchCustomer() {
         debugger;
+        /*var state =  $("input[name='state']:checked").val();*/
         let psptId = $("input[name='psptId']").val();
-       // let psptTypeCode = $("input[name='psptTypeCode']").val();
         var psptTypeCode = $("select[name='psptTypeCode']").val();
         if ((psptId==null || psptId=='') || (psptTypeCode==null || psptTypeCode=='')) {
             $.modal.alertWarning("请输入证件类型和编码");
             return;
         }
-        /*var state =  $("input[name='state']:checked").val();*/
         $.ajax({
             cache : true,
             type : "POST",
             url : prefix + "/queryGroupCustomer/" + psptTypeCode + "/" + psptId,
             data : {
-                /*"patternDefId": patternDefId,
-                "patternDefName": patternDefName*/
+                /*"patternDefId": patternDefId*/
             },
             async : false,
             error : function(request) {
@@ -262,15 +265,25 @@
                     setFeildValue(data);//设置字段值
                     let feildsArr = ['psptTypeCode','psptId','custName','email','groupContactPhone','groupAddr','groupType'];
                     setFeildEditStatus(feildsArr,false);
+                    //加载用户信息querySubscribe
+                    let custId = data.custId;
+                    querySubscribe(custId);
+                    //加载账户信息
+
                 } else {
                     //客户不存在
                     $.modal.alertWarning("客户不存在，请创建新的客户并保存");
-
 
                 }
 
             }
         });
+
+        function querySubscribe(custId) {
+            debugger;
+          //  $.operate.submit(url, "post", "json", data);
+            $.table.search('data-cust-form', 'bootstrap-table-user');
+        }
         
         function saveCustomer() {
             let custId = $("input[name='custId']").val();
@@ -279,7 +292,6 @@
             } else { //新建
 
             }
-
         }
 
         function setFeildValue(data) {
@@ -308,16 +320,10 @@
                 /*$("#custName").attr("readOnly","true");*/
                 // $('#custName').attr("disabled",true);
             });
-
         }
-
-
     }
 
     function addUser() {
-        /*var dictType = $("#dictType option:selected").val();
-         alert(dictType);
-         $.operate.add(dictType);*/
         $.operate.add("");//创建的url无需参数
     }
 

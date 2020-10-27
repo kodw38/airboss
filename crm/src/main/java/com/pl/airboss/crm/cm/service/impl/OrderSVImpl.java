@@ -132,7 +132,8 @@ public class OrderSVImpl implements IOrderSV {
     }
 
     public List<UserBean> queryGroupUserByGroupCustId(Long custId){
-        return groupBeanMapper.selectUsers(custId);
+        List<UserBean> userBeans = groupBeanMapper.selectUsers(custId);
+        return userBeans;
     }
     public List<AccountBean> queryCustAccount(Long custId){
         return accountBeanMapper.selectByCustId(custId);
