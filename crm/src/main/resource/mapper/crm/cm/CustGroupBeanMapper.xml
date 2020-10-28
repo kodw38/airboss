@@ -87,7 +87,7 @@
       and t1.CUST_ID=#{custId}
     </if>
     <if test="custName!=null and custName!=''">
-      and t1.CUST_NAME like concat('%',#{custName},'%')
+      and t2.CUST_NAME like concat('%',#{custName},'%')
     </if>
     <if test="custType!=null and custType!=''">
       and t1.CUST_TYPE= #{custType}
@@ -98,7 +98,7 @@
   <select id="selectByCustId" resultMap="BaseResultMap" parameterType="java.lang.Long">
     select * from tf_f_cust_group where CUST_ID=#{custId}
   </select>
- <!-- <select id="selectUsers" parameterType="java.lang.Long" resultType="com.pl.airboss.crm.cm.bean.UserBean">-->
+ <!--<select id="selectUsers" parameterType="java.lang.Long" resultType="com.pl.airboss.crm.cm.bean.UserBean">-->
   <select id="selectUsers" parameterType="java.lang.Long" resultMap="UserResultMap">
     SELECT u.* FROM tf_f_cust_group g,tf_f_user u, tf_f_user_member m WHERE g.CUST_ID=m.VPN_ID AND m.MEMBER_ROLE_NUMBER=u.SERIAL_NUMBER AND g.CUST_ID= #{custId}
   </select>
