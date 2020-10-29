@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('分配角色选择用户')" />
+</head>
+
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="role-form">
+                <input type="hidden" id="custId" name="custId" th:value="${custId}">
+               <!-- <input type="hidden" id="roleCode" name="roleCode" th:value="${role.roleCode}">-->
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            手机号码：<input type="text" name="serialNumber"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var datas = [[${@SysService.getType('sys_normal_disable')}]];
+    var admintypes = [[${@SysService.getType('sys_isadmin')}]];
+    var prefix = ctx + "crm/order";
+
+    $(function() {
+        var options = {
+            url: prefix + "/queryUser",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            importUrl: prefix + "/importData",
+            importTemplateUrl: prefix + "/importTemplate",
+            queryParams: queryParams,
+            sortName: "inDate",
+            sortOrder: "desc",
+            modalName: "用户",
+            showSearch: false,
+            showRefresh: false,
+            showToggle: false,
+            showColumns: false,
+            clickToSelect: true,
+            rememberSelected: true,
+            columns: [{
+                field:'selectItem',
+                radio:true
+            },
+               /* {
+                    field: 'partitionId',
+                    title: '序号'
+                },*/
+                {
+                    field: 'userId',
+                    title: '用户Id'
+                },
+                {
+                    field: 'serialNumber',
+                    title: '用户'
+                },
+                {
+                    field: 'productId',
+                    title: '套餐'
+                },
+               {
+                    field: 'cityCode',
+                    title: '归属集团'
+                },
+                {
+                    field: 'brandCode',
+                    title: '资费'
+                },
+                {
+                    field: 'inDate',
+                    title: '生效日期',
+                    sortable: true
+                }]
+        };
+        $.table.init(options);
+    });
+
+    function queryParams(params) {
+        var search = $.table.queryParams(params);
+       // search.custId = $("#custId").val();
+        return search;
+    }
+
+    /* 添加用户-选择用户-提交 */
+    function submitHandler() {
+        debugger;
+        var rows = $.table.selectFirstColumns();
+        if (rows.length == 0) {
+            $.modal.alertWarning("请至少选择一条记录");
+            return;
+        }
+        var data = {};//{ "roleCode": $("#roleCode").val(), "userIds": rows.join() };
+        let userId = $.table.selectColumns("userId");
+        let groupId = $.table.selectColumns("productId");
+        let accountId = $.table.selectColumns("cityCode");
+        let roleType = $.table.selectColumns("brandCode");
+        var url = prefix + "/addUser2Group/"+userId+"/"+groupId+"/"+accountId+"/"+roleType;
+        //$.operate.save(prefix + "/addUser2Group", data);
+        $.operate.save(url, data);
+    }
+</script>
+</body>
+</html>
