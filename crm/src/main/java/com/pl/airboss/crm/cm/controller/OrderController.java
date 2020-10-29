@@ -1,10 +1,8 @@
 package com.pl.airboss.crm.cm.controller;
 
-import com.pl.airboss.crm.cm.bean.AccountBean;
-import com.pl.airboss.crm.cm.bean.CustGroupBean;
-import com.pl.airboss.crm.cm.bean.CustPersonBean;
-import com.pl.airboss.crm.cm.bean.UserBean;
+import com.pl.airboss.crm.cm.bean.*;
 import com.pl.airboss.crm.cm.service.interfaces.IOrderSV;
+import com.pl.airboss.crm.product.bean.ServiceBean;
 import com.pl.airboss.crm.res.bean.ResPatternSegmentBean;
 import com.pl.airboss.framework.annotation.Log;
 import com.pl.airboss.framework.bean.BusinessType;
@@ -20,6 +18,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,10 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/crm/order")
@@ -263,6 +259,12 @@ public class OrderController extends BaseController {
     }
 
     @RequiresPermissions("customer:group:add")
+    @GetMapping("/newGroupCustomer")
+    public String newGroupCustomer(){
+        return prefix+"/newGroupCustomer";
+    }
+
+    @RequiresPermissions("customer:group:add")
     @PostMapping("/newGroupCustomer")
     @ResponseBody
     public AjaxResult newGroupCustomer(CustGroupBean bean){
@@ -273,9 +275,31 @@ public class OrderController extends BaseController {
             return error();
         }
     }
+    @PostMapping("/checkGroupCustomerUnique")
+    @ResponseBody
+    public Boolean checkGroupCustomerUnique(CustomerBean bean) {
+        return !orderSV.checkGroupCustomerUnique(bean.getCustId(),bean.getPsptTypeCode(),bean.getPsptId());
+    }
 
+    @RequiresPermissions("customer:group:edit")
+    @GetMapping("/editGroupCustomer/{custId}")
+    public String editGroupCustomer(@PathVariable("custId") Long custId, ModelMap mmap) {
+        CustGroupBean cond = new CustGroupBean();
+        cond.setCustId(custId);
+        List<CustGroupBean> bean = orderSV.queryGroupCustomer(cond);
+        mmap.put("bean", bean.get(0));
+        return prefix + "/editGroupCustomer";
+    }
 
-    @RequiresPermissions("customer:group:delete")
+    @Log(title = "修改集团客户信息", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("customer:group:edit")
+    @PostMapping("/editGroupCustomer")
+    @ResponseBody
+    public AjaxResult editGroupCustomer(@Validated CustGroupBean bean) {
+        return toAjax(orderSV.updateGroupCustomer(bean));
+    }
+
+    @RequiresPermissions("customer:group:remove")
     @PostMapping("/removeGroupCustomer/{custId}")
     @ResponseBody
     public AjaxResult removeGroupCustomer(@PathVariable("custId")Long custId){

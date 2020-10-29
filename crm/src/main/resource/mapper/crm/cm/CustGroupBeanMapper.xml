@@ -390,4 +390,35 @@
       </if>
     </trim>
   </insert>
+
+
+
+  <update id="updateByCustIdSelective" parameterType="com.pl.airboss.crm.cm.bean.CustGroupBean" >
+    update tf_f_cust_group
+    <set >
+      <if test="custName != null" >
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null" >
+        GROUP_TYPE = #{groupType,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="groupContactPhone != null" >
+        GROUP_CONTACT_PHONE = #{groupContactPhone,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="groupAddr != null" >
+        GROUP_ADDR = #{groupAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CUST_ID = #{custId,jdbcType=DECIMAL}
+  </update>
+
+
+
+
 </mapper>

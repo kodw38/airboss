@@ -30,4 +30,8 @@ public interface IOrderSV {
 
 
     public List<CustGroupBean> queryGroupCustomer(CustGroupBean bean);
+
+    boolean checkGroupCustomerUnique(Long custId, String psptTypeCode, String psptId);
+
+    int updateGroupCustomer(CustGroupBean bean);
 }

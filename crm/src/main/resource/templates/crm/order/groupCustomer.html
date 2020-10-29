@@ -14,7 +14,7 @@
                             客户名称：<input type="text" id="custName" name="custName"/>
                         </li>
                         <li>
-                            证件类型：<select name="psptTypeCode" th:with="type=${@SysService.getType('cust_cert_type')}">
+                            证件类型：<select name="psptTypeCode" th:with="type=${@SysService.getType('pspt_type_code')}">
                             <option value="">--请选择--</option>
                             <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                         </select>
@@ -40,9 +40,9 @@
             <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="customer:groupCustomer:edit">
                 <i class="fa fa-edit"></i> 编辑
             </a>
-            <!--<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="customer:groupCustomer:remove">
+            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="customer:groupCustomer:remove">
                 <i class="fa fa-remove"></i> 删除
-            </a>-->
+            </a>
         </div>
 
         <div class="col-sm-12 select-table table-striped">
@@ -64,13 +64,15 @@
     $(function () {
         var options = {
             url: prefix + "/queryGroupCustomer",
-            createUrl: prefix + "/addNumPattern",
-            updateUrl: prefix + "/editNumPattern/{id}",
-            removeUrl: prefix + "/removeNumPattern",
-            exportUrl: prefix + "/exportNumPattern",
+            createUrl: prefix + "/newGroupCustomer",
+            updateUrl: prefix + "/editGroupCustomer/{id}",
+            removeUrl: prefix + "/removeGroupCustomer",
+            exportUrl: prefix + "/exportGroupCustomer",
             importUrl: prefix + "/importData",
             importTemplateUrl: prefix + "/importTemplate",
             // queryParams: queryParams,
+            uniqueId: "custId",
+            code: "custId",
             sortName: "partitionId",
             sortOrder: "desc",
             showPageGo: true,
@@ -125,7 +127,7 @@
                         /*actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.partitionId + '\')"><i class="fa fa-edit"></i>修改</a> ');*/
                         /*actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.partitionId + '\')"><i class="fa fa-remove"></i>删除</a> ');*/
                         actions.push('<a class="btn btn-info btn-xs ' + userManageFlag + '" href="javascript:void(0)" onclick="userManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-user"></i>用户</a> ');
-                        actions.push('<a class="btn btn-info btn-xs ' + accountManageFlag + '" href="javascript:void(0)" onclick="accountManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-list-ul"></i>账户</a>');
+                        actions.push('<a class="btn btn-warning btn-xs ' + accountManageFlag + '" href="javascript:void(0)" onclick="accountManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-list-ul"></i>账户</a>');
                         return actions.join('');
                     }
                 }]
@@ -152,7 +154,17 @@
         $.table.search();
     }
 
-    function add() {
+    function userManage(partitionId,custId) {
+        var url = prefix + '/groupUserManage/'+custId;///system/user/authRole/9  会去请求后台，groupUserManage.html页面
+        $.modal.openTab("添加用户", url);
+    }
+
+    function userManage(partitionId,custId) {
+        var url = prefix + '/groupAccoutManage/'+custId;
+        $.modal.openTab("添加账户", url);
+    }
+
+    function addGroupCustomer() {
         /*var dictType = $("#dictType option:selected").val();
          alert(dictType);
          $.operate.add(dictType);*/
@@ -181,24 +193,6 @@
             }
         });*/
     }
-
-    function pricePatternConfig() {
-        debugger;
-        //打开资费配置tab
-        //$.operate.addTab();
-        //openTab: function (title, url) {
-        /*var pricePatternUrl = prefix + "/pricePattern";//pricePattern.html
-        var title = "资费配置";
-        $.operate.openTab(title, pricePatternUrl);*/
-
-
-        /*var url = prefix + '/authRole/' + userId;///system/user/authRole/9  会去请求后台，然后打开authRole.html页面
-        $.modal.openTab("操作员分配角色", url);*/
-
-        var url = prefix + '/pricePattern';///system/user/authRole/9  会去请求后台，然后打开authRole.html页面
-        $.modal.openTab("资费配置", url);
-    }
-
 
     function resetPre() {
         $.form.reset();

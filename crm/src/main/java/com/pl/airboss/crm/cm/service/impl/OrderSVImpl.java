@@ -353,4 +353,15 @@ public class OrderSVImpl implements IOrderSV {
     public List<CustGroupBean> queryGroupCustomer(CustGroupBean bean) {
         return groupBeanMapper.selectList(bean);
     }
+
+    @Override
+    public boolean checkGroupCustomerUnique(Long custId, String psptTypeCode, String psptId) {
+        return true;
+       // return groupBeanMapper.checkGroupCustomerUnique(custId,psptTypeCode,psptId);
+    }
+
+    @Override
+    public int updateGroupCustomer(CustGroupBean bean) {
+        return groupBeanMapper.updateByCustIdSelective(bean);
+    }
 }

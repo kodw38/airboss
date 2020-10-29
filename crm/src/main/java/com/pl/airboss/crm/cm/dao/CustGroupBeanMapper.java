@@ -22,4 +22,8 @@ public interface CustGroupBeanMapper {
     int delete(Long custId);
 
     List<CustGroupBean> selectList(CustomerBean record);
+
+    int updateByCustIdSelective(CustGroupBean bean);
+
+    // boolean checkGroupCustomerUnique(Long custId, String psptTypeCode, String psptId);
 }
