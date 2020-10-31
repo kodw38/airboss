@@ -1,10 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <th:block th:include="include :: header('集团账户管理')"/>
+    <th:block th:include="include :: bootstrap-select-css" />
 </head>
-<body>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <div class="select-list">
+                <ul>
+                    <li>
+                        客户ID：<input type="text" name="custId" style="background-color: #eee" readonly th:value="${bean.custId}"/>
+                    </li>
+                    <li>
+                        客户名称：<input type="text" name="custName" style="background-color: #eee" readonly th:value="${bean.custName}"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12 search-collapse" style="display: none;">
+            <form id="data-form">
+                <input type="hidden" id="serviceId" name="serviceId" th:value="${bean.serviceId}">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            用户号码：<input type="text" name="serialNumber"/>
+                        </li>
+                        <!--<li>
+                            状态：<select name="serviceState" th:with="type=${@SysService.getType('sys_normal_disable')}">
+                            <option value="">所有</option>
+                            <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                        </select>
+                        </li>-->
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="resetPre()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
 
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-success" onclick="addGroupUser()" shiro:hasPermission="product:serviceProperty:add">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: bootstrap-select-js" />
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('product:serviceProperty:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('product:serviceProperty:remove')}]];
+    var numGenFlag = [[${@permission.hasPermi('product:segPattern:num_generate')}]];
+
+    var datas = [[${@SysService.getType('sys_normal_disable')}]];
+    var prefix = ctx + "crm/product";
+    var intfModes=[[${@SysService.getType('intf_mode')}]];
+    var netTypeCodes=[[${@SysService.getType('net_type_code')}]];
+    var paramSelects=[[${@SysService.getType('service_param_select')}]];
+
+    $(function () {
+        var options = {
+            url: prefix + "/queryGroupSubscribe",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/editServiceProperty/{id}",
+            removeUrl: prefix + "/removeServiceProperty",
+            // exportUrl: prefix + "/export",
+            //  importUrl: prefix + "/importData",
+            //  importTemplateUrl: prefix + "/importTemplate",
+            queryParams: queryParams,
+            sortName: "paramId",
+            sortOrder: "desc",
+            modalName: "属性",
+            showPageGo: true,
+            columns: [
+                /*{
+                checkbox: true
+            },*/
+                {
+                    field: 'partitionId',
+                    title: '序号',
+                    visible: false
+                },
+                {
+                    field: 'serialNumber',
+                    title: '用户'
+                },
+                {
+                    field: 'productId',
+                    title: '套餐',
+                    visible: false
+                },
+                {
+                    field: 'cityCode',
+                    title: '归属集团'
+                },
+                {
+                    field: 'brandCode',
+                    title: '资费',
+                },
+                {
+                    field: 'inDate',
+                    title: '生效日期',
+                    sortable: true
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        /*actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.partitionId + '\')"><i class="fa fa-edit"></i>修改</a> ');*/
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.partitionId + '\')"><i class="fa fa-remove"></i>解除</a> ');
+                        /*actions.push('<a class="btn btn-info btn-xs ' + userManageFlag + '" href="javascript:void(0)" onclick="userManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-user"></i>用户</a> ');
+                        actions.push('<a class="btn btn-info btn-xs ' + accountManageFlag + '" href="javascript:void(0)" onclick="accountManage(\'' + row.partitionId + '\', \'' + row.custId + '\')"><i class="fa fa-list-ul"></i>账户</a>');*/
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    function addGroupUser() {
+        var url = prefix + '/addGroupUser/' + $("#custId").val();
+        //var url = prefix + '/selectUser/' + $("#roleCode").val();
+        $.modal.open("选择用户", url);
+    }
+
+    function queryParams(params) {
+        debugger;
+        var search = $.table.queryParams(params);
+        search.custId = $("#custId").val();
+        return search;
+    }
+
+    function serviceParamConfig() {
+        debugger;
+        var serviceId = $("#serviceId").val();
+        //打开资费配置tab
+        //$.operate.addTab();
+        //openTab: function (title, url) {
+        /*var pricePatternUrl = prefix + "/pricePattern";//pricePattern.html
+        var title = "资费配置";
+        $.operate.openTab(title, pricePatternUrl);*/
+        /*var url = prefix + '/authRole/' + userId;///system/user/authRole/9  会去请求后台，然后打开authRole.html页面
+        $.modal.openTab("操作员分配角色", url);*/
+
+        var url = prefix + '/addServiceProperties/'+serviceId;///system/user/authRole/9  会去请求后台，然后打开authRole.html页面
+        // $.modal.openTab("资费配置", url);
+        $.modal.open("属性配置", url);
+
+        /*var dictType = $("#dictType option:selected").val();
+        $.operate.add(dictType);*/
+    }
+
+
+    function resetPre() {
+        $.form.reset();
+    }
+</script>
 </body>
+
 </html>

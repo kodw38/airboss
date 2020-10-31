@@ -205,6 +205,10 @@ public class OrderController extends BaseController {
      */
     @GetMapping("/addGroupUser/{custId}")
     public String selectUser(@PathVariable("custId") String custId, ModelMap mmap) {
+        /*CustGroupBean cond = new CustGroupBean();
+        cond.setCustId(custId);
+        List<CustGroupBean> bean = orderSV.queryGroupCustomer(cond);
+        mmap.put("bean", bean.get(0));*/
         mmap.put("custId", custId);
         return prefix + "/addGroupUser";
     }
@@ -297,6 +301,16 @@ public class OrderController extends BaseController {
     @ResponseBody
     public AjaxResult editGroupCustomer(@Validated CustGroupBean bean) {
         return toAjax(orderSV.updateGroupCustomer(bean));
+    }
+
+    @RequiresPermissions("customer:group:view")
+    @GetMapping("/groupUserManage/{custId}")
+    public String groupUserManage(@PathVariable("custId") Long custId, ModelMap mmap) {
+        CustGroupBean cond = new CustGroupBean();
+        cond.setCustId(custId);
+        List<CustGroupBean> bean = orderSV.queryGroupCustomer(cond);
+        mmap.put("bean", bean.get(0));
+        return prefix + "/groupUserManage";
     }
 
     @RequiresPermissions("customer:group:remove")

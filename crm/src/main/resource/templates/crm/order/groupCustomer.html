@@ -155,11 +155,12 @@
     }
 
     function userManage(partitionId,custId) {
+        debugger;
         var url = prefix + '/groupUserManage/'+custId;///system/user/authRole/9  会去请求后台，groupUserManage.html页面
         $.modal.openTab("添加用户", url);
     }
 
-    function userManage(partitionId,custId) {
+    function accountManage(partitionId,custId) {
         var url = prefix + '/groupAccoutManage/'+custId;
         $.modal.openTab("添加账户", url);
     }
